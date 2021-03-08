@@ -62,7 +62,7 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'category' => 'Category',
+        'category' => '\Phobetor\Allegro\Model\Category',
         'eans' => 'string[]',
         'images' => '\Phobetor\Allegro\Model\ImageUrl[]',
         'parameters' => '\Phobetor\Allegro\Model\ProductParameterDto[]',

@@ -64,7 +64,7 @@ class Offer implements ModelInterface, ArrayAccess, \JsonSerializable
         'additional_services' => '\Phobetor\Allegro\Model\JustId',
         'after_sales_services' => '\Phobetor\Allegro\Model\AfterSalesServices',
         'attachments' => '\Phobetor\Allegro\Model\Attachment[]',
-        'category' => 'Category',
+        'category' => '\Phobetor\Allegro\Model\Category',
         'compatibility_list' => '\Phobetor\Allegro\Model\CompatibilityList',
         'contact' => '\Phobetor\Allegro\Model\JustId',
         'created_at' => '\DateTime',

@@ -62,7 +62,7 @@ class ProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'category' => 'Category',
+        'category' => '\Phobetor\Allegro\Model\Category',
         'images' => 'string[]',
         'parameters' => '\Phobetor\Allegro\Model\ParameterProductOfferRequest[]'
     ];
