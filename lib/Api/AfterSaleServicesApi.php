@@ -2005,7 +2005,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Operation getPublicSellerListingUsingGET
+     * Operation getAfterSalesServiceImpliedWarrantiesListUsingGET
      *
      * Get the user's implied warranties
      *
@@ -2016,14 +2016,14 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\ImpliedWarrantiesListImpliedWarrantyBasic
      */
-    public function getPublicSellerListingUsingGET($limit = 60, $offset = 0)
+    public function getAfterSalesServiceImpliedWarrantiesListUsingGET($limit = 60, $offset = 0)
     {
-        list($response) = $this->getPublicSellerListingUsingGETWithHttpInfo($limit, $offset);
+        list($response) = $this->getAfterSalesServiceImpliedWarrantiesListUsingGETWithHttpInfo($limit, $offset);
         return $response;
     }
 
     /**
-     * Operation getPublicSellerListingUsingGETWithHttpInfo
+     * Operation getAfterSalesServiceImpliedWarrantiesListUsingGETWithHttpInfo
      *
      * Get the user's implied warranties
      *
@@ -2034,9 +2034,9 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\ImpliedWarrantiesListImpliedWarrantyBasic, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPublicSellerListingUsingGETWithHttpInfo($limit = 60, $offset = 0)
+    public function getAfterSalesServiceImpliedWarrantiesListUsingGETWithHttpInfo($limit = 60, $offset = 0)
     {
-        $request = $this->getPublicSellerListingUsingGETRequest($limit, $offset);
+        $request = $this->getAfterSalesServiceImpliedWarrantiesListUsingGETRequest($limit, $offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2112,7 +2112,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Operation getPublicSellerListingUsingGETAsync
+     * Operation getAfterSalesServiceImpliedWarrantiesListUsingGETAsync
      *
      * Get the user's implied warranties
      *
@@ -2122,9 +2122,9 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicSellerListingUsingGETAsync($limit = 60, $offset = 0)
+    public function getAfterSalesServiceImpliedWarrantiesListUsingGETAsync($limit = 60, $offset = 0)
     {
-        return $this->getPublicSellerListingUsingGETAsyncWithHttpInfo($limit, $offset)
+        return $this->getAfterSalesServiceImpliedWarrantiesListUsingGETAsyncWithHttpInfo($limit, $offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2133,7 +2133,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Operation getPublicSellerListingUsingGETAsyncWithHttpInfo
+     * Operation getAfterSalesServiceImpliedWarrantiesListUsingGETAsyncWithHttpInfo
      *
      * Get the user's implied warranties
      *
@@ -2143,10 +2143,10 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicSellerListingUsingGETAsyncWithHttpInfo($limit = 60, $offset = 0)
+    public function getAfterSalesServiceImpliedWarrantiesListUsingGETAsyncWithHttpInfo($limit = 60, $offset = 0)
     {
         $returnType = '\Phobetor\Allegro\Model\ImpliedWarrantiesListImpliedWarrantyBasic';
-        $request = $this->getPublicSellerListingUsingGETRequest($limit, $offset);
+        $request = $this->getAfterSalesServiceImpliedWarrantiesListUsingGETRequest($limit, $offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2183,7 +2183,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Create request for operation 'getPublicSellerListingUsingGET'
+     * Create request for operation 'getAfterSalesServiceImpliedWarrantiesListUsingGET'
      *
      * @param  int $limit The limit of elements in the response. (optional, default to 60)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
@@ -2191,20 +2191,20 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPublicSellerListingUsingGETRequest($limit = 60, $offset = 0)
+    public function getAfterSalesServiceImpliedWarrantiesListUsingGETRequest($limit = 60, $offset = 0)
     {
         if ($limit !== null && $limit > 60) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET, must be smaller than or equal to 60.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getAfterSalesServiceImpliedWarrantiesListUsingGET, must be smaller than or equal to 60.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getAfterSalesServiceImpliedWarrantiesListUsingGET, must be bigger than or equal to 1.');
         }
 
         if ($offset !== null && $offset > 59) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET, must be smaller than or equal to 59.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getAfterSalesServiceImpliedWarrantiesListUsingGET, must be smaller than or equal to 59.');
         }
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getAfterSalesServiceImpliedWarrantiesListUsingGET, must be bigger than or equal to 0.');
         }
 
 
@@ -2601,7 +2601,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Operation getPublicSellerListingUsingGET2
+     * Operation getAfterSalesServiceWarrantiesListUsingGET
      *
      * Get the user's warranties
      *
@@ -2612,14 +2612,14 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\WarrantiesListWarrantyBasic
      */
-    public function getPublicSellerListingUsingGET2($limit = 60, $offset = 0)
+    public function getAfterSalesServiceWarrantiesListUsingGET($limit = 60, $offset = 0)
     {
-        list($response) = $this->getPublicSellerListingUsingGET2WithHttpInfo($limit, $offset);
+        list($response) = $this->getAfterSalesServiceWarrantiesListUsingGETWithHttpInfo($limit, $offset);
         return $response;
     }
 
     /**
-     * Operation getPublicSellerListingUsingGET2WithHttpInfo
+     * Operation getAfterSalesServiceWarrantiesListUsingGETWithHttpInfo
      *
      * Get the user's warranties
      *
@@ -2630,9 +2630,9 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\WarrantiesListWarrantyBasic, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPublicSellerListingUsingGET2WithHttpInfo($limit = 60, $offset = 0)
+    public function getAfterSalesServiceWarrantiesListUsingGETWithHttpInfo($limit = 60, $offset = 0)
     {
-        $request = $this->getPublicSellerListingUsingGET2Request($limit, $offset);
+        $request = $this->getAfterSalesServiceWarrantiesListUsingGETRequest($limit, $offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2708,7 +2708,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Operation getPublicSellerListingUsingGET2Async
+     * Operation getAfterSalesServiceWarrantiesListUsingGETAsync
      *
      * Get the user's warranties
      *
@@ -2718,9 +2718,9 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicSellerListingUsingGET2Async($limit = 60, $offset = 0)
+    public function getAfterSalesServiceWarrantiesListUsingGETAsync($limit = 60, $offset = 0)
     {
-        return $this->getPublicSellerListingUsingGET2AsyncWithHttpInfo($limit, $offset)
+        return $this->getAfterSalesServiceWarrantiesListUsingGETAsyncWithHttpInfo($limit, $offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2729,7 +2729,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Operation getPublicSellerListingUsingGET2AsyncWithHttpInfo
+     * Operation getAfterSalesServiceWarrantiesListUsingGETAsyncWithHttpInfo
      *
      * Get the user's warranties
      *
@@ -2739,10 +2739,10 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPublicSellerListingUsingGET2AsyncWithHttpInfo($limit = 60, $offset = 0)
+    public function getAfterSalesServiceWarrantiesListUsingGETAsyncWithHttpInfo($limit = 60, $offset = 0)
     {
         $returnType = '\Phobetor\Allegro\Model\WarrantiesListWarrantyBasic';
-        $request = $this->getPublicSellerListingUsingGET2Request($limit, $offset);
+        $request = $this->getAfterSalesServiceWarrantiesListUsingGETRequest($limit, $offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2779,7 +2779,7 @@ class AfterSaleServicesApi
     }
 
     /**
-     * Create request for operation 'getPublicSellerListingUsingGET2'
+     * Create request for operation 'getAfterSalesServiceWarrantiesListUsingGET'
      *
      * @param  int $limit The limit of elements in the response. (optional, default to 60)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
@@ -2787,20 +2787,20 @@ class AfterSaleServicesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPublicSellerListingUsingGET2Request($limit = 60, $offset = 0)
+    public function getAfterSalesServiceWarrantiesListUsingGETRequest($limit = 60, $offset = 0)
     {
         if ($limit !== null && $limit > 60) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET2, must be smaller than or equal to 60.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getAfterSalesServiceWarrantiesListUsingGET, must be smaller than or equal to 60.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET2, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AfterSaleServicesApi.getAfterSalesServiceWarrantiesListUsingGET, must be bigger than or equal to 1.');
         }
 
         if ($offset !== null && $offset > 59) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET2, must be smaller than or equal to 59.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getAfterSalesServiceWarrantiesListUsingGET, must be smaller than or equal to 59.');
         }
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getPublicSellerListingUsingGET2, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AfterSaleServicesApi.getAfterSalesServiceWarrantiesListUsingGET, must be bigger than or equal to 0.');
         }
 
 
