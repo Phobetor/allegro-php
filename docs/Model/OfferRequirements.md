@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**parameters** | [**\Phobetor\Allegro\Model\ProductParameter[]**](ProductParameter.md) |  | [optional]
+**id** | **string** | The id of the offer that can be associated with this product. | [optional]
+**parameters** | [**\Phobetor\Allegro\Model\ProductParameterDto[]**](ProductParameterDto.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

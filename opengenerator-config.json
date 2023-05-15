@@ -1,0 +1,6 @@
+{
+  "packageName": "Phobetor",
+  "invokerPackage": "Phobetor\\Allegro",
+  "apiPackage": "Phobetor",
+  "srcBasePath": "lib"
+}

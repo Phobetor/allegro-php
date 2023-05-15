@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to 'REQUIREMENT_CHANGE']
+**type** | **string** |  | [optional] [default to 'REQUIREMENT_CHANGE']
 **category** | [**\Phobetor\Allegro\Model\CategoryParametersScheduledBaseChangeCategory**](CategoryParametersScheduledBaseChangeCategory.md) |  |
 **parameter** | [**\Phobetor\Allegro\Model\CategoryParametersScheduledBaseChangeParameter**](CategoryParametersScheduledBaseChangeParameter.md) |  |
 

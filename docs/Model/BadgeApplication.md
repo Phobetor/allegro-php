@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Badge application ID. |
-**created_at** | **string** | Provided in [ISO 8601 format](link: https://en.wikipedia.org/wiki/ISO_8601). |
-**updated_at** | **string** | Provided in [ISO 8601 format](link: https://en.wikipedia.org/wiki/ISO_8601). |
+**created_at** | **string** | Provided in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601). |
+**updated_at** | **string** | Provided in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601). |
 **campaign** | [**\Phobetor\Allegro\Model\BadgeApplicationCampaign**](BadgeApplicationCampaign.md) |  |
 **offer** | [**\Phobetor\Allegro\Model\BadgeApplicationOffer**](BadgeApplicationOffer.md) |  |
 **prices** | [**\Phobetor\Allegro\Model\BadgeApplicationPrices**](BadgeApplicationPrices.md) |  | [optional]

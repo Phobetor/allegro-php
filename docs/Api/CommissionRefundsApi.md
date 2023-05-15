@@ -1,13 +1,13 @@
 # Phobetor\Allegro\CommissionRefundsApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**cancelRefundApplication()**](CommissionRefundsApi.md#cancelRefundApplication) | **DELETE** /order/refund-claims/{claimId} | Cancel a refund application
-[**createRefundApplication()**](CommissionRefundsApi.md#createRefundApplication) | **POST** /order/refund-claims | Create a refund application
-[**getRefundApplication()**](CommissionRefundsApi.md#getRefundApplication) | **GET** /order/refund-claims/{claimId} | Get a refund application details
-[**getRefundApplications()**](CommissionRefundsApi.md#getRefundApplications) | **GET** /order/refund-claims | Get a list of refund applications
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**cancelRefundApplication()**](CommissionRefundsApi.md#cancelRefundApplication) | **DELETE** /order/refund-claims/{claimId} | Cancel a refund application |
+| [**createRefundApplication()**](CommissionRefundsApi.md#createRefundApplication) | **POST** /order/refund-claims | Create a refund application |
+| [**getRefundApplication()**](CommissionRefundsApi.md#getRefundApplication) | **GET** /order/refund-claims/{claimId} | Get a refund application details |
+| [**getRefundApplications()**](CommissionRefundsApi.md#getRefundApplications) | **GET** /order/refund-claims | Get a list of refund applications |
 
 
 ## `cancelRefundApplication()`
@@ -18,7 +18,7 @@ cancelRefundApplication($claim_id)
 
 Cancel a refund application
 
-Use this resource to cancel a refund application. This cannot be undone.
+Use this resource to cancel a refund application. This cannot be undone. Read more: <a href=\"../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#jak-anulowac-wniosek-o-rabat-transakcyjny\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/process-orders-PgPMlWDr8Cv#how-to-cancel-sale-commission-refund\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -48,9 +48,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **claim_id** | **string**| Refund application ID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **claim_id** | **string**| Refund application ID. | |
 
 ### Return type
 
@@ -72,12 +72,12 @@ void (empty response body)
 ## `createRefundApplication()`
 
 ```php
-createRefundApplication($refund_claim_request)
+createRefundApplication($refund_claim_request): \Phobetor\Allegro\Model\RefundClaimResponse
 ```
 
 Create a refund application
 
-Use this resource to create a refund application.
+Use this resource to create a refund application. Read more: <a href=\"../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#jak-utworzyc-wniosek-o-rabat-transakcyjny\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/process-orders-PgPMlWDr8Cv#how-to-create-a-sale-commission-refund-application\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -99,7 +99,8 @@ $apiInstance = new Phobetor\Allegro\Api\CommissionRefundsApi(
 $refund_claim_request = new \Phobetor\Allegro\Model\RefundClaimRequest(); // \Phobetor\Allegro\Model\RefundClaimRequest
 
 try {
-    $apiInstance->createRefundApplication($refund_claim_request);
+    $result = $apiInstance->createRefundApplication($refund_claim_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommissionRefundsApi->createRefundApplication: ', $e->getMessage(), PHP_EOL;
 }
@@ -107,13 +108,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **refund_claim_request** | [**\Phobetor\Allegro\Model\RefundClaimRequest**](../Model/RefundClaimRequest.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **refund_claim_request** | [**\Phobetor\Allegro\Model\RefundClaimRequest**](../Model/RefundClaimRequest.md)|  | |
 
 ### Return type
 
-void (empty response body)
+[**\Phobetor\Allegro\Model\RefundClaimResponse**](../Model/RefundClaimResponse.md)
 
 ### Authorization
 
@@ -122,7 +123,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/vnd.allegro.public.v1+json`
-- **Accept**: Not defined
+- **Accept**: `application/vnd.allegro.public.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -136,7 +137,7 @@ getRefundApplication($claim_id): \Phobetor\Allegro\Model\RefundClaim
 
 Get a refund application details
 
-Use this resource to get refund application details.
+Use this resource to get refund application details. Read more: <a href=\"../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#jak-pobrac-pojedynczy-wniosek-o-rabat-transakcyjny\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/process-orders-PgPMlWDr8Cv#how-to-retrieve-single-sale-commission-refund\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -167,9 +168,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **claim_id** | **string**| Refund application ID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **claim_id** | **string**| Refund application ID. | |
 
 ### Return type
 
@@ -191,12 +192,12 @@ Name | Type | Description  | Notes
 ## `getRefundApplications()`
 
 ```php
-getRefundApplications($line_item_offer_id, $buyer_login, $status, $limit, $offset): object
+getRefundApplications($line_item_offer_id, $buyer_login, $status, $limit, $offset): \Phobetor\Allegro\Model\GetRefundApplications200Response
 ```
 
 Get a list of refund applications
 
-Use this resource to get a list of refund applications based on the provided query parameters.
+Use this resource to get a list of refund applications based on the provided query parameters. Read more: <a href=\"../../tutorials/jak-obslugiwac-zamowienia-GRaj0qyvwtR#jak-pobrac-liste-utworzonych-wnioskow-o-rabat-transakcyjny\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/process-orders-PgPMlWDr8Cv#how-to-retrieve-list-of-sale-commission-refunds\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -231,17 +232,17 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_offer_id** | **string**| ID of the offer associated with the refund application. | [optional]
- **buyer_login** | **string**| Login of the buyer that made the purchase associated with the refund application. | [optional]
- **status** | **string**| Status of the refund application. | [optional]
- **limit** | **int**| Maximum number of returned refund applications in response. | [optional] [default to 25]
- **offset** | **int**| Index of the first returned refund application from all search results. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_offer_id** | **string**| ID of the offer associated with the refund application. | [optional] |
+| **buyer_login** | **string**| Login of the buyer that made the purchase associated with the refund application. | [optional] |
+| **status** | **string**| Status of the refund application. | [optional] |
+| **limit** | **int**| Maximum number of returned refund applications in response. | [optional] [default to 25] |
+| **offset** | **int**| Index of the first returned refund application from all search results. | [optional] [default to 0] |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\GetRefundApplications200Response**](../Model/GetRefundApplications200Response.md)
 
 ### Authorization
 

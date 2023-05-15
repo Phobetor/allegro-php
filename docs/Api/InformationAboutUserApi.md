@@ -1,17 +1,18 @@
 # Phobetor\Allegro\InformationAboutUserApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**addAdditionalEmailUsingPOST()**](InformationAboutUserApi.md#addAdditionalEmailUsingPOST) | **POST** /account/additional-emails | Add a new additional email address to user&#39;s account
-[**answerUserRatingUsingPUT()**](InformationAboutUserApi.md#answerUserRatingUsingPUT) | **PUT** /sale/user-ratings/{ratingId}/answer | Answer for user&#39;s rating
-[**deleteAdditionalEmailUsingDELETE()**](InformationAboutUserApi.md#deleteAdditionalEmailUsingDELETE) | **DELETE** /account/additional-emails/{emailId} | Delete an additional email address
-[**getAdditionalEmailUsingGET()**](InformationAboutUserApi.md#getAdditionalEmailUsingGET) | **GET** /account/additional-emails/{emailId} | Get information about a particular additional email
-[**getListOfAdditionalEmailsUsingGET()**](InformationAboutUserApi.md#getListOfAdditionalEmailsUsingGET) | **GET** /account/additional-emails | Get user&#39;s additional emails
-[**getUserRatingsUsingGET()**](InformationAboutUserApi.md#getUserRatingsUsingGET) | **GET** /sale/user-ratings | Get the user&#39;s ratings
-[**meGET()**](InformationAboutUserApi.md#meGET) | **GET** /me | Get basic information about user
-[**userRatingRemovalUsingPUT()**](InformationAboutUserApi.md#userRatingRemovalUsingPUT) | **PUT** /sale/user-ratings/{ratingId}/removal | Request removal of user&#39;s rating
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**addAdditionalEmailUsingPOST()**](InformationAboutUserApi.md#addAdditionalEmailUsingPOST) | **POST** /account/additional-emails | Add a new additional email address to user&#39;s account |
+| [**answerUserRatingUsingPUT()**](InformationAboutUserApi.md#answerUserRatingUsingPUT) | **PUT** /sale/user-ratings/{ratingId}/answer | Answer for user&#39;s rating |
+| [**deleteAdditionalEmailUsingDELETE()**](InformationAboutUserApi.md#deleteAdditionalEmailUsingDELETE) | **DELETE** /account/additional-emails/{emailId} | Delete an additional email address |
+| [**getAdditionalEmailUsingGET()**](InformationAboutUserApi.md#getAdditionalEmailUsingGET) | **GET** /account/additional-emails/{emailId} | Get information about a particular additional email |
+| [**getListOfAdditionalEmailsUsingGET()**](InformationAboutUserApi.md#getListOfAdditionalEmailsUsingGET) | **GET** /account/additional-emails | Get user&#39;s additional emails |
+| [**getSellerSmartClassificationGET()**](InformationAboutUserApi.md#getSellerSmartClassificationGET) | **GET** /sale/smart | Get Smart! seller classification report |
+| [**getUserRatingsUsingGET()**](InformationAboutUserApi.md#getUserRatingsUsingGET) | **GET** /sale/user-ratings | Get the user&#39;s ratings |
+| [**meGET()**](InformationAboutUserApi.md#meGET) | **GET** /me | Get basic information about user |
+| [**userRatingRemovalUsingPUT()**](InformationAboutUserApi.md#userRatingRemovalUsingPUT) | **PUT** /sale/user-ratings/{ratingId}/removal | Request removal of user&#39;s rating |
 
 
 ## `addAdditionalEmailUsingPOST()`
@@ -22,7 +23,7 @@ addAdditionalEmailUsingPOST($additional_email_request): \Phobetor\Allegro\Model\
 
 Add a new additional email address to user's account
 
-Use this resource to add a new additional email address to account.
+Use this resource to add a new additional email address to account. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-dodac-adres-e-mail\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-add-an-additional-email\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -53,9 +54,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **additional_email_request** | [**\Phobetor\Allegro\Model\AdditionalEmailRequest**](../Model/AdditionalEmailRequest.md)| request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **additional_email_request** | [**\Phobetor\Allegro\Model\AdditionalEmailRequest**](../Model/AdditionalEmailRequest.md)| request | |
 
 ### Return type
 
@@ -82,7 +83,7 @@ answerUserRatingUsingPUT($rating_id, $user_rating_answer_request): \Phobetor\All
 
 Answer for user's rating
 
-Use this resource to answer for received rating.
+Use this resource to answer for received rating. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-dodac-odpowiedz-na-ocene\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-answer-for-user-rating\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -114,10 +115,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **rating_id** | **string**| ID of the rating. |
- **user_rating_answer_request** | [**\Phobetor\Allegro\Model\UserRatingAnswerRequest**](../Model/UserRatingAnswerRequest.md)| User rating answer request. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rating_id** | **string**| ID of the rating. | |
+| **user_rating_answer_request** | [**\Phobetor\Allegro\Model\UserRatingAnswerRequest**](../Model/UserRatingAnswerRequest.md)| User rating answer request. | |
 
 ### Return type
 
@@ -144,7 +145,7 @@ deleteAdditionalEmailUsingDELETE($email_id)
 
 Delete an additional email address
 
-Use this resource to delete one of additional emails.
+Use this resource to delete one of additional emails. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-usunac-adres-e-mail\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-remove-e-mail\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -174,9 +175,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email_id** | **string**| Id of the additional email to be deleted. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email_id** | **string**| Id of the additional email to be deleted. | |
 
 ### Return type
 
@@ -203,7 +204,7 @@ getAdditionalEmailUsingGET($email_id): \Phobetor\Allegro\Model\AdditionalEmail
 
 Get information about a particular additional email
 
-Use this resource to retrieve a single additional email.
+Use this resource to retrieve a single additional email. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-szczegolowe-informacje-o-adresie-e-mail\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-e-mail-details\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -234,9 +235,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email_id** | **string**| Id of the additional email. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email_id** | **string**| Id of the additional email. | |
 
 ### Return type
 
@@ -263,7 +264,7 @@ getListOfAdditionalEmailsUsingGET(): \Phobetor\Allegro\Model\AdditionalEmailsRes
 
 Get user's additional emails
 
-Use this resource to get a list of all additional email addresses assigned to account.
+Use this resource to get a list of all additional email addresses assigned to account. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-adresy-e-mail\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-email-addresses\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -312,15 +313,75 @@ This endpoint does not need any parameter.
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getSellerSmartClassificationGET()`
+
+```php
+getSellerSmartClassificationGET($marketplace_id): \Phobetor\Allegro\Model\SmartSellerClassificationReport
+```
+
+Get Smart! seller classification report
+
+Use this resource to get a full Smart! seller classification report. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#klasyfikacja-sprzedawcy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#seller-classification\" target=\"_blank\">EN</a>.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bearer-token-for-user
+$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Phobetor\Allegro\Api\InformationAboutUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$marketplace_id = allegro-pl; // string | Marketplace for which seller classification report will be returned. If not specified, the classification result for the seller's registration marketplace will be returned.
+
+try {
+    $result = $apiInstance->getSellerSmartClassificationGET($marketplace_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InformationAboutUserApi->getSellerSmartClassificationGET: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **marketplace_id** | **string**| Marketplace for which seller classification report will be returned. If not specified, the classification result for the seller&#39;s registration marketplace will be returned. | [optional] |
+
+### Return type
+
+[**\Phobetor\Allegro\Model\SmartSellerClassificationReport**](../Model/SmartSellerClassificationReport.md)
+
+### Authorization
+
+[bearer-token-for-user](../../README.md#bearer-token-for-user)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/vnd.allegro.public.v1+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getUserRatingsUsingGET()`
 
 ```php
-getUserRatingsUsingGET($recommended, $offset, $limit): \Phobetor\Allegro\Model\UserRatingListResponse
+getUserRatingsUsingGET($recommended, $last_changed_at_gte, $last_changed_at_lte, $offset, $limit): \Phobetor\Allegro\Model\UserRatingListResponse
 ```
 
 Get the user's ratings
 
-Use this resource to receive your sales score. <a href=\"../../news/2017-10-09-news_informacje_o_ocenach/\" target=\"_blank\">Read more</a>.
+Use this resource to receive your sales ratings sorted by last change date, starting from the latest. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-informacje-o-ocenie-sprzedazy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-user-s-ratings-data\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -340,11 +401,13 @@ $apiInstance = new Phobetor\Allegro\Api\InformationAboutUserApi(
     $config
 );
 $recommended = 'recommended_example'; // string | Filter by recommended.
+$last_changed_at_gte = 2020-11-13T12:45:20.818Z; // \DateTime | Last change (creation or latest edition) date time in ISO 8601 format. The lower bound of date time range from which ratings will be fetched.
+$last_changed_at_lte = 2020-11-13T12:45:20.818Z; // \DateTime | Last change (creation or latest edition) date time in ISO 8601 format. The upper bound of date time range from which ratings will be fetched.
 $offset = 0; // int | The offset of elements in the response.
 $limit = 20; // int | The limit of elements in the response.
 
 try {
-    $result = $apiInstance->getUserRatingsUsingGET($recommended, $offset, $limit);
+    $result = $apiInstance->getUserRatingsUsingGET($recommended, $last_changed_at_gte, $last_changed_at_lte, $offset, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InformationAboutUserApi->getUserRatingsUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -353,11 +416,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **recommended** | **string**| Filter by recommended. | [optional]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 20]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **recommended** | **string**| Filter by recommended. | [optional] |
+| **last_changed_at_gte** | **\DateTime**| Last change (creation or latest edition) date time in ISO 8601 format. The lower bound of date time range from which ratings will be fetched. | [optional] |
+| **last_changed_at_lte** | **\DateTime**| Last change (creation or latest edition) date time in ISO 8601 format. The upper bound of date time range from which ratings will be fetched. | [optional] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 20] |
 
 ### Return type
 
@@ -384,7 +449,7 @@ meGET(): \Phobetor\Allegro\Model\MeResponse
 
 Get basic information about user
 
-Use this resource when you need basic information about authenticated user.
+Use this resource when you need basic information about authenticated user. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#informacje-o-uzytkowniku\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#information-about-user\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -441,7 +506,7 @@ userRatingRemovalUsingPUT($rating_id, $user_rating_removal_request): \Phobetor\A
 
 Request removal of user's rating
 
-Use this resource to request removal of received rating.
+Use this resource to request removal of received rating. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-wyslac-prosbe-o-usuniecie-oceny\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-send-a-request-to-remove-user-rating\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -473,10 +538,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **rating_id** | **string**| ID of the rating. |
- **user_rating_removal_request** | [**\Phobetor\Allegro\Model\UserRatingRemovalRequest**](../Model/UserRatingRemovalRequest.md)| User rating removal request. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rating_id** | **string**| ID of the rating. | |
+| **user_rating_removal_request** | [**\Phobetor\Allegro\Model\UserRatingRemovalRequest**](../Model/UserRatingRemovalRequest.md)| User rating removal request. | |
 
 ### Return type
 

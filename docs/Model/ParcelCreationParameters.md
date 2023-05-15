@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_id** | **int** | Delivery service id. |
+**service_id** | **string** | Delivery service id. |
 **receiver** | [**\Phobetor\Allegro\Model\Receiver**](Receiver.md) |  |
 **pickup** | [**\Phobetor\Allegro\Model\Pickup**](Pickup.md) |  |
 **items** | [**\Phobetor\Allegro\Model\ParcelItemDetails[]**](ParcelItemDetails.md) | Parcel items details. |
-**type** | **string** |  |
+**type** | **string** | Value will be applied to type for all items. If item will have type value assigned - validation will check if all types have the same value. | [optional]
 **label** | [**\Phobetor\Allegro\Model\ParcelCreationParametersLabel**](ParcelCreationParametersLabel.md) |  | [optional]
 **additional_services** | [**\Phobetor\Allegro\Model\ParcelAdditionalServices**](ParcelAdditionalServices.md) |  | [optional]
 

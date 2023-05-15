@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to 'REFUND_CHARGE']
+**type** | **string** |  | [optional] [default to 'REFUND_CHARGE']
 **payment** | [**\Phobetor\Allegro\Model\OperationPayment**](OperationPayment.md) |  |
 **participant** | [**\Phobetor\Allegro\Model\BuyerParticipant**](BuyerParticipant.md) |  |
 

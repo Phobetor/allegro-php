@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **email** | **string** |  |
 **login** | **string** |  |
 **guest** | **bool** | is a guest account? |
+**preferences** | [**\Phobetor\Allegro\Model\BuyerPreferencesReference**](BuyerPreferencesReference.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

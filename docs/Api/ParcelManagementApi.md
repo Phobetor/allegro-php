@@ -1,31 +1,31 @@
 # Phobetor\Allegro\ParcelManagementApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**cancelParcel()**](ParcelManagementApi.md#cancelParcel) | **PUT** /parcel-management/parcel-cancel-commands/{commandId} | Cancel parcel
-[**createNewParcel()**](ParcelManagementApi.md#createNewParcel) | **PUT** /parcel-management/parcel-create-commands/{commandId} | Create a new parcel
-[**getAvailableDeliveryServices()**](ParcelManagementApi.md#getAvailableDeliveryServices) | **GET** /parcel-management/delivery-services | Get available delivery services
-[**getParcelCancellationStatus()**](ParcelManagementApi.md#getParcelCancellationStatus) | **GET** /parcel-management/parcel-cancel-commands/{commandId} | Get parcel cancellation status
-[**getParcelCreationStatus()**](ParcelManagementApi.md#getParcelCreationStatus) | **GET** /parcel-management/parcel-create-commands/{commandId} | Get parcel creation status
-[**getParcelDetails()**](ParcelManagementApi.md#getParcelDetails) | **GET** /parcel-management/parcels/{parcelId} | Get parcel details
-[**getParcelLabel()**](ParcelManagementApi.md#getParcelLabel) | **GET** /parcel-management/parcels/label | Get parcel label
-[**getParcelPickupStatus()**](ParcelManagementApi.md#getParcelPickupStatus) | **GET** /parcel-management/parcel-pickup-request-commands/{commandId} | Get parcel pickup status
-[**getParcelsPickupDateProposals()**](ParcelManagementApi.md#getParcelsPickupDateProposals) | **GET** /parcel-management/pickup-date-proposals | Get parcels pickup date proposals
-[**getParcelsProtocol()**](ParcelManagementApi.md#getParcelsProtocol) | **GET** /parcel-management/parcels/protocol | Get parcels protocol
-[**requestParcelPickup()**](ParcelManagementApi.md#requestParcelPickup) | **PUT** /parcel-management/parcel-pickup-request-commands/{commandId} | Request parcel pickup
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**cancelParcel()**](ParcelManagementApi.md#cancelParcel) | **PUT** /parcel-management/parcel-cancel-commands/{commandId} | Cancel parcel |
+| [**createNewParcel()**](ParcelManagementApi.md#createNewParcel) | **PUT** /parcel-management/parcel-create-commands/{commandId} | Create a new parcel |
+| [**getAvailableDeliveryServices()**](ParcelManagementApi.md#getAvailableDeliveryServices) | **GET** /parcel-management/delivery-services | Get available delivery services |
+| [**getParcelCancellationStatus()**](ParcelManagementApi.md#getParcelCancellationStatus) | **GET** /parcel-management/parcel-cancel-commands/{commandId} | Get parcel cancellation status |
+| [**getParcelCreationStatus()**](ParcelManagementApi.md#getParcelCreationStatus) | **GET** /parcel-management/parcel-create-commands/{commandId} | Get parcel creation status |
+| [**getParcelDetails()**](ParcelManagementApi.md#getParcelDetails) | **GET** /parcel-management/parcels/{parcelId} | Get parcel details |
+| [**getParcelLabel()**](ParcelManagementApi.md#getParcelLabel) | **GET** /parcel-management/parcels/label | Get parcel label |
+| [**getParcelPickupStatus()**](ParcelManagementApi.md#getParcelPickupStatus) | **GET** /parcel-management/parcel-pickup-request-commands/{commandId} | Get parcel pickup status |
+| [**getParcelsPickupDateProposals()**](ParcelManagementApi.md#getParcelsPickupDateProposals) | **GET** /parcel-management/pickup-date-proposals | Get parcels pickup date proposals |
+| [**getParcelsProtocol()**](ParcelManagementApi.md#getParcelsProtocol) | **GET** /parcel-management/parcels/protocol | Get parcels protocol |
+| [**requestParcelPickup()**](ParcelManagementApi.md#requestParcelPickup) | **PUT** /parcel-management/parcel-pickup-request-commands/{commandId} | Request parcel pickup |
 
 
 ## `cancelParcel()`
 
 ```php
-cancelParcel($command_id, $cancel_parcel_parameters): object
+cancelParcel($command_id, $cancel_parcel_parameters): \Phobetor\Allegro\Model\CancelParcel201Response
 ```
 
 Cancel parcel
 
-Use this resource to cancel parcel.
+Use this resource to cancel parcel. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-anulowac-paczke\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-cancel-a-parcel\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -57,14 +57,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command UUID. |
- **cancel_parcel_parameters** | [**\Phobetor\Allegro\Model\CancelParcelParameters**](../Model/CancelParcelParameters.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command UUID. | |
+| **cancel_parcel_parameters** | [**\Phobetor\Allegro\Model\CancelParcelParameters**](../Model/CancelParcelParameters.md)|  | |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\CancelParcel201Response**](../Model/CancelParcel201Response.md)
 
 ### Authorization
 
@@ -82,12 +82,12 @@ Name | Type | Description  | Notes
 ## `createNewParcel()`
 
 ```php
-createNewParcel($command_id, $parcel_creation_parameters): object
+createNewParcel($command_id, $parcel_creation_parameters): \Phobetor\Allegro\Model\CreateNewParcel201Response
 ```
 
 Create a new parcel
 
-Use this resource to create parcel for delivery. Read more: <a href=\"https://developer.allegro.pl/wza/#jak-utworzyć-nową-paczkę\" target=\"_blank\">PL</a> / <a href=\"https://developer.allegro.pl/en/wza/#how-to-create-a-new-parcel\" target=\"_blank\">EN</a>.
+Use this resource to create parcel for delivery. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-utworzyc-nowa-paczke\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-create-a-new-parcel\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -119,14 +119,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command UUID. |
- **parcel_creation_parameters** | [**\Phobetor\Allegro\Model\ParcelCreationParameters**](../Model/ParcelCreationParameters.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command UUID. | |
+| **parcel_creation_parameters** | [**\Phobetor\Allegro\Model\ParcelCreationParameters**](../Model/ParcelCreationParameters.md)|  | |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\CreateNewParcel201Response**](../Model/CreateNewParcel201Response.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ getAvailableDeliveryServices(): \Phobetor\Allegro\Model\DeliveryServices
 
 Get available delivery services
 
-Use this resource to get delivery services available for user. It returns services provided by Allegro and contracts with carriers owned by user and configured by GUI.
+Use this resource to get delivery services available for user. It returns services provided by Allegro and contracts with carriers owned by user and configured by GUI. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-pobrac-liste-uslug-dostawy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-retrieve-a-list-of-delivery-services\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -201,12 +201,12 @@ This endpoint does not need any parameter.
 ## `getParcelCancellationStatus()`
 
 ```php
-getParcelCancellationStatus($command_id): object
+getParcelCancellationStatus($command_id): \Phobetor\Allegro\Model\GetParcelCancellationStatus200Response
 ```
 
 Get parcel cancellation status
 
-Use this resource to get parcel cancellation status.
+Use this resource to get parcel cancellation status. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-sprawdzic-status-anulowania-paczki\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-check-parcel-cancellation-status\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -237,13 +237,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command UUID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command UUID. | |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\GetParcelCancellationStatus200Response**](../Model/GetParcelCancellationStatus200Response.md)
 
 ### Authorization
 
@@ -261,12 +261,12 @@ Name | Type | Description  | Notes
 ## `getParcelCreationStatus()`
 
 ```php
-getParcelCreationStatus($command_id): object
+getParcelCreationStatus($command_id): \Phobetor\Allegro\Model\GetParcelCreationStatus200Response
 ```
 
 Get parcel creation status
 
-Use this resource to get parcel creation status.
+Use this resource to get parcel creation status. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-sprawdzic-status-utworzenia-paczki\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-check-parcel-creation-status\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -297,13 +297,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command UUID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command UUID. | |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\GetParcelCreationStatus200Response**](../Model/GetParcelCreationStatus200Response.md)
 
 ### Authorization
 
@@ -326,7 +326,7 @@ getParcelDetails($parcel_id): \Phobetor\Allegro\Model\ParcelDetails
 
 Get parcel details
 
-Use this resource to get parcel details.
+Use this resource to get parcel details. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-pobrac-szczegolowe-informacje-o-paczce\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-retrieve-parcel-details\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -357,9 +357,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **parcel_id** | **string**| Id of parcel. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **parcel_id** | **string**| Id of parcel. | |
 
 ### Return type
 
@@ -386,7 +386,7 @@ getParcelLabel($parcel_id, $page_format): \SplFileObject
 
 Get parcel label
 
-Use this resource to get label for created parcel. <br/>Returned content type depends on created parcel.
+Use this resource to get label for created parcel. <br/>Returned content type depends on created parcel. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-utworzyc-etykiete-na-paczke\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-create-a-label-for-parcel\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -418,14 +418,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **parcel_id** | **string**| Id of parcel. |
- **page_format** | **string**| Label page format. Only for PDF file. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **parcel_id** | **string**| Id of parcel. | |
+| **page_format** | **string**| Label page format. Only for PDF file. | [optional] |
 
 ### Return type
 
-[**\SplFileObject**](../Model/\SplFileObject.md)
+**\SplFileObject**
 
 ### Authorization
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/pdf`, `plain/text`, `application/vnd.allegro.public.v1+json`
+- **Accept**: `application/pdf`, `text/plain`, `application/vnd.allegro.public.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -443,12 +443,12 @@ Name | Type | Description  | Notes
 ## `getParcelPickupStatus()`
 
 ```php
-getParcelPickupStatus($command_id): object
+getParcelPickupStatus($command_id): \Phobetor\Allegro\Model\GetParcelPickupStatus200Response
 ```
 
 Get parcel pickup status
 
-Use this resource to get parcel pickup status.
+Use this resource to get parcel pickup status. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-sprawdzic-status-zamowienia-odbioru-paczek\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-check-parcel-pickup-request-status\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -479,13 +479,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command UUID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command UUID. | |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\GetParcelPickupStatus200Response**](../Model/GetParcelPickupStatus200Response.md)
 
 ### Authorization
 
@@ -508,7 +508,7 @@ getParcelsPickupDateProposals($parcel_id, $ready_date): \Phobetor\Allegro\Model\
 
 Get parcels pickup date proposals
 
-Use this resource to get parcels pickup date proposals. Pickup takes place, when courier arrives to take parcels for shipment.
+Use this resource to get parcels pickup date proposals. Pickup takes place, when courier arrives to take parcels for shipment. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-sprawdzic-proponowana-date-odbioru-paczek-przez-kuriera\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-check-pickup-date-proposals\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -527,7 +527,7 @@ $apiInstance = new Phobetor\Allegro\Api\ParcelManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$parcel_id = array('parcel_id_example'); // string[] | Ids of parcels. Passing more than one value will search pickup dates for all of them separately. Example: `parcelId=1233&parcelId=1234` - will return pickup date proposals for parcels with ID `1233` and `1234`.
+$parcel_id = array('parcel_id_example'); // string[] | Ids of parcels. Passing more than one value will search pickup dates for all of them separately. Example: `parcelId=adc05c84-a9eb-4981-bbc0-773d8c0017e7&parcelId=adc05c84-a9eb-4981-bbc0-773d8c0017e8` - will return pickup date proposals for parcels with ID `adc05c84-a9eb-4981-bbc0-773d8c0017e7` and `adc05c84-a9eb-4981-bbc0-773d8c0017e8`.
 $ready_date = 2020-01-01; // \DateTime | Date when parcels will be ready.
 
 try {
@@ -540,10 +540,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **parcel_id** | [**string[]**](../Model/string.md)| Ids of parcels. Passing more than one value will search pickup dates for all of them separately. Example: &#x60;parcelId&#x3D;1233&amp;parcelId&#x3D;1234&#x60; - will return pickup date proposals for parcels with ID &#x60;1233&#x60; and &#x60;1234&#x60;. |
- **ready_date** | **\DateTime**| Date when parcels will be ready. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **parcel_id** | [**string[]**](../Model/string.md)| Ids of parcels. Passing more than one value will search pickup dates for all of them separately. Example: &#x60;parcelId&#x3D;adc05c84-a9eb-4981-bbc0-773d8c0017e7&amp;parcelId&#x3D;adc05c84-a9eb-4981-bbc0-773d8c0017e8&#x60; - will return pickup date proposals for parcels with ID &#x60;adc05c84-a9eb-4981-bbc0-773d8c0017e7&#x60; and &#x60;adc05c84-a9eb-4981-bbc0-773d8c0017e8&#x60;. | |
+| **ready_date** | **\DateTime**| Date when parcels will be ready. | [optional] |
 
 ### Return type
 
@@ -570,7 +570,7 @@ getParcelsProtocol($parcel_id): \SplFileObject
 
 Get parcels protocol
 
-Use this resource to get parcels protocol.
+Use this resource to get parcels protocol. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-pobrac-protokol-nadania-przesylek\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-retrieve-parcel-protocol\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -589,7 +589,7 @@ $apiInstance = new Phobetor\Allegro\Api\ParcelManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$parcel_id = array('parcel_id_example'); // string[] | Ids of parcels. Passing more than one value will generate protocol for all of them. Example: `parcelId=1233&parcelId=1234` - returns protocol for parcels with ID `1233` and `1234`.
+$parcel_id = array('parcel_id_example'); // string[] | Ids of parcels. Passing more than one value will generate protocol for all of them. Example: `parcelId=2c6d5ca1-e892-455f-ae24-89ba7c12abcd&parcelId=2c6d5ca1-e892-455f-ae24-89ba7c12abc1` - returns protocol for parcels with ID `2c6d5ca1-e892-455f-ae24-89ba7c12abcd` and `2c6d5ca1-e892-455f-ae24-89ba7c12abc1`.
 
 try {
     $result = $apiInstance->getParcelsProtocol($parcel_id);
@@ -601,13 +601,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **parcel_id** | [**string[]**](../Model/string.md)| Ids of parcels. Passing more than one value will generate protocol for all of them. Example: &#x60;parcelId&#x3D;1233&amp;parcelId&#x3D;1234&#x60; - returns protocol for parcels with ID &#x60;1233&#x60; and &#x60;1234&#x60;. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **parcel_id** | [**string[]**](../Model/string.md)| Ids of parcels. Passing more than one value will generate protocol for all of them. Example: &#x60;parcelId&#x3D;2c6d5ca1-e892-455f-ae24-89ba7c12abcd&amp;parcelId&#x3D;2c6d5ca1-e892-455f-ae24-89ba7c12abc1&#x60; - returns protocol for parcels with ID &#x60;2c6d5ca1-e892-455f-ae24-89ba7c12abcd&#x60; and &#x60;2c6d5ca1-e892-455f-ae24-89ba7c12abc1&#x60;. | |
 
 ### Return type
 
-[**\SplFileObject**](../Model/\SplFileObject.md)
+**\SplFileObject**
 
 ### Authorization
 
@@ -625,12 +625,12 @@ Name | Type | Description  | Notes
 ## `requestParcelPickup()`
 
 ```php
-requestParcelPickup($command_id, $pickup_parcel_parameters): object
+requestParcelPickup($command_id, $pickup_parcel_parameters): \Phobetor\Allegro\Model\RequestParcelPickup201Response
 ```
 
 Request parcel pickup
 
-Use this resource to request pickup for parcels.
+Use this resource to request pickup for parcels. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-zamowic-odbior-paczek-przez-kuriera\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-request-parcel-pickup-by-a-courier\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -662,14 +662,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command UUID. |
- **pickup_parcel_parameters** | [**\Phobetor\Allegro\Model\PickupParcelParameters**](../Model/PickupParcelParameters.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command UUID. | |
+| **pickup_parcel_parameters** | [**\Phobetor\Allegro\Model\PickupParcelParameters**](../Model/PickupParcelParameters.md)|  | |
 
 ### Return type
 
-**object**
+[**\Phobetor\Allegro\Model\RequestParcelPickup201Response**](../Model/RequestParcelPickup201Response.md)
 
 ### Authorization
 

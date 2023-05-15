@@ -1,34 +1,34 @@
 # Phobetor\Allegro\AfterSaleServicesApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAfterSalesServiceConditionsAttachmentUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceConditionsAttachmentUsingPOST) | **POST** /after-sales-service-conditions/attachments | Create a warranty attachment metadata
-[**createAfterSalesServiceImpliedWarrantyUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceImpliedWarrantyUsingPOST) | **POST** /after-sales-service-conditions/implied-warranties | Create new user&#39;s implied warranty
-[**createAfterSalesServiceReturnPolicyUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceReturnPolicyUsingPOST) | **POST** /after-sales-service-conditions/return-policies | Create new user&#39;s return policy
-[**createAfterSalesServiceWarrantyUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceWarrantyUsingPOST) | **POST** /after-sales-service-conditions/warranties | Create new user&#39;s warranty
-[**getAfterSalesServiceImpliedWarrantyUsingGET()**](AfterSaleServicesApi.md#getAfterSalesServiceImpliedWarrantyUsingGET) | **GET** /after-sales-service-conditions/implied-warranties/{impliedWarrantyId} | Get the user&#39;s implied warranty
-[**getAfterSalesServiceReturnPolicyUsingGET()**](AfterSaleServicesApi.md#getAfterSalesServiceReturnPolicyUsingGET) | **GET** /after-sales-service-conditions/return-policies/{returnPolicyId} | Get the user&#39;s return policy
-[**getAfterSalesServiceWarrantyUsingGET()**](AfterSaleServicesApi.md#getAfterSalesServiceWarrantyUsingGET) | **GET** /after-sales-service-conditions/warranties/{warrantyId} | Get the user&#39;s warranty
-[**getPublicSellerListingUsingGET()**](AfterSaleServicesApi.md#getPublicSellerListingUsingGET) | **GET** /after-sales-service-conditions/implied-warranties | Get the user&#39;s implied warranties
-[**getPublicSellerListingUsingGET1()**](AfterSaleServicesApi.md#getPublicSellerListingUsingGET1) | **GET** /after-sales-service-conditions/return-policies | Get the user&#39;s return policies
-[**getPublicSellerListingUsingGET2()**](AfterSaleServicesApi.md#getPublicSellerListingUsingGET2) | **GET** /after-sales-service-conditions/warranties | Get the user&#39;s warranties
-[**updateAfterSalesServiceImpliedWarrantyUsingPUT()**](AfterSaleServicesApi.md#updateAfterSalesServiceImpliedWarrantyUsingPUT) | **PUT** /after-sales-service-conditions/implied-warranties/{impliedWarrantyId} | Change the user&#39;s implied warranty
-[**updateAfterSalesServiceReturnPolicyUsingPUT()**](AfterSaleServicesApi.md#updateAfterSalesServiceReturnPolicyUsingPUT) | **PUT** /after-sales-service-conditions/return-policies/{returnPolicyId} | Change the user&#39;s return policy
-[**updateAfterSalesServiceWarrantyUsingPUT()**](AfterSaleServicesApi.md#updateAfterSalesServiceWarrantyUsingPUT) | **PUT** /after-sales-service-conditions/warranties/{warrantyId} | Change the user&#39;s warranty
-[**uploadAfterSalesServiceConditionsAttachmentUsingPUT()**](AfterSaleServicesApi.md#uploadAfterSalesServiceConditionsAttachmentUsingPUT) | **PUT** /after-sales-service-conditions/attachments/{attachmentId} | Upload an warranty attachment
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createAfterSalesServiceConditionsAttachmentUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceConditionsAttachmentUsingPOST) | **POST** /after-sales-service-conditions/attachments | Create a warranty attachment metadata |
+| [**createAfterSalesServiceImpliedWarrantyUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceImpliedWarrantyUsingPOST) | **POST** /after-sales-service-conditions/implied-warranties | Create new user&#39;s implied warranty |
+| [**createAfterSalesServiceReturnPolicyUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceReturnPolicyUsingPOST) | **POST** /after-sales-service-conditions/return-policies | Create new user&#39;s return policy |
+| [**createAfterSalesServiceWarrantyUsingPOST()**](AfterSaleServicesApi.md#createAfterSalesServiceWarrantyUsingPOST) | **POST** /after-sales-service-conditions/warranties | Create new user&#39;s warranty |
+| [**getAfterSalesServiceImpliedWarrantyUsingGET()**](AfterSaleServicesApi.md#getAfterSalesServiceImpliedWarrantyUsingGET) | **GET** /after-sales-service-conditions/implied-warranties/{impliedWarrantyId} | Get the user&#39;s implied warranty |
+| [**getAfterSalesServiceReturnPolicyUsingGET()**](AfterSaleServicesApi.md#getAfterSalesServiceReturnPolicyUsingGET) | **GET** /after-sales-service-conditions/return-policies/{returnPolicyId} | Get the user&#39;s return policy |
+| [**getAfterSalesServiceWarrantyUsingGET()**](AfterSaleServicesApi.md#getAfterSalesServiceWarrantyUsingGET) | **GET** /after-sales-service-conditions/warranties/{warrantyId} | Get the user&#39;s warranty |
+| [**getPublicSellerListingUsingGET()**](AfterSaleServicesApi.md#getPublicSellerListingUsingGET) | **GET** /after-sales-service-conditions/implied-warranties | Get the user&#39;s implied warranties |
+| [**getPublicSellerListingUsingGET1()**](AfterSaleServicesApi.md#getPublicSellerListingUsingGET1) | **GET** /after-sales-service-conditions/return-policies | Get the user&#39;s return policies |
+| [**getPublicSellerListingUsingGET2()**](AfterSaleServicesApi.md#getPublicSellerListingUsingGET2) | **GET** /after-sales-service-conditions/warranties | Get the user&#39;s warranties |
+| [**updateAfterSalesServiceImpliedWarrantyUsingPUT()**](AfterSaleServicesApi.md#updateAfterSalesServiceImpliedWarrantyUsingPUT) | **PUT** /after-sales-service-conditions/implied-warranties/{impliedWarrantyId} | Change the user&#39;s implied warranty |
+| [**updateAfterSalesServiceReturnPolicyUsingPUT()**](AfterSaleServicesApi.md#updateAfterSalesServiceReturnPolicyUsingPUT) | **PUT** /after-sales-service-conditions/return-policies/{returnPolicyId} | Change the user&#39;s return policy |
+| [**updateAfterSalesServiceWarrantyUsingPUT()**](AfterSaleServicesApi.md#updateAfterSalesServiceWarrantyUsingPUT) | **PUT** /after-sales-service-conditions/warranties/{warrantyId} | Change the user&#39;s warranty |
+| [**uploadAfterSalesServiceConditionsAttachmentUsingPUT()**](AfterSaleServicesApi.md#uploadAfterSalesServiceConditionsAttachmentUsingPUT) | **PUT** /after-sales-service-conditions/attachments/{attachmentId} | Upload an warranty attachment |
 
 
 ## `createAfterSalesServiceConditionsAttachmentUsingPOST()`
 
 ```php
-createAfterSalesServiceConditionsAttachmentUsingPOST($inline_object): \Phobetor\Allegro\Model\AfterSalesServicesAttachment
+createAfterSalesServiceConditionsAttachmentUsingPOST($create_after_sales_service_conditions_attachment_using_post_request): \Phobetor\Allegro\Model\AfterSalesServicesAttachment
 ```
 
 Create a warranty attachment metadata
 
-You can attach PDF files to warranties. Uploading attachments flow:   1. Create an attachment object to receive an upload URL (*POST /after-sales-service-conditions/attachments*),   2. Use the upload URL to submit the PDF file (*PUT /after-sales-service-conditions/attachments/{attachmentId}*),   3. Create (or update) warranty with attachment (*POST /after-sales-service-conditions/warranties*).
+You can attach PDF files to warranties. Uploading attachments flow:   1. Create an attachment object to receive an upload URL (*POST /after-sales-service-conditions/attachments*),   2. Use the upload URL to submit the PDF file (*PUT /after-sales-service-conditions/attachments/{attachmentId}*),   3. Create (or update) warranty with attachment (*POST /after-sales-service-conditions/warranties*).    Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-zalacznik-do-informacji-o-gwarancjach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-attachment-to-warranty-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -47,10 +47,10 @@ $apiInstance = new Phobetor\Allegro\Api\AfterSaleServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object = new \Phobetor\Allegro\Model\InlineObject(); // \Phobetor\Allegro\Model\InlineObject
+$create_after_sales_service_conditions_attachment_using_post_request = new \Phobetor\Allegro\Model\CreateAfterSalesServiceConditionsAttachmentUsingPOSTRequest(); // \Phobetor\Allegro\Model\CreateAfterSalesServiceConditionsAttachmentUsingPOSTRequest | After sale services attachment
 
 try {
-    $result = $apiInstance->createAfterSalesServiceConditionsAttachmentUsingPOST($inline_object);
+    $result = $apiInstance->createAfterSalesServiceConditionsAttachmentUsingPOST($create_after_sales_service_conditions_attachment_using_post_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AfterSaleServicesApi->createAfterSalesServiceConditionsAttachmentUsingPOST: ', $e->getMessage(), PHP_EOL;
@@ -59,9 +59,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inline_object** | [**\Phobetor\Allegro\Model\InlineObject**](../Model/InlineObject.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_after_sales_service_conditions_attachment_using_post_request** | [**\Phobetor\Allegro\Model\CreateAfterSalesServiceConditionsAttachmentUsingPOSTRequest**](../Model/CreateAfterSalesServiceConditionsAttachmentUsingPOSTRequest.md)| After sale services attachment | |
 
 ### Return type
 
@@ -88,7 +88,7 @@ createAfterSalesServiceImpliedWarrantyUsingPOST($implied_warranty_request): \Pho
 
 Create new user's implied warranty
 
-Use this resource to create an implied warranty definition.
+Use this resource to create an implied warranty definition. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-informacje-o-warunkach-reklamacji\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-implied-warranty-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -119,9 +119,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **implied_warranty_request** | [**\Phobetor\Allegro\Model\ImpliedWarrantyRequest**](../Model/ImpliedWarrantyRequest.md)| Implied warranty |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **implied_warranty_request** | [**\Phobetor\Allegro\Model\ImpliedWarrantyRequest**](../Model/ImpliedWarrantyRequest.md)| Implied warranty | |
 
 ### Return type
 
@@ -148,7 +148,7 @@ createAfterSalesServiceReturnPolicyUsingPOST($return_policy_request): \Phobetor\
 
 Create new user's return policy
 
-Use this resource to create a return policy definition.
+Use this resource to create a return policy definition. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-informacje-o-warunkach-zwrotow\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-return-policy-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -179,9 +179,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **return_policy_request** | [**\Phobetor\Allegro\Model\ReturnPolicyRequest**](../Model/ReturnPolicyRequest.md)| Return Policy |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **return_policy_request** | [**\Phobetor\Allegro\Model\ReturnPolicyRequest**](../Model/ReturnPolicyRequest.md)| Return Policy | |
 
 ### Return type
 
@@ -208,7 +208,7 @@ createAfterSalesServiceWarrantyUsingPOST($warranty_request): \Phobetor\Allegro\M
 
 Create new user's warranty
 
-Use this resource to create a warranty definition.
+Use this resource to create a warranty definition. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-informacje-o-gwarancjach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-warranty-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -239,9 +239,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **warranty_request** | [**\Phobetor\Allegro\Model\WarrantyRequest**](../Model/WarrantyRequest.md)| Warranty |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **warranty_request** | [**\Phobetor\Allegro\Model\WarrantyRequest**](../Model/WarrantyRequest.md)| Warranty | |
 
 ### Return type
 
@@ -268,7 +268,7 @@ getAfterSalesServiceImpliedWarrantyUsingGET($implied_warranty_id): \Phobetor\All
 
 Get the user's implied warranty
 
-Use this resource to get an implied warranty details.
+Use this resource to get an implied warranty details. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-warunki-reklamacji-przypisane-do-konta\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-implied-warranties-assigned-to-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -299,9 +299,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **implied_warranty_id** | **string**| The ID of the implied warranty. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **implied_warranty_id** | **string**| The ID of the implied warranty. | |
 
 ### Return type
 
@@ -328,7 +328,7 @@ getAfterSalesServiceReturnPolicyUsingGET($return_policy_id): \Phobetor\Allegro\M
 
 Get the user's return policy
 
-Use this resource to get a return policy details.
+Use this resource to get a return policy details. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-warunki-zwrotow-przypisane-do-konta\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-return-policies-assigned-to-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -359,9 +359,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **return_policy_id** | **string**| The ID of the return policy. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **return_policy_id** | **string**| The ID of the return policy. | |
 
 ### Return type
 
@@ -388,7 +388,7 @@ getAfterSalesServiceWarrantyUsingGET($warranty_id): \Phobetor\Allegro\Model\Warr
 
 Get the user's warranty
 
-Use this resource to get a warranty details.
+Use this resource to get a warranty details. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-informacje-o-gwarancjach-przypisanych-do-konta\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-warranties-assigned-to-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -419,9 +419,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **warranty_id** | **string**| The ID of the warranty. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **warranty_id** | **string**| The ID of the warranty. | |
 
 ### Return type
 
@@ -448,7 +448,7 @@ getPublicSellerListingUsingGET($limit, $offset): \Phobetor\Allegro\Model\Implied
 
 Get the user's implied warranties
 
-Use this resource to get seller implied warranties listing. <a href=\"../../news/2017-04-05-news_warunki_oferty/\" target=\"_blank\">Read more</a>.
+Use this resource to get seller implied warranties listing. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-warunki-reklamacji-przypisane-do-konta\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-implied-warranties-assigned-to-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -480,10 +480,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 60]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 60] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 
 ### Return type
 
@@ -510,7 +510,7 @@ getPublicSellerListingUsingGET1($limit, $offset): \Phobetor\Allegro\Model\Return
 
 Get the user's return policies
 
-Use this resource to get seller return policies listing. <a href=\"../../news/2017-04-05-news_warunki_oferty/\" target=\"_blank\">Read more</a>.
+Use this resource to get seller return policies listing. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-warunki-zwrotow-przypisane-do-konta\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-return-policies-assigned-to-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -542,10 +542,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 60]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 60] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 
 ### Return type
 
@@ -572,7 +572,7 @@ getPublicSellerListingUsingGET2($limit, $offset): \Phobetor\Allegro\Model\Warran
 
 Get the user's warranties
 
-Use this resource to get seller warranties listing. <a href=\"../../news/2017-04-05-news_warunki_oferty/\" target=\"_blank\">Read more</a>.
+Use this resource to get seller warranties listing. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-informacje-o-gwarancjach-przypisanych-do-konta\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-warranties-assigned-to-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -604,10 +604,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 60]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 60] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 
 ### Return type
 
@@ -634,7 +634,7 @@ updateAfterSalesServiceImpliedWarrantyUsingPUT($implied_warranty_id, $implied_wa
 
 Change the user's implied warranty
 
-Use this resource to modify the implied warranty details.
+Use this resource to modify the implied warranty details. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-edytowac-informacje-o-warunkach-reklamacji\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-update-implied-warranty-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -666,10 +666,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **implied_warranty_id** | **string**| The ID of the implied warranty. |
- **implied_warranty_request** | [**\Phobetor\Allegro\Model\ImpliedWarrantyRequest**](../Model/ImpliedWarrantyRequest.md)| Implied warranty |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **implied_warranty_id** | **string**| The ID of the implied warranty. | |
+| **implied_warranty_request** | [**\Phobetor\Allegro\Model\ImpliedWarrantyRequest**](../Model/ImpliedWarrantyRequest.md)| Implied warranty | |
 
 ### Return type
 
@@ -696,7 +696,7 @@ updateAfterSalesServiceReturnPolicyUsingPUT($return_policy_id, $return_policy_re
 
 Change the user's return policy
 
-Use this resource to modify the return policy details.
+Use this resource to modify the return policy details. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-edytowac-informacje-o-warunkach-zwrotu\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-update-return-policy-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -728,10 +728,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **return_policy_id** | **string**| The ID of the return policy. |
- **return_policy_request** | [**\Phobetor\Allegro\Model\ReturnPolicyRequest**](../Model/ReturnPolicyRequest.md)| Return Policy |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **return_policy_id** | **string**| The ID of the return policy. | |
+| **return_policy_request** | [**\Phobetor\Allegro\Model\ReturnPolicyRequest**](../Model/ReturnPolicyRequest.md)| Return Policy | |
 
 ### Return type
 
@@ -758,7 +758,7 @@ updateAfterSalesServiceWarrantyUsingPUT($warranty_id, $warranty_request): \Phobe
 
 Change the user's warranty
 
-Use this resource to modify the warranty details.
+Use this resource to modify the warranty details. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-edytowac-informacje-o-gwarancjach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-update-warranty-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -790,10 +790,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **warranty_id** | **string**| The ID of the warranty. |
- **warranty_request** | [**\Phobetor\Allegro\Model\WarrantyRequest**](../Model/WarrantyRequest.md)| Warranty |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **warranty_id** | **string**| The ID of the warranty. | |
+| **warranty_request** | [**\Phobetor\Allegro\Model\WarrantyRequest**](../Model/WarrantyRequest.md)| Warranty | |
 
 ### Return type
 
@@ -817,10 +817,18 @@ Name | Type | Description  | Notes
 ```php
 uploadAfterSalesServiceConditionsAttachmentUsingPUT($attachment_id, $body): \Phobetor\Allegro\Model\AfterSalesServicesAttachment
 ```
+### URI(s):
+- https://upload.{environment} 
+    - Variables:
+      - environment:  No description provided
+        - Allowed values:
+          - allegro.pl
+          - allegro.pl.allegrosandbox.pl
+        - Default value: allegro.pl
 
 Upload an warranty attachment
 
-Upload an after sale services attachment. This operation should be used after creating an offer attachment with *POST /sale/offer-attachments* **Important!** You can find the URL address to upload the file to our server in the *Location* response header of *POST /after-sales-service-conditions/attachments*. The URL is unique and one-time. As its format may change in time, you should always use the address from the header. Do not compose the address on your own.
+Upload an after sale services attachment. This operation should be used after creating an offer attachment with *POST /sale/offer-attachments* **Important!** You can find the URL address to upload the file to our server in the *Location* response header of *POST /after-sales-service-conditions/attachments*. The URL is unique and one-time. As its format may change in time, you should always use the address from the header. Do not compose the address on your own. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-zalacznik-do-informacji-o-gwarancjach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-attachment-to-warranty-information\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -842,8 +850,13 @@ $apiInstance = new Phobetor\Allegro\Api\AfterSaleServicesApi(
 $attachment_id = 'attachment_id_example'; // string | The ID of the attachment.
 $body = "/path/to/file.txt"; // \SplFileObject
 
+$hostIndex = 0;
+$variables = [
+    'environment' => 'YOUR_VALUE',
+];
+
 try {
-    $result = $apiInstance->uploadAfterSalesServiceConditionsAttachmentUsingPUT($attachment_id, $body);
+    $result = $apiInstance->uploadAfterSalesServiceConditionsAttachmentUsingPUT($attachment_id, $body, $hostIndex, $variables);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AfterSaleServicesApi->uploadAfterSalesServiceConditionsAttachmentUsingPUT: ', $e->getMessage(), PHP_EOL;
@@ -852,10 +865,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attachment_id** | **string**| The ID of the attachment. |
- **body** | **\SplFileObject****\SplFileObject**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **attachment_id** | **string**| The ID of the attachment. | |
+| **body** | **\SplFileObject****\SplFileObject**|  | [optional] |
+| hostIndex | null|int | Host index. Defaults to null. If null, then the library will use $this->hostIndex instead | [optional] |
+| variables | array | Associative array of variables to pass to the host. Defaults to empty array. | [optional] |
 
 ### Return type
 

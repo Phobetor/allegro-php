@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **additional_services_group** | [**\Phobetor\Allegro\Model\AdditionalServicesGroup**](AdditionalServicesGroup.md) |  | [optional]
 **delivery** | [**\Phobetor\Allegro\Model\ModificationDelivery**](ModificationDelivery.md) |  | [optional]
 **discounts** | [**\Phobetor\Allegro\Model\ModificationDiscounts**](ModificationDiscounts.md) |  | [optional]
+**location** | [**\Phobetor\Allegro\Model\Location**](Location.md) |  | [optional]
 **payments** | [**\Phobetor\Allegro\Model\ModificationPayments**](ModificationPayments.md) |  | [optional]
 **promotion** | [**\Phobetor\Allegro\Model\ModificationPromotion**](ModificationPromotion.md) |  | [optional]
 **size_table** | [**\Phobetor\Allegro\Model\SizeTable**](SizeTable.md) |  | [optional]

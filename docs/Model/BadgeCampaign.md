@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **application** | [**\Phobetor\Allegro\Model\ApplicationTimePolicy**](ApplicationTimePolicy.md) |  |
 **visibility** | [**\Phobetor\Allegro\Model\VisibilityTimePolicy**](VisibilityTimePolicy.md) |  |
 **publication** | [**\Phobetor\Allegro\Model\PublicationTimePolicy**](PublicationTimePolicy.md) |  |
+**regulations_link** | **string** | Link to campaign Terms &amp; Conditions |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

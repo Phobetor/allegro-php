@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**offers** | [**\Phobetor\Allegro\Model\UnfilledParametersResponseOffers[]**](UnfilledParametersResponseOffers.md) | List of offers unfilled parameters. | [optional]
+**offers** | [**\Phobetor\Allegro\Model\UnfilledParametersResponseOffersInner[]**](UnfilledParametersResponseOffersInner.md) | List of offers unfilled parameters. | [optional]
 **count** | **int** | Number of returned elements. | [optional]
 **total_count** | **int** | Total number of available elements. | [optional]
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **guest** | **bool** | is a guest account? |
 **personal_identity** | **string** | Buyer&#39;s personal identity number (PESEL) | [optional]
 **phone_number** | **string** | Phone number | [optional]
+**preferences** | [**\Phobetor\Allegro\Model\BuyerPreferencesReference**](BuyerPreferencesReference.md) |  | [optional]
 **address** | [**\Phobetor\Allegro\Model\CheckoutFormBuyerAddressReference**](CheckoutFormBuyerAddressReference.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

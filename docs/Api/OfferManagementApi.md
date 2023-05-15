@@ -1,27 +1,28 @@
 # Phobetor\Allegro\OfferManagementApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**changePublicationStatusUsingPUT()**](OfferManagementApi.md#changePublicationStatusUsingPUT) | **PUT** /sale/offer-publication-commands/{commandId} | Batch offer publish / unpublish
-[**createChangePriceCommandUsingPUT()**](OfferManagementApi.md#createChangePriceCommandUsingPUT) | **PUT** /offers/{offerId}/change-price-commands/{commandId} | Modify the Buy Now price in an offer
-[**createOfferUsingPOST()**](OfferManagementApi.md#createOfferUsingPOST) | **POST** /sale/offers | Create a draft offer
-[**createProductOffers()**](OfferManagementApi.md#createProductOffers) | **POST** /sale/product-offers | Create offer based on product
-[**deleteOfferUsingDELETE()**](OfferManagementApi.md#deleteOfferUsingDELETE) | **DELETE** /sale/offers/{offerId} | Delete a draft offer
-[**editProductOffers()**](OfferManagementApi.md#editProductOffers) | **PATCH** /sale/product-offers/{offerId} | Edit an offer
-[**getAvailableOfferPromotionPackages()**](OfferManagementApi.md#getAvailableOfferPromotionPackages) | **GET** /sale/offer-promotion-packages | Get all available offer promotion packages
-[**getOfferPromoOptionsUsingGET()**](OfferManagementApi.md#getOfferPromoOptionsUsingGET) | **GET** /sale/offers/{offerId}/promo-options | Get offer promotion packages
-[**getOffersUnfilledParametersUsingGET1()**](OfferManagementApi.md#getOffersUnfilledParametersUsingGET1) | **GET** /sale/offers/unfilled-parameters | Get offers with missing parameters
-[**getProductOffer()**](OfferManagementApi.md#getProductOffer) | **GET** /sale/product-offers/{offerId} | Get all data of the particular product-offer
-[**getProductOfferProcessingStatus()**](OfferManagementApi.md#getProductOfferProcessingStatus) | **GET** /sale/product-offers/{offerId}/operations/{operationId} | Check the processing status of a POST or PATCH request
-[**getPromoModificationCommandDetailedResultUsingGET()**](OfferManagementApi.md#getPromoModificationCommandDetailedResultUsingGET) | **GET** /sale/offers/promo-options-commands/{commandId}/tasks | Modification command detailed result
-[**getPromoModificationCommandResultUsingGET()**](OfferManagementApi.md#getPromoModificationCommandResultUsingGET) | **GET** /sale/offers/promo-options-commands/{commandId} | Modification command summary
-[**getPublicationReportUsingGET()**](OfferManagementApi.md#getPublicationReportUsingGET) | **GET** /sale/offer-publication-commands/{commandId} | Publish command summary
-[**getPublicationTasksUsingGET()**](OfferManagementApi.md#getPublicationTasksUsingGET) | **GET** /sale/offer-publication-commands/{commandId}/tasks | Publish command detailed report
-[**modifyOfferPromoOptionsUsingPOST()**](OfferManagementApi.md#modifyOfferPromoOptionsUsingPOST) | **POST** /sale/offers/{offerId}/promo-options-modification | Modify offer promotion packages
-[**promoModificationCommandUsingPUT()**](OfferManagementApi.md#promoModificationCommandUsingPUT) | **PUT** /sale/offers/promo-options-commands/{commandId} | Batch offer promotion package modification
-[**updateOfferUsingPUT()**](OfferManagementApi.md#updateOfferUsingPUT) | **PUT** /sale/offers/{offerId} | Complete a draft offer or edit an offer
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**changePublicationStatusUsingPUT()**](OfferManagementApi.md#changePublicationStatusUsingPUT) | **PUT** /sale/offer-publication-commands/{commandId} | Batch offer publish / unpublish |
+| [**createChangePriceCommandUsingPUT()**](OfferManagementApi.md#createChangePriceCommandUsingPUT) | **PUT** /offers/{offerId}/change-price-commands/{commandId} | Modify the Buy Now price in an offer |
+| [**createOfferUsingPOST()**](OfferManagementApi.md#createOfferUsingPOST) | **POST** /sale/offers | Create a draft offer |
+| [**createProductOffers()**](OfferManagementApi.md#createProductOffers) | **POST** /sale/product-offers | Create offer based on product |
+| [**deleteOfferUsingDELETE()**](OfferManagementApi.md#deleteOfferUsingDELETE) | **DELETE** /sale/offers/{offerId} | Delete a draft offer |
+| [**editProductOffers()**](OfferManagementApi.md#editProductOffers) | **PATCH** /sale/product-offers/{offerId} | Edit an offer |
+| [**getAvailableOfferPromotionPackages()**](OfferManagementApi.md#getAvailableOfferPromotionPackages) | **GET** /sale/offer-promotion-packages | Get all available offer promotion packages |
+| [**getOfferPromoOptionsUsingGET()**](OfferManagementApi.md#getOfferPromoOptionsUsingGET) | **GET** /sale/offers/{offerId}/promo-options | Get offer promotion packages |
+| [**getOffersUnfilledParametersUsingGET1()**](OfferManagementApi.md#getOffersUnfilledParametersUsingGET1) | **GET** /sale/offers/unfilled-parameters | Get offers with missing parameters |
+| [**getProductOffer()**](OfferManagementApi.md#getProductOffer) | **GET** /sale/product-offers/{offerId} | Get all data of the particular product-offer |
+| [**getProductOfferProcessingStatus()**](OfferManagementApi.md#getProductOfferProcessingStatus) | **GET** /sale/product-offers/{offerId}/operations/{operationId} | Check the processing status of a POST or PATCH request |
+| [**getPromoModificationCommandDetailedResultUsingGET()**](OfferManagementApi.md#getPromoModificationCommandDetailedResultUsingGET) | **GET** /sale/offers/promo-options-commands/{commandId}/tasks | Modification command detailed result |
+| [**getPromoModificationCommandResultUsingGET()**](OfferManagementApi.md#getPromoModificationCommandResultUsingGET) | **GET** /sale/offers/promo-options-commands/{commandId} | Modification command summary |
+| [**getPromoOptionsForSellerOffersUsingGET()**](OfferManagementApi.md#getPromoOptionsForSellerOffersUsingGET) | **GET** /sale/offers/promo-options | Get promo options for seller&#39;s offers |
+| [**getPublicationReportUsingGET()**](OfferManagementApi.md#getPublicationReportUsingGET) | **GET** /sale/offer-publication-commands/{commandId} | Publish command summary |
+| [**getPublicationTasksUsingGET()**](OfferManagementApi.md#getPublicationTasksUsingGET) | **GET** /sale/offer-publication-commands/{commandId}/tasks | Publish command detailed report |
+| [**modifyOfferPromoOptionsUsingPOST()**](OfferManagementApi.md#modifyOfferPromoOptionsUsingPOST) | **POST** /sale/offers/{offerId}/promo-options-modification | Modify offer promotion packages |
+| [**promoModificationCommandUsingPUT()**](OfferManagementApi.md#promoModificationCommandUsingPUT) | **PUT** /sale/offers/promo-options-commands/{commandId} | Batch offer promotion package modification |
+| [**updateOfferUsingPUT()**](OfferManagementApi.md#updateOfferUsingPUT) | **PUT** /sale/offers/{offerId} | Complete a draft offer or edit an offer |
 
 
 ## `changePublicationStatusUsingPUT()`
@@ -32,7 +33,7 @@ changePublicationStatusUsingPUT($command_id, $publication_change_command_dto): \
 
 Batch offer publish / unpublish
 
-Use this resource to modify multiple offers publication at once. Read more: <a href=\"../../sale/#9-publikacja-oferty\" target=\"_blank\">PL</a> / <a href=\"../../en/sale/#9-publish-your-offer\" target=\"_blank\">EN</a>.
+Use this resource to modify multiple offers publication at once. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#publikacja-oferty\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#offer-publication\" target=\"_blank\">EN</a>. This resource is rate limited to 250 000 offer changes per hour or 9000 offer changes per minute.
 
 ### Example
 
@@ -64,10 +65,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command identifier. |
- **publication_change_command_dto** | [**\Phobetor\Allegro\Model\PublicationChangeCommandDto**](../Model/PublicationChangeCommandDto.md)| publicationChangeCommandDto |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command identifier. | |
+| **publication_change_command_dto** | [**\Phobetor\Allegro\Model\PublicationChangeCommandDto**](../Model/PublicationChangeCommandDto.md)| publicationChangeCommandDto | |
 
 ### Return type
 
@@ -94,7 +95,7 @@ createChangePriceCommandUsingPUT($offer_id, $command_id, $change_price_without_o
 
 Modify the Buy Now price in an offer
 
-Use this resource to change the Buy Now price in a single offer. Read more: <a href=\"../../news/2016-08-01-zmiana-ceny/\" target=\"_blank\">PL</a>.
+Use this resource to change the Buy Now price in a single offer. Read more: <a href=\"../../news/mozliwosc-zmiany-ceny-kup-teraz-2YzrKRrr3Sl\" target=\"_blank\">PL</a> / <a href=\"../../news/possibility-to-change-the-buy-it-now-price-q018mq8D2hW\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -127,11 +128,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| The offer identifier. |
- **command_id** | [**string**](../Model/.md)| The unique command id generated by you. |
- **change_price_without_output** | [**\Phobetor\Allegro\Model\ChangePriceWithoutOutput**](../Model/ChangePriceWithoutOutput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| The offer identifier. | |
+| **command_id** | **string**| The unique command id generated by you. | |
+| **change_price_without_output** | [**\Phobetor\Allegro\Model\ChangePriceWithoutOutput**](../Model/ChangePriceWithoutOutput.md)|  | |
 
 ### Return type
 
@@ -153,12 +154,12 @@ Name | Type | Description  | Notes
 ## `createOfferUsingPOST()`
 
 ```php
-createOfferUsingPOST($offer): \Phobetor\Allegro\Model\Offer
+createOfferUsingPOST($create_offer_using_post_request): \Phobetor\Allegro\Model\OfferResponse
 ```
 
 Create a draft offer
 
-Use this resource to create a draft offer. Read more: <a href=\"../../sale/#7-draft-oferty\" target=\"_blank\">PL</a> / <a href=\"../../en/sale/#7-offer-draft\" target=\"_blank\">EN</a>.
+Create an offer draft. This endpoint is deprecated: <a href=\"../../news/na-poczatku-2024-roku-wylaczymy-zasoby-sale-offers-sluzace-do-tworzenia-i-edycji-ofert-BvqK3XOaEcW\" target=\"_blank\">PL</a> / <a href=\"../../news/at-the-beginning-of-2024-we-will-disable-the-sale-offers-resources-for-creating-and-editing-offers-k1dG88KlxHv\" target=\"_blank\">EN</a>. Use <a href=\"../../documentation#operation/createProductOffers\">POST /sale/product-offers</a> instead. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-wystawic-oferte-z-produktem-za-pomoca-zasobu-sale-product-offers\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-list-an-offer-with-a-product-via-sale-product-offers-resource\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -177,10 +178,10 @@ $apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offer = new \Phobetor\Allegro\Model\Offer(); // \Phobetor\Allegro\Model\Offer | offer
+$create_offer_using_post_request = new \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest(); // \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest | offer
 
 try {
-    $result = $apiInstance->createOfferUsingPOST($offer);
+    $result = $apiInstance->createOfferUsingPOST($create_offer_using_post_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OfferManagementApi->createOfferUsingPOST: ', $e->getMessage(), PHP_EOL;
@@ -189,13 +190,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer** | [**\Phobetor\Allegro\Model\Offer**](../Model/Offer.md)| offer |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_offer_using_post_request** | [**\Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest**](../Model/CreateOfferUsingPOSTRequest.md)| offer | |
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\Offer**](../Model/Offer.md)
+[**\Phobetor\Allegro\Model\OfferResponse**](../Model/OfferResponse.md)
 
 ### Authorization
 
@@ -213,12 +214,12 @@ Name | Type | Description  | Notes
 ## `createProductOffers()`
 
 ```php
-createProductOffers($sale_product_offer_request): \Phobetor\Allegro\Model\SaleProductOfferResponse
+createProductOffers($sale_product_offer_request_v1): \Phobetor\Allegro\Model\SaleProductOfferResponseV1
 ```
 
 Create offer based on product
 
-Use this resource to create offer based on product. Read more: <a href=\"../../product_offers/\" target=\"_blank\">PL</a> / <a href=\"../../en/product_offers/\" target=\"_blank\">EN</a>.
+Use this resource to create offer based on product. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-wystawic-oferte-z-produktem-za-pomoca-zasobu-sale-product-offers\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-list-an-offer-with-a-product-via-sale-product-offers-resource\" target=\"_blank\">EN</a>. Note that requests may be limited.
 
 ### Example
 
@@ -237,10 +238,10 @@ $apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sale_product_offer_request = new \Phobetor\Allegro\Model\SaleProductOfferRequest(); // \Phobetor\Allegro\Model\SaleProductOfferRequest
+$sale_product_offer_request_v1 = new \Phobetor\Allegro\Model\SaleProductOfferRequestV1(); // \Phobetor\Allegro\Model\SaleProductOfferRequestV1
 
 try {
-    $result = $apiInstance->createProductOffers($sale_product_offer_request);
+    $result = $apiInstance->createProductOffers($sale_product_offer_request_v1);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OfferManagementApi->createProductOffers: ', $e->getMessage(), PHP_EOL;
@@ -249,13 +250,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sale_product_offer_request** | [**\Phobetor\Allegro\Model\SaleProductOfferRequest**](../Model/SaleProductOfferRequest.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **sale_product_offer_request_v1** | [**\Phobetor\Allegro\Model\SaleProductOfferRequestV1**](../Model/SaleProductOfferRequestV1.md)|  | |
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\SaleProductOfferResponse**](../Model/SaleProductOfferResponse.md)
+[**\Phobetor\Allegro\Model\SaleProductOfferResponseV1**](../Model/SaleProductOfferResponseV1.md)
 
 ### Authorization
 
@@ -263,8 +264,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/vnd.allegro.beta.v2+json`
-- **Accept**: `application/vnd.allegro.beta.v2+json`
+- **Content-Type**: `application/vnd.allegro.public.v1+json`
+- **Accept**: `application/vnd.allegro.public.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -278,7 +279,7 @@ deleteOfferUsingDELETE($offer_id)
 
 Delete a draft offer
 
-Use this resource to delete a draft offer. Read more: <a href=\"../../news/2018-10-09_draft_delete\" target=\"_blank\">PL</a> / <a href=\"../../en/news/2018-10-09_draft_delete\" target=\"_blank\">EN</a>.
+Use this resource to delete a draft offer. Read more: <a href=\"../../news/nowy-zasob-do-usuwania-draftow-ofert-aMDnGka2RuL\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resource-draft-delete-yPy9lq6myh0\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -308,9 +309,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
 
 ### Return type
 
@@ -332,12 +333,12 @@ void (empty response body)
 ## `editProductOffers()`
 
 ```php
-editProductOffers($offer_id, $sale_product_offer_patch_request): \Phobetor\Allegro\Model\SaleProductOfferResponse
+editProductOffers($offer_id, $sale_product_offer_patch_request_v1): \Phobetor\Allegro\Model\SaleProductOfferResponseV1
 ```
 
 Edit an offer
 
-Use this resource to edit offer. Read more <a href=\"../../product_offers/#jak-edytować-ofertę\" target=\"_blank\">PL</a> / <a href=\"../../en/product_offers/#how-to-edit-an-offer\" target=\"_blank\">EN</a>.
+Use this resource to edit offer. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#edycja-pojedynczej-oferty\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#editing-single-offer\" target=\"_blank\">EN</a>. Note that requests may be limited.
 
 ### Example
 
@@ -357,10 +358,10 @@ $apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
     $config
 );
 $offer_id = 'offer_id_example'; // string | The offer identifier.
-$sale_product_offer_patch_request = new \Phobetor\Allegro\Model\SaleProductOfferPatchRequest(); // \Phobetor\Allegro\Model\SaleProductOfferPatchRequest
+$sale_product_offer_patch_request_v1 = new \Phobetor\Allegro\Model\SaleProductOfferPatchRequestV1(); // \Phobetor\Allegro\Model\SaleProductOfferPatchRequestV1
 
 try {
-    $result = $apiInstance->editProductOffers($offer_id, $sale_product_offer_patch_request);
+    $result = $apiInstance->editProductOffers($offer_id, $sale_product_offer_patch_request_v1);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OfferManagementApi->editProductOffers: ', $e->getMessage(), PHP_EOL;
@@ -369,14 +370,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| The offer identifier. |
- **sale_product_offer_patch_request** | [**\Phobetor\Allegro\Model\SaleProductOfferPatchRequest**](../Model/SaleProductOfferPatchRequest.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| The offer identifier. | |
+| **sale_product_offer_patch_request_v1** | [**\Phobetor\Allegro\Model\SaleProductOfferPatchRequestV1**](../Model/SaleProductOfferPatchRequestV1.md)|  | |
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\SaleProductOfferResponse**](../Model/SaleProductOfferResponse.md)
+[**\Phobetor\Allegro\Model\SaleProductOfferResponseV1**](../Model/SaleProductOfferResponseV1.md)
 
 ### Authorization
 
@@ -384,8 +385,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `application/vnd.allegro.beta.v2+json`
-- **Accept**: `application/vnd.allegro.beta.v2+json`
+- **Content-Type**: `application/vnd.allegro.public.v1+json`
+- **Accept**: `application/vnd.allegro.public.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -399,7 +400,7 @@ getAvailableOfferPromotionPackages(): \Phobetor\Allegro\Model\AvailablePromotion
 
 Get all available offer promotion packages
 
-Use this resource to retrieve all available offer promotion packages. Read more: <a href=\"../../my_offers/#jak-pobrać-dostępne-opcje-promowania\" target=\"_blank\">PL</a> / <a href=\"../../en/my_offers/#how-to-retrieve-available-promo-options\" target=\"_blank\">EN</a>.
+Use this resource to retrieve all available offer promotion packages. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-dostepne-opcje-promowania\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-available-promo-options\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -408,10 +409,10 @@ Use this resource to retrieve all available offer promotion packages. Read more:
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure OAuth2 access token for authorization: bearer-token-for-application
+// Configure OAuth2 access token for authorization: bearer-token-for-user
 $config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-// Configure OAuth2 access token for authorization: bearer-token-for-user
+// Configure OAuth2 access token for authorization: bearer-token-for-application
 $config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -440,7 +441,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bearer-token-for-application](../../README.md#bearer-token-for-application), [bearer-token-for-user](../../README.md#bearer-token-for-user)
+[bearer-token-for-user](../../README.md#bearer-token-for-user), [bearer-token-for-application](../../README.md#bearer-token-for-application)
 
 ### HTTP request headers
 
@@ -459,7 +460,7 @@ getOfferPromoOptionsUsingGET($offer_id): \Phobetor\Allegro\Model\OfferPromoOptio
 
 Get offer promotion packages
 
-Use this resource to get promotion packages assigned to an offer. Read more: <a href=\"../../my_offers/#jak-pobrać-opcje-promowania-przypisane-do-oferty\" target=\"_blank\">PL</a> / <a href=\"../../en/my_offers/#how-to-retrieve-promo-options-assigned-to-an-offer\" target=\"_blank\">EN</a>.
+Use this resource to get promotion packages assigned to an offer. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-opcje-promowania-przypisane-do-oferty\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-promo-options-assigned-to-an-offer\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -490,9 +491,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
 
 ### Return type
 
@@ -519,7 +520,7 @@ getOffersUnfilledParametersUsingGET1($offer_id, $parameter_type, $offset, $limit
 
 Get offers with missing parameters
 
-Use this resource to get information about required parameters or parameters scheduled to become required that are not filled in offers.
+Use this resource to get information about required parameters or parameters scheduled to become required that are not filled in offers. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-sprawdzic-nieuzupelnione-parametry-w-ofertach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-check-unfilled-parameters-in-offers\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -553,12 +554,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | [**string[]**](../Model/string.md)| List of offer ids. If empty all offers with unfilled parameters will be returned. | [optional]
- **parameter_type** | **string**| Filter by parameter type. | [optional]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | [**string[]**](../Model/string.md)| List of offer ids. If empty all offers with unfilled parameters will be returned. | [optional] |
+| **parameter_type** | **string**| Filter by parameter type. | [optional] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 100] |
 
 ### Return type
 
@@ -580,12 +581,12 @@ Name | Type | Description  | Notes
 ## `getProductOffer()`
 
 ```php
-getProductOffer($offer_id): \Phobetor\Allegro\Model\SaleProductOfferResponse
+getProductOffer($offer_id): \Phobetor\Allegro\Model\SaleProductOfferResponseV1
 ```
 
 Get all data of the particular product-offer
 
-Use this resource to retrieve all data of the particular product-offer.
+Use this resource to retrieve all data of the particular product-offer. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#publikacja-oferty-w-asynchronicznym-api\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#offer-publication-in-asynchronous-api\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -616,13 +617,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\SaleProductOfferResponse**](../Model/SaleProductOfferResponse.md)
+[**\Phobetor\Allegro\Model\SaleProductOfferResponseV1**](../Model/SaleProductOfferResponseV1.md)
 
 ### Authorization
 
@@ -631,7 +632,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.allegro.public.v2+json`
+- **Accept**: `application/vnd.allegro.public.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -645,7 +646,7 @@ getProductOfferProcessingStatus($offer_id, $operation_id): \Phobetor\Allegro\Mod
 
 Check the processing status of a POST or PATCH request
 
-The URI for the resource given by Location header of POST /sale/product-offers and PATCH /sale/product-offers/{offerId}. Use this resource to check processing status of a POST or PATCH request.
+The URI for the resource given by Location header of POST /sale/product-offers and PATCH /sale/product-offers/{offerId}. Use this resource to check processing status of a POST or PATCH request. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#publikacja-oferty-w-asynchronicznym-api\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#offer-publication-in-asynchronous-api\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -677,10 +678,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
- **operation_id** | **string**| Operation identifier provided in location header of POST or PATCH request. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
+| **operation_id** | **string**| Operation identifier provided in location header of POST or PATCH request. | |
 
 ### Return type
 
@@ -693,7 +694,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.allegro.beta.v2+json`
+- **Accept**: `application/vnd.allegro.public.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -707,7 +708,7 @@ getPromoModificationCommandDetailedResultUsingGET($command_id, $limit, $offset):
 
 Modification command detailed result
 
-Use this resource to retrieve the result of an offer modification command. Read more: <a href=\"../../my_offers/#jak-sprawdzić-szczegółowy-raport-zadania \" target=\"_blank\">PL</a> / <a href=\"../../en/my_offers/#how-to-check-a-detailed-report-of-your-task \" target=\"_blank\">EN</a>.
+Use this resource to retrieve the result of an offer modification command. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-sprawdzic-szczegolowy-raport-zadania\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-check-a-detailed-report-of-your-task\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -740,11 +741,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command identifier. |
- **limit** | **int**| The limit of returned items. | [optional] [default to 100]
- **offset** | **int**| The offset of returned items. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command identifier. | |
+| **limit** | **int**| The limit of returned items. | [optional] [default to 100] |
+| **offset** | **int**| The offset of returned items. | [optional] [default to 0] |
 
 ### Return type
 
@@ -771,7 +772,7 @@ getPromoModificationCommandResultUsingGET($command_id): \Phobetor\Allegro\Model\
 
 Modification command summary
 
-Use this resource to find out how many offers were edited within one {commandId}. You will receive a summary with a number of successfully edited offers and errors.
+Use this resource to find out how many offers were edited within one {commandId}. You will receive a summary with a number of successfully edited offers and errors. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-lub-edytowac-opcje-promowania-na-wielu-ofertach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-or-change-promo-options-in-multiple-offers\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -802,13 +803,75 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command identifier. | |
 
 ### Return type
 
 [**\Phobetor\Allegro\Model\GeneralReport**](../Model/GeneralReport.md)
+
+### Authorization
+
+[bearer-token-for-user](../../README.md#bearer-token-for-user)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/vnd.allegro.public.v1+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPromoOptionsForSellerOffersUsingGET()`
+
+```php
+getPromoOptionsForSellerOffersUsingGET($limit, $offset): \Phobetor\Allegro\Model\OfferPromoOptionsForSeller
+```
+
+Get promo options for seller's offers
+
+Use this resource to retrieve promo options for seller offers. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-opcje-promowania-dla-wielu-ofert\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-available-promo-options-for-multiple-offers\" target=\"_blank\">EN</a>.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bearer-token-for-user
+$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$limit = 5000; // int | Limit of promo options per page.
+$offset = 0; // int | Distance between the beginning of the document and the point from which promo options are returned.
+
+try {
+    $result = $apiInstance->getPromoOptionsForSellerOffersUsingGET($limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OfferManagementApi->getPromoOptionsForSellerOffersUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Limit of promo options per page. | [optional] [default to 5000] |
+| **offset** | **int**| Distance between the beginning of the document and the point from which promo options are returned. | [optional] [default to 0] |
+
+### Return type
+
+[**\Phobetor\Allegro\Model\OfferPromoOptionsForSeller**](../Model/OfferPromoOptionsForSeller.md)
 
 ### Authorization
 
@@ -831,7 +894,7 @@ getPublicationReportUsingGET($command_id): \Phobetor\Allegro\Model\GeneralReport
 
 Publish command summary
 
-Use this resource to retrieve information about the offer listing statuses. You will receive a summary with a number of correctly listed offers and errors. Read more: <a href=\"../../sale/#zestawienie-zadań\" target=\"_blank\">PL</a> / <a href=\"../../en/sale/#task-list\" target=\"_blank\">EN</a>.
+Use this resource to retrieve information about the offer listing statuses. You will receive a summary with a number of correctly listed offers and errors. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#zestawienie-zadan\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#task-list\" target=\"_blank\">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
 
 ### Example
 
@@ -862,9 +925,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command identifier. | |
 
 ### Return type
 
@@ -891,7 +954,7 @@ getPublicationTasksUsingGET($command_id, $limit, $offset): \Phobetor\Allegro\Mod
 
 Publish command detailed report
 
-Use this resource to retrieve information about the offer statuses on the site (Defaults: limit = 100, offset = 0). Read more: <a href=\"../../sale/#informacje-o-publikacji\" target=\"_blank\">PL</a> / <a href=\"../../en/sale/#information-about-publication\" target=\"_blank\">EN</a>.
+Use this resource to retrieve information about the offer statuses on the site (Defaults: limit = 100, offset = 0). Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#informacje-o-publikacji\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#information-about-publication\" target=\"_blank\">EN</a>. This resource is rate limited to retrieving information about 270 000 offer changes per minute.
 
 ### Example
 
@@ -924,11 +987,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command identifier. |
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 100]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command identifier. | |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 100] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 
 ### Return type
 
@@ -955,7 +1018,7 @@ modifyOfferPromoOptionsUsingPOST($offer_id, $promo_options_modifications): \Phob
 
 Modify offer promotion packages
 
-Use this resource to modify offer promotion packages. Read more: <a href=\"../../my_offers/#jak-dodać-lub-zmienić-opcje-promowania-w-pojedynczej-ofercie\" target=\"_blank\">PL</a> / <a href=\"../../en/my_offers/#how-to-add-or-change-promo-options-in-a-single-offer\" target=\"_blank\">EN</a>.
+Use this resource to modify offer promotion packages. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-lub-zmienic-opcje-promowania-w-pojedynczej-ofercie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-or-change-promo-options-in-a-single-offer\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -987,10 +1050,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
- **promo_options_modifications** | [**\Phobetor\Allegro\Model\PromoOptionsModifications**](../Model/PromoOptionsModifications.md)| request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
+| **promo_options_modifications** | [**\Phobetor\Allegro\Model\PromoOptionsModifications**](../Model/PromoOptionsModifications.md)| request | |
 
 ### Return type
 
@@ -1017,7 +1080,7 @@ promoModificationCommandUsingPUT($command_id, $promo_options_command): \Phobetor
 
 Batch offer promotion package modification
 
-Use this resource to modify promotion packages on multiple offers at once. Read more: <a href=\"../../my_offers/#jak-dodać-lub-edytować-opcje-promowania-na-wielu-ofertach\" target=\"_blank\">PL</a> / <a href=\"../../en/my_offers/#how-to-add-or-change-promo-options-in-multiple-offers\" target=\"_blank\">EN</a>.
+Use this resource to modify promotion packages on multiple offers at once. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-lub-edytowac-opcje-promowania-na-wielu-ofertach\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-or-change-promo-options-in-multiple-offers\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -1049,10 +1112,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **command_id** | **string**| Command identifier. Must be a UUID. |
- **promo_options_command** | [**\Phobetor\Allegro\Model\PromoOptionsCommand**](../Model/PromoOptionsCommand.md)| Promo packages modification command request. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **command_id** | **string**| Command identifier. Must be a UUID. | |
+| **promo_options_command** | [**\Phobetor\Allegro\Model\PromoOptionsCommand**](../Model/PromoOptionsCommand.md)| Promo packages modification command request. | |
 
 ### Return type
 
@@ -1074,12 +1137,12 @@ Name | Type | Description  | Notes
 ## `updateOfferUsingPUT()`
 
 ```php
-updateOfferUsingPUT($offer_id, $offer): \Phobetor\Allegro\Model\Offer
+updateOfferUsingPUT($offer_id, $create_offer_using_post_request): \Phobetor\Allegro\Model\OfferResponse
 ```
 
 Complete a draft offer or edit an offer
 
-Use this resource to complete a draft offer or edit ongoing offers. Read more: <a href=\"../../sale/#uzupełnij-draft-oferty\" target=\"_blank\">PL</a> / <a href=\"../../en/sale/#new-offer\" target=\"_blank\">EN</a>.
+Complete a draft offer or edit ongoing offers. This endpoint is deprecated: <a href=\"../../news/na-poczatku-2024-roku-wylaczymy-zasoby-sale-offers-sluzace-do-tworzenia-i-edycji-ofert-BvqK3XOaEcW\" target=\"_blank\">PL</a> / <a href=\"../../news/at-the-beginning-of-2024-we-will-disable-the-sale-offers-resources-for-creating-and-editing-offers-k1dG88KlxHv\" target=\"_blank\">EN</a>. Use <a href=\"../../documentation#operation/editProductOffers\">PATCH /sale/product-offers/{offerId}</a> instead. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#edycja-pojedynczej-oferty\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#editing-single-offer\" target=\"_blank\">EN</a>. This resource is rate limited to 10 requests per second.
 
 ### Example
 
@@ -1099,10 +1162,10 @@ $apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
     $config
 );
 $offer_id = 'offer_id_example'; // string | Offer identifier.
-$offer = new \Phobetor\Allegro\Model\Offer(); // \Phobetor\Allegro\Model\Offer | offer
+$create_offer_using_post_request = new \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest(); // \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest | offer
 
 try {
-    $result = $apiInstance->updateOfferUsingPUT($offer_id, $offer);
+    $result = $apiInstance->updateOfferUsingPUT($offer_id, $create_offer_using_post_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OfferManagementApi->updateOfferUsingPUT: ', $e->getMessage(), PHP_EOL;
@@ -1111,14 +1174,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
- **offer** | [**\Phobetor\Allegro\Model\Offer**](../Model/Offer.md)| offer |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
+| **create_offer_using_post_request** | [**\Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest**](../Model/CreateOfferUsingPOSTRequest.md)| offer | |
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\Offer**](../Model/Offer.md)
+[**\Phobetor\Allegro\Model\OfferResponse**](../Model/OfferResponse.md)
 
 ### Authorization
 

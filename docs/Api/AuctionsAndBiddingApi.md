@@ -1,11 +1,11 @@
 # Phobetor\Allegro\AuctionsAndBiddingApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getBid()**](AuctionsAndBiddingApi.md#getBid) | **GET** /bidding/offers/{offerId}/bid | Get current user&#39;s bid information
-[**placeBid()**](AuctionsAndBiddingApi.md#placeBid) | **PUT** /bidding/offers/{offerId}/bid | Place a bid in an auction
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getBid()**](AuctionsAndBiddingApi.md#getBid) | **GET** /bidding/offers/{offerId}/bid | Get current user&#39;s bid information |
+| [**placeBid()**](AuctionsAndBiddingApi.md#placeBid) | **PUT** /bidding/offers/{offerId}/bid | Place a bid in an auction |
 
 
 ## `getBid()`
@@ -16,7 +16,7 @@ getBid($offer_id): \Phobetor\Allegro\Model\MyBidResponse
 
 Get current user's bid information
 
-Get current user's bid information.
+Get current user's bid information. Read more: <a href=\"../../news/nowe-zasoby-zloz-oferte-kupna-w-licytacji-q018m02vDT1\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-place-a-bid-in-an-auction-rjWwEj1e7sG\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -47,9 +47,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| The offer ID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| The offer ID. | |
 
 ### Return type
 
@@ -76,7 +76,7 @@ placeBid($offer_id, $bid_request): \Phobetor\Allegro\Model\MyBidResponse
 
 Place a bid in an auction
 
-Place a bid in an auction.
+Place a bid in an auction. Read more: <a href=\"../../news/nowe-zasoby-zloz-oferte-kupna-w-licytacji-q018m02vDT1\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-place-a-bid-in-an-auction-rjWwEj1e7sG\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -108,10 +108,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| The offer ID. |
- **bid_request** | [**\Phobetor\Allegro\Model\BidRequest**](../Model/BidRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| The offer ID. | |
+| **bid_request** | [**\Phobetor\Allegro\Model\BidRequest**](../Model/BidRequest.md)|  | [optional] |
 
 ### Return type
 

@@ -1,16 +1,16 @@
 # Phobetor\Allegro\DisputesApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**addMessageToDisputeUsingPOST()**](DisputesApi.md#addMessageToDisputeUsingPOST) | **POST** /sale/disputes/{disputeId}/messages | Add a message to a dispute
-[**createAnAttachmentUsingPOST()**](DisputesApi.md#createAnAttachmentUsingPOST) | **POST** /sale/dispute-attachments | Create an attachment declaration
-[**getAttachmentUsingGET()**](DisputesApi.md#getAttachmentUsingGET) | **GET** /sale/dispute-attachments/{attachmentId} | Get an attachment
-[**getDisputeUsingGET()**](DisputesApi.md#getDisputeUsingGET) | **GET** /sale/disputes/{disputeId} | Get a single dispute
-[**getListOfDisputesUsingGET()**](DisputesApi.md#getListOfDisputesUsingGET) | **GET** /sale/disputes | Get the user&#39;s disputes
-[**getMessagesFromDisputeUsingGET()**](DisputesApi.md#getMessagesFromDisputeUsingGET) | **GET** /sale/disputes/{disputeId}/messages | Get the messages within a dispute
-[**uploadDisputeAttachmentUsingPUT()**](DisputesApi.md#uploadDisputeAttachmentUsingPUT) | **PUT** /sale/dispute-attachments/{attachmentId} | Upload a dispute message attachment
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**addMessageToDisputeUsingPOST()**](DisputesApi.md#addMessageToDisputeUsingPOST) | **POST** /sale/disputes/{disputeId}/messages | Add a message to a dispute |
+| [**createAnAttachmentUsingPOST()**](DisputesApi.md#createAnAttachmentUsingPOST) | **POST** /sale/dispute-attachments | Create an attachment declaration |
+| [**getAttachmentUsingGET()**](DisputesApi.md#getAttachmentUsingGET) | **GET** /sale/dispute-attachments/{attachmentId} | Get an attachment |
+| [**getDisputeUsingGET()**](DisputesApi.md#getDisputeUsingGET) | **GET** /sale/disputes/{disputeId} | Get a single dispute |
+| [**getListOfDisputesUsingGET()**](DisputesApi.md#getListOfDisputesUsingGET) | **GET** /sale/disputes | Get the user&#39;s disputes |
+| [**getMessagesFromDisputeUsingGET()**](DisputesApi.md#getMessagesFromDisputeUsingGET) | **GET** /sale/disputes/{disputeId}/messages | Get the messages within a dispute |
+| [**uploadDisputeAttachmentUsingPUT()**](DisputesApi.md#uploadDisputeAttachmentUsingPUT) | **PUT** /sale/dispute-attachments/{attachmentId} | Upload a dispute message attachment |
 
 
 ## `addMessageToDisputeUsingPOST()`
@@ -21,7 +21,7 @@ addMessageToDisputeUsingPOST($dispute_id, $message_request): \Phobetor\Allegro\M
 
 Add a message to a dispute
 
-Use this resource to post a message in certain dispute. At least one of fields: 'text', 'attachment' has to be present. <a href=\"../../news/2018-09-18-dyskusje/#PostMessage\" target=\"_blank\">Read more</a>.
+Use this resource to post a message in certain dispute. At least one of fields: 'text', 'attachment' has to be present. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#nowa-wiadomosc-w-dyskusji\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#add-a-new-message-in-the-discussion\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -53,10 +53,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dispute_id** | [**string**](../Model/.md)| Dispute identifier. |
- **message_request** | [**\Phobetor\Allegro\Model\MessageRequest**](../Model/MessageRequest.md)| Message request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dispute_id** | **string**| Dispute identifier. | |
+| **message_request** | [**\Phobetor\Allegro\Model\MessageRequest**](../Model/MessageRequest.md)| Message request | |
 
 ### Return type
 
@@ -83,7 +83,7 @@ createAnAttachmentUsingPOST($attachment_declaration): \Phobetor\Allegro\Model\Di
 
 Create an attachment declaration
 
-Use this resource to post an attachment declaration. <a href=\"../../news/2018-09-18-dyskusje/#PostAttach\" target=\"_blank\">Read more</a>.
+Use this resource to post an attachment declaration. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#deklaracja-zalacznika\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#attachment-declaration\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -114,9 +114,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attachment_declaration** | [**\Phobetor\Allegro\Model\AttachmentDeclaration**](../Model/AttachmentDeclaration.md)| A detailed declaration of a file to be uploaded |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **attachment_declaration** | [**\Phobetor\Allegro\Model\AttachmentDeclaration**](../Model/AttachmentDeclaration.md)| A detailed declaration of a file to be uploaded | |
 
 ### Return type
 
@@ -143,7 +143,7 @@ getAttachmentUsingGET($attachment_id): \SplFileObject
 
 Get an attachment
 
-Use this resource to get an attachment. <a href=\"../../news/2018-09-18-dyskusje/#GetAttach\" target=\"_blank\">Read more</a>.
+Use this resource to get an attachment. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#pobranie-zalacznika\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#attachment-related-to-the-discussion\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -174,13 +174,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attachment_id** | [**string**](../Model/.md)| Attachment identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **attachment_id** | **string**| Attachment identifier. | |
 
 ### Return type
 
-[**\SplFileObject**](../Model/\SplFileObject.md)
+**\SplFileObject**
 
 ### Authorization
 
@@ -203,7 +203,7 @@ getDisputeUsingGET($dispute_id): \Phobetor\Allegro\Model\Dispute
 
 Get a single dispute
 
-Use this resource to get a single dispute. <a href=\"../../news/2018-09-18-dyskusje/#GetOne\" target=\"_blank\">Read more</a>.
+Use this resource to get a single dispute. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#szczegolowe-informacje-o-dyskusji\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#information-about-a-particular-discussion\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -234,9 +234,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dispute_id** | [**string**](../Model/.md)| Dispute identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dispute_id** | **string**| Dispute identifier. | |
 
 ### Return type
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 ## `getListOfDisputesUsingGET()`
 
 ```php
-getListOfDisputesUsingGET($checkout_form_id, $limit, $offset): \Phobetor\Allegro\Model\DisputeListResponse
+getListOfDisputesUsingGET($checkout_form_id, $limit, $offset, $status): \Phobetor\Allegro\Model\DisputeListResponse
 ```
 
 Get the user's disputes
 
-Use this resource to get the list of your disputes. <a href=\"../../news/2018-09-18-dyskusje/#GetAll\" target=\"_blank\">Read more</a>.
+Use this resource to get the list of your disputes. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#dyskusje-na-koncie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#all-discussions\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -285,9 +285,10 @@ $apiInstance = new Phobetor\Allegro\Api\DisputesApi(
 $checkout_form_id = 29738e61-7f6a-11e8-ac45-09db60ede9d6; // string | Checkout form identifier.
 $limit = 10; // int | The maximum number of disputes in a response.
 $offset = 0; // int | Index of first returned dispute.
+$status = array('status_example'); // string[] | Filter disputes with given set of statuses.
 
 try {
-    $result = $apiInstance->getListOfDisputesUsingGET($checkout_form_id, $limit, $offset);
+    $result = $apiInstance->getListOfDisputesUsingGET($checkout_form_id, $limit, $offset, $status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DisputesApi->getListOfDisputesUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -296,11 +297,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **checkout_form_id** | [**string**](../Model/.md)| Checkout form identifier. | [optional]
- **limit** | **int**| The maximum number of disputes in a response. | [optional] [default to 10]
- **offset** | **int**| Index of first returned dispute. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **checkout_form_id** | **string**| Checkout form identifier. | [optional] |
+| **limit** | **int**| The maximum number of disputes in a response. | [optional] [default to 10] |
+| **offset** | **int**| Index of first returned dispute. | [optional] [default to 0] |
+| **status** | [**string[]**](../Model/string.md)| Filter disputes with given set of statuses. | [optional] |
 
 ### Return type
 
@@ -327,7 +329,7 @@ getMessagesFromDisputeUsingGET($dispute_id, $limit, $offset): \Phobetor\Allegro\
 
 Get the messages within a dispute
 
-Use this resource to get the list of messages within dispute. <a href=\"../../news/2018-09-18-dyskusje/#GetMessage\" target=\"_blank\">Read more</a>.
+Use this resource to get the list of messages within dispute. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#wiadomosci-z-dyskusji\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#all-messages-within-a-discussion\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -360,11 +362,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **dispute_id** | [**string**](../Model/.md)| Dispute identifier. |
- **limit** | **int**| The maximum number of messages within dispute returned in a response. | [optional] [default to 10]
- **offset** | **int**| Index of first returned message within dispute. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dispute_id** | **string**| Dispute identifier. | |
+| **limit** | **int**| The maximum number of messages within dispute returned in a response. | [optional] [default to 10] |
+| **offset** | **int**| Index of first returned message within dispute. | [optional] [default to 0] |
 
 ### Return type
 
@@ -388,10 +390,18 @@ Name | Type | Description  | Notes
 ```php
 uploadDisputeAttachmentUsingPUT($attachment_id, $body)
 ```
+### URI(s):
+- https://upload.{environment} 
+    - Variables:
+      - environment:  No description provided
+        - Allowed values:
+          - allegro.pl
+          - allegro.pl.allegrosandbox.pl
+        - Default value: allegro.pl
 
 Upload a dispute message attachment
 
-Upload a dispute message attachment. This operation should be used after creating an attachment declaration with *POST /sale/dispute-attachments* **Important!** You can find the URL address to upload the file to our server in the *Location* response header of *POST /sale/dispute-attachments*. The URL is unique and one-time. As its format may change in time, you should always use the address from the header. Do not compose the address on your own.
+Upload a dispute message attachment. This operation should be used after creating an attachment declaration with *POST /sale/dispute-attachments* **Important!** You can find the URL address to upload the file to our server in the *Location* response header of *POST /sale/dispute-attachments*. The URL is unique and one-time. As its format may change in time, you should always use the address from the header. Do not compose the address on your own. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#dodanie-zalacznika\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#adding-an-attachment\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -413,8 +423,13 @@ $apiInstance = new Phobetor\Allegro\Api\DisputesApi(
 $attachment_id = 'attachment_id_example'; // string | Attachment identifier.
 $body = "/path/to/file.txt"; // \SplFileObject
 
+$hostIndex = 0;
+$variables = [
+    'environment' => 'YOUR_VALUE',
+];
+
 try {
-    $apiInstance->uploadDisputeAttachmentUsingPUT($attachment_id, $body);
+    $apiInstance->uploadDisputeAttachmentUsingPUT($attachment_id, $body, $hostIndex, $variables);
 } catch (Exception $e) {
     echo 'Exception when calling DisputesApi->uploadDisputeAttachmentUsingPUT: ', $e->getMessage(), PHP_EOL;
 }
@@ -422,10 +437,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attachment_id** | [**string**](../Model/.md)| Attachment identifier. |
- **body** | **\SplFileObject****\SplFileObject**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **attachment_id** | **string**| Attachment identifier. | |
+| **body** | **\SplFileObject****\SplFileObject**|  | |
+| hostIndex | null|int | Host index. Defaults to null. If null, then the library will use $this->hostIndex instead | [optional] |
+| variables | array | Associative array of variables to pass to the host. Defaults to empty array. | [optional] |
 
 ### Return type
 

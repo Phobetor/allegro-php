@@ -1,10 +1,10 @@
 # Phobetor\Allegro\OfferRatingApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**offerRatingGET()**](OfferRatingApi.md#offerRatingGET) | **GET** /sale/offers/{offerId}/rating | Get offer rating
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**offerRatingGET()**](OfferRatingApi.md#offerRatingGET) | **GET** /sale/offers/{offerId}/rating | Get offer rating |
 
 
 ## `offerRatingGET()`
@@ -15,7 +15,7 @@ offerRatingGET($offer_id): \Phobetor\Allegro\Model\OfferRating
 
 Get offer rating
 
-Use this resource to get offer rating.
+Use this resource to get offer rating. Read more: <a href=\"../../news/nowy-zasob-do-pobrania-oceny-produktu-q018mmPe0H7\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resource-to-retrieve-product-rating-q018mmPrWUX\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -46,9 +46,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
 
 ### Return type
 

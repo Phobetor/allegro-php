@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Product id. | [optional]
 **name** | **string** | Product name. | [optional]
-**category** | [**Category**](Category.md) | Category identifier of product | [optional]
-**images** | **string[]** | List of product images. | [optional]
+**category** | [**\Phobetor\Allegro\Model\ProductCategory**](ProductCategory.md) |  | [optional]
+**id** | **string** | Product id. | [optional]
+**id_type** | **string** | Type of id. This field is optional. It helps in finding products more accurately. If an idType is not set, a given id is understood as a product&#39;s id.  - &#x60;GTIN&#x60; - restricts the search filtering to GTINs (Global Trade Item Number), e.g. EAN, ISBN, UPC.  - &#x60;MPN&#x60; - restricts the search filtering to MPNs (Manufacturer Part Number). | [optional]
 **parameters** | [**\Phobetor\Allegro\Model\ParameterProductOfferRequest[]**](ParameterProductOfferRequest.md) | List of product parameters. | [optional]
+**images** | **string[]** | List of product images. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

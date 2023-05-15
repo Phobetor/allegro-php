@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **values_ids** | **string[]** |  | [optional]
 **values_labels** | **string[]** |  | [optional]
 **unit** | **string** |  | [optional]
-**options** | [**\Phobetor\Allegro\Model\ProductParameterOptions**](ProductParameterOptions.md) |  | [optional]
+**options** | [**\Phobetor\Allegro\Model\ProductParameterDtoOptions**](ProductParameterDtoOptions.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

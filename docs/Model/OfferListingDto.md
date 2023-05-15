@@ -17,5 +17,8 @@ Name | Type | Description | Notes
 **additional_services** | [**\Phobetor\Allegro\Model\OfferAdditionalServices**](OfferAdditionalServices.md) |  | [optional]
 **external** | [**\Phobetor\Allegro\Model\ExternalId**](ExternalId.md) |  | [optional]
 **delivery** | [**\Phobetor\Allegro\Model\OfferListingDtoV1Delivery**](OfferListingDtoV1Delivery.md) |  | [optional]
+**b2b** | [**\Phobetor\Allegro\Model\OfferListingDtoV1B2b**](OfferListingDtoV1B2b.md) |  | [optional]
+**fundraising_campaign** | [**\Phobetor\Allegro\Model\JustId**](JustId.md) |  | [optional]
+**additional_marketplaces** | [**array<string,\Phobetor\Allegro\Model\OfferListingDtoV1AdditionalMarketplace>**](OfferListingDtoV1AdditionalMarketplace.md) | Properties of the offer for each additional marketplace. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

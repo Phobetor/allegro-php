@@ -1,14 +1,14 @@
 # Phobetor\Allegro\PointsOfServiceApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createPOSUsingPOST()**](PointsOfServiceApi.md#createPOSUsingPOST) | **POST** /points-of-service | Create a point of service
-[**deletePOSUsingDELETE()**](PointsOfServiceApi.md#deletePOSUsingDELETE) | **DELETE** /points-of-service/{id} | Delete a point of service
-[**getPOSDataUsingGET()**](PointsOfServiceApi.md#getPOSDataUsingGET) | **GET** /points-of-service/{id} | Get the details of a point of service
-[**getPOSListUsingGET()**](PointsOfServiceApi.md#getPOSListUsingGET) | **GET** /points-of-service | Get the user&#39;s points of service
-[**modifyPOSUsingPUT()**](PointsOfServiceApi.md#modifyPOSUsingPUT) | **PUT** /points-of-service/{id} | Modify a point of service
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createPOSUsingPOST()**](PointsOfServiceApi.md#createPOSUsingPOST) | **POST** /points-of-service | Create a point of service |
+| [**deletePOSUsingDELETE()**](PointsOfServiceApi.md#deletePOSUsingDELETE) | **DELETE** /points-of-service/{id} | Delete a point of service |
+| [**getPOSDataUsingGET()**](PointsOfServiceApi.md#getPOSDataUsingGET) | **GET** /points-of-service/{id} | Get the details of a point of service |
+| [**getPOSListUsingGET()**](PointsOfServiceApi.md#getPOSListUsingGET) | **GET** /points-of-service | Get the user&#39;s points of service |
+| [**modifyPOSUsingPUT()**](PointsOfServiceApi.md#modifyPOSUsingPUT) | **PUT** /points-of-service/{id} | Modify a point of service |
 
 
 ## `createPOSUsingPOST()`
@@ -19,7 +19,7 @@ createPOSUsingPOST($pos): \Phobetor\Allegro\Model\Pos
 
 Create a point of service
 
-Use this resource to create a point of service. <a href=\"../../news/2017-08-11-punkty_odbioru/#1\" target=\"_blank\">Read more</a>.
+Use this resource to create a point of service. Read more: <a href=\"../../news/punkty-odbioru-osobistego-8dmlj8qk7ik\" target=\"_blank\">PL</a> / <a href=\"../../news/points-of-service-Rdoz09ZE7sW\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -50,9 +50,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pos** | [**\Phobetor\Allegro\Model\Pos**](../Model/Pos.md)| Point of service |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pos** | [**\Phobetor\Allegro\Model\Pos**](../Model/Pos.md)| Point of service | |
 
 ### Return type
 
@@ -79,7 +79,7 @@ deletePOSUsingDELETE($id)
 
 Delete a point of service
 
-Use this resource to delete a point of service. <a href=\"../../news/2017-08-11-punkty_odbioru/#5\" target=\"_blank\">Read more</a>.
+Use this resource to delete a point of service. Read more: <a href=\"../../news/punkty-odbioru-osobistego-8dmlj8qk7ik\" target=\"_blank\">PL</a> / <a href=\"../../news/points-of-service-Rdoz09ZE7sW\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -109,9 +109,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Point of service ID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Point of service ID. | |
 
 ### Return type
 
@@ -138,7 +138,7 @@ getPOSDataUsingGET($id): \Phobetor\Allegro\Model\Pos
 
 Get the details of a point of service
 
-Use this resource to get a details of a point of service for a given ID. <a href=\"../../news/2017-08-11-punkty_odbioru/#4\" target=\"_blank\">Read more</a>.
+Use this resource to get a details of a point of service for a given ID. Read more: <a href=\"../../news/punkty-odbioru-osobistego-8dmlj8qk7ik\" target=\"_blank\">PL</a> / <a href=\"../../news/points-of-service-Rdoz09ZE7sW\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -169,9 +169,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Point of service ID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Point of service ID. | |
 
 ### Return type
 
@@ -198,7 +198,7 @@ getPOSListUsingGET($seller_id): \Phobetor\Allegro\Model\SearchResult
 
 Get the user's points of service
 
-Use this resource to get a list of points of service by seller ID. <a href=\"../../news/2017-08-11-punkty_odbioru/#3\" target=\"_blank\">Read more</a>.
+Use this resource to get a list of points of service by seller ID. Read more: <a href=\"../../news/punkty-odbioru-osobistego-8dmlj8qk7ik\" target=\"_blank\">PL</a> / <a href=\"../../news/points-of-service-Rdoz09ZE7sW\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -229,9 +229,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **seller_id** | **string**| User identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **seller_id** | **string**| User identifier. | |
 
 ### Return type
 
@@ -258,7 +258,7 @@ modifyPOSUsingPUT($id, $pos): \Phobetor\Allegro\Model\Pos
 
 Modify a point of service
 
-Use this resource to modify a point of service. <a href=\"../../news/2017-08-11-punkty_odbioru/#2\" target=\"_blank\">Read more</a>.
+Use this resource to modify a point of service. Read more: <a href=\"../../news/punkty-odbioru-osobistego-8dmlj8qk7ik\" target=\"_blank\">PL</a> / <a href=\"../../news/points-of-service-Rdoz09ZE7sW\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -290,10 +290,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Point of service ID. Must match values with &#39;id&#39; property from the body. |
- **pos** | [**\Phobetor\Allegro\Model\Pos**](../Model/Pos.md)| Point of service |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Point of service ID. Must match values with &#39;id&#39; property from the body. | |
+| **pos** | [**\Phobetor\Allegro\Model\Pos**](../Model/Pos.md)| Point of service | |
 
 ### Return type
 

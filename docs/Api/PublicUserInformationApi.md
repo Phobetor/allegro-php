@@ -1,10 +1,10 @@
 # Phobetor\Allegro\PublicUserInformationApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getUserSummaryUsingGET()**](PublicUserInformationApi.md#getUserSummaryUsingGET) | **GET** /users/{userId}/ratings-summary | Get any user&#39;s ratings summary
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getUserSummaryUsingGET()**](PublicUserInformationApi.md#getUserSummaryUsingGET) | **GET** /users/{userId}/ratings-summary | Get any user&#39;s ratings summary |
 
 
 ## `getUserSummaryUsingGET()`
@@ -15,7 +15,7 @@ getUserSummaryUsingGET($user_id): \Phobetor\Allegro\Model\UserRatingSummaryRespo
 
 Get any user's ratings summary
 
-Use this resource to receive feedback statistics. <a href=\"../../news/2017-10-09-news_informacje_o_ocenach/\" target=\"_blank\">Read more</a>.
+Use this resource to receive feedback statistics. Read more: <a href=\"../../news/nowe-zasoby-ktorymi-pobierzesz-informacje-o-ocenach-ZM9L1WPBbUb\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-to-download-sales-feedback-d2VYERBMRiz\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -46,9 +46,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_id** | **string**| The ID of the user. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **user_id** | **string**| The ID of the user. | |
 
 ### Return type
 

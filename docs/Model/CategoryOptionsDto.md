@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **offers_with_product_publication_enabled** | **bool** | Information whether the category supports assigning offers to a product. | [optional]
 **product_creation_enabled** | **bool** | Indicates whether the category supports creating products. | [optional]
 **custom_parameters_enabled** | **bool** | Indicates whether custom parameters can be added to offers in this category. | [optional]
+**seller_can_require_purchase_comments** | **bool** | Indicates whether the category supports message to seller in &#x60;REQUIRED&#x60; mode. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to 'CONTRIBUTION']
+**type** | **string** |  | [optional] [default to 'CONTRIBUTION']
 **payment** | [**\Phobetor\Allegro\Model\OperationPayment**](OperationPayment.md) |  |
 **participant** | [**\Phobetor\Allegro\Model\BuyerParticipant**](BuyerParticipant.md) |  |
 

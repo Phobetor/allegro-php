@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **overpaid** | [**\Phobetor\Allegro\Model\InitializeRefundOverpaid**](InitializeRefundOverpaid.md) |  | [optional]
 **surcharges** | [**\Phobetor\Allegro\Model\PaymentsSurcharge[]**](PaymentsSurcharge.md) | List of surcharges for payment which can be refunded. | [optional]
 **additional_services** | [**\Phobetor\Allegro\Model\InitializeRefundAdditionalServices**](InitializeRefundAdditionalServices.md) |  | [optional]
+**seller_comment** | **string** | Sellers optional justification for refund. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to 'CATEGORY_DELETED']
+**type** | **string** |  | [optional] [default to 'CATEGORY_DELETED']
 **category** | [**\Phobetor\Allegro\Model\CategoryEventBaseCategory**](CategoryEventBaseCategory.md) |  |
 **redirect_category** | [**\Phobetor\Allegro\Model\CategoryDeletedEventAllOfRedirectCategory**](CategoryDeletedEventAllOfRedirectCategory.md) |  | [optional]
 

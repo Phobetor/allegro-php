@@ -1,15 +1,15 @@
 # Phobetor\Allegro\OfferTagsApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**assignTagToOfferPOST()**](OfferTagsApi.md#assignTagToOfferPOST) | **POST** /sale/offers/{offerId}/tags | Assign tags to an offer
-[**createTagPOST1()**](OfferTagsApi.md#createTagPOST1) | **POST** /sale/offer-tags | Create a tag
-[**deleteTagUsingDELETE()**](OfferTagsApi.md#deleteTagUsingDELETE) | **DELETE** /sale/offer-tags/{tagId} | Delete a tag
-[**listAssignedOfferTagsGET()**](OfferTagsApi.md#listAssignedOfferTagsGET) | **GET** /sale/offers/{offerId}/tags | Get tags assigned to an offer
-[**listSellerTagsGET1()**](OfferTagsApi.md#listSellerTagsGET1) | **GET** /sale/offer-tags | Get the user&#39;s tags
-[**updateTagPUT()**](OfferTagsApi.md#updateTagPUT) | **PUT** /sale/offer-tags/{tagId} | Modify a tag
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**assignTagToOfferPOST()**](OfferTagsApi.md#assignTagToOfferPOST) | **POST** /sale/offers/{offerId}/tags | Assign tags to an offer |
+| [**createTagPOST1()**](OfferTagsApi.md#createTagPOST1) | **POST** /sale/offer-tags | Create a tag |
+| [**deleteTagUsingDELETE()**](OfferTagsApi.md#deleteTagUsingDELETE) | **DELETE** /sale/offer-tags/{tagId} | Delete a tag |
+| [**listAssignedOfferTagsGET()**](OfferTagsApi.md#listAssignedOfferTagsGET) | **GET** /sale/offers/{offerId}/tags | Get tags assigned to an offer |
+| [**listSellerTagsGET1()**](OfferTagsApi.md#listSellerTagsGET1) | **GET** /sale/offer-tags | Get the user&#39;s tags |
+| [**updateTagPUT()**](OfferTagsApi.md#updateTagPUT) | **PUT** /sale/offer-tags/{tagId} | Modify a tag |
 
 
 ## `assignTagToOfferPOST()`
@@ -20,7 +20,7 @@ assignTagToOfferPOST($offer_id, $tag_ids_request)
 
 Assign tags to an offer
 
-Use this resource to assign a tag to offer. <a href=\"../../news/2018-09-24-tagi-zalaczniki/#PrzypiszTagiDoOferty\" target=\"_blank\">Read more</a>.
+Use this resource to assign a tag to offer. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -51,10 +51,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
- **tag_ids_request** | [**\Phobetor\Allegro\Model\TagIdsRequest**](../Model/TagIdsRequest.md)| request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
+| **tag_ids_request** | [**\Phobetor\Allegro\Model\TagIdsRequest**](../Model/TagIdsRequest.md)| request | |
 
 ### Return type
 
@@ -81,7 +81,7 @@ createTagPOST1($tag_request): \Phobetor\Allegro\Model\TagId
 
 Create a tag
 
-Use this resource to create a new tag. <a href=\"../../news/2018-09-24-tagi-zalaczniki/#DodajDoKonta\" target=\"_blank\">Read more</a>.
+Use this resource to create a new tag. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -112,9 +112,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tag_request** | [**\Phobetor\Allegro\Model\TagRequest**](../Model/TagRequest.md)| request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tag_request** | [**\Phobetor\Allegro\Model\TagRequest**](../Model/TagRequest.md)| request | |
 
 ### Return type
 
@@ -141,7 +141,7 @@ deleteTagUsingDELETE($tag_id)
 
 Delete a tag
 
-Use this resource to delete the tag. <a href=\"../../news/2018-09-24-tagi-zalaczniki/#UsunTagZKonta\" target=\"_blank\">Read more</a>.
+Use this resource to delete the tag. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -171,9 +171,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tag_id** | **string**| Tag identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tag_id** | **string**| Tag identifier. | |
 
 ### Return type
 
@@ -200,7 +200,7 @@ listAssignedOfferTagsGET($offer_id): \Phobetor\Allegro\Model\TagListResponse
 
 Get tags assigned to an offer
 
-Use this resource to get a list of tags assigned to offer. <a href=\"../../news/2018-09-24-tagi-zalaczniki/#PobierzTagiZOferty\" target=\"_blank\">Read more</a>.
+Use this resource to get a list of tags assigned to offer. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -231,9 +231,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offer_id** | **string**| Offer identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offer_id** | **string**| Offer identifier. | |
 
 ### Return type
 
@@ -260,7 +260,7 @@ listSellerTagsGET1($limit, $offset): \Phobetor\Allegro\Model\TagListResponse
 
 Get the user's tags
 
-Use this resource to get a list of tags defined by the specified user (Defaults: limit = 1000, offset = 0). <a href=\"../../news/2018-09-24-tagi-zalaczniki/#PobierzTagi\" target=\"_blank\">Read more</a>.
+Use this resource to get a list of tags defined by the specified user (Defaults: limit = 100, offset = 0). Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -292,10 +292,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 1000]
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 1000] |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 
 ### Return type
 
@@ -322,7 +322,7 @@ updateTagPUT($tag_id, $tag_request)
 
 Modify a tag
 
-Use this resource to update a tag. <a href=\"../../news/2018-09-24-tagi-zalaczniki/#ZmienNazwe\" target=\"_blank\">Read more</a>.
+Use this resource to update a tag. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>. This resource is rate limited to 1 million changes per hour.
 
 ### Example
 
@@ -353,10 +353,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tag_id** | **string**| Tag identifier. |
- **tag_request** | [**\Phobetor\Allegro\Model\TagRequest**](../Model/TagRequest.md)| request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tag_id** | **string**| Tag identifier. | |
+| **tag_request** | [**\Phobetor\Allegro\Model\TagRequest**](../Model/TagRequest.md)| request | |
 
 ### Return type
 

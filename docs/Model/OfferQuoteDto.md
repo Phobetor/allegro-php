@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **enabled** | **bool** |  | [optional]
 **fee** | [**\Phobetor\Allegro\Model\Fee**](Fee.md) |  | [optional]
 **name** | **string** |  | [optional]
-**next_date** | [**\DateTime**](\DateTime.md) |  | [optional]
+**next_date** | **\DateTime** |  | [optional]
 **offer** | [**\Phobetor\Allegro\Model\OfferId**](OfferId.md) |  | [optional]
 **type** | **string** |  | [optional]
 

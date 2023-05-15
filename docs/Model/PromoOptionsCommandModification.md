@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_package** | [**\Phobetor\Allegro\Model\PromoOptionsCommandModificationPackage**](PromoOptionsCommandModificationPackage.md) |  | [optional]
+**base_package** | [**\Phobetor\Allegro\Model\PromoOptionsCommandModificationBasePackage**](PromoOptionsCommandModificationBasePackage.md) |  | [optional]
 **extra_packages** | [**\Phobetor\Allegro\Model\PromoOptionsCommandModificationPackage[]**](PromoOptionsCommandModificationPackage.md) | Extra packages to be set on offer. Omitting this parameter will preserve the packages already present. | [optional]
 **modification_time** | **string** | Time at which the modification will be applied. | [optional]
 

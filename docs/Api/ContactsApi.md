@@ -1,13 +1,13 @@
 # Phobetor\Allegro\ContactsApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createContactUsingPOST()**](ContactsApi.md#createContactUsingPOST) | **POST** /sale/offer-contacts | Create a new contact
-[**getContactUsingGET()**](ContactsApi.md#getContactUsingGET) | **GET** /sale/offer-contacts/{id} | Get contact details
-[**getListOfContactsUsingGET()**](ContactsApi.md#getListOfContactsUsingGET) | **GET** /sale/offer-contacts | Get the user&#39;s contacts
-[**modifyContactUsingPUT()**](ContactsApi.md#modifyContactUsingPUT) | **PUT** /sale/offer-contacts/{id} | Modify contact details
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createContactUsingPOST()**](ContactsApi.md#createContactUsingPOST) | **POST** /sale/offer-contacts | Create a new contact |
+| [**getContactUsingGET()**](ContactsApi.md#getContactUsingGET) | **GET** /sale/offer-contacts/{id} | Get contact details |
+| [**getListOfContactsUsingGET()**](ContactsApi.md#getListOfContactsUsingGET) | **GET** /sale/offer-contacts | Get the user&#39;s contacts |
+| [**modifyContactUsingPUT()**](ContactsApi.md#modifyContactUsingPUT) | **PUT** /sale/offer-contacts/{id} | Modify contact details |
 
 
 ## `createContactUsingPOST()`
@@ -18,7 +18,7 @@ createContactUsingPOST($contact_request): \Phobetor\Allegro\Model\ContactRespons
 
 Create a new contact
 
-Use this resource to create a new contact. Read more: <a href=\"../../advertisement/#dane-kontaktowe\" target=\"_blank\">PL</a> / <a href=\"../../en/advertisement/#contact-data\" target=\"_blank\">EN</a>.
+Use this resource to create a new contact. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-utworzyc-nowy-kontakt\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-create-new-contact\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -49,9 +49,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contact_request** | [**\Phobetor\Allegro\Model\ContactRequest**](../Model/ContactRequest.md)| New contact |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contact_request** | [**\Phobetor\Allegro\Model\ContactRequest**](../Model/ContactRequest.md)| New contact | |
 
 ### Return type
 
@@ -78,7 +78,7 @@ getContactUsingGET($id): \Phobetor\Allegro\Model\ContactResponse
 
 Get contact details
 
-Use this resource to get contact details. Read more: <a href=\"../../advertisement/#dane-kontaktowe\" target=\"_blank\">PL</a> / <a href=\"../../en/advertisement/#contact-data\" target=\"_blank\">EN</a>.
+Use this resource to get contact details. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-szczegoly-danego-kontaktu\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-contact-details\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -109,9 +109,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Contact identifier. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Contact identifier. | |
 
 ### Return type
 
@@ -138,7 +138,7 @@ getListOfContactsUsingGET(): \Phobetor\Allegro\Model\ContactResponseList
 
 Get the user's contacts
 
-Use this resource to get details of many contacts. Read more: <a href=\"../../advertisement/#dane-kontaktowe\" target=\"_blank\">PL</a> / <a href=\"../../en/advertisement/#contact-data\" target=\"_blank\">EN</a>.
+Use this resource to get details of many contacts. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-liste-kontaktow\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-a-list-of-contacts\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -195,7 +195,7 @@ modifyContactUsingPUT($id, $contact_request): \Phobetor\Allegro\Model\ContactRes
 
 Modify contact details
 
-Use this resource to modify contact details. Read more: <a href=\"../../advertisement/#dane-kontaktowe\" target=\"_blank\">PL</a> / <a href=\"../../en/advertisement/#contact-data\" target=\"_blank\">EN</a>.
+Use this resource to modify contact details. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-zmienic-dane-kontaktu\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-change-contact-data\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -227,10 +227,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Contact identifier. |
- **contact_request** | [**\Phobetor\Allegro\Model\ContactRequest**](../Model/ContactRequest.md)| Contact |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Contact identifier. | |
+| **contact_request** | [**\Phobetor\Allegro\Model\ContactRequest**](../Model/ContactRequest.md)| Contact | |
 
 ### Return type
 

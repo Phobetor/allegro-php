@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**groups** | [**\Phobetor\Allegro\Model\CompatibleProductsGroupsDtoGroups[]**](CompatibleProductsGroupsDtoGroups.md) | List of groups for given type of compatible products. | [optional]
+**groups** | [**\Phobetor\Allegro\Model\CompatibleProductsGroupsDtoGroupsInner[]**](CompatibleProductsGroupsDtoGroupsInner.md) | List of groups for given type of compatible products. | [optional]
 **count** | **int** | Number of returned elements. | [optional]
 **total_count** | **int** | Total number of available elements. | [optional]
 

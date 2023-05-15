@@ -1,10 +1,10 @@
 # Phobetor\Allegro\CharityApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**searchFundraisingCampaigns()**](CharityApi.md#searchFundraisingCampaigns) | **GET** /charity/fundraising-campaigns | Search fundraising campaigns
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**searchFundraisingCampaigns()**](CharityApi.md#searchFundraisingCampaigns) | **GET** /charity/fundraising-campaigns | Search fundraising campaigns |
 
 
 ## `searchFundraisingCampaigns()`
@@ -15,7 +15,7 @@ searchFundraisingCampaigns($limit, $phrase): \Phobetor\Allegro\Model\Fundraising
 
 Search fundraising campaigns
 
-Use this resource to search fundraising campaigns.
+Use this resource to search fundraising campaigns. Read more: <a href=\"../../news/wystaw-oferte-charytatywna-na-allegro-MR87PBxZySY\" target=\"_blank\">PL</a> / <a href=\"../../news/list-a-charity-offer-on-allegro-LRV0572GOhr\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -47,10 +47,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned results. |
- **phrase** | **string**| Fundraising campaign name or it&#39;s Organization name prefix to search for. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned results. | |
+| **phrase** | **string**| Fundraising campaign name or it&#39;s Organization name prefix to search for. | |
 
 ### Return type
 

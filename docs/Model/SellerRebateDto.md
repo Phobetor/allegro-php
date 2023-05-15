@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **benefits** | [**\Phobetor\Allegro\Model\Benefit[]**](Benefit.md) | What kind of rebate will be given |
-**created_at** | [**\DateTime**](\DateTime.md) | when was this rebate created | [optional]
+**created_at** | **\DateTime** | when was this rebate created | [optional]
 **id** | **string** | Rebate identifier |
 **offer_criteria** | [**\Phobetor\Allegro\Model\SellerRebateOfferCriterion[]**](SellerRebateOfferCriterion.md) | What offers will be included |
 **status** | **string** |  |

@@ -1,14 +1,14 @@
 # Phobetor\Allegro\AdditionalServicesApi
 
-All URIs are relative to https://api.allegro.pl.
+All URIs are relative to https://api.allegro.pl, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAdditionalServicesGroupUsingPOST()**](AdditionalServicesApi.md#createAdditionalServicesGroupUsingPOST) | **POST** /sale/offer-additional-services/groups | Create additional services group
-[**getAdditionalServicesGroupUsingGET()**](AdditionalServicesApi.md#getAdditionalServicesGroupUsingGET) | **GET** /sale/offer-additional-services/groups/{groupId} | Get the details of an additional services group
-[**getListOfAdditionalServicesDefinitionsUsingGET()**](AdditionalServicesApi.md#getListOfAdditionalServicesDefinitionsUsingGET) | **GET** /sale/offer-additional-services/definitions | Get the user&#39;s additional services definitions
-[**getListOfAdditionalServicesGroupsUsingGET()**](AdditionalServicesApi.md#getListOfAdditionalServicesGroupsUsingGET) | **GET** /sale/offer-additional-services/groups | Get the user&#39;s additional services groups
-[**modifyAdditionalServicesGroupUsingPUT()**](AdditionalServicesApi.md#modifyAdditionalServicesGroupUsingPUT) | **PUT** /sale/offer-additional-services/groups/{groupId} | Modify an additional services group
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createAdditionalServicesGroupUsingPOST()**](AdditionalServicesApi.md#createAdditionalServicesGroupUsingPOST) | **POST** /sale/offer-additional-services/groups | Create additional services group |
+| [**getAdditionalServicesGroupUsingGET()**](AdditionalServicesApi.md#getAdditionalServicesGroupUsingGET) | **GET** /sale/offer-additional-services/groups/{groupId} | Get the details of an additional services group |
+| [**getListOfAdditionalServicesDefinitionsCategoriesUsingGET()**](AdditionalServicesApi.md#getListOfAdditionalServicesDefinitionsCategoriesUsingGET) | **GET** /sale/offer-additional-services/categories | Get the additional services definitions by categories |
+| [**getListOfAdditionalServicesGroupsUsingGET()**](AdditionalServicesApi.md#getListOfAdditionalServicesGroupsUsingGET) | **GET** /sale/offer-additional-services/groups | Get the user&#39;s additional services groups |
+| [**modifyAdditionalServicesGroupUsingPUT()**](AdditionalServicesApi.md#modifyAdditionalServicesGroupUsingPUT) | **PUT** /sale/offer-additional-services/groups/{groupId} | Modify an additional services group |
 
 
 ## `createAdditionalServicesGroupUsingPOST()`
@@ -19,7 +19,7 @@ createAdditionalServicesGroupUsingPOST($additional_services_group_request): \Pho
 
 Create additional services group
 
-Use this resource to create a group of additional services. <a href=\"../../news/2017-10-25-news_uslugi_dodatkowe/#2\" target=\"_blank\">Read more</a>.
+Use this resource to create a group of additional services. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-dodac-nowa-grupe-uslug-dodatkowych\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-add-a-new-additional-service-group\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -50,9 +50,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **additional_services_group_request** | [**\Phobetor\Allegro\Model\AdditionalServicesGroupRequest**](../Model/AdditionalServicesGroupRequest.md)| Additional service group body |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **additional_services_group_request** | [**\Phobetor\Allegro\Model\AdditionalServicesGroupRequest**](../Model/AdditionalServicesGroupRequest.md)| Additional service group body | |
 
 ### Return type
 
@@ -79,7 +79,7 @@ getAdditionalServicesGroupUsingGET($group_id): \Phobetor\Allegro\Model\Additiona
 
 Get the details of an additional services group
 
-Use this resource to get additional services group for a given ID. <a href=\"../../news/2017-10-25-news_uslugi_dodatkowe/#5\" target=\"_blank\">Read more</a>.
+Use this resource to get additional services group for a given ID. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-wybrana-grupe-uslug-dodatkowych\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-a-group-of-additional-services-for-a-given-id\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -110,9 +110,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **group_id** | **string**| Additional Service Group ID. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Additional Service Group ID. | |
 
 ### Return type
 
@@ -131,15 +131,15 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getListOfAdditionalServicesDefinitionsUsingGET()`
+## `getListOfAdditionalServicesDefinitionsCategoriesUsingGET()`
 
 ```php
-getListOfAdditionalServicesDefinitionsUsingGET($offset, $limit): \Phobetor\Allegro\Model\DefinitionsResponse
+getListOfAdditionalServicesDefinitionsCategoriesUsingGET(): \Phobetor\Allegro\Model\CategoriesResponse
 ```
 
-Get the user's additional services definitions
+Get the additional services definitions by categories
 
-Use this resource to get additional services definitions by user ID. <a href=\"../../news/2017-10-25-news_uslugi_dodatkowe/#1\" target=\"_blank\">Read more</a>.
+Use this resource to get additional services definitions, grouped by additional services categories, available on given marketplace. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-zarzadzac-uslugami-dodatkowymi\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-manage-additional-services\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -158,27 +158,22 @@ $apiInstance = new Phobetor\Allegro\Api\AdditionalServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 0; // int | The offset of elements in the response.
-$limit = 100; // int | The limit of elements in the response.
 
 try {
-    $result = $apiInstance->getListOfAdditionalServicesDefinitionsUsingGET($offset, $limit);
+    $result = $apiInstance->getListOfAdditionalServicesDefinitionsCategoriesUsingGET();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AdditionalServicesApi->getListOfAdditionalServicesDefinitionsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AdditionalServicesApi->getListOfAdditionalServicesDefinitionsCategoriesUsingGET: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 100]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\DefinitionsResponse**](../Model/DefinitionsResponse.md)
+[**\Phobetor\Allegro\Model\CategoriesResponse**](../Model/CategoriesResponse.md)
 
 ### Authorization
 
@@ -201,7 +196,7 @@ getListOfAdditionalServicesGroupsUsingGET($offset, $limit): \Phobetor\Allegro\Mo
 
 Get the user's additional services groups
 
-Use this resource to retrieve a list of groups with additional services available to a given user which you may assign to offers. <a href=\"../../news/2017-10-25-news_uslugi_dodatkowe/#4\" target=\"_blank\">Read more</a>.
+Use this resource to retrieve a list of groups with additional services available to a given user which you may assign to offers. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-liste-grup-uslug-dodatkowych-na-koncie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-a-list-of-additional-services-groups-for-the-account\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -233,10 +228,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| The offset of elements in the response. | [optional] [default to 0]
- **limit** | **int**| The limit of elements in the response. | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
+| **limit** | **int**| The limit of elements in the response. | [optional] [default to 100] |
 
 ### Return type
 
@@ -263,7 +258,7 @@ modifyAdditionalServicesGroupUsingPUT($group_id, $additional_services_group_requ
 
 Modify an additional services group
 
-Use this resource to modify existing additional service group. <a href=\"../../news/2017-10-25-news_uslugi_dodatkowe/#3\" target=\"_blank\">Read more</a>.
+Use this resource to modify existing additional service group. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-zaktualizowac-grupe-uslug-dodatkowych\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-update-additional-service-group\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -295,10 +290,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **group_id** | **string**| Additional service group ID. |
- **additional_services_group_request** | [**\Phobetor\Allegro\Model\AdditionalServicesGroupRequest**](../Model/AdditionalServicesGroupRequest.md)| Additional service group body |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Additional service group ID. | |
+| **additional_services_group_request** | [**\Phobetor\Allegro\Model\AdditionalServicesGroupRequest**](../Model/AdditionalServicesGroupRequest.md)| Additional service group body | |
 
 ### Return type
 

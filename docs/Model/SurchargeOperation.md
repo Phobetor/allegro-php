@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [default to 'SURCHARGE']
+**type** | **string** |  | [optional] [default to 'SURCHARGE']
 **payment** | [**\Phobetor\Allegro\Model\OperationPayment**](OperationPayment.md) |  |
 **surcharge** | [**\Phobetor\Allegro\Model\Surcharge**](Surcharge.md) |  |
 **participant** | [**\Phobetor\Allegro\Model\BuyerParticipant**](BuyerParticipant.md) |  |

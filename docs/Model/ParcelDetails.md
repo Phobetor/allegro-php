@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **parcel_id** | **string** | Id of parcel. | [optional]
-**service_id** | **int** | Delivery service id. | [optional]
+**service_id** | **string** | Delivery service id. | [optional]
 **receiver** | [**\Phobetor\Allegro\Model\Receiver**](Receiver.md) |  | [optional]
 **pickup** | [**\Phobetor\Allegro\Model\Pickup**](Pickup.md) |  | [optional]
 **items** | [**\Phobetor\Allegro\Model\ParcelItemDetailsWithWaybill[]**](ParcelItemDetailsWithWaybill.md) | Parcel items details. | [optional]
-**type** | **string** |  | [optional]
+**type** | **string** | Value will be returned if all items will have the same type. | [optional]
 **label** | [**\Phobetor\Allegro\Model\ParcelDetailsLabel**](ParcelDetailsLabel.md) |  | [optional]
 **additional_services** | [**\Phobetor\Allegro\Model\ParcelAdditionalServices**](ParcelAdditionalServices.md) |  | [optional]
 **state** | **string** |  | [optional]
