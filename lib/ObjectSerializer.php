@@ -514,6 +514,9 @@ class ObjectSerializer
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
                 $subclass = '\Phobetor\Allegro\Model\\' . $data->{$discriminator};
+                if (\defined($class.'::DISCRIMINATOR_MAPPING')) {
+                    $subclass = '\Phobetor\Allegro\Model\\' . $class::DISCRIMINATOR_MAPPING[$data->{$discriminator}];
+                }
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }

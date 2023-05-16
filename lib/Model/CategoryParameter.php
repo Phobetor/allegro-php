@@ -44,6 +44,13 @@ class CategoryParameter implements ModelInterface, ArrayAccess, \JsonSerializabl
 {
     public const DISCRIMINATOR = 'type';
 
+    public const DISCRIMINATOR_MAPPING = [
+        'integer' => 'IntegerCategoryParameter',
+        'float' => 'FloatCategoryParameter',
+        'string' => 'StringCategoryParameter',
+        'dictionary' => 'DictionaryCategoryParameter'
+    ];
+
     /**
       * The original name of the model.
       *
