@@ -268,6 +268,7 @@ class Publication implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ENDED_BY_ADMIN = 'ADMIN';
     public const ENDED_BY_EXPIRATION = 'EXPIRATION';
     public const ENDED_BY_EMPTY_STOCK = 'EMPTY_STOCK';
+    public const ENDED_BY_PRODUCT_DETACHMENT = 'PRODUCT_DETACHMENT';
     public const ENDED_BY_ERROR = 'ERROR';
 
     /**
@@ -283,6 +284,7 @@ class Publication implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ENDED_BY_EXPIRATION,
             self::ENDED_BY_EMPTY_STOCK,
             self::ENDED_BY_ERROR,
+            self::ENDED_BY_PRODUCT_DETACHMENT,
         ];
     }
 

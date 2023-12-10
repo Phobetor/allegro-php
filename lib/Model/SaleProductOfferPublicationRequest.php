@@ -269,6 +269,7 @@ class SaleProductOfferPublicationRequest implements ModelInterface, ArrayAccess,
     public const ENDED_BY_EXPIRATION = 'EXPIRATION';
     public const ENDED_BY_EMPTY_STOCK = 'EMPTY_STOCK';
     public const ENDED_BY_ERROR = 'ERROR';
+    public const ENDED_BY_PRODUCT_DETACHMENT = 'PRODUCT_DETACHMENT';
 
     /**
      * Gets allowable values of the enum
@@ -283,6 +284,7 @@ class SaleProductOfferPublicationRequest implements ModelInterface, ArrayAccess,
             self::ENDED_BY_EXPIRATION,
             self::ENDED_BY_EMPTY_STOCK,
             self::ENDED_BY_ERROR,
+            self::ENDED_BY_PRODUCT_DETACHMENT,
         ];
     }
 

@@ -234,6 +234,7 @@ class OfferEventEndedOfferAllOfPublication implements ModelInterface, ArrayAcces
     public const ENDED_BY_EXPIRATION = 'EXPIRATION';
     public const ENDED_BY_EMPTY_STOCK = 'EMPTY_STOCK';
     public const ENDED_BY_ERROR = 'ERROR';
+    public const ENDED_BY_PRODUCT_DETACHMENT = 'PRODUCT_DETACHMENT';
     public const ENDED_BY_UNKNOWN = 'UNKNOWN';
 
     /**
@@ -249,6 +250,7 @@ class OfferEventEndedOfferAllOfPublication implements ModelInterface, ArrayAcces
             self::ENDED_BY_EXPIRATION,
             self::ENDED_BY_EMPTY_STOCK,
             self::ENDED_BY_ERROR,
+            self::ENDED_BY_PRODUCT_DETACHMENT,
             self::ENDED_BY_UNKNOWN,
         ];
     }
