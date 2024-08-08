@@ -231,6 +231,7 @@ class ProductOfferResponsePublication implements ModelInterface, ArrayAccess, \J
     public const STATUS_PROPOSED = 'PROPOSED';
     public const STATUS_LISTED = 'LISTED';
     public const STATUS_NOT_LISTED = 'NOT_LISTED';
+    public const STATUS_REMOVED = 'REMOVED';
 
     /**
      * Gets allowable values of the enum
@@ -243,6 +244,7 @@ class ProductOfferResponsePublication implements ModelInterface, ArrayAccess, \J
             self::STATUS_PROPOSED,
             self::STATUS_LISTED,
             self::STATUS_NOT_LISTED,
+            self::STATUS_REMOVED,
         ];
     }
 
