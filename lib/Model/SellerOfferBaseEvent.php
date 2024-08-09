@@ -45,6 +45,19 @@ class SellerOfferBaseEvent implements ModelInterface, ArrayAccess, \JsonSerializ
 {
     public const DISCRIMINATOR = 'type';
 
+    public const DISCRIMINATOR_MAPPING = [
+        'OFFER_ACTIVATED' => 'OfferActivatedEvent',
+        'OFFER_CHANGED' => 'OfferChangedEvent',
+        'OFFER_ENDED' => 'OfferEndedEvent',
+        'OFFER_STOCK_CHANGED' => 'OfferStockChangedEvent',
+        'OFFER_PRICE_CHANGED' => 'OfferPriceChangedEvent',
+        'OFFER_ARCHIVED' => 'OfferArchivedEvent',
+        'OFFER_BID_PLACED' => 'OfferBidPlacedEvent',
+        'OFFER_BID_CANCELED' => 'OfferBidCanceledEvent',
+        'OFFER_TRANSLATION_UPDATED' => 'OfferTranslationUpdatedEvent',
+        'OFFER_VISIBILITY_CHANGED' => 'OfferVisibilityChangedEvent',
+    ];
+
     /**
       * The original name of the model.
       *
