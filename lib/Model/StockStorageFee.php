@@ -244,6 +244,7 @@ class StockStorageFee implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATUS_NOT_APPLICABLE = 'NOT_APPLICABLE';
     public const STATUS_INCLUDED_IN_SERVICE_PRICE = 'INCLUDED_IN_SERVICE_PRICE';
     public const STATUS_CHARGED = 'CHARGED';
+    public const STATUS_PREDICTION = 'PREDICTION';
 
     /**
      * Gets allowable values of the enum
@@ -256,6 +257,7 @@ class StockStorageFee implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_NOT_APPLICABLE,
             self::STATUS_INCLUDED_IN_SERVICE_PRICE,
             self::STATUS_CHARGED,
+            self::STATUS_PREDICTION,
         ];
     }
 
@@ -343,7 +345,7 @@ class StockStorageFee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Status of the storage fee. * NOT_APPLICABLE - fee for yesterday has not been charged and there are no available items of the product. * INCLUDED_IN_SERVICE_PRICE - fee for yesterday has not been charged and there are available items of the product. * CHARGED - the fee has been charged on seller's billing.
+     * @param string|null $status Status of the storage fee. * NOT_APPLICABLE - fee for yesterday has not been charged and there are no available items of the product. * INCLUDED_IN_SERVICE_PRICE - fee for yesterday has not been charged and there are available items of the product. * CHARGED - the fee has been charged on seller's billing. * PREDICTION - prediction of upcoming fee, based on yesterday selling stats and quantity.
      *
      * @return self
      */

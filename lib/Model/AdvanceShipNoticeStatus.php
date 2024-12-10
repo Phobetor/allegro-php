@@ -51,6 +51,8 @@ class AdvanceShipNoticeStatus
 
     public const COMPLETED = 'COMPLETED';
 
+    public const CANCELLED = 'CANCELLED';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -61,7 +63,8 @@ class AdvanceShipNoticeStatus
             self::DRAFT,
             self::IN_TRANSIT,
             self::UNPACKING,
-            self::COMPLETED
+            self::COMPLETED,
+            self::CANCELLED
         ];
     }
 }

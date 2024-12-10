@@ -333,7 +333,7 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
     /**
      * Sets state
      *
-     * @param string|null $state Possible values:</br> - `APPROVED` - the offer is visible in the given additional marketplace if it is active.</br> - `REFUSED` - the offer or the seller does not meet the conditions required to display the offer in the given additional marketplace.</br> - `IN_PROGRESS` - the process of qualifying the offer visibility in a given additional service is in progress.</br> - `NOT_REQUESTED` - the seller has not indicated the intention of visibility in the given additional service. - `PENDING` - the seller has indicated the intention of visibility on a given additional marketplace, but the qualification process has not started, for example, due to offer status (only active offers are subject to the qualification process).
+     * @param string|null $state Possible values:</br> - `APPROVED` - the offer is visible in the given additional marketplace if it is active.</br> - `REFUSED` - the offer or the seller does not meet the conditions required to display the offer in the given additional marketplace.</br> - `IN_PROGRESS` - the process of qualifying the offer visibility in a given additional service is in progress.</br> - `NOT_REQUESTED` - the seller has not indicated the intention of visibility in the given additional service.</br> - `PENDING` - the seller has indicated the intention of visibility on a given additional marketplace, but the qualification process has not started, for example, due to offer status (only active offers are subject to the qualification process).
      *
      * @return self
      */

@@ -236,6 +236,7 @@ class ReturnPolicyAvailability implements ModelInterface, ArrayAccess, \JsonSeri
 
     public const RANGE_FULL = 'FULL';
     public const RANGE_RESTRICTED = 'RESTRICTED';
+    public const RANGE_DISABLED = 'DISABLED';
 
     /**
      * Gets allowable values of the enum
@@ -247,6 +248,7 @@ class ReturnPolicyAvailability implements ModelInterface, ArrayAccess, \JsonSeri
         return [
             self::RANGE_FULL,
             self::RANGE_RESTRICTED,
+            self::RANGE_DISABLED,
         ];
     }
 
@@ -333,7 +335,7 @@ class ReturnPolicyAvailability implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets range
      *
-     * @param string|null $range Indicates if return policy is full or restricted.
+     * @param string|null $range Indicates if return policy is full, restricted or disabled.
      *
      * @return self
      */

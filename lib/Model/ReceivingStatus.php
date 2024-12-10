@@ -254,6 +254,7 @@ class ReceivingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     public const REASON_CODE_UNACCEPTABLE_PRODUCT_SIZE = 'UNACCEPTABLE_PRODUCT_SIZE';
     public const REASON_CODE_UNKNOWN_DAMAGE = 'UNKNOWN_DAMAGE';
     public const REASON_CODE_UNKNOWN_REJECT = 'UNKNOWN_REJECT';
+    public const REASON_CODE_UNSCANNABLE_BARCODE = 'UNSCANNABLE_BARCODE';
 
     /**
      * Gets allowable values of the enum
@@ -288,6 +289,7 @@ class ReceivingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
             self::REASON_CODE_UNACCEPTABLE_PRODUCT_SIZE,
             self::REASON_CODE_UNKNOWN_DAMAGE,
             self::REASON_CODE_UNKNOWN_REJECT,
+            self::REASON_CODE_UNSCANNABLE_BARCODE,
         ];
     }
 

@@ -242,7 +242,6 @@ class ParcelDetailsLabel implements ModelInterface, ArrayAccess, \JsonSerializab
 
     public const FILE_FORMAT_PDF = 'PDF';
     public const FILE_FORMAT_ZPL = 'ZPL';
-    public const FILE_FORMAT_EPL = 'EPL';
 
     /**
      * Gets allowable values of the enum
@@ -254,7 +253,6 @@ class ParcelDetailsLabel implements ModelInterface, ArrayAccess, \JsonSerializab
         return [
             self::FILE_FORMAT_PDF,
             self::FILE_FORMAT_ZPL,
-            self::FILE_FORMAT_EPL,
         ];
     }
 

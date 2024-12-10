@@ -243,6 +243,7 @@ class Wallet implements ModelInterface, ArrayAccess, \JsonSerializable
 
     public const PAYMENT_OPERATOR_PAYU = 'PAYU';
     public const PAYMENT_OPERATOR_P24 = 'P24';
+    public const PAYMENT_OPERATOR_AF = 'AF';
     public const TYPE_AVAILABLE = 'AVAILABLE';
     public const TYPE_WAITING = 'WAITING';
 
@@ -256,6 +257,7 @@ class Wallet implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::PAYMENT_OPERATOR_PAYU,
             self::PAYMENT_OPERATOR_P24,
+            self::PAYMENT_OPERATOR_AF,
         ];
     }
 

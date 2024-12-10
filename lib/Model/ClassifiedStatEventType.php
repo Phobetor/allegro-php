@@ -47,6 +47,12 @@ class ClassifiedStatEventType
 
     public const ASKED_QUESTION = 'ASKED_QUESTION';
 
+    public const CLICKED_ASK_QUESTION = 'CLICKED_ASK_QUESTION';
+
+    public const ADDED_TO_FAVOURITES = 'ADDED_TO_FAVOURITES';
+
+    public const REMOVED_FROM_FAVOURITES = 'REMOVED_FROM_FAVOURITES';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -55,7 +61,10 @@ class ClassifiedStatEventType
     {
         return [
             self::SHOWED_PHONE_NUMBER,
-            self::ASKED_QUESTION
+            self::ASKED_QUESTION,
+            self::CLICKED_ASK_QUESTION,
+            self::ADDED_TO_FAVOURITES,
+            self::REMOVED_FROM_FAVOURITES
         ];
     }
 }

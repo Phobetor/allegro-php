@@ -61,6 +61,10 @@ class AttachmentType
 
     public const PRODUCT_INFORMATION_SHEET = 'PRODUCT_INFORMATION_SHEET';
 
+    public const TIRE_LABEL = 'TIRE_LABEL';
+
+    public const SAFETY_INFORMATION_MANUAL = 'SAFETY_INFORMATION_MANUAL';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -76,7 +80,9 @@ class AttachmentType
             self::INSTALLATION_INSTRUCTIONS,
             self::GAME_INSTRUCTIONS,
             self::ENERGY_LABEL,
-            self::PRODUCT_INFORMATION_SHEET
+            self::PRODUCT_INFORMATION_SHEET,
+            self::TIRE_LABEL,
+            self::SAFETY_INFORMATION_MANUAL
         ];
     }
 }

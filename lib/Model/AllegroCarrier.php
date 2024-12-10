@@ -46,6 +46,8 @@ class AllegroCarrier
 
     public const ALLEGRO_ONE_KURIER = 'ALLEGRO_ONE_KURIER';
 
+    public const DPD = 'DPD';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -54,7 +56,8 @@ class AllegroCarrier
     {
         return [
             self::UPS,
-            self::ALLEGRO_ONE_KURIER
+            self::ALLEGRO_ONE_KURIER,
+            self::DPD
         ];
     }
 }

@@ -283,8 +283,8 @@ class Publication implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ENDED_BY_ADMIN,
             self::ENDED_BY_EXPIRATION,
             self::ENDED_BY_EMPTY_STOCK,
-            self::ENDED_BY_ERROR,
             self::ENDED_BY_PRODUCT_DETACHMENT,
+            self::ENDED_BY_ERROR,
         ];
     }
 
