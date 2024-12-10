@@ -1,0 +1,6 @@
+additionalProperties:
+  invokerPackage: Phobetor\Allegro
+  packageName: Phobetor\\Allegro
+  apiPackage: Api
+  modelPackage: Model
+  srcBasePath: lib
