@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **line_items** | [**\Phobetor\Allegro\Model\CheckoutFormLineItem[]**](CheckoutFormLineItem.md) |  |
 **surcharges** | [**\Phobetor\Allegro\Model\CheckoutFormPaymentReference[]**](CheckoutFormPaymentReference.md) |  |
 **discounts** | [**\Phobetor\Allegro\Model\CheckoutFormDiscount[]**](CheckoutFormDiscount.md) |  |
+**note** | [**\Phobetor\Allegro\Model\CheckoutFormNoteReference**](CheckoutFormNoteReference.md) |  | [optional]
 **marketplace** | [**\Phobetor\Allegro\Model\CheckoutFormMarketplace**](CheckoutFormMarketplace.md) |  | [optional]
 **summary** | [**\Phobetor\Allegro\Model\CheckoutFormSummary**](CheckoutFormSummary.md) |  |
 **updated_at** | **string** | Provided in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601). | [optional]

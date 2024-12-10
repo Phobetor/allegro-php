@@ -263,7 +263,7 @@ getListOfDisputesUsingGET($checkout_form_id, $limit, $offset, $status): \Phobeto
 
 Get the user's disputes
 
-Use this resource to get the list of your disputes. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#dyskusje-na-koncie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#all-discussions\" target=\"_blank\">EN</a>.
+Use this resource to get the list of your disputes ordered by descending opened date. Read more: <a href=\"../../tutorials/jak-zarzadzac-dyskusjami-E7Zj6gK7ysE#dyskusje-na-koncie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-discussions-VL6Yr40e5t5#all-discussions\" target=\"_blank\">EN</a>.
 
 ### Example
 

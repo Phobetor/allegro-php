@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** | The title of the offer. | [optional]
 **category** | [**\Phobetor\Allegro\Model\OfferCategory**](OfferCategory.md) |  | [optional]
 **primary_image** | [**\Phobetor\Allegro\Model\OfferListingDtoImage**](OfferListingDtoImage.md) |  | [optional]
-**selling_mode** | [**\Phobetor\Allegro\Model\SellingMode**](SellingMode.md) |  | [optional]
+**selling_mode** | [**\Phobetor\Allegro\Model\OfferListingDtoV1SellingMode**](OfferListingDtoV1SellingMode.md) |  | [optional]
 **sale_info** | [**\Phobetor\Allegro\Model\OfferListingDtoV1SaleInfo**](OfferListingDtoV1SaleInfo.md) |  | [optional]
 **stock** | [**\Phobetor\Allegro\Model\OfferListingDtoV1Stock**](OfferListingDtoV1Stock.md) |  | [optional]
 **stats** | [**\Phobetor\Allegro\Model\OfferListingDtoV1Stats**](OfferListingDtoV1Stats.md) |  | [optional]

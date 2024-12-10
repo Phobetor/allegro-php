@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**range** | **string** | Indicates if return policy is full or restricted. | [optional]
+**range** | **string** | Indicates if return policy is full, restricted or disabled. | [optional]
 **restriction_cause** | [**\Phobetor\Allegro\Model\RestrictionCause**](RestrictionCause.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **price** | [**\Phobetor\Allegro\Model\Price**](Price.md) |  |
 **reconciliation** | [**\Phobetor\Allegro\Model\LineItemReconciliation**](LineItemReconciliation.md) |  | [optional]
 **selected_additional_services** | [**\Phobetor\Allegro\Model\CheckoutFormAdditionalService[]**](CheckoutFormAdditionalService.md) |  | [optional]
+**vouchers** | [**\Phobetor\Allegro\Model\LineItemVoucher[]**](LineItemVoucher.md) |  | [optional]
+**tax** | [**\Phobetor\Allegro\Model\CheckoutFormLineItemTax**](CheckoutFormLineItemTax.md) |  | [optional]
 **bought_at** | **\DateTime** | ISO date when offer was bought | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

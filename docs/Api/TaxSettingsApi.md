@@ -10,7 +10,7 @@ All URIs are relative to https://api.allegro.pl, except if the operation defines
 ## `getTaxSettingsForCategory()`
 
 ```php
-getTaxSettingsForCategory($category_id, $country_code): \Phobetor\Allegro\Model\TaxSettings
+getTaxSettingsForCategory($category_id, $country_code): \Phobetor\Allegro\Model\CategoryTaxSettings
 ```
 
 Get all tax settings for category
@@ -35,7 +35,7 @@ $apiInstance = new Phobetor\Allegro\Api\TaxSettingsApi(
     $config
 );
 $category_id = 316194; // string | An identifier of a category for which all available tax settings will be returned.
-$country_code = PL; // string[] | Country code for which tax settings will be returned. If not provided settings for all countries will be returned.
+$country_code = ["PL"]; // string[] | Country code for which tax settings will be returned. If not provided settings for all countries will be returned.
 
 try {
     $result = $apiInstance->getTaxSettingsForCategory($category_id, $country_code);
@@ -54,7 +54,7 @@ try {
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\TaxSettings**](../Model/TaxSettings.md)
+[**\Phobetor\Allegro\Model\CategoryTaxSettings**](../Model/CategoryTaxSettings.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.allegro.public.v1+json`
+- **Accept**: `application/vnd.allegro.public.v1+json`, `application/vnd.allegro.beta.v1+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

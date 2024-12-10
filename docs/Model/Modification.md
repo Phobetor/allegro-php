@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **discounts** | [**\Phobetor\Allegro\Model\ModificationDiscounts**](ModificationDiscounts.md) |  | [optional]
 **location** | [**\Phobetor\Allegro\Model\Location**](Location.md) |  | [optional]
 **payments** | [**\Phobetor\Allegro\Model\ModificationPayments**](ModificationPayments.md) |  | [optional]
-**promotion** | [**\Phobetor\Allegro\Model\ModificationPromotion**](ModificationPromotion.md) |  | [optional]
 **size_table** | [**\Phobetor\Allegro\Model\SizeTable**](SizeTable.md) |  | [optional]
 **publication** | [**\Phobetor\Allegro\Model\ModificationPublication**](ModificationPublication.md) |  | [optional]
+**responsible_person** | [**\Phobetor\Allegro\Model\ModificationResponsiblePerson**](ModificationResponsiblePerson.md) |  | [optional]
+**responsible_producer** | [**\Phobetor\Allegro\Model\ModificationResponsibleProducer**](ModificationResponsibleProducer.md) |  | [optional]
+**safety_information** | [**\Phobetor\Allegro\Model\ModificationSafetyInformation**](ModificationSafetyInformation.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

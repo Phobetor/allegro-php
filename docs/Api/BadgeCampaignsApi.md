@@ -411,7 +411,7 @@ $apiInstance = new Phobetor\Allegro\Api\BadgeCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$badge_application_request = {"campaign":{"id":"BARGAIN"},"offer":{"id":"12345678"},"prices":{"market":{"amount":"19.99","currency":"PLN"},"bargain":{"amount":"9.99","currency":"PLN"}}}; // \Phobetor\Allegro\Model\BadgeApplicationRequest
+$badge_application_request = {"campaign":{"id":"BARGAIN"},"offer":{"id":"12345678"},"prices":{"bargain":{"amount":"9.99","currency":"PLN"}}}; // \Phobetor\Allegro\Model\BadgeApplicationRequest
 
 try {
     $result = $apiInstance->postBadges($badge_application_request);

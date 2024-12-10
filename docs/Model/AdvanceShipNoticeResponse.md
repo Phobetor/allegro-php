@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **handling_unit** | [**\Phobetor\Allegro\Model\HandlingUnit**](HandlingUnit.md) |  | [optional]
 **labels** | [**\Phobetor\Allegro\Model\Labels**](Labels.md) |  | [optional]
 **shipping** | [**\Phobetor\Allegro\Model\Shipping**](Shipping.md) |  | [optional]
-**submitted_at** | **\DateTime** | The date and time of Advance Ship Notice submition. Provided in [ISO 8601 format](link: https://en.wikipedia.org/wiki/ISO_8601). | [optional]
+**submitted_at** | **\DateTime** | The date and time of Advance Ship Notice submission. Provided in [ISO 8601 format](link: https://en.wikipedia.org/wiki/ISO_8601). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

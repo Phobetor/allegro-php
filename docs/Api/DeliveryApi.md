@@ -21,7 +21,7 @@ createShippingRatesSetUsingPOST($shipping_rates_set): \Phobetor\Allegro\Model\Sh
 
 Create a new shipping rates set
 
-Use this resource to create a new seller's shipping rates set. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-cennikami-dostawy-aMDnG7zamSX\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-shipping-price-lists-0A2lDe6jGSB\" target=\"_blank\">EN</a>.
+Use this resource to create a new seller's shipping rates set. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-dodac-cennik-dostaw\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-add-shipping-rates\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -81,7 +81,7 @@ getListOfDeliveryMethodsUsingGET($marketplace): \Phobetor\Allegro\Model\GetListO
 
 Get the list of delivery methods
 
-Use this resource to get a list of all delivery methods currently available on the platform, as well as those that have already been discontinued. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-cennikami-dostawy-aMDnG7zamSX\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-shipping-price-lists-0A2lDe6jGSB\" target=\"_blank\">EN</a>.
+Use this resource to get a list of all delivery methods currently available on the platform, as well as those that have already been discontinued. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-dodac-cennik-dostaw\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-add-shipping-rates\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -139,12 +139,12 @@ try {
 ## `getListOfShippingRatestUsingGET()`
 
 ```php
-getListOfShippingRatestUsingGET(): \Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200Response
+getListOfShippingRatestUsingGET($marketplace): \Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200Response
 ```
 
 Get the user's shipping rates
 
-Use this resource to get a list of seller's shipping rates. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-cennikami-dostawy-aMDnG7zamSX\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-shipping-price-lists-0A2lDe6jGSB\" target=\"_blank\">EN</a>.
+Use this resource to get a list of seller's shipping rates. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-cennik-dostaw\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-shipping-rates\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -163,9 +163,10 @@ $apiInstance = new Phobetor\Allegro\Api\DeliveryApi(
     new GuzzleHttp\Client(),
     $config
 );
+$marketplace = allegro-cz; // string | Allows to filter shipping rates by marketplace that they are qualified for.
 
 try {
-    $result = $apiInstance->getListOfShippingRatestUsingGET();
+    $result = $apiInstance->getListOfShippingRatestUsingGET($marketplace);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DeliveryApi->getListOfShippingRatestUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -174,7 +175,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **marketplace** | **string**| Allows to filter shipping rates by marketplace that they are qualified for. | [optional] |
 
 ### Return type
 
@@ -261,7 +264,7 @@ getShippingRatesSetUsingGET($id): \Phobetor\Allegro\Model\ShippingRatesSet
 
 Get the details of a shipping rates set
 
-Use this resource to get details of the given shipping rates set. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-cennikami-dostawy-aMDnG7zamSX\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-shipping-price-lists-0A2lDe6jGSB\" target=\"_blank\">EN</a>.
+Use this resource to get details of the given shipping rates set. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-cennik-dostaw\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-shipping-rates\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -321,7 +324,7 @@ modifyShippingRatesSetUsingPUT($id, $shipping_rates_set): \Phobetor\Allegro\Mode
 
 Edit a user's shipping rates set
 
-Use this resource to edit a new seller's shipping rates set. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-cennikami-dostawy-aMDnG7zamSX\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-shipping-price-lists-0A2lDe6jGSB\" target=\"_blank\">EN</a>.
+Use this resource to edit a new seller's shipping rates set. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-edytowac-cennik-dostaw\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-modify-shipping-rates\" target=\"_blank\">EN</a>.
 
 ### Example
 

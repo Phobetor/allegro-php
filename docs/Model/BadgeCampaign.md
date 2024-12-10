@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Badge campaign ID. |
 **name** | **string** | Badge campaign name. |
+**marketplace** | [**\Phobetor\Allegro\Model\MarketplaceReference**](MarketplaceReference.md) |  |
 **type** | **string** |  |
 **eligibility** | [**\Phobetor\Allegro\Model\UserCampaignEligibility**](UserCampaignEligibility.md) |  |
 **application** | [**\Phobetor\Allegro\Model\ApplicationTimePolicy**](ApplicationTimePolicy.md) |  |

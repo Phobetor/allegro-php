@@ -16,7 +16,7 @@ calculateFeePreviewUsingPOST($public_offer_preview_request): \Phobetor\Allegro\M
 
 Calculate fee and commission for an offer
 
-Provides information about fee and commission for an offer. Read more: <a href=\"../../tutorials/jak-sprawdzic-oplaty-nn9DOL5PASX#kalkulator-oplat\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-check-the-fees-3An6Wame3Um#fee-calculator\" target=\"_blank\">EN</a>.
+Provides information about fee and commission for an offer. This resource is limited to 25 requests per second for a single user. Read more: <a href=\"../../tutorials/jak-sprawdzic-oplaty-nn9DOL5PASX#kalkulator-oplat\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-check-the-fees-3An6Wame3Um#fee-calculator\" target=\"_blank\">EN</a>.
 
 ### Example
 

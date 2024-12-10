@@ -81,7 +81,7 @@ classifiedOffersStatsGET($offer_id, $date_gte, $date_lte): \Phobetor\Allegro\Mod
 
 Get the advertisements daily statistics
 
-This endpoint returns daily statistics collected for a list of advertisements in a given date range.
+This endpoint returns daily statistics collected for a list of advertisements in a given date range. Read more: <a href=\"../../tutorials/jak-wystawic-i-zarzadzac-ogloszeniem-K6r3Z47dKcy#statystyki-wybranych-ogloszen\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/listing-and-managing-classified-ads-5Ln0r6wkWs7#statistics-of-selected-classified-ads\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -101,8 +101,8 @@ $apiInstance = new Phobetor\Allegro\Api\ClassifiedsApi(
     $config
 );
 $offer_id = array('offer_id_example'); // string[] | List of offer Ids, maximum 50 values.
-$date_gte = 2020-11-13T12:45:20.818Z; // \DateTime | The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months.
-$date_lte = 2020-11-13T12:45:20.818Z; // \DateTime | The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months.
+$date_gte = 2020-11-13T12:45:20.818Z; // \DateTime | The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months.
+$date_lte = 2020-11-13T12:45:20.818Z; // \DateTime | The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months.
 
 try {
     $result = $apiInstance->classifiedOffersStatsGET($offer_id, $date_gte, $date_lte);
@@ -117,8 +117,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **offer_id** | [**string[]**](../Model/string.md)| List of offer Ids, maximum 50 values. | |
-| **date_gte** | **\DateTime**| The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
-| **date_lte** | **\DateTime**| The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
+| **date_gte** | **\DateTime**| The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
+| **date_lte** | **\DateTime**| The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
 
 ### Return type
 
@@ -145,7 +145,7 @@ classifiedSellerOfferStatsGET($date_gte, $date_lte): \Phobetor\Allegro\Model\Sel
 
 Get the seller's advertisements daily statistics
 
-This endpoint returns daily statistics collected for a list of advertisements in a given date range for logged user.
+This endpoint returns daily statistics collected for a list of advertisements in a given date range for logged user. Read more: <a href=\"../../tutorials/jak-wystawic-i-zarzadzac-ogloszeniem-K6r3Z47dKcy#statystyki-wszystkich-ogloszen-sprzedawcy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/listing-and-managing-classified-ads-5Ln0r6wkWs7#statistics-of-seller-s-classified-ads\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -164,8 +164,8 @@ $apiInstance = new Phobetor\Allegro\Api\ClassifiedsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date_gte = 2020-11-13T12:45:20.818Z; // \DateTime | The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months.
-$date_lte = 2020-11-13T12:45:20.818Z; // \DateTime | The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months.
+$date_gte = 2020-11-13T12:45:20.818Z; // \DateTime | The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months.
+$date_lte = 2020-11-13T12:45:20.818Z; // \DateTime | The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months.
 
 try {
     $result = $apiInstance->classifiedSellerOfferStatsGET($date_gte, $date_lte);
@@ -179,8 +179,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date_gte** | **\DateTime**| The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
-| **date_lte** | **\DateTime**| The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
+| **date_gte** | **\DateTime**| The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
+| **date_lte** | **\DateTime**| The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. | [optional] |
 
 ### Return type
 

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **compatibility_list** | [**\Phobetor\Allegro\Model\CompatibilityListProductOfferResponse**](CompatibilityListProductOfferResponse.md) |  | [optional]
 **language** | **string** | Declared base language of the offer. | [optional]
 **validation** | [**\Phobetor\Allegro\Model\Validation**](Validation.md) |  | [optional]
+**warnings** | **array** |  | [optional]
 **after_sales_services** | [**\Phobetor\Allegro\Model\AfterSalesServices**](AfterSalesServices.md) |  | [optional]
 **discounts** | [**\Phobetor\Allegro\Model\DiscountsProductOfferResponse**](DiscountsProductOfferResponse.md) |  | [optional]
 **stock** | [**\Phobetor\Allegro\Model\Stock**](Stock.md) |  | [optional]

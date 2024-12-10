@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **selling_stats** | [**\Phobetor\Allegro\Model\StockSellingStats**](StockSellingStats.md) |  | [optional]
 **reserve** | [**\Phobetor\Allegro\Model\ReserveInfo**](ReserveInfo.md) |  | [optional]
 **storage_fee** | [**\Phobetor\Allegro\Model\StockStorageFee**](StockStorageFee.md) |  | [optional]
+**offer_id** | **string** | Identifier of the offer currently attached to the product. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

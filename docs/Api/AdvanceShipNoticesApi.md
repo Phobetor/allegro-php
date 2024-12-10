@@ -4,18 +4,77 @@ All URIs are relative to https://api.allegro.pl, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelAdvanceShipNotice()**](AdvanceShipNoticesApi.md#cancelAdvanceShipNotice) | **PUT** /fulfillment/advance-ship-notices/{id}/cancel | Cancel Advance Ship Notice |
 | [**createAdvanceShipNotice()**](AdvanceShipNoticesApi.md#createAdvanceShipNotice) | **POST** /fulfillment/advance-ship-notices | Create an Advance Ship Notice |
-| [**createLabelsCommand()**](AdvanceShipNoticesApi.md#createLabelsCommand) | **PUT** /fulfillment/create-labels-commands/{command-id} | Create labels |
 | [**deleteAdvanceShipNotice()**](AdvanceShipNoticesApi.md#deleteAdvanceShipNotice) | **DELETE** /fulfillment/advance-ship-notices/{id} | Delete Advance Ship Notice |
 | [**getAdvanceShipNotice()**](AdvanceShipNoticesApi.md#getAdvanceShipNotice) | **GET** /fulfillment/advance-ship-notices/{id} | Get single Advance Ship Notice |
 | [**getAdvanceShipNoticeLabels()**](AdvanceShipNoticesApi.md#getAdvanceShipNoticeLabels) | **GET** /fulfillment/advance-ship-notices/{id}/labels | Get labels for Advance Ship Notice |
 | [**getAdvanceShipNoticeReceivingState()**](AdvanceShipNoticesApi.md#getAdvanceShipNoticeReceivingState) | **GET** /fulfillment/advance-ship-notices/{id}/receiving-state | Check current state and details of Advance Ship Notice receiving |
 | [**getAdvanceShipNotices()**](AdvanceShipNoticesApi.md#getAdvanceShipNotices) | **GET** /fulfillment/advance-ship-notices | Get list of Advance Ship Notices |
-| [**getLabelCommand()**](AdvanceShipNoticesApi.md#getLabelCommand) | **GET** /fulfillment/create-labels-commands/{command-id} | Get labels |
 | [**getSubmitCommand()**](AdvanceShipNoticesApi.md#getSubmitCommand) | **GET** /fulfillment/submit-commands/{command-id} | Get submit status |
 | [**submitCommand()**](AdvanceShipNoticesApi.md#submitCommand) | **PUT** /fulfillment/submit-commands/{command-id} | Submit the Advance Ship Notice |
 | [**updateAdvanceShipNotice()**](AdvanceShipNoticesApi.md#updateAdvanceShipNotice) | **PUT** /fulfillment/advance-ship-notices/{id} | Update Advance Ship Notice |
+| [**updateSubmittedAdvanceShipNotice()**](AdvanceShipNoticesApi.md#updateSubmittedAdvanceShipNotice) | **PUT** /fulfillment/advance-ship-notices/{id}/submitted | Update submitted Advance Ship Notice |
 
+
+## `cancelAdvanceShipNotice()`
+
+```php
+cancelAdvanceShipNotice($id)
+```
+
+Cancel Advance Ship Notice
+
+Use this resource to cancel an Advance Ship Notice in IN_TRANSIT status. Read more: <a href=\"../../tutorials/one-fulfillment-by-allegro-0ADwgOLqWSw#anuluj-awizo\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/one-fulfillment-by-allegro-4R9dXyMPlc9#cancel-advance-ship-notice\" target=\"_blank\">EN</a>.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bearer-token-for-user
+$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Phobetor\Allegro\Api\AdvanceShipNoticesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = '0b488a23-bc99-470d-8842-0c585adf2479'; // string | An identifier of the Advance Ship Notice to cancel.
+
+try {
+    $apiInstance->cancelAdvanceShipNotice($id);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvanceShipNoticesApi->cancelAdvanceShipNotice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| An identifier of the Advance Ship Notice to cancel. | [default to &#39;0b488a23-bc99-470d-8842-0c585adf2479&#39;] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearer-token-for-user](../../README.md#bearer-token-for-user)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createAdvanceShipNotice()`
 
@@ -77,72 +136,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createLabelsCommand()`
-
-```php
-createLabelsCommand($command_id, $create_labels_command_only_input): \Phobetor\Allegro\Model\CreateLabelsCommand
-```
-
-Create labels
-
-Use this resource to create labels for the Advance Ship Notice. Read more: <a href=\"../../tutorials/one-fulfillment-by-allegro-0ADwgOLqWSw#wygeneruj-oznaczenia-na-kartony\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/one-fulfillment-by-allegro-4R9dXyMPlc9#create-labels-for-boxes\" target=\"_blank\">EN</a>.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: bearer-token-for-user
-$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Phobetor\Allegro\Api\AdvanceShipNoticesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$command_id = '712fa46c-7d4a-4ba0-b094-b5d1d4f6155d'; // string | The identifier of the command.
-$create_labels_command_only_input = new \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput(); // \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput
-
-try {
-    $result = $apiInstance->createLabelsCommand($command_id, $create_labels_command_only_input);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AdvanceShipNoticesApi->createLabelsCommand: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **command_id** | **string**| The identifier of the command. | [default to &#39;712fa46c-7d4a-4ba0-b094-b5d1d4f6155d&#39;] |
-| **create_labels_command_only_input** | [**\Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput**](../Model/CreateLabelsCommandOnlyInput.md)|  | |
-
-### Return type
-
-[**\Phobetor\Allegro\Model\CreateLabelsCommand**](../Model/CreateLabelsCommand.md)
-
-### Authorization
-
-[bearer-token-for-user](../../README.md#bearer-token-for-user)
-
-### HTTP request headers
-
-- **Content-Type**: `application/vnd.allegro.public.v1+json`
-- **Accept**: `application/vnd.allegro.public.v1+json`, `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `deleteAdvanceShipNotice()`
 
 ```php
-deleteAdvanceShipNotice($id, $accept)
+deleteAdvanceShipNotice($id)
 ```
 
 Delete Advance Ship Notice
@@ -167,10 +164,9 @@ $apiInstance = new Phobetor\Allegro\Api\AdvanceShipNoticesApi(
     $config
 );
 $id = '0b488a23-bc99-470d-8842-0c585adf2479'; // string | An identifier of the Advance Ship Notice to delete.
-$accept = 'accept_example'; // string
 
 try {
-    $apiInstance->deleteAdvanceShipNotice($id, $accept);
+    $apiInstance->deleteAdvanceShipNotice($id);
 } catch (Exception $e) {
     echo 'Exception when calling AdvanceShipNoticesApi->deleteAdvanceShipNotice: ', $e->getMessage(), PHP_EOL;
 }
@@ -181,7 +177,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| An identifier of the Advance Ship Notice to delete. | [default to &#39;0b488a23-bc99-470d-8842-0c585adf2479&#39;] |
-| **accept** | **string**|  | |
 
 ### Return type
 
@@ -241,7 +236,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The identifier of returned Advance Ship Notice. | [default to &#39;84529ad2-2265-4e15-b76b-c17025d848f6&#39;] |
+| **id** | **string**| The identifier of returned Advance Ship Notice. | |
 
 ### Return type
 
@@ -303,7 +298,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| An identifier of the Advance Ship Notice. | |
-| **accept** | **string**| Content-type of generated labels | |
+| **accept** | **string**| Content-type of generated labels. | |
 
 ### Return type
 
@@ -446,66 +441,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getLabelCommand()`
-
-```php
-getLabelCommand($command_id): \Phobetor\Allegro\Model\CreateLabelsCommand
-```
-
-Get labels
-
-Use this resource to check the status of the \"create labels command\" and get the URL to download labels. Read more: <a href=\"../../tutorials/one-fulfillment-by-allegro-0ADwgOLqWSw#wygeneruj-oznaczenia-na-kartony\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/one-fulfillment-by-allegro-4R9dXyMPlc9#create-labels-for-boxes\" target=\"_blank\">EN</a>.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: bearer-token-for-user
-$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Phobetor\Allegro\Api\AdvanceShipNoticesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$command_id = '882202c8-15ab-4a83-aeef-29ea505bf0d0'; // string | An identifier of the command.
-
-try {
-    $result = $apiInstance->getLabelCommand($command_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AdvanceShipNoticesApi->getLabelCommand: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **command_id** | **string**| An identifier of the command. | [default to &#39;882202c8-15ab-4a83-aeef-29ea505bf0d0&#39;] |
-
-### Return type
-
-[**\Phobetor\Allegro\Model\CreateLabelsCommand**](../Model/CreateLabelsCommand.md)
-
-### Authorization
-
-[bearer-token-for-user](../../README.md#bearer-token-for-user)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/vnd.allegro.public.v1+json`, `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getSubmitCommand()`
 
 ```php
@@ -574,7 +509,7 @@ submitCommand($command_id, $submit_command): \Phobetor\Allegro\Model\SubmitComma
 
 Submit the Advance Ship Notice
 
-Use this resource to submit the Advance Ship Notice. After that operation any update of the Advance Ship Notice will not be possible. If a status of the ASN is different from DRAFT, command will end with success. Read more: <a href=\"../../tutorials/one-fulfillment-by-allegro-0ADwgOLqWSw#zakoncz-edycje-i-wyslij-awizo\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/one-fulfillment-by-allegro-4R9dXyMPlc9#finish-editing-and-submit-the-advance-ship-notice\" target=\"_blank\">EN</a>.
+Use this resource to submit the Advance Ship Notice. After this operation, updates of the Advance Ship Notice are limited to selected properties only. See <a href=\"../../documentation#operation/updateSubmittedAdvanceShipNotice\">PUT /fulfillment/advance-ship-notices/{id}/submitted</a>. Read more: <a href=\"../../tutorials/one-fulfillment-by-allegro-0ADwgOLqWSw#zakoncz-edycje-i-wyslij-awizo\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/one-fulfillment-by-allegro-4R9dXyMPlc9#finish-editing-and-submit-the-advance-ship-notice\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -655,7 +590,7 @@ $apiInstance = new Phobetor\Allegro\Api\AdvanceShipNoticesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = '84529ad2-2265-4e15-b76b-c17025d848f6'; // string | An identifier of Advance Ship Notice.
+$id = 84529ad2-2265-4e15-b76b-c17025d848f6; // string | An identifier of Advance Ship Notice.
 $if_match = 123456; // string | A current version of Advance Ship Notice (e.g. from etag header obtained via get).
 $advance_ship_notice = new \Phobetor\Allegro\Model\AdvanceShipNotice(); // \Phobetor\Allegro\Model\AdvanceShipNotice
 
@@ -671,9 +606,73 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| An identifier of Advance Ship Notice. | [default to &#39;84529ad2-2265-4e15-b76b-c17025d848f6&#39;] |
+| **id** | **string**| An identifier of Advance Ship Notice. | |
 | **if_match** | **string**| A current version of Advance Ship Notice (e.g. from etag header obtained via get). | |
 | **advance_ship_notice** | [**\Phobetor\Allegro\Model\AdvanceShipNotice**](../Model/AdvanceShipNotice.md)|  | |
+
+### Return type
+
+[**\Phobetor\Allegro\Model\AdvanceShipNoticeResponse**](../Model/AdvanceShipNoticeResponse.md)
+
+### Authorization
+
+[bearer-token-for-user](../../README.md#bearer-token-for-user)
+
+### HTTP request headers
+
+- **Content-Type**: `application/vnd.allegro.public.v1+json`
+- **Accept**: `application/vnd.allegro.public.v1+json`, `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateSubmittedAdvanceShipNotice()`
+
+```php
+updateSubmittedAdvanceShipNotice($id, $if_match, $update_submitted_advance_ship_notice_request): \Phobetor\Allegro\Model\AdvanceShipNoticeResponse
+```
+
+Update submitted Advance Ship Notice
+
+Use this resource to update already submitted Advance Ship Notice. Update is allowed only when Advance Ship Notice is in \"IN_TRANSIT\" status. Modifications are limited to:   - changing items quantity   - removing items   - changing handling unit amount   - changing shipping courier id, name, tracking numbers or vehicle licence plate or third party delivery details (depending on the selected shipping method in the submitted advance ship notice) Handling unit's amount property update clears labels property. Use Create labels command to create new labels for provided content. Read more: <a href=\"../../tutorials/one-fulfillment-by-allegro-0ADwgOLqWSw#edytuj-zakonczone-awizo\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/one-fulfillment-by-allegro-4R9dXyMPlc9#edit-advance-ship-notice\" target=\"_blank\">EN</a>.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bearer-token-for-user
+$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Phobetor\Allegro\Api\AdvanceShipNoticesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 84529ad2-2265-4e15-b76b-c17025d848f6; // string | An identifier of Advance Ship Notice.
+$if_match = 123456; // string | A current version of Advance Ship Notice (e.g. from etag header obtained via get).
+$update_submitted_advance_ship_notice_request = new \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest(); // \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest
+
+try {
+    $result = $apiInstance->updateSubmittedAdvanceShipNotice($id, $if_match, $update_submitted_advance_ship_notice_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdvanceShipNoticesApi->updateSubmittedAdvanceShipNotice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| An identifier of Advance Ship Notice. | |
+| **if_match** | **string**| A current version of Advance Ship Notice (e.g. from etag header obtained via get). | |
+| **update_submitted_advance_ship_notice_request** | [**\Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest**](../Model/UpdateSubmittedAdvanceShipNoticeRequest.md)|  | |
 
 ### Return type
 

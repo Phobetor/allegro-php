@@ -6,14 +6,12 @@ All URIs are relative to https://api.allegro.pl, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**changePublicationStatusUsingPUT()**](OfferManagementApi.md#changePublicationStatusUsingPUT) | **PUT** /sale/offer-publication-commands/{commandId} | Batch offer publish / unpublish |
 | [**createChangePriceCommandUsingPUT()**](OfferManagementApi.md#createChangePriceCommandUsingPUT) | **PUT** /offers/{offerId}/change-price-commands/{commandId} | Modify the Buy Now price in an offer |
-| [**createOfferUsingPOST()**](OfferManagementApi.md#createOfferUsingPOST) | **POST** /sale/offers | Create a draft offer |
 | [**createProductOffers()**](OfferManagementApi.md#createProductOffers) | **POST** /sale/product-offers | Create offer based on product |
 | [**deleteOfferUsingDELETE()**](OfferManagementApi.md#deleteOfferUsingDELETE) | **DELETE** /sale/offers/{offerId} | Delete a draft offer |
 | [**editProductOffers()**](OfferManagementApi.md#editProductOffers) | **PATCH** /sale/product-offers/{offerId} | Edit an offer |
 | [**getAvailableOfferPromotionPackages()**](OfferManagementApi.md#getAvailableOfferPromotionPackages) | **GET** /sale/offer-promotion-packages | Get all available offer promotion packages |
 | [**getOfferPromoOptionsUsingGET()**](OfferManagementApi.md#getOfferPromoOptionsUsingGET) | **GET** /sale/offers/{offerId}/promo-options | Get offer promotion packages |
 | [**getOffersUnfilledParametersUsingGET1()**](OfferManagementApi.md#getOffersUnfilledParametersUsingGET1) | **GET** /sale/offers/unfilled-parameters | Get offers with missing parameters |
-| [**getProductOffer()**](OfferManagementApi.md#getProductOffer) | **GET** /sale/product-offers/{offerId} | Get all data of the particular product-offer |
 | [**getProductOfferProcessingStatus()**](OfferManagementApi.md#getProductOfferProcessingStatus) | **GET** /sale/product-offers/{offerId}/operations/{operationId} | Check the processing status of a POST or PATCH request |
 | [**getPromoModificationCommandDetailedResultUsingGET()**](OfferManagementApi.md#getPromoModificationCommandDetailedResultUsingGET) | **GET** /sale/offers/promo-options-commands/{commandId}/tasks | Modification command detailed result |
 | [**getPromoModificationCommandResultUsingGET()**](OfferManagementApi.md#getPromoModificationCommandResultUsingGET) | **GET** /sale/offers/promo-options-commands/{commandId} | Modification command summary |
@@ -22,7 +20,6 @@ All URIs are relative to https://api.allegro.pl, except if the operation defines
 | [**getPublicationTasksUsingGET()**](OfferManagementApi.md#getPublicationTasksUsingGET) | **GET** /sale/offer-publication-commands/{commandId}/tasks | Publish command detailed report |
 | [**modifyOfferPromoOptionsUsingPOST()**](OfferManagementApi.md#modifyOfferPromoOptionsUsingPOST) | **POST** /sale/offers/{offerId}/promo-options-modification | Modify offer promotion packages |
 | [**promoModificationCommandUsingPUT()**](OfferManagementApi.md#promoModificationCommandUsingPUT) | **PUT** /sale/offers/promo-options-commands/{commandId} | Batch offer promotion package modification |
-| [**updateOfferUsingPUT()**](OfferManagementApi.md#updateOfferUsingPUT) | **PUT** /sale/offers/{offerId} | Complete a draft offer or edit an offer |
 
 
 ## `changePublicationStatusUsingPUT()`
@@ -137,66 +134,6 @@ try {
 ### Return type
 
 [**\Phobetor\Allegro\Model\ChangePrice**](../Model/ChangePrice.md)
-
-### Authorization
-
-[bearer-token-for-user](../../README.md#bearer-token-for-user)
-
-### HTTP request headers
-
-- **Content-Type**: `application/vnd.allegro.public.v1+json`
-- **Accept**: `application/vnd.allegro.public.v1+json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createOfferUsingPOST()`
-
-```php
-createOfferUsingPOST($create_offer_using_post_request): \Phobetor\Allegro\Model\OfferResponse
-```
-
-Create a draft offer
-
-Create an offer draft. This endpoint is deprecated: <a href=\"../../news/na-poczatku-2024-roku-wylaczymy-zasoby-sale-offers-sluzace-do-tworzenia-i-edycji-ofert-BvqK3XOaEcW\" target=\"_blank\">PL</a> / <a href=\"../../news/at-the-beginning-of-2024-we-will-disable-the-sale-offers-resources-for-creating-and-editing-offers-k1dG88KlxHv\" target=\"_blank\">EN</a>. Use <a href=\"../../documentation#operation/createProductOffers\">POST /sale/product-offers</a> instead. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-wystawic-oferte-z-produktem-za-pomoca-zasobu-sale-product-offers\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-list-an-offer-with-a-product-via-sale-product-offers-resource\" target=\"_blank\">EN</a>.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: bearer-token-for-user
-$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$create_offer_using_post_request = new \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest(); // \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest | offer
-
-try {
-    $result = $apiInstance->createOfferUsingPOST($create_offer_using_post_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OfferManagementApi->createOfferUsingPOST: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_offer_using_post_request** | [**\Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest**](../Model/CreateOfferUsingPOSTRequest.md)| offer | |
-
-### Return type
-
-[**\Phobetor\Allegro\Model\OfferResponse**](../Model/OfferResponse.md)
 
 ### Authorization
 
@@ -578,66 +515,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getProductOffer()`
-
-```php
-getProductOffer($offer_id): \Phobetor\Allegro\Model\SaleProductOfferResponseV1
-```
-
-Get all data of the particular product-offer
-
-Use this resource to retrieve all data of the particular product-offer. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#publikacja-oferty-w-asynchronicznym-api\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#offer-publication-in-asynchronous-api\" target=\"_blank\">EN</a>.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: bearer-token-for-user
-$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$offer_id = 'offer_id_example'; // string | Offer identifier.
-
-try {
-    $result = $apiInstance->getProductOffer($offer_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OfferManagementApi->getProductOffer: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **offer_id** | **string**| Offer identifier. | |
-
-### Return type
-
-[**\Phobetor\Allegro\Model\SaleProductOfferResponseV1**](../Model/SaleProductOfferResponseV1.md)
-
-### Authorization
-
-[bearer-token-for-user](../../README.md#bearer-token-for-user)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/vnd.allegro.public.v1+json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getProductOfferProcessingStatus()`
 
 ```php
@@ -767,7 +644,7 @@ try {
 ## `getPromoModificationCommandResultUsingGET()`
 
 ```php
-getPromoModificationCommandResultUsingGET($command_id): \Phobetor\Allegro\Model\GeneralReport
+getPromoModificationCommandResultUsingGET($command_id): \Phobetor\Allegro\Model\PromoGeneralReport
 ```
 
 Modification command summary
@@ -809,7 +686,7 @@ try {
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\GeneralReport**](../Model/GeneralReport.md)
+[**\Phobetor\Allegro\Model\PromoGeneralReport**](../Model/PromoGeneralReport.md)
 
 ### Authorization
 
@@ -1075,7 +952,7 @@ try {
 ## `promoModificationCommandUsingPUT()`
 
 ```php
-promoModificationCommandUsingPUT($command_id, $promo_options_command): \Phobetor\Allegro\Model\GeneralReport
+promoModificationCommandUsingPUT($command_id, $promo_options_command): \Phobetor\Allegro\Model\PromoGeneralReport
 ```
 
 Batch offer promotion package modification
@@ -1119,69 +996,7 @@ try {
 
 ### Return type
 
-[**\Phobetor\Allegro\Model\GeneralReport**](../Model/GeneralReport.md)
-
-### Authorization
-
-[bearer-token-for-user](../../README.md#bearer-token-for-user)
-
-### HTTP request headers
-
-- **Content-Type**: `application/vnd.allegro.public.v1+json`
-- **Accept**: `application/vnd.allegro.public.v1+json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateOfferUsingPUT()`
-
-```php
-updateOfferUsingPUT($offer_id, $create_offer_using_post_request): \Phobetor\Allegro\Model\OfferResponse
-```
-
-Complete a draft offer or edit an offer
-
-Complete a draft offer or edit ongoing offers. This endpoint is deprecated: <a href=\"../../news/na-poczatku-2024-roku-wylaczymy-zasoby-sale-offers-sluzace-do-tworzenia-i-edycji-ofert-BvqK3XOaEcW\" target=\"_blank\">PL</a> / <a href=\"../../news/at-the-beginning-of-2024-we-will-disable-the-sale-offers-resources-for-creating-and-editing-offers-k1dG88KlxHv\" target=\"_blank\">EN</a>. Use <a href=\"../../documentation#operation/editProductOffers\">PATCH /sale/product-offers/{offerId}</a> instead. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#edycja-pojedynczej-oferty\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#editing-single-offer\" target=\"_blank\">EN</a>. This resource is rate limited to 10 requests per second.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: bearer-token-for-user
-$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Phobetor\Allegro\Api\OfferManagementApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$offer_id = 'offer_id_example'; // string | Offer identifier.
-$create_offer_using_post_request = new \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest(); // \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest | offer
-
-try {
-    $result = $apiInstance->updateOfferUsingPUT($offer_id, $create_offer_using_post_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OfferManagementApi->updateOfferUsingPUT: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **offer_id** | **string**| Offer identifier. | |
-| **create_offer_using_post_request** | [**\Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest**](../Model/CreateOfferUsingPOSTRequest.md)| offer | |
-
-### Return type
-
-[**\Phobetor\Allegro\Model\OfferResponse**](../Model/OfferResponse.md)
+[**\Phobetor\Allegro\Model\PromoGeneralReport**](../Model/PromoGeneralReport.md)
 
 ### Authorization
 

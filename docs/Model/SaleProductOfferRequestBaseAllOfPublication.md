@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**duration** | **string** | Publication duration, ISO 8601 duration format. This field must be set to one of the following: PT0S for immediately, PT24H, P2D, P3D, P4D, P5D, P7D, P10D, P14D, P21D, P30D, P60D. | [optional]
+**duration** | **string** | This field must be set to one of the following:&lt;br/&gt; - for auctions: 1 day, 3 days, 5 days, 7 days, 10 days&lt;br/&gt; - for buy-now offers: 3 days, 5 days, 7 days, 10 days, 20 days, 30 days&lt;br/&gt; - for advertisements: 10 days, 20 days, 30 days.&lt;br/&gt; The value is in ISO 8601 format (example: PT24H, PT72H). | [optional]
 **starting_at** | **\DateTime** | Publication starting date: Format (ISO 8601) - yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ. Cannot be modified after activation or ending of the offer. | [optional]
 **status** | [**\Phobetor\Allegro\Model\OfferStatus**](OfferStatus.md) |  | [optional]
 

@@ -9,7 +9,9 @@ All URIs are relative to https://api.allegro.pl, except if the operation defines
 | [**deleteAdditionalEmailUsingDELETE()**](InformationAboutUserApi.md#deleteAdditionalEmailUsingDELETE) | **DELETE** /account/additional-emails/{emailId} | Delete an additional email address |
 | [**getAdditionalEmailUsingGET()**](InformationAboutUserApi.md#getAdditionalEmailUsingGET) | **GET** /account/additional-emails/{emailId} | Get information about a particular additional email |
 | [**getListOfAdditionalEmailsUsingGET()**](InformationAboutUserApi.md#getListOfAdditionalEmailsUsingGET) | **GET** /account/additional-emails | Get user&#39;s additional emails |
+| [**getSaleQualityUsingGET()**](InformationAboutUserApi.md#getSaleQualityUsingGET) | **GET** /sale/quality | Get sales quality |
 | [**getSellerSmartClassificationGET()**](InformationAboutUserApi.md#getSellerSmartClassificationGET) | **GET** /sale/smart | Get Smart! seller classification report |
+| [**getUserRatingUsingGET()**](InformationAboutUserApi.md#getUserRatingUsingGET) | **GET** /sale/user-ratings/{ratingId} | Get the user&#39;s rating by given rating id |
 | [**getUserRatingsUsingGET()**](InformationAboutUserApi.md#getUserRatingsUsingGET) | **GET** /sale/user-ratings | Get the user&#39;s ratings |
 | [**meGET()**](InformationAboutUserApi.md#meGET) | **GET** /me | Get basic information about user |
 | [**userRatingRemovalUsingPUT()**](InformationAboutUserApi.md#userRatingRemovalUsingPUT) | **PUT** /sale/user-ratings/{ratingId}/removal | Request removal of user&#39;s rating |
@@ -313,6 +315,63 @@ This endpoint does not need any parameter.
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getSaleQualityUsingGET()`
+
+```php
+getSaleQualityUsingGET(): \Phobetor\Allegro\Model\SalesQualityHistoryResponse
+```
+
+Get sales quality
+
+Use this resource to get current sales quality with at most 30 days history.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bearer-token-for-user
+$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Phobetor\Allegro\Api\InformationAboutUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getSaleQualityUsingGET();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InformationAboutUserApi->getSaleQualityUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Phobetor\Allegro\Model\SalesQualityHistoryResponse**](../Model/SalesQualityHistoryResponse.md)
+
+### Authorization
+
+[bearer-token-for-user](../../README.md#bearer-token-for-user)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/vnd.allegro.public.v1+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getSellerSmartClassificationGET()`
 
 ```php
@@ -321,7 +380,7 @@ getSellerSmartClassificationGET($marketplace_id): \Phobetor\Allegro\Model\SmartS
 
 Get Smart! seller classification report
 
-Use this resource to get a full Smart! seller classification report. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#klasyfikacja-sprzedawcy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#seller-classification\" target=\"_blank\">EN</a>.
+Use this resource to get a full Smart! seller classification report. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#kwalifikacja-sprzedawcy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#seller-qualification\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -359,6 +418,66 @@ try {
 ### Return type
 
 [**\Phobetor\Allegro\Model\SmartSellerClassificationReport**](../Model/SmartSellerClassificationReport.md)
+
+### Authorization
+
+[bearer-token-for-user](../../README.md#bearer-token-for-user)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/vnd.allegro.public.v1+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserRatingUsingGET()`
+
+```php
+getUserRatingUsingGET($rating_id): \Phobetor\Allegro\Model\UserRating
+```
+
+Get the user's rating by given rating id
+
+Use this resource to receive your sales rating by given rating id. Read more: <a href=\"../../tutorials/jak-zarzadzac-kontem-danymi-uzytkownika-ZM9YAKgPgi2#jak-pobrac-informacje-o-ocenie-sprzedazy\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/account-and-user-data-management-jn9vBjqjnsw#how-to-retrieve-user-s-ratings-data\" target=\"_blank\">EN</a>.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bearer-token-for-user
+$config = Phobetor\Allegro\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Phobetor\Allegro\Api\InformationAboutUserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$rating_id = 41846511; // string | The ID of the rating.
+
+try {
+    $result = $apiInstance->getUserRatingUsingGET($rating_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InformationAboutUserApi->getUserRatingUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rating_id** | **string**| The ID of the rating. | |
+
+### Return type
+
+[**\Phobetor\Allegro\Model\UserRating**](../Model/UserRating.md)
 
 ### Authorization
 

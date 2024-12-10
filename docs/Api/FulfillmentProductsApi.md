@@ -10,7 +10,7 @@ All URIs are relative to https://api.allegro.pl, except if the operation defines
 ## `getAvailableProducts()`
 
 ```php
-getAvailableProducts($offset, $limit): \Phobetor\Allegro\Model\AvailableProductsList
+getAvailableProducts($accept_language, $offset, $limit): \Phobetor\Allegro\Model\AvailableProductsList
 ```
 
 Get list of available products
@@ -34,11 +34,12 @@ $apiInstance = new Phobetor\Allegro\Api\FulfillmentProductsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$accept_language = pl-PL; // string | Expected language of product name translation.
 $offset = 0; // int | The offset of elements in the response.
 $limit = 50; // int | Maximum number of elements in response.
 
 try {
-    $result = $apiInstance->getAvailableProducts($offset, $limit);
+    $result = $apiInstance->getAvailableProducts($accept_language, $offset, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FulfillmentProductsApi->getAvailableProducts: ', $e->getMessage(), PHP_EOL;
@@ -49,6 +50,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **accept_language** | **string**| Expected language of product name translation. | [optional] [default to &#39;en-US&#39;] |
 | **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 | **limit** | **int**| Maximum number of elements in response. | [optional] [default to 50] |
 

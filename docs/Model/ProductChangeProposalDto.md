@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **images** | [**\Phobetor\Allegro\Model\ProductImageProposal[]**](ProductImageProposal.md) | List of proposed image change statuses. | [optional]
 **parameters** | [**\Phobetor\Allegro\Model\ProductParameterProposal[]**](ProductParameterProposal.md) | List of proposed product parameter change statuses. | [optional]
 **notify_via_email_after_verification** | **bool** | Receive an email notification after product changes proposal resolution. | [optional]
+**language** | **string** | Language of provided suggestion data. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

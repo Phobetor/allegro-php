@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**method** | **string** |  | [optional] [default to 'THIRD_PARTY_DELIVERY']
 **third_party** | [**\Phobetor\Allegro\Model\ThirdParty**](ThirdParty.md) |  | [optional]
 **estimated_time_of_arrival** | **\DateTime** | The estimated date and time of Advance Ship Notice arrival in the warehouse. Provided in [ISO 8601 format](link: https://en.wikipedia.org/wiki/ISO_8601). | [optional]
 **country_code** | **string** | Country code in ISO 3166-1 alpha-2 format (two-letter code), which means the country from which Advance Ship Notice is sent. | [optional]

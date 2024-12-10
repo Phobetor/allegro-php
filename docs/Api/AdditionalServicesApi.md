@@ -139,7 +139,7 @@ getListOfAdditionalServicesDefinitionsCategoriesUsingGET(): \Phobetor\Allegro\Mo
 
 Get the additional services definitions by categories
 
-Use this resource to get additional services definitions, grouped by additional services categories, available on given marketplace. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-zarzadzac-uslugami-dodatkowymi\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-manage-additional-services\" target=\"_blank\">EN</a>.
+Use this resource to get additional services definitions, grouped by additional services categories, available on given marketplace. Read more: <a href=\"../../tutorials/jak-zarzadzac-ofertami-7GzB2L37ase#jak-pobrac-liste-dostepnych-uslug-dodatkowych\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-process-list-of-offers-m09BKA5v8H3#how-to-retrieve-a-list-of-available-additional-services\" target=\"_blank\">EN</a>.
 
 ### Example
 

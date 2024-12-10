@@ -193,7 +193,7 @@ try {
 ## `getPOSListUsingGET()`
 
 ```php
-getPOSListUsingGET($seller_id): \Phobetor\Allegro\Model\SearchResult
+getPOSListUsingGET($seller_id, $country_code): \Phobetor\Allegro\Model\SearchResult
 ```
 
 Get the user's points of service
@@ -218,9 +218,10 @@ $apiInstance = new Phobetor\Allegro\Api\PointsOfServiceApi(
     $config
 );
 $seller_id = 'seller_id_example'; // string | User identifier.
+$country_code = PL; // string | Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned.
 
 try {
-    $result = $apiInstance->getPOSListUsingGET($seller_id);
+    $result = $apiInstance->getPOSListUsingGET($seller_id, $country_code);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PointsOfServiceApi->getPOSListUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -232,6 +233,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **seller_id** | **string**| User identifier. | |
+| **country_code** | **string**| Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned. | [optional] |
 
 ### Return type
 

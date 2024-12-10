@@ -81,7 +81,7 @@ createTagPOST1($tag_request): \Phobetor\Allegro\Model\TagId
 
 Create a tag
 
-Use this resource to create a new tag. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
+Use this resource to create a new tag. You can create up to 100 tags. Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -260,7 +260,7 @@ listSellerTagsGET1($limit, $offset): \Phobetor\Allegro\Model\TagListResponse
 
 Get the user's tags
 
-Use this resource to get a list of tags defined by the specified user (Defaults: limit = 100, offset = 0). Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
+Use this resource to get a list of tags defined by the specified user (Defaults: limit = 1000, offset = 0). Read more: <a href=\"../../news/nowe-zasoby-zarzadzaj-tagami-i-zalacznikami-w-ofertach-1nzlmKLPyHl\" target=\"_blank\">PL</a> / <a href=\"../../news/new-resources-manage-tags-and-attachments-in-offers-WvGz12BXrHL\" target=\"_blank\">EN</a>.
 
 ### Example
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Order item identifier |
-**offer** | [**\Phobetor\Allegro\Model\OfferReference**](OfferReference.md) |  |
+**offer** | [**\Phobetor\Allegro\Model\OrderLineItemOfferReference**](OrderLineItemOfferReference.md) |  |
 **quantity** | **float** | quantity |
 **original_price** | [**\Phobetor\Allegro\Model\Price**](Price.md) |  | [optional]
 **price** | [**\Phobetor\Allegro\Model\Price**](Price.md) |  |

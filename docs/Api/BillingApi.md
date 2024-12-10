@@ -38,7 +38,7 @@ $apiInstance = new Phobetor\Allegro\Api\BillingApi(
 $marketplace_id = allegro-pl; // string | The marketplace ID where operation was made. By default the marketplace ID where the user is registered.
 $occurred_at_gte = 2019-05-08T09:45:32.818Z; // \DateTime | Date from which billing entries are filtered. If occurredAt.lte is also set, occurredAt.gte cannot be later.
 $occurred_at_lte = 2019-05-08T09:45:32.818Z; // \DateTime | Date to which billing entries are filtered. If occurredAt.gte is also set, occurredAt.lte cannot be earlier.
-$type_id = type.id=LIS&type.id=SUC; // string[] | List of billing types by which billing entries are filtered.
+$type_id = ["LIS","SUC"]; // string[] | List of billing types by which billing entries are filtered.
 $offer_id = 12345; // string | Offer ID by which billing entries are filtered.
 $order_id = 29738e61-7f6a-11e8-ac45-09db60ede9d6; // string | Order UUID by which billing entries are filtered.
 $limit = 10; // int | Number of returned operations.

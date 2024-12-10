@@ -78,7 +78,7 @@ try {
 ## `getProductChangeProposal()`
 
 ```php
-getProductChangeProposal($change_proposal_id): \Phobetor\Allegro\Model\ProductChangeProposalDto
+getProductChangeProposal($change_proposal_id, $accept_language): \Phobetor\Allegro\Model\ProductChangeProposalDto
 ```
 
 Get all data of the particular product changes proposal
@@ -103,9 +103,10 @@ $apiInstance = new Phobetor\Allegro\Api\ProductsApi(
     $config
 );
 $change_proposal_id = 'change_proposal_id_example'; // string | The product changes proposal identifier.
+$accept_language = pl-PL; // string | Expected language of messages.
 
 try {
-    $result = $apiInstance->getProductChangeProposal($change_proposal_id);
+    $result = $apiInstance->getProductChangeProposal($change_proposal_id, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->getProductChangeProposal: ', $e->getMessage(), PHP_EOL;
@@ -117,6 +118,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **change_proposal_id** | **string**| The product changes proposal identifier. | |
+| **accept_language** | **string**| Expected language of messages. | [optional] [default to &#39;en-US&#39;] |
 
 ### Return type
 
@@ -143,7 +145,7 @@ getSaleProduct($product_id, $category_id, $include_drafts, $language): \Phobetor
 
 Get all data of the particular product
 
-Use this resource to retrieve all data of the particular product. Read more: <a href=\"../../tutorials/wystawianie-oferty-z-produktem-new-E7ggykoBEf0#jak-pobrac-pelne-dane-o-produkcie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-retrieve-product-data\" target=\"_blank\">EN</a>. This resource is limited with <a href=\"../../tutorials/basic-information-VL6YelvVKTn#limiting-the-number-of-queries-limits\" target=\"_blank\">Leaky Bucket</a> mechanism.
+Use this resource to retrieve all data of the particular product. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-pobrac-pelne-dane-o-produkcie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-retrieve-product-data\" target=\"_blank\">EN</a>. This resource is limited with <a href=\"../../tutorials/basic-information-VL6YelvVKTn#limiting-the-number-of-queries-limits\" target=\"_blank\">Leaky Bucket</a> mechanism.
 
 ### Example
 
@@ -209,7 +211,7 @@ getSaleProducts($ean, $phrase, $mode, $language, $category_id, $dynamic_filters,
 
 Get search products results
 
-Use this resource to get a list of products according to provided parameters. At least ean or phrase parameter is required. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-znalezc-produkt\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-find-a-product\" target=\"_blank\">EN</a>. This resource is limited with <a href=\"../../tutorials/basic-information-VL6YelvVKTn#limiting-the-number-of-queries-limits\" target=\"_blank\">Leaky Bucket</a> mechanism.
+Use this resource to get a list of products according to provided parameters. At least ean or phrase parameter is required. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-znalezc-produkt\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-find-a-product\" target=\"_blank\">EN</a>. This resource is limited with Leaky Bucket mechanism, read more <a href=\"../../tutorials/informacje-podstawowe-b21569boAI1#ograniczenie-liczby-zapytan-limity\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/basic-information-VL6YelvVKTn#limiting-the-number-of-queries-limits\" target=\"_blank\">EN</a>.
 
 ### Example
 
@@ -233,7 +235,7 @@ $phrase = 'phrase_example'; // string | Search phrase.
 $mode = 'mode_example'; // string | Search mode. If not specified, we are searching by GTIN, MPN, product's name, parameters, etc.  - `GTIN` - restricts the search filtering to GTINs (Global Trade Item Number), e.g. EAN, ISBN, UPC.  - `MPN` - restricts the search filtering to MPNs (Manufacturer Part Number).
 $language = en-US; // string | Language indicates the language for searching products. Allows to specify the language of the given phrase. At present we support: \"pl-PL\" and \"cs-CZ\".
 $category_id = 'category_id_example'; // string | The category identifier to filter results. This can only be used when searching by phrase.
-$dynamic_filters = array('key' => 'dynamic_filters_example'); // array<string,string> | You can filter and customize your search results to find exactly what you need by applying filters ids and their dictionary values to query according to the flowing pattern: id=value. When the filter definition looks like:   ````   {     \"id\": \"127448\",     \"name\": \"Kolor\",     \"type\": \"SINGLE\",     \"values\": [       {         \"name\": \"biały\",         \"value\": \"2\"       },       {         \"name\": \"czarny\",         \"value\": \"1\" }     ]   }   ```` You can use 'Kolor' filter to query results, i.e.:   * `127448=2` for \"biały\"   * `127448=1` for \"czarny\".
+$dynamic_filters = array('key' => 'dynamic_filters_example'); // array<string,string> | You can filter and customize your search results to find exactly what you need by applying filters ids and their dictionary values to query according to the flowing pattern: id=value. When the filter definition looks like:   ````   {     \"id\": \"127448\",     \"name\": \"Kolor\",     \"type\": \"SINGLE\",     \"values\": [       {         \"name\": \"biały\",         \"value\": \"127448_2\"       },       {         \"name\": \"czarny\",         \"value\": \"127448_1\"       }     ]   }   ```` You can use 'Kolor' filter to query results, i.e.:   * `127448=127448_2` for \"biały\"   * `127448=127448_1` for \"czarny\".
 $page_id = 'page_id_example'; // string | A \"cursor\" to the next set of results.
 $search_features = 'search_features_example'; // string | Enables additional search options: - *SIMILAR_CATEGORIES* - searching in the indicated category (category.id) and in 'similar categories' (works only if category.id is a leaf category).
 $include_drafts = True; // bool | Include products in draft state.
@@ -255,7 +257,7 @@ try {
 | **mode** | **string**| Search mode. If not specified, we are searching by GTIN, MPN, product&#39;s name, parameters, etc.  - &#x60;GTIN&#x60; - restricts the search filtering to GTINs (Global Trade Item Number), e.g. EAN, ISBN, UPC.  - &#x60;MPN&#x60; - restricts the search filtering to MPNs (Manufacturer Part Number). | [optional] |
 | **language** | **string**| Language indicates the language for searching products. Allows to specify the language of the given phrase. At present we support: \&quot;pl-PL\&quot; and \&quot;cs-CZ\&quot;. | [optional] |
 | **category_id** | **string**| The category identifier to filter results. This can only be used when searching by phrase. | [optional] |
-| **dynamic_filters** | [**array<string,string>**](../Model/string.md)| You can filter and customize your search results to find exactly what you need by applying filters ids and their dictionary values to query according to the flowing pattern: id&#x3D;value. When the filter definition looks like:   &#x60;&#x60;&#x60;&#x60;   {     \&quot;id\&quot;: \&quot;127448\&quot;,     \&quot;name\&quot;: \&quot;Kolor\&quot;,     \&quot;type\&quot;: \&quot;SINGLE\&quot;,     \&quot;values\&quot;: [       {         \&quot;name\&quot;: \&quot;biały\&quot;,         \&quot;value\&quot;: \&quot;2\&quot;       },       {         \&quot;name\&quot;: \&quot;czarny\&quot;,         \&quot;value\&quot;: \&quot;1\&quot; }     ]   }   &#x60;&#x60;&#x60;&#x60; You can use &#39;Kolor&#39; filter to query results, i.e.:   * &#x60;127448&#x3D;2&#x60; for \&quot;biały\&quot;   * &#x60;127448&#x3D;1&#x60; for \&quot;czarny\&quot;. | [optional] |
+| **dynamic_filters** | [**array<string,string>**](../Model/string.md)| You can filter and customize your search results to find exactly what you need by applying filters ids and their dictionary values to query according to the flowing pattern: id&#x3D;value. When the filter definition looks like:   &#x60;&#x60;&#x60;&#x60;   {     \&quot;id\&quot;: \&quot;127448\&quot;,     \&quot;name\&quot;: \&quot;Kolor\&quot;,     \&quot;type\&quot;: \&quot;SINGLE\&quot;,     \&quot;values\&quot;: [       {         \&quot;name\&quot;: \&quot;biały\&quot;,         \&quot;value\&quot;: \&quot;127448_2\&quot;       },       {         \&quot;name\&quot;: \&quot;czarny\&quot;,         \&quot;value\&quot;: \&quot;127448_1\&quot;       }     ]   }   &#x60;&#x60;&#x60;&#x60; You can use &#39;Kolor&#39; filter to query results, i.e.:   * &#x60;127448&#x3D;127448_2&#x60; for \&quot;biały\&quot;   * &#x60;127448&#x3D;127448_1&#x60; for \&quot;czarny\&quot;. | [optional] |
 | **page_id** | **string**| A \&quot;cursor\&quot; to the next set of results. | [optional] |
 | **search_features** | **string**| Enables additional search options: - *SIMILAR_CATEGORIES* - searching in the indicated category (category.id) and in &#39;similar categories&#39; (works only if category.id is a leaf category). | [optional] |
 | **include_drafts** | **bool**| Include products in draft state. | [optional] |
@@ -280,12 +282,12 @@ try {
 ## `productChangeProposal()`
 
 ```php
-productChangeProposal($product_id, $product_change_proposal_request): \Phobetor\Allegro\Model\ProductChangeProposalDto
+productChangeProposal($product_id, $product_change_proposal_request, $accept_language): \Phobetor\Allegro\Model\ProductChangeProposalDto
 ```
 
 Propose changes in product
 
-Use this resource to propose changes in product. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-zglosic-blad-w-produkcie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-report-incorrect-data-in-a-product\" target=\"_blank\">EN</a>.
+Use this resource to propose changes in product. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#jak-zglosic-blad-w-produkcie\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#how-to-report-incorrect-data-in-a-product\" target=\"_blank\">EN</a>. This resource is limited to 100 suggestions per day for a single user.
 
 ### Example
 
@@ -306,9 +308,10 @@ $apiInstance = new Phobetor\Allegro\Api\ProductsApi(
 );
 $product_id = 'product_id_example'; // string | The product identifier.
 $product_change_proposal_request = new \Phobetor\Allegro\Model\ProductChangeProposalRequest(); // \Phobetor\Allegro\Model\ProductChangeProposalRequest
+$accept_language = pl-PL; // string | Expected language of messages.
 
 try {
-    $result = $apiInstance->productChangeProposal($product_id, $product_change_proposal_request);
+    $result = $apiInstance->productChangeProposal($product_id, $product_change_proposal_request, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->productChangeProposal: ', $e->getMessage(), PHP_EOL;
@@ -321,6 +324,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **product_id** | **string**| The product identifier. | |
 | **product_change_proposal_request** | [**\Phobetor\Allegro\Model\ProductChangeProposalRequest**](../Model/ProductChangeProposalRequest.md)|  | |
+| **accept_language** | **string**| Expected language of messages. | [optional] [default to &#39;en-US&#39;] |
 
 ### Return type
 

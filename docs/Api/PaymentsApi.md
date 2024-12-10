@@ -37,7 +37,7 @@ $apiInstance = new Phobetor\Allegro\Api\PaymentsApi(
     $config
 );
 $wallet_type = 'AVAILABLE'; // string | Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout.
-$wallet_payment_operator = 'wallet_payment_operator_example'; // string | Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator.
+$wallet_payment_operator = 'wallet_payment_operator_example'; // string | Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator.
 $payment_id = 'payment_id_example'; // string | The payment ID.
 $participant_login = 'participant_login_example'; // string | Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer.
 $occurred_at_gte = 2019-05-08T09:45:20.818Z; // \DateTime | The minimum date and time of operation occurrence in ISO 8601 format.
@@ -61,7 +61,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **wallet_type** | **string**| Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout. | [optional] [default to &#39;AVAILABLE&#39;] |
-| **wallet_payment_operator** | **string**| Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. | [optional] |
+| **wallet_payment_operator** | **string**| Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator. | [optional] |
 | **payment_id** | **string**| The payment ID. | [optional] |
 | **participant_login** | **string**| Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer. | [optional] |
 | **occurred_at_gte** | **\DateTime**| The minimum date and time of operation occurrence in ISO 8601 format. | [optional] |

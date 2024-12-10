@@ -246,7 +246,7 @@ $payment_id = 'payment_id_example'; // string | Find checkout-forms having speci
 $surcharges_id = 'surcharges_id_example'; // string | Find checkout-forms having specified surcharge id.
 $delivery_method_id = 'delivery_method_id_example'; // string | Find checkout-forms having specified delivery method id.
 $buyer_login = 'buyer_login_example'; // string | Find checkout-forms having specified buyer login.
-$marketplace_id = 'marketplace_id_example'; // string | Find checkout-forms of orders purchased on specified marketplace
+$marketplace_id = 'marketplace_id_example'; // string | Find checkout-forms of orders purchased on specified marketplace.
 $updated_at_lte = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken.
 $updated_at_gte = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken.
 $sort = 'sort_example'; // string | The results' sorting order. No prefix in the value means ascending order. `-` prefix means descending order. If you don't provide the sort parameter, the list is sorted by line item boughtAt date, descending.
@@ -274,7 +274,7 @@ try {
 | **surcharges_id** | **string**| Find checkout-forms having specified surcharge id. | [optional] |
 | **delivery_method_id** | **string**| Find checkout-forms having specified delivery method id. | [optional] |
 | **buyer_login** | **string**| Find checkout-forms having specified buyer login. | [optional] |
-| **marketplace_id** | **string**| Find checkout-forms of orders purchased on specified marketplace | [optional] |
+| **marketplace_id** | **string**| Find checkout-forms of orders purchased on specified marketplace. | [optional] |
 | **updated_at_lte** | **\DateTime**| Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken. | [optional] |
 | **updated_at_gte** | **\DateTime**| Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken. | [optional] |
 | **sort** | **string**| The results&#39; sorting order. No prefix in the value means ascending order. &#x60;-&#x60; prefix means descending order. If you don&#39;t provide the sort parameter, the list is sorted by line item boughtAt date, descending. | [optional] |
@@ -665,7 +665,7 @@ getParcelTrackingUsingGET($carrier_id, $waybill): \Phobetor\Allegro\Model\Carrie
 
 Get carrier parcel tracking history
 
-Get tracking history for parcels sent via the Ship with Allegro tool using <a href=\"#operation/getAvailableDeliveryServices\" target=\"_blank\">a delivery service</a>. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-pobrac-historie-statusow-przesylek\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-retrieve-parcels-statuses-history\" target=\"_blank\">EN</a>.
+Get tracking history for parcels. Read more: <a href=\"../../tutorials/jak-zarzadzac-przesylkami-przez-wysylam-z-allegro-LRVjK7K21sY#jak-pobrac-historie-statusow-przesylek\" target=\"_blank\">PL</a> / <a href=\"../../tutorials/how-to-manage-parcels-via-ship-with-allegro-ZM9YAyGKWTV#how-to-retrieve-parcels-statuses-history\" target=\"_blank\">EN</a>.
 
 ### Example
 

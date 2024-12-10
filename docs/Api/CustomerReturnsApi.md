@@ -72,7 +72,7 @@ try {
 ## `getCustomerReturns()`
 
 ```php
-getCustomerReturns($customer_return_id, $order_id, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $limit, $offset): \Phobetor\Allegro\Model\CustomerReturnResponse
+getCustomerReturns($customer_return_id, $order_id, $buyer_email, $buyer_login, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $status, $limit, $offset): \Phobetor\Allegro\Model\CustomerReturnResponse
 ```
 
 [BETA] Get customer returns by provided query parameters
@@ -98,6 +98,8 @@ $apiInstance = new Phobetor\Allegro\Api\CustomerReturnsApi(
 );
 $customer_return_id = 'customer_return_id_example'; // string | One or more customer return id's.
 $order_id = 'order_id_example'; // string | One or more order id's.
+$buyer_email = 'buyer_email_example'; // string | One or more buyer emails.
+$buyer_login = 'buyer_login_example'; // string | One or more buyer logins.
 $items_offer_id = 'items_offer_id_example'; // string | One or more returned item offer id's.
 $items_name = 'items_name_example'; // string | One or more item names.
 $parcels_waybill = 'parcels_waybill_example'; // string | One or more waybill id's.
@@ -108,11 +110,12 @@ $from = 'from_example'; // string | The ID of the last seen customer return. Cus
 $created_at_gte = 'created_at_gte_example'; // string | Date of the return in ISO 8601 format to search by greater or equal.
 $created_at_lte = 'created_at_lte_example'; // string | Date of the return in ISO 8601 format to search by lower or equal.
 $marketplace_id = 'marketplace_id_example'; // string | The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces.
+$status = 'status_example'; // string | Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION.
 $limit = 100; // int | Limit of customer returns per page.
 $offset = 0; // int | The offset of elements in the response.
 
 try {
-    $result = $apiInstance->getCustomerReturns($customer_return_id, $order_id, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $limit, $offset);
+    $result = $apiInstance->getCustomerReturns($customer_return_id, $order_id, $buyer_email, $buyer_login, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $status, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerReturnsApi->getCustomerReturns: ', $e->getMessage(), PHP_EOL;
@@ -125,6 +128,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **customer_return_id** | **string**| One or more customer return id&#39;s. | [optional] |
 | **order_id** | **string**| One or more order id&#39;s. | [optional] |
+| **buyer_email** | **string**| One or more buyer emails. | [optional] |
+| **buyer_login** | **string**| One or more buyer logins. | [optional] |
 | **items_offer_id** | **string**| One or more returned item offer id&#39;s. | [optional] |
 | **items_name** | **string**| One or more item names. | [optional] |
 | **parcels_waybill** | **string**| One or more waybill id&#39;s. | [optional] |
@@ -135,6 +140,7 @@ try {
 | **created_at_gte** | **string**| Date of the return in ISO 8601 format to search by greater or equal. | [optional] |
 | **created_at_lte** | **string**| Date of the return in ISO 8601 format to search by lower or equal. | [optional] |
 | **marketplace_id** | **string**| The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces. | [optional] |
+| **status** | **string**| Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION. | [optional] |
 | **limit** | **int**| Limit of customer returns per page. | [optional] [default to 100] |
 | **offset** | **int**| The offset of elements in the response. | [optional] [default to 0] |
 
