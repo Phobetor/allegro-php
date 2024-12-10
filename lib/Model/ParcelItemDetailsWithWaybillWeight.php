@@ -80,7 +80,7 @@ class ParcelItemDetailsWithWaybillWeight implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'value' => false,
-		'unit' => false
+		'unit' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class ParcelItemDetailsWithWaybillWeight implements ModelInterface, ArrayAccess,
     public function setUnit($unit)
     {
         if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit'] = $unit;
 

@@ -58,7 +58,7 @@ class MarketplaceReference implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => '\Phobetor\Allegro\Model\MarketplaceId'
+        'id' => 'string'
     ];
 
     /**
@@ -296,7 +296,7 @@ class MarketplaceReference implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets id
      *
-     * @return \Phobetor\Allegro\Model\MarketplaceId
+     * @return string
      */
     public function getId()
     {
@@ -306,7 +306,7 @@ class MarketplaceReference implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param \Phobetor\Allegro\Model\MarketplaceId $id id
+     * @param string $id The id of a marketplace.<br/> Available marketplaces can be determined using <a href=\"#operation/marketplacesGET\">GET /marketplaces</a>.
      *
      * @return self
      */

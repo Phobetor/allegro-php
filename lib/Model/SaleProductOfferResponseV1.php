@@ -65,11 +65,12 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'additional_services' => '\Phobetor\Allegro\Model\ProductOfferAdditionalServicesResponse',
         'delivery' => '\Phobetor\Allegro\Model\DeliveryProductOfferResponse',
         'publication' => '\Phobetor\Allegro\Model\SaleProductOfferPublicationResponse',
-        'additional_marketplaces' => 'array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>',
+        'additional_marketplaces' => 'array<string,\Phobetor\Allegro\Model\AdditionalMarketplacesResponseValue>',
         'b2b' => '\Phobetor\Allegro\Model\B2b',
         'compatibility_list' => '\Phobetor\Allegro\Model\CompatibilityListProductOfferResponse',
         'language' => 'string',
         'validation' => '\Phobetor\Allegro\Model\Validation',
+        'warnings' => 'array',
         'after_sales_services' => '\Phobetor\Allegro\Model\AfterSalesServices',
         'discounts' => '\Phobetor\Allegro\Model\DiscountsProductOfferResponse',
         'stock' => '\Phobetor\Allegro\Model\Stock',
@@ -85,7 +86,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'description' => '\Phobetor\Allegro\Model\StandardizedDescription',
         'external' => '\Phobetor\Allegro\Model\ExternalId',
         'size_table' => '\Phobetor\Allegro\Model\SizeTable',
-        'tax' => '\Phobetor\Allegro\Model\ExtendedTax',
         'tax_settings' => '\Phobetor\Allegro\Model\OfferTaxSettings',
         'message_to_seller_settings' => '\Phobetor\Allegro\Model\MessageToSellerSettings'
     ];
@@ -111,6 +111,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'compatibility_list' => null,
         'language' => 'BCP-47 language code',
         'validation' => null,
+        'warnings' => null,
         'after_sales_services' => null,
         'discounts' => null,
         'stock' => null,
@@ -126,7 +127,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'description' => null,
         'external' => null,
         'size_table' => null,
-        'tax' => null,
         'tax_settings' => null,
         'message_to_seller_settings' => null
     ];
@@ -150,6 +150,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
 		'compatibility_list' => false,
 		'language' => false,
 		'validation' => false,
+		'warnings' => false,
 		'after_sales_services' => false,
 		'discounts' => false,
 		'stock' => false,
@@ -165,7 +166,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
 		'description' => false,
 		'external' => false,
 		'size_table' => false,
-		'tax' => false,
 		'tax_settings' => false,
 		'message_to_seller_settings' => false
     ];
@@ -269,6 +269,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'compatibility_list' => 'compatibilityList',
         'language' => 'language',
         'validation' => 'validation',
+        'warnings' => 'warnings',
         'after_sales_services' => 'afterSalesServices',
         'discounts' => 'discounts',
         'stock' => 'stock',
@@ -284,7 +285,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'description' => 'description',
         'external' => 'external',
         'size_table' => 'sizeTable',
-        'tax' => 'tax',
         'tax_settings' => 'taxSettings',
         'message_to_seller_settings' => 'messageToSellerSettings'
     ];
@@ -308,6 +308,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'compatibility_list' => 'setCompatibilityList',
         'language' => 'setLanguage',
         'validation' => 'setValidation',
+        'warnings' => 'setWarnings',
         'after_sales_services' => 'setAfterSalesServices',
         'discounts' => 'setDiscounts',
         'stock' => 'setStock',
@@ -323,7 +324,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'description' => 'setDescription',
         'external' => 'setExternal',
         'size_table' => 'setSizeTable',
-        'tax' => 'setTax',
         'tax_settings' => 'setTaxSettings',
         'message_to_seller_settings' => 'setMessageToSellerSettings'
     ];
@@ -347,6 +347,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'compatibility_list' => 'getCompatibilityList',
         'language' => 'getLanguage',
         'validation' => 'getValidation',
+        'warnings' => 'getWarnings',
         'after_sales_services' => 'getAfterSalesServices',
         'discounts' => 'getDiscounts',
         'stock' => 'getStock',
@@ -362,7 +363,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         'description' => 'getDescription',
         'external' => 'getExternal',
         'size_table' => 'getSizeTable',
-        'tax' => 'getTax',
         'tax_settings' => 'getTaxSettings',
         'message_to_seller_settings' => 'getMessageToSellerSettings'
     ];
@@ -437,6 +437,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('compatibility_list', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('validation', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('after_sales_services', $data ?? [], null);
         $this->setIfExists('discounts', $data ?? [], null);
         $this->setIfExists('stock', $data ?? [], null);
@@ -452,7 +453,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('external', $data ?? [], null);
         $this->setIfExists('size_table', $data ?? [], null);
-        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('tax_settings', $data ?? [], null);
         $this->setIfExists('message_to_seller_settings', $data ?? [], null);
     }
@@ -722,7 +722,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets additional_marketplaces
      *
-     * @return array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>|null
+     * @return array<string,\Phobetor\Allegro\Model\AdditionalMarketplacesResponseValue>|null
      */
     public function getAdditionalMarketplaces()
     {
@@ -732,7 +732,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets additional_marketplaces
      *
-     * @param array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>|null $additional_marketplaces Settings for each additional marketplace.
+     * @param array<string,\Phobetor\Allegro\Model\AdditionalMarketplacesResponseValue>|null $additional_marketplaces Selected information about the offer in each additional service. This field does not contain information about the base marketplace of the offer. You will find all available marketplaces here. Even if the seller does not want the offer to be visible in the additional service, we will return it in response.
      *
      * @return self
      */
@@ -850,6 +850,33 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable validation cannot be null');
         }
         $this->container['validation'] = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return array|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param array|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
@@ -1259,35 +1286,6 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable size_table cannot be null');
         }
         $this->container['size_table'] = $size_table;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax
-     *
-     * @return \Phobetor\Allegro\Model\ExtendedTax|null
-     * @deprecated
-     */
-    public function getTax()
-    {
-        return $this->container['tax'];
-    }
-
-    /**
-     * Sets tax
-     *
-     * @param \Phobetor\Allegro\Model\ExtendedTax|null $tax tax
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setTax($tax)
-    {
-        if (is_null($tax)) {
-            throw new \InvalidArgumentException('non-nullable tax cannot be null');
-        }
-        $this->container['tax'] = $tax;
 
         return $this;
     }

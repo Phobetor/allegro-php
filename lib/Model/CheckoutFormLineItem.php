@@ -65,6 +65,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'price' => '\Phobetor\Allegro\Model\Price',
         'reconciliation' => '\Phobetor\Allegro\Model\LineItemReconciliation',
         'selected_additional_services' => '\Phobetor\Allegro\Model\CheckoutFormAdditionalService[]',
+        'vouchers' => '\Phobetor\Allegro\Model\LineItemVoucher[]',
+        'tax' => '\Phobetor\Allegro\Model\CheckoutFormLineItemTax',
         'bought_at' => '\DateTime'
     ];
 
@@ -83,6 +85,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'price' => null,
         'reconciliation' => null,
         'selected_additional_services' => null,
+        'vouchers' => null,
+        'tax' => null,
         'bought_at' => 'date-time'
     ];
 
@@ -99,6 +103,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
 		'price' => false,
 		'reconciliation' => false,
 		'selected_additional_services' => false,
+		'vouchers' => false,
+		'tax' => false,
 		'bought_at' => false
     ];
 
@@ -195,6 +201,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'price' => 'price',
         'reconciliation' => 'reconciliation',
         'selected_additional_services' => 'selectedAdditionalServices',
+        'vouchers' => 'vouchers',
+        'tax' => 'tax',
         'bought_at' => 'boughtAt'
     ];
 
@@ -211,6 +219,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'price' => 'setPrice',
         'reconciliation' => 'setReconciliation',
         'selected_additional_services' => 'setSelectedAdditionalServices',
+        'vouchers' => 'setVouchers',
+        'tax' => 'setTax',
         'bought_at' => 'setBoughtAt'
     ];
 
@@ -227,6 +237,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'price' => 'getPrice',
         'reconciliation' => 'getReconciliation',
         'selected_additional_services' => 'getSelectedAdditionalServices',
+        'vouchers' => 'getVouchers',
+        'tax' => 'getTax',
         'bought_at' => 'getBoughtAt'
     ];
 
@@ -294,6 +306,8 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('reconciliation', $data ?? [], null);
         $this->setIfExists('selected_additional_services', $data ?? [], null);
+        $this->setIfExists('vouchers', $data ?? [], null);
+        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('bought_at', $data ?? [], null);
     }
 
@@ -548,6 +562,60 @@ class CheckoutFormLineItem implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable selected_additional_services cannot be null');
         }
         $this->container['selected_additional_services'] = $selected_additional_services;
+
+        return $this;
+    }
+
+    /**
+     * Gets vouchers
+     *
+     * @return \Phobetor\Allegro\Model\LineItemVoucher[]|null
+     */
+    public function getVouchers()
+    {
+        return $this->container['vouchers'];
+    }
+
+    /**
+     * Sets vouchers
+     *
+     * @param \Phobetor\Allegro\Model\LineItemVoucher[]|null $vouchers vouchers
+     *
+     * @return self
+     */
+    public function setVouchers($vouchers)
+    {
+        if (is_null($vouchers)) {
+            throw new \InvalidArgumentException('non-nullable vouchers cannot be null');
+        }
+        $this->container['vouchers'] = $vouchers;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax
+     *
+     * @return \Phobetor\Allegro\Model\CheckoutFormLineItemTax|null
+     */
+    public function getTax()
+    {
+        return $this->container['tax'];
+    }
+
+    /**
+     * Sets tax
+     *
+     * @param \Phobetor\Allegro\Model\CheckoutFormLineItemTax|null $tax tax
+     *
+     * @return self
+     */
+    public function setTax($tax)
+    {
+        if (is_null($tax)) {
+            throw new \InvalidArgumentException('non-nullable tax cannot be null');
+        }
+        $this->container['tax'] = $tax;
 
         return $this;
     }

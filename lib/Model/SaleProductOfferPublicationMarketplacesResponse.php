@@ -58,8 +58,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'additional' => '\Phobetor\Allegro\Model\JustId[]',
-        'base' => '\Phobetor\Allegro\Model\SaleProductOfferPublicationMarketplacesResponseBase'
+        'base' => '\Phobetor\Allegro\Model\SaleProductOfferPublicationMarketplacesResponseBase',
+        'additional' => '\Phobetor\Allegro\Model\JustId[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'additional' => null,
-        'base' => null
+        'base' => null,
+        'additional' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'additional' => false,
-		'base' => false
+        'base' => false,
+		'additional' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
      * @var string[]
      */
     protected static $attributeMap = [
-        'additional' => 'additional',
-        'base' => 'base'
+        'base' => 'base',
+        'additional' => 'additional'
     ];
 
     /**
@@ -180,8 +180,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
      * @var string[]
      */
     protected static $setters = [
-        'additional' => 'setAdditional',
-        'base' => 'setBase'
+        'base' => 'setBase',
+        'additional' => 'setAdditional'
     ];
 
     /**
@@ -190,8 +190,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
      * @var string[]
      */
     protected static $getters = [
-        'additional' => 'getAdditional',
-        'base' => 'getBase'
+        'base' => 'getBase',
+        'additional' => 'getAdditional'
     ];
 
     /**
@@ -251,8 +251,8 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('additional', $data ?? [], null);
         $this->setIfExists('base', $data ?? [], null);
+        $this->setIfExists('additional', $data ?? [], null);
     }
 
     /**
@@ -298,33 +298,6 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
 
 
     /**
-     * Gets additional
-     *
-     * @return \Phobetor\Allegro\Model\JustId[]|null
-     */
-    public function getAdditional()
-    {
-        return $this->container['additional'];
-    }
-
-    /**
-     * Sets additional
-     *
-     * @param \Phobetor\Allegro\Model\JustId[]|null $additional Specifies whether an offer is visible in the additional marketplace.
-     *
-     * @return self
-     */
-    public function setAdditional($additional)
-    {
-        if (is_null($additional)) {
-            throw new \InvalidArgumentException('non-nullable additional cannot be null');
-        }
-        $this->container['additional'] = $additional;
-
-        return $this;
-    }
-
-    /**
      * Gets base
      *
      * @return \Phobetor\Allegro\Model\SaleProductOfferPublicationMarketplacesResponseBase|null
@@ -347,6 +320,33 @@ class SaleProductOfferPublicationMarketplacesResponse implements ModelInterface,
             throw new \InvalidArgumentException('non-nullable base cannot be null');
         }
         $this->container['base'] = $base;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional
+     *
+     * @return \Phobetor\Allegro\Model\JustId[]|null
+     */
+    public function getAdditional()
+    {
+        return $this->container['additional'];
+    }
+
+    /**
+     * Sets additional
+     *
+     * @param \Phobetor\Allegro\Model\JustId[]|null $additional Specifies whether an offer is visible in the additional marketplace.
+     *
+     * @return self
+     */
+    public function setAdditional($additional)
+    {
+        if (is_null($additional)) {
+            throw new \InvalidArgumentException('non-nullable additional cannot be null');
+        }
+        $this->container['additional'] = $additional;
 
         return $this;
     }

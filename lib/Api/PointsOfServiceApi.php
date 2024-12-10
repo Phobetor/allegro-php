@@ -1069,15 +1069,16 @@ class PointsOfServiceApi
      * Get the user&#39;s points of service
      *
      * @param  string $seller_id User identifier. (required)
+     * @param  string $country_code Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPOSListUsingGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\SearchResult|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function getPOSListUsingGET($seller_id, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
+    public function getPOSListUsingGET($seller_id, $country_code = null, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
     {
-        list($response) = $this->getPOSListUsingGETWithHttpInfo($seller_id, $contentType);
+        list($response) = $this->getPOSListUsingGETWithHttpInfo($seller_id, $country_code, $contentType);
         return $response;
     }
 
@@ -1087,15 +1088,16 @@ class PointsOfServiceApi
      * Get the user&#39;s points of service
      *
      * @param  string $seller_id User identifier. (required)
+     * @param  string $country_code Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPOSListUsingGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\SearchResult|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPOSListUsingGETWithHttpInfo($seller_id, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
+    public function getPOSListUsingGETWithHttpInfo($seller_id, $country_code = null, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
     {
-        $request = $this->getPOSListUsingGETRequest($seller_id, $contentType);
+        $request = $this->getPOSListUsingGETRequest($seller_id, $country_code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1210,14 +1212,15 @@ class PointsOfServiceApi
      * Get the user&#39;s points of service
      *
      * @param  string $seller_id User identifier. (required)
+     * @param  string $country_code Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPOSListUsingGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPOSListUsingGETAsync($seller_id, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
+    public function getPOSListUsingGETAsync($seller_id, $country_code = null, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
     {
-        return $this->getPOSListUsingGETAsyncWithHttpInfo($seller_id, $contentType)
+        return $this->getPOSListUsingGETAsyncWithHttpInfo($seller_id, $country_code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1231,15 +1234,16 @@ class PointsOfServiceApi
      * Get the user&#39;s points of service
      *
      * @param  string $seller_id User identifier. (required)
+     * @param  string $country_code Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPOSListUsingGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPOSListUsingGETAsyncWithHttpInfo($seller_id, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
+    public function getPOSListUsingGETAsyncWithHttpInfo($seller_id, $country_code = null, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\SearchResult';
-        $request = $this->getPOSListUsingGETRequest($seller_id, $contentType);
+        $request = $this->getPOSListUsingGETRequest($seller_id, $country_code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1281,12 +1285,13 @@ class PointsOfServiceApi
      * Create request for operation 'getPOSListUsingGET'
      *
      * @param  string $seller_id User identifier. (required)
+     * @param  string $country_code Country code identifier in ISO format. In case of incorrect or unsupported country code, empty list is returned. If missing, list of all defined points is returned. If present, correct and supported, list of all points with given country code for the user is returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPOSListUsingGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPOSListUsingGETRequest($seller_id, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
+    public function getPOSListUsingGETRequest($seller_id, $country_code = null, string $contentType = self::contentTypes['getPOSListUsingGET'][0])
     {
 
         // verify the required parameter 'seller_id' is set
@@ -1295,6 +1300,7 @@ class PointsOfServiceApi
                 'Missing the required parameter $seller_id when calling getPOSListUsingGET'
             );
         }
+
 
 
         $resourcePath = '/points-of-service';
@@ -1312,6 +1318,15 @@ class PointsOfServiceApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $country_code,
+            'countryCode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 

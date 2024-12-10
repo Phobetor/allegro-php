@@ -169,7 +169,7 @@ class OrderManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\CheckFormsNewOrderInvoiceId|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\CheckFormsNewOrderInvoiceId|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function addOrderInvoicesMetadata($id, $check_forms_new_order_invoice, string $contentType = self::contentTypes['addOrderInvoicesMetadata'][0])
     {
@@ -188,7 +188,7 @@ class OrderManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\CheckFormsNewOrderInvoiceId|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\CheckFormsNewOrderInvoiceId|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function addOrderInvoicesMetadataWithHttpInfo($id, $check_forms_new_order_invoice, string $contentType = self::contentTypes['addOrderInvoicesMetadata'][0])
     {
@@ -305,6 +305,21 @@ class OrderManagementApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 429:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\Phobetor\Allegro\Model\CheckFormsNewOrderInvoiceId';
@@ -358,6 +373,14 @@ class OrderManagementApi
                     $e->setResponseObject($data);
                     break;
                 case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Phobetor\Allegro\Model\ErrorsHolder',
@@ -1289,7 +1312,7 @@ class OrderManagementApi
      * @param  string $surcharges_id Find checkout-forms having specified surcharge id. (optional)
      * @param  string $delivery_method_id Find checkout-forms having specified delivery method id. (optional)
      * @param  string $buyer_login Find checkout-forms having specified buyer login. (optional)
-     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace (optional)
+     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace. (optional)
      * @param  \DateTime $updated_at_lte Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken. (optional)
      * @param  \DateTime $updated_at_gte Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken. (optional)
      * @param  string $sort The results&#39; sorting order. No prefix in the value means ascending order. &#x60;-&#x60; prefix means descending order. If you don&#39;t provide the sort parameter, the list is sorted by line item boughtAt date, descending. (optional)
@@ -1321,7 +1344,7 @@ class OrderManagementApi
      * @param  string $surcharges_id Find checkout-forms having specified surcharge id. (optional)
      * @param  string $delivery_method_id Find checkout-forms having specified delivery method id. (optional)
      * @param  string $buyer_login Find checkout-forms having specified buyer login. (optional)
-     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace (optional)
+     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace. (optional)
      * @param  \DateTime $updated_at_lte Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken. (optional)
      * @param  \DateTime $updated_at_gte Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken. (optional)
      * @param  string $sort The results&#39; sorting order. No prefix in the value means ascending order. &#x60;-&#x60; prefix means descending order. If you don&#39;t provide the sort parameter, the list is sorted by line item boughtAt date, descending. (optional)
@@ -1435,7 +1458,7 @@ class OrderManagementApi
      * @param  string $surcharges_id Find checkout-forms having specified surcharge id. (optional)
      * @param  string $delivery_method_id Find checkout-forms having specified delivery method id. (optional)
      * @param  string $buyer_login Find checkout-forms having specified buyer login. (optional)
-     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace (optional)
+     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace. (optional)
      * @param  \DateTime $updated_at_lte Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken. (optional)
      * @param  \DateTime $updated_at_gte Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken. (optional)
      * @param  string $sort The results&#39; sorting order. No prefix in the value means ascending order. &#x60;-&#x60; prefix means descending order. If you don&#39;t provide the sort parameter, the list is sorted by line item boughtAt date, descending. (optional)
@@ -1470,7 +1493,7 @@ class OrderManagementApi
      * @param  string $surcharges_id Find checkout-forms having specified surcharge id. (optional)
      * @param  string $delivery_method_id Find checkout-forms having specified delivery method id. (optional)
      * @param  string $buyer_login Find checkout-forms having specified buyer login. (optional)
-     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace (optional)
+     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace. (optional)
      * @param  \DateTime $updated_at_lte Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken. (optional)
      * @param  \DateTime $updated_at_gte Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken. (optional)
      * @param  string $sort The results&#39; sorting order. No prefix in the value means ascending order. &#x60;-&#x60; prefix means descending order. If you don&#39;t provide the sort parameter, the list is sorted by line item boughtAt date, descending. (optional)
@@ -1534,7 +1557,7 @@ class OrderManagementApi
      * @param  string $surcharges_id Find checkout-forms having specified surcharge id. (optional)
      * @param  string $delivery_method_id Find checkout-forms having specified delivery method id. (optional)
      * @param  string $buyer_login Find checkout-forms having specified buyer login. (optional)
-     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace (optional)
+     * @param  string $marketplace_id Find checkout-forms of orders purchased on specified marketplace. (optional)
      * @param  \DateTime $updated_at_lte Checkout form last modification date. The upper bound of date time range from which checkout forms will be taken. (optional)
      * @param  \DateTime $updated_at_gte Checkout form last modification date. The lower bound of date time range from which checkout forms will be taken. (optional)
      * @param  string $sort The results&#39; sorting order. No prefix in the value means ascending order. &#x60;-&#x60; prefix means descending order. If you don&#39;t provide the sort parameter, the list is sorted by line item boughtAt date, descending. (optional)

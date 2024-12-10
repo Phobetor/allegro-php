@@ -63,7 +63,8 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
         'note' => 'string',
         'images' => '\Phobetor\Allegro\Model\ProductImageProposal[]',
         'parameters' => '\Phobetor\Allegro\Model\ProductParameterProposal[]',
-        'notify_via_email_after_verification' => 'bool'
+        'notify_via_email_after_verification' => 'bool',
+        'language' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
         'note' => null,
         'images' => null,
         'parameters' => null,
-        'notify_via_email_after_verification' => null
+        'notify_via_email_after_verification' => null,
+        'language' => 'BCP-47 language code'
     ];
 
     /**
@@ -95,7 +97,8 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
 		'note' => false,
 		'images' => false,
 		'parameters' => false,
-		'notify_via_email_after_verification' => false
+		'notify_via_email_after_verification' => false,
+		'language' => false
     ];
 
     /**
@@ -190,7 +193,8 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
         'note' => 'note',
         'images' => 'images',
         'parameters' => 'parameters',
-        'notify_via_email_after_verification' => 'notifyViaEmailAfterVerification'
+        'notify_via_email_after_verification' => 'notifyViaEmailAfterVerification',
+        'language' => 'language'
     ];
 
     /**
@@ -205,7 +209,8 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
         'note' => 'setNote',
         'images' => 'setImages',
         'parameters' => 'setParameters',
-        'notify_via_email_after_verification' => 'setNotifyViaEmailAfterVerification'
+        'notify_via_email_after_verification' => 'setNotifyViaEmailAfterVerification',
+        'language' => 'setLanguage'
     ];
 
     /**
@@ -220,7 +225,8 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
         'note' => 'getNote',
         'images' => 'getImages',
         'parameters' => 'getParameters',
-        'notify_via_email_after_verification' => 'getNotifyViaEmailAfterVerification'
+        'notify_via_email_after_verification' => 'getNotifyViaEmailAfterVerification',
+        'language' => 'getLanguage'
     ];
 
     /**
@@ -287,6 +293,7 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('parameters', $data ?? [], null);
         $this->setIfExists('notify_via_email_after_verification', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], null);
     }
 
     /**
@@ -524,6 +531,33 @@ class ProductChangeProposalDto implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable notify_via_email_after_verification cannot be null');
         }
         $this->container['notify_via_email_after_verification'] = $notify_via_email_after_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string|null
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string|null $language Language of provided suggestion data.
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        }
+        $this->container['language'] = $language;
 
         return $this;
     }

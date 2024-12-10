@@ -58,7 +58,10 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
       */
     protected static $openAPITypes = [
         'product' => '\Phobetor\Allegro\Model\ProductSetElementProduct',
-        'quantity' => '\Phobetor\Allegro\Model\ProductSetElementQuantityQuantity'
+        'quantity' => '\Phobetor\Allegro\Model\ProductSetElementQuantityQuantity',
+        'responsible_person' => '\Phobetor\Allegro\Model\ProductSetElementResponsiblePersonRequestResponsiblePerson',
+        'responsible_producer' => '\Phobetor\Allegro\Model\ProductSetElementResponsibleProducerRequest',
+        'safety_information' => '\Phobetor\Allegro\Model\ProductSetElementSafetyInformation'
     ];
 
     /**
@@ -70,7 +73,10 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
       */
     protected static $openAPIFormats = [
         'product' => null,
-        'quantity' => null
+        'quantity' => null,
+        'responsible_person' => null,
+        'responsible_producer' => null,
+        'safety_information' => null
     ];
 
     /**
@@ -80,7 +86,10 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
       */
     protected static array $openAPINullables = [
         'product' => false,
-		'quantity' => false
+		'quantity' => false,
+		'responsible_person' => false,
+		'responsible_producer' => false,
+		'safety_information' => false
     ];
 
     /**
@@ -170,7 +179,10 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
      */
     protected static $attributeMap = [
         'product' => 'product',
-        'quantity' => 'quantity'
+        'quantity' => 'quantity',
+        'responsible_person' => 'responsiblePerson',
+        'responsible_producer' => 'responsibleProducer',
+        'safety_information' => 'safetyInformation'
     ];
 
     /**
@@ -180,7 +192,10 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
      */
     protected static $setters = [
         'product' => 'setProduct',
-        'quantity' => 'setQuantity'
+        'quantity' => 'setQuantity',
+        'responsible_person' => 'setResponsiblePerson',
+        'responsible_producer' => 'setResponsibleProducer',
+        'safety_information' => 'setSafetyInformation'
     ];
 
     /**
@@ -190,7 +205,10 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
      */
     protected static $getters = [
         'product' => 'getProduct',
-        'quantity' => 'getQuantity'
+        'quantity' => 'getQuantity',
+        'responsible_person' => 'getResponsiblePerson',
+        'responsible_producer' => 'getResponsibleProducer',
+        'safety_information' => 'getSafetyInformation'
     ];
 
     /**
@@ -252,6 +270,9 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
     {
         $this->setIfExists('product', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('responsible_person', $data ?? [], null);
+        $this->setIfExists('responsible_producer', $data ?? [], null);
+        $this->setIfExists('safety_information', $data ?? [], null);
     }
 
     /**
@@ -346,6 +367,87 @@ class SaleProductOfferRequestV1AllOfProductSetInner implements ModelInterface, A
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
         $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_person
+     *
+     * @return \Phobetor\Allegro\Model\ProductSetElementResponsiblePersonRequestResponsiblePerson|null
+     */
+    public function getResponsiblePerson()
+    {
+        return $this->container['responsible_person'];
+    }
+
+    /**
+     * Sets responsible_person
+     *
+     * @param \Phobetor\Allegro\Model\ProductSetElementResponsiblePersonRequestResponsiblePerson|null $responsible_person responsible_person
+     *
+     * @return self
+     */
+    public function setResponsiblePerson($responsible_person)
+    {
+        if (is_null($responsible_person)) {
+            throw new \InvalidArgumentException('non-nullable responsible_person cannot be null');
+        }
+        $this->container['responsible_person'] = $responsible_person;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_producer
+     *
+     * @return \Phobetor\Allegro\Model\ProductSetElementResponsibleProducerRequest|null
+     */
+    public function getResponsibleProducer()
+    {
+        return $this->container['responsible_producer'];
+    }
+
+    /**
+     * Sets responsible_producer
+     *
+     * @param \Phobetor\Allegro\Model\ProductSetElementResponsibleProducerRequest|null $responsible_producer responsible_producer
+     *
+     * @return self
+     */
+    public function setResponsibleProducer($responsible_producer)
+    {
+        if (is_null($responsible_producer)) {
+            throw new \InvalidArgumentException('non-nullable responsible_producer cannot be null');
+        }
+        $this->container['responsible_producer'] = $responsible_producer;
+
+        return $this;
+    }
+
+    /**
+     * Gets safety_information
+     *
+     * @return \Phobetor\Allegro\Model\ProductSetElementSafetyInformation|null
+     */
+    public function getSafetyInformation()
+    {
+        return $this->container['safety_information'];
+    }
+
+    /**
+     * Sets safety_information
+     *
+     * @param \Phobetor\Allegro\Model\ProductSetElementSafetyInformation|null $safety_information safety_information
+     *
+     * @return self
+     */
+    public function setSafetyInformation($safety_information)
+    {
+        if (is_null($safety_information)) {
+            throw new \InvalidArgumentException('non-nullable safety_information cannot be null');
+        }
+        $this->container['safety_information'] = $safety_information;
 
         return $this;
     }

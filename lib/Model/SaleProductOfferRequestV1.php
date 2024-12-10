@@ -65,13 +65,14 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'stock' => '\Phobetor\Allegro\Model\SaleProductOffersRequestStock',
         'delivery' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfDelivery',
         'publication' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfPublication',
-        'additional_marketplaces' => 'array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>',
+        'additional_marketplaces' => 'array<string,\Phobetor\Allegro\Model\AdditionalMarketplacesRequestValue>',
         'compatibility_list' => '\Phobetor\Allegro\Model\SaleProductOfferRequestV1AllOfCompatibilityList',
         'language' => 'string',
         'category' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfCategory',
         'parameters' => '\Phobetor\Allegro\Model\ParameterProductOfferRequest[]',
         'after_sales_services' => '\Phobetor\Allegro\Model\AfterSalesServicesProductOfferRequest',
         'size_table' => '\Phobetor\Allegro\Model\SizeTable',
+        'contact' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfContact',
         'discounts' => '\Phobetor\Allegro\Model\DiscountsProductOfferRequest',
         'name' => 'string',
         'payments' => '\Phobetor\Allegro\Model\Payments',
@@ -80,7 +81,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'images' => 'string[]',
         'description' => '\Phobetor\Allegro\Model\StandardizedDescription',
         'external' => '\Phobetor\Allegro\Model\ExternalId',
-        'tax' => '\Phobetor\Allegro\Model\ExtendedTax',
         'tax_settings' => '\Phobetor\Allegro\Model\OfferTaxSettings',
         'message_to_seller_settings' => '\Phobetor\Allegro\Model\MessageToSellerSettings'
     ];
@@ -108,6 +108,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'parameters' => null,
         'after_sales_services' => null,
         'size_table' => null,
+        'contact' => null,
         'discounts' => null,
         'name' => null,
         'payments' => null,
@@ -116,7 +117,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'images' => null,
         'description' => null,
         'external' => null,
-        'tax' => null,
         'tax_settings' => null,
         'message_to_seller_settings' => null
     ];
@@ -142,6 +142,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
 		'parameters' => false,
 		'after_sales_services' => false,
 		'size_table' => false,
+		'contact' => false,
 		'discounts' => false,
 		'name' => false,
 		'payments' => false,
@@ -150,7 +151,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
 		'images' => false,
 		'description' => false,
 		'external' => false,
-		'tax' => false,
 		'tax_settings' => false,
 		'message_to_seller_settings' => false
     ];
@@ -256,6 +256,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'parameters' => 'parameters',
         'after_sales_services' => 'afterSalesServices',
         'size_table' => 'sizeTable',
+        'contact' => 'contact',
         'discounts' => 'discounts',
         'name' => 'name',
         'payments' => 'payments',
@@ -264,7 +265,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'images' => 'images',
         'description' => 'description',
         'external' => 'external',
-        'tax' => 'tax',
         'tax_settings' => 'taxSettings',
         'message_to_seller_settings' => 'messageToSellerSettings'
     ];
@@ -290,6 +290,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'parameters' => 'setParameters',
         'after_sales_services' => 'setAfterSalesServices',
         'size_table' => 'setSizeTable',
+        'contact' => 'setContact',
         'discounts' => 'setDiscounts',
         'name' => 'setName',
         'payments' => 'setPayments',
@@ -298,7 +299,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'images' => 'setImages',
         'description' => 'setDescription',
         'external' => 'setExternal',
-        'tax' => 'setTax',
         'tax_settings' => 'setTaxSettings',
         'message_to_seller_settings' => 'setMessageToSellerSettings'
     ];
@@ -324,6 +324,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'parameters' => 'getParameters',
         'after_sales_services' => 'getAfterSalesServices',
         'size_table' => 'getSizeTable',
+        'contact' => 'getContact',
         'discounts' => 'getDiscounts',
         'name' => 'getName',
         'payments' => 'getPayments',
@@ -332,7 +333,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         'images' => 'getImages',
         'description' => 'getDescription',
         'external' => 'getExternal',
-        'tax' => 'getTax',
         'tax_settings' => 'getTaxSettings',
         'message_to_seller_settings' => 'getMessageToSellerSettings'
     ];
@@ -409,6 +409,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('parameters', $data ?? [], null);
         $this->setIfExists('after_sales_services', $data ?? [], null);
         $this->setIfExists('size_table', $data ?? [], null);
+        $this->setIfExists('contact', $data ?? [], null);
         $this->setIfExists('discounts', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('payments', $data ?? [], null);
@@ -417,7 +418,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('external', $data ?? [], null);
-        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('tax_settings', $data ?? [], null);
         $this->setIfExists('message_to_seller_settings', $data ?? [], null);
     }
@@ -690,7 +690,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets additional_marketplaces
      *
-     * @return array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>|null
+     * @return array<string,\Phobetor\Allegro\Model\AdditionalMarketplacesRequestValue>|null
      */
     public function getAdditionalMarketplaces()
     {
@@ -700,7 +700,7 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets additional_marketplaces
      *
-     * @param array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>|null $additional_marketplaces Settings for each additional marketplace.
+     * @param array<string,\Phobetor\Allegro\Model\AdditionalMarketplacesRequestValue>|null $additional_marketplaces Selected information about the offer in each additional service. This field does not contain information about the base marketplace of the offer.<br/> Possible values of `marketplaceId` can be obtained from `GET /marketplaces` resource.</br> See [Allegro foreign marketplaces](https://developer.allegro.pl/tutorials/listing-and-managing-offers-on-foreign-marketplaces-7GndGjeAATn) for more details regarding this field.
      *
      * @return self
      */
@@ -872,6 +872,33 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable size_table cannot be null');
         }
         $this->container['size_table'] = $size_table;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfContact|null
+     */
+    public function getContact()
+    {
+        return $this->container['contact'];
+    }
+
+    /**
+     * Sets contact
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfContact|null $contact contact
+     *
+     * @return self
+     */
+    public function setContact($contact)
+    {
+        if (is_null($contact)) {
+            throw new \InvalidArgumentException('non-nullable contact cannot be null');
+        }
+        $this->container['contact'] = $contact;
 
         return $this;
     }
@@ -1092,35 +1119,6 @@ class SaleProductOfferRequestV1 implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable external cannot be null');
         }
         $this->container['external'] = $external;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax
-     *
-     * @return \Phobetor\Allegro\Model\ExtendedTax|null
-     * @deprecated
-     */
-    public function getTax()
-    {
-        return $this->container['tax'];
-    }
-
-    /**
-     * Sets tax
-     *
-     * @param \Phobetor\Allegro\Model\ExtendedTax|null $tax tax
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setTax($tax)
-    {
-        if (is_null($tax)) {
-            throw new \InvalidArgumentException('non-nullable tax cannot be null');
-        }
-        $this->container['tax'] = $tax;
 
         return $this;
     }

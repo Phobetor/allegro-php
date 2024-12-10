@@ -61,6 +61,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         'starting_at' => '\DateTime',
         'status' => '\Phobetor\Allegro\Model\OfferStatus',
         'republish' => 'bool',
+        'ending_at' => '\DateTime',
+        'ended_by' => 'string',
         'marketplaces' => '\Phobetor\Allegro\Model\SaleProductOfferPublicationMarketplacesResponse'
     ];
 
@@ -76,6 +78,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         'starting_at' => 'date-time',
         'status' => null,
         'republish' => null,
+        'ending_at' => 'date-time',
+        'ended_by' => null,
         'marketplaces' => null
     ];
 
@@ -89,6 +93,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
 		'starting_at' => false,
 		'status' => false,
 		'republish' => false,
+		'ending_at' => false,
+		'ended_by' => false,
 		'marketplaces' => false
     ];
 
@@ -182,6 +188,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         'starting_at' => 'startingAt',
         'status' => 'status',
         'republish' => 'republish',
+        'ending_at' => 'endingAt',
+        'ended_by' => 'endedBy',
         'marketplaces' => 'marketplaces'
     ];
 
@@ -195,6 +203,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         'starting_at' => 'setStartingAt',
         'status' => 'setStatus',
         'republish' => 'setRepublish',
+        'ending_at' => 'setEndingAt',
+        'ended_by' => 'setEndedBy',
         'marketplaces' => 'setMarketplaces'
     ];
 
@@ -208,6 +218,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         'starting_at' => 'getStartingAt',
         'status' => 'getStatus',
         'republish' => 'getRepublish',
+        'ending_at' => 'getEndingAt',
+        'ended_by' => 'getEndedBy',
         'marketplaces' => 'getMarketplaces'
     ];
 
@@ -252,6 +264,29 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    public const ENDED_BY_USER = 'USER';
+    public const ENDED_BY_ADMIN = 'ADMIN';
+    public const ENDED_BY_EXPIRATION = 'EXPIRATION';
+    public const ENDED_BY_EMPTY_STOCK = 'EMPTY_STOCK';
+    public const ENDED_BY_PRODUCT_DETACHMENT = 'PRODUCT_DETACHMENT';
+    public const ENDED_BY_ERROR = 'ERROR';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEndedByAllowableValues()
+    {
+        return [
+            self::ENDED_BY_USER,
+            self::ENDED_BY_ADMIN,
+            self::ENDED_BY_EXPIRATION,
+            self::ENDED_BY_EMPTY_STOCK,
+            self::ENDED_BY_PRODUCT_DETACHMENT,
+            self::ENDED_BY_ERROR,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -272,6 +307,8 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
         $this->setIfExists('starting_at', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('republish', $data ?? [], null);
+        $this->setIfExists('ending_at', $data ?? [], null);
+        $this->setIfExists('ended_by', $data ?? [], null);
         $this->setIfExists('marketplaces', $data ?? [], null);
     }
 
@@ -302,6 +339,15 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getEndedByAllowableValues();
+        if (!is_null($this->container['ended_by']) && !in_array($this->container['ended_by'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ended_by', must be one of '%s'",
+                $this->container['ended_by'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -330,7 +376,7 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
     /**
      * Sets duration
      *
-     * @param string|null $duration Publication duration, ISO 8601 duration format. This field must be set to one of the following: PT0S for immediately, PT24H, P2D, P3D, P4D, P5D, P7D, P10D, P14D, P21D, P30D, P60D.
+     * @param string|null $duration This field must be set to one of the following:<br/> - for auctions: 1 day, 3 days, 5 days, 7 days, 10 days<br/> - for buy-now offers: 3 days, 5 days, 7 days, 10 days, 20 days, 30 days<br/> - for advertisements: 10 days, 20 days, 30 days.<br/> The value is in ISO 8601 format (example: PT24H, PT72H).
      *
      * @return self
      */
@@ -421,6 +467,70 @@ class SaleProductOfferPublicationResponse implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable republish cannot be null');
         }
         $this->container['republish'] = $republish;
+
+        return $this;
+    }
+
+    /**
+     * Gets ending_at
+     *
+     * @return \DateTime|null
+     */
+    public function getEndingAt()
+    {
+        return $this->container['ending_at'];
+    }
+
+    /**
+     * Sets ending_at
+     *
+     * @param \DateTime|null $ending_at Publication ending date: Format (ISO 8601) - yyyy-MM-dd'T'HH:mm:ss.SSSZ. Cannot be modified
+     *
+     * @return self
+     */
+    public function setEndingAt($ending_at)
+    {
+        if (is_null($ending_at)) {
+            throw new \InvalidArgumentException('non-nullable ending_at cannot be null');
+        }
+        $this->container['ending_at'] = $ending_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets ended_by
+     *
+     * @return string|null
+     */
+    public function getEndedBy()
+    {
+        return $this->container['ended_by'];
+    }
+
+    /**
+     * Sets ended_by
+     *
+     * @param string|null $ended_by Indicates the reason for ending the offer: - `USER` - offer ended by the seller. - `ADMIN` - offer ended by an admin. - `EXPIRATION` - offer duration had expired (valid for offers with specified duration). - `EMPTY_STOCK` - offer ended because all available items had been sold out. - `PRODUCT_DETACHMENT` - offer ended because its link to the product was removed. Status will only occur   if the base marketplace of offer requires full productization. - `ERROR` - offer ended due to internal problem with offer publication. The publication command responded with   success status, but further processing failed.
+     *
+     * @return self
+     */
+    public function setEndedBy($ended_by)
+    {
+        if (is_null($ended_by)) {
+            throw new \InvalidArgumentException('non-nullable ended_by cannot be null');
+        }
+        $allowedValues = $this->getEndedByAllowableValues();
+        if (!in_array($ended_by, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ended_by', must be one of '%s'",
+                    $ended_by,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ended_by'] = $ended_by;
 
         return $this;
     }

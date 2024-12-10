@@ -58,7 +58,10 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
       */
     protected static $openAPITypes = [
         'quantity' => '\Phobetor\Allegro\Model\ProductSetElementQuantityQuantity',
-        'product' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfProduct'
+        'product' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfProduct',
+        'responsible_person' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsiblePerson',
+        'responsible_producer' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsibleProducer',
+        'safety_information' => '\Phobetor\Allegro\Model\ProductSetElementSafetyInformation'
     ];
 
     /**
@@ -70,7 +73,10 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
       */
     protected static $openAPIFormats = [
         'quantity' => null,
-        'product' => null
+        'product' => null,
+        'responsible_person' => null,
+        'responsible_producer' => null,
+        'safety_information' => null
     ];
 
     /**
@@ -80,7 +86,10 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
       */
     protected static array $openAPINullables = [
         'quantity' => false,
-		'product' => false
+		'product' => false,
+		'responsible_person' => false,
+		'responsible_producer' => false,
+		'safety_information' => false
     ];
 
     /**
@@ -170,7 +179,10 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
      */
     protected static $attributeMap = [
         'quantity' => 'quantity',
-        'product' => 'product'
+        'product' => 'product',
+        'responsible_person' => 'responsiblePerson',
+        'responsible_producer' => 'responsibleProducer',
+        'safety_information' => 'safetyInformation'
     ];
 
     /**
@@ -180,7 +192,10 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
      */
     protected static $setters = [
         'quantity' => 'setQuantity',
-        'product' => 'setProduct'
+        'product' => 'setProduct',
+        'responsible_person' => 'setResponsiblePerson',
+        'responsible_producer' => 'setResponsibleProducer',
+        'safety_information' => 'setSafetyInformation'
     ];
 
     /**
@@ -190,7 +205,10 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
      */
     protected static $getters = [
         'quantity' => 'getQuantity',
-        'product' => 'getProduct'
+        'product' => 'getProduct',
+        'responsible_person' => 'getResponsiblePerson',
+        'responsible_producer' => 'getResponsibleProducer',
+        'safety_information' => 'getSafetyInformation'
     ];
 
     /**
@@ -252,6 +270,9 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
     {
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
+        $this->setIfExists('responsible_person', $data ?? [], null);
+        $this->setIfExists('responsible_producer', $data ?? [], null);
+        $this->setIfExists('safety_information', $data ?? [], null);
     }
 
     /**
@@ -346,6 +367,87 @@ class SaleProductOfferResponseV1AllOfProductSetInner implements ModelInterface, 
             throw new \InvalidArgumentException('non-nullable product cannot be null');
         }
         $this->container['product'] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_person
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsiblePerson|null
+     */
+    public function getResponsiblePerson()
+    {
+        return $this->container['responsible_person'];
+    }
+
+    /**
+     * Sets responsible_person
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsiblePerson|null $responsible_person responsible_person
+     *
+     * @return self
+     */
+    public function setResponsiblePerson($responsible_person)
+    {
+        if (is_null($responsible_person)) {
+            throw new \InvalidArgumentException('non-nullable responsible_person cannot be null');
+        }
+        $this->container['responsible_person'] = $responsible_person;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_producer
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsibleProducer|null
+     */
+    public function getResponsibleProducer()
+    {
+        return $this->container['responsible_producer'];
+    }
+
+    /**
+     * Sets responsible_producer
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsibleProducer|null $responsible_producer responsible_producer
+     *
+     * @return self
+     */
+    public function setResponsibleProducer($responsible_producer)
+    {
+        if (is_null($responsible_producer)) {
+            throw new \InvalidArgumentException('non-nullable responsible_producer cannot be null');
+        }
+        $this->container['responsible_producer'] = $responsible_producer;
+
+        return $this;
+    }
+
+    /**
+     * Gets safety_information
+     *
+     * @return \Phobetor\Allegro\Model\ProductSetElementSafetyInformation|null
+     */
+    public function getSafetyInformation()
+    {
+        return $this->container['safety_information'];
+    }
+
+    /**
+     * Sets safety_information
+     *
+     * @param \Phobetor\Allegro\Model\ProductSetElementSafetyInformation|null $safety_information safety_information
+     *
+     * @return self
+     */
+    public function setSafetyInformation($safety_information)
+    {
+        if (is_null($safety_information)) {
+            throw new \InvalidArgumentException('non-nullable safety_information cannot be null');
+        }
+        $this->container['safety_information'] = $safety_information;
 
         return $this;
     }

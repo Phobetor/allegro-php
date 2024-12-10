@@ -59,6 +59,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
+        'marketplace' => '\Phobetor\Allegro\Model\MarketplaceReference',
         'type' => 'string',
         'eligibility' => '\Phobetor\Allegro\Model\UserCampaignEligibility',
         'application' => '\Phobetor\Allegro\Model\ApplicationTimePolicy',
@@ -77,6 +78,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
+        'marketplace' => null,
         'type' => null,
         'eligibility' => null,
         'application' => null,
@@ -93,6 +95,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
 		'name' => false,
+		'marketplace' => false,
 		'type' => false,
 		'eligibility' => false,
 		'application' => false,
@@ -189,6 +192,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'marketplace' => 'marketplace',
         'type' => 'type',
         'eligibility' => 'eligibility',
         'application' => 'application',
@@ -205,6 +209,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'marketplace' => 'setMarketplace',
         'type' => 'setType',
         'eligibility' => 'setEligibility',
         'application' => 'setApplication',
@@ -221,6 +226,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'marketplace' => 'getMarketplace',
         'type' => 'getType',
         'eligibility' => 'getEligibility',
         'application' => 'getApplication',
@@ -305,6 +311,7 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('marketplace', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('eligibility', $data ?? [], null);
         $this->setIfExists('application', $data ?? [], null);
@@ -345,6 +352,9 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['marketplace'] === null) {
+            $invalidProperties[] = "'marketplace' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
@@ -438,6 +448,33 @@ class BadgeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets marketplace
+     *
+     * @return \Phobetor\Allegro\Model\MarketplaceReference
+     */
+    public function getMarketplace()
+    {
+        return $this->container['marketplace'];
+    }
+
+    /**
+     * Sets marketplace
+     *
+     * @param \Phobetor\Allegro\Model\MarketplaceReference $marketplace marketplace
+     *
+     * @return self
+     */
+    public function setMarketplace($marketplace)
+    {
+        if (is_null($marketplace)) {
+            throw new \InvalidArgumentException('non-nullable marketplace cannot be null');
+        }
+        $this->container['marketplace'] = $marketplace;
 
         return $this;
     }

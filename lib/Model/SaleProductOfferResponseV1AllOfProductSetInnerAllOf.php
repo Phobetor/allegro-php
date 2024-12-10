@@ -57,7 +57,9 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfProduct'
+        'product' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfProduct',
+        'responsible_person' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsiblePerson',
+        'responsible_producer' => '\Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsibleProducer'
     ];
 
     /**
@@ -68,7 +70,9 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product' => null
+        'product' => null,
+        'responsible_person' => null,
+        'responsible_producer' => null
     ];
 
     /**
@@ -77,7 +81,9 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product' => false
+        'product' => false,
+		'responsible_person' => false,
+		'responsible_producer' => false
     ];
 
     /**
@@ -166,7 +172,9 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
      * @var string[]
      */
     protected static $attributeMap = [
-        'product' => 'product'
+        'product' => 'product',
+        'responsible_person' => 'responsiblePerson',
+        'responsible_producer' => 'responsibleProducer'
     ];
 
     /**
@@ -175,7 +183,9 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
      * @var string[]
      */
     protected static $setters = [
-        'product' => 'setProduct'
+        'product' => 'setProduct',
+        'responsible_person' => 'setResponsiblePerson',
+        'responsible_producer' => 'setResponsibleProducer'
     ];
 
     /**
@@ -184,7 +194,9 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
      * @var string[]
      */
     protected static $getters = [
-        'product' => 'getProduct'
+        'product' => 'getProduct',
+        'responsible_person' => 'getResponsiblePerson',
+        'responsible_producer' => 'getResponsibleProducer'
     ];
 
     /**
@@ -245,6 +257,8 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
     public function __construct(array $data = null)
     {
         $this->setIfExists('product', $data ?? [], null);
+        $this->setIfExists('responsible_person', $data ?? [], null);
+        $this->setIfExists('responsible_producer', $data ?? [], null);
     }
 
     /**
@@ -312,6 +326,60 @@ class SaleProductOfferResponseV1AllOfProductSetInnerAllOf implements ModelInterf
             throw new \InvalidArgumentException('non-nullable product cannot be null');
         }
         $this->container['product'] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_person
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsiblePerson|null
+     */
+    public function getResponsiblePerson()
+    {
+        return $this->container['responsible_person'];
+    }
+
+    /**
+     * Sets responsible_person
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsiblePerson|null $responsible_person responsible_person
+     *
+     * @return self
+     */
+    public function setResponsiblePerson($responsible_person)
+    {
+        if (is_null($responsible_person)) {
+            throw new \InvalidArgumentException('non-nullable responsible_person cannot be null');
+        }
+        $this->container['responsible_person'] = $responsible_person;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_producer
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsibleProducer|null
+     */
+    public function getResponsibleProducer()
+    {
+        return $this->container['responsible_producer'];
+    }
+
+    /**
+     * Sets responsible_producer
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductOfferResponseV1AllOfProductSetInnerAllOfResponsibleProducer|null $responsible_producer responsible_producer
+     *
+     * @return self
+     */
+    public function setResponsibleProducer($responsible_producer)
+    {
+        if (is_null($responsible_producer)) {
+            throw new \InvalidArgumentException('non-nullable responsible_producer cannot be null');
+        }
+        $this->container['responsible_producer'] = $responsible_producer;
 
         return $this;
     }

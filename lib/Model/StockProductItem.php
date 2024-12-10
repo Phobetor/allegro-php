@@ -62,7 +62,8 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => '\Phobetor\Allegro\Model\StockQuantity',
         'selling_stats' => '\Phobetor\Allegro\Model\StockSellingStats',
         'reserve' => '\Phobetor\Allegro\Model\ReserveInfo',
-        'storage_fee' => '\Phobetor\Allegro\Model\StockStorageFee'
+        'storage_fee' => '\Phobetor\Allegro\Model\StockStorageFee',
+        'offer_id' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => null,
         'selling_stats' => null,
         'reserve' => null,
-        'storage_fee' => null
+        'storage_fee' => null,
+        'offer_id' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
 		'quantity' => false,
 		'selling_stats' => false,
 		'reserve' => false,
-		'storage_fee' => false
+		'storage_fee' => false,
+		'offer_id' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'quantity',
         'selling_stats' => 'sellingStats',
         'reserve' => 'reserve',
-        'storage_fee' => 'storageFee'
+        'storage_fee' => 'storageFee',
+        'offer_id' => 'offerId'
     ];
 
     /**
@@ -196,7 +200,8 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'setQuantity',
         'selling_stats' => 'setSellingStats',
         'reserve' => 'setReserve',
-        'storage_fee' => 'setStorageFee'
+        'storage_fee' => 'setStorageFee',
+        'offer_id' => 'setOfferId'
     ];
 
     /**
@@ -209,7 +214,8 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'getQuantity',
         'selling_stats' => 'getSellingStats',
         'reserve' => 'getReserve',
-        'storage_fee' => 'getStorageFee'
+        'storage_fee' => 'getStorageFee',
+        'offer_id' => 'getOfferId'
     ];
 
     /**
@@ -274,6 +280,7 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('selling_stats', $data ?? [], null);
         $this->setIfExists('reserve', $data ?? [], null);
         $this->setIfExists('storage_fee', $data ?? [], null);
+        $this->setIfExists('offer_id', $data ?? [], null);
     }
 
     /**
@@ -449,6 +456,33 @@ class StockProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable storage_fee cannot be null');
         }
         $this->container['storage_fee'] = $storage_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_id
+     *
+     * @return string|null
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     *
+     * @param string|null $offer_id Identifier of the offer currently attached to the product.
+     *
+     * @return self
+     */
+    public function setOfferId($offer_id)
+    {
+        if (is_null($offer_id)) {
+            throw new \InvalidArgumentException('non-nullable offer_id cannot be null');
+        }
+        $this->container['offer_id'] = $offer_id;
 
         return $this;
     }

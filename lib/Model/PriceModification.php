@@ -59,7 +59,7 @@ class PriceModification implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'marketplace_id' => '\Phobetor\Allegro\Model\MarketplaceId'
+        'marketplace_id' => 'string'
     ];
 
     /**
@@ -333,7 +333,7 @@ class PriceModification implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets marketplace_id
      *
-     * @return \Phobetor\Allegro\Model\MarketplaceId|null
+     * @return string|null
      */
     public function getMarketplaceId()
     {
@@ -343,7 +343,7 @@ class PriceModification implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets marketplace_id
      *
-     * @param \Phobetor\Allegro\Model\MarketplaceId|null $marketplace_id marketplace_id
+     * @param string|null $marketplace_id The id of a marketplace.<br/> Available marketplaces can be determined using <a href=\"#operation/marketplacesGET\">GET /marketplaces</a>.
      *
      * @return self
      */

@@ -84,7 +84,7 @@ class BadgePublicationTimePolicy implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'type' => false,
 		'from' => false,
-		'to' => false
+		'to' => true
     ];
 
     /**
@@ -421,7 +421,14 @@ class BadgePublicationTimePolicy implements ModelInterface, ArrayAccess, \JsonSe
     public function setTo($to)
     {
         if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('to', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['to'] = $to;
 

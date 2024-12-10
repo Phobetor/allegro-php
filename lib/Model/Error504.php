@@ -88,7 +88,7 @@ class Error504 implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => false,
 		'details' => false,
 		'message' => false,
-		'path' => false,
+		'path' => true,
 		'user_message' => false
     ];
 
@@ -418,7 +418,14 @@ class Error504 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPath($path)
     {
         if (is_null($path)) {
-            throw new \InvalidArgumentException('non-nullable path cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'path');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('path', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['path'] = $path;
 

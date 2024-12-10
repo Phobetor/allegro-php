@@ -61,8 +61,7 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
         'free_accessories_return_required' => 'bool',
         'refund_lowered_by_received_discount' => 'bool',
         'business_return_allowed' => 'bool',
-        'collect_by_seller_only' => 'bool',
-        'abroad_return_terms_may_differ' => 'bool'
+        'collect_by_seller_only' => 'bool'
     ];
 
     /**
@@ -77,8 +76,7 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
         'free_accessories_return_required' => null,
         'refund_lowered_by_received_discount' => null,
         'business_return_allowed' => null,
-        'collect_by_seller_only' => null,
-        'abroad_return_terms_may_differ' => null
+        'collect_by_seller_only' => null
     ];
 
     /**
@@ -91,8 +89,7 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
 		'free_accessories_return_required' => false,
 		'refund_lowered_by_received_discount' => false,
 		'business_return_allowed' => false,
-		'collect_by_seller_only' => false,
-		'abroad_return_terms_may_differ' => false
+		'collect_by_seller_only' => false
     ];
 
     /**
@@ -185,8 +182,7 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
         'free_accessories_return_required' => 'freeAccessoriesReturnRequired',
         'refund_lowered_by_received_discount' => 'refundLoweredByReceivedDiscount',
         'business_return_allowed' => 'businessReturnAllowed',
-        'collect_by_seller_only' => 'collectBySellerOnly',
-        'abroad_return_terms_may_differ' => 'abroadReturnTermsMayDiffer'
+        'collect_by_seller_only' => 'collectBySellerOnly'
     ];
 
     /**
@@ -199,8 +195,7 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
         'free_accessories_return_required' => 'setFreeAccessoriesReturnRequired',
         'refund_lowered_by_received_discount' => 'setRefundLoweredByReceivedDiscount',
         'business_return_allowed' => 'setBusinessReturnAllowed',
-        'collect_by_seller_only' => 'setCollectBySellerOnly',
-        'abroad_return_terms_may_differ' => 'setAbroadReturnTermsMayDiffer'
+        'collect_by_seller_only' => 'setCollectBySellerOnly'
     ];
 
     /**
@@ -213,8 +208,7 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
         'free_accessories_return_required' => 'getFreeAccessoriesReturnRequired',
         'refund_lowered_by_received_discount' => 'getRefundLoweredByReceivedDiscount',
         'business_return_allowed' => 'getBusinessReturnAllowed',
-        'collect_by_seller_only' => 'getCollectBySellerOnly',
-        'abroad_return_terms_may_differ' => 'getAbroadReturnTermsMayDiffer'
+        'collect_by_seller_only' => 'getCollectBySellerOnly'
     ];
 
     /**
@@ -279,7 +273,6 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('refund_lowered_by_received_discount', $data ?? [], null);
         $this->setIfExists('business_return_allowed', $data ?? [], null);
         $this->setIfExists('collect_by_seller_only', $data ?? [], null);
-        $this->setIfExists('abroad_return_terms_may_differ', $data ?? [], null);
     }
 
     /**
@@ -470,33 +463,6 @@ class ReturnPolicyOptions implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable collect_by_seller_only cannot be null');
         }
         $this->container['collect_by_seller_only'] = $collect_by_seller_only;
-
-        return $this;
-    }
-
-    /**
-     * Gets abroad_return_terms_may_differ
-     *
-     * @return bool|null
-     */
-    public function getAbroadReturnTermsMayDiffer()
-    {
-        return $this->container['abroad_return_terms_may_differ'];
-    }
-
-    /**
-     * Sets abroad_return_terms_may_differ
-     *
-     * @param bool|null $abroad_return_terms_may_differ If ordering a shipment outside Poland, different rules of return, complaint and warranty may apply
-     *
-     * @return self
-     */
-    public function setAbroadReturnTermsMayDiffer($abroad_return_terms_may_differ)
-    {
-        if (is_null($abroad_return_terms_may_differ)) {
-            throw new \InvalidArgumentException('non-nullable abroad_return_terms_may_differ cannot be null');
-        }
-        $this->container['abroad_return_terms_may_differ'] = $abroad_return_terms_may_differ;
 
         return $this;
     }

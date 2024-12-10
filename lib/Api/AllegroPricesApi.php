@@ -134,14 +134,14 @@ class AllegroPricesApi
     /**
      * Operation getAllegroPricesConsentForOffer
      *
-     * Get the current consent value for an offer
+     * Get the current consents&#39; state for an offer
      *
      * @param  string $offer_id The offer ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function getAllegroPricesConsentForOffer($offer_id, string $contentType = self::contentTypes['getAllegroPricesConsentForOffer'][0])
     {
@@ -152,14 +152,14 @@ class AllegroPricesApi
     /**
      * Operation getAllegroPricesConsentForOfferWithHttpInfo
      *
-     * Get the current consent value for an offer
+     * Get the current consents&#39; state for an offer
      *
      * @param  string $offer_id The offer ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllegroPricesConsentForOfferWithHttpInfo($offer_id, string $contentType = self::contentTypes['getAllegroPricesConsentForOffer'][0])
     {
@@ -202,17 +202,17 @@ class AllegroPricesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -263,7 +263,7 @@ class AllegroPricesApi
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse';
+            $returnType = '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -284,7 +284,7 @@ class AllegroPricesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse',
+                        '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -321,7 +321,7 @@ class AllegroPricesApi
     /**
      * Operation getAllegroPricesConsentForOfferAsync
      *
-     * Get the current consent value for an offer
+     * Get the current consents&#39; state for an offer
      *
      * @param  string $offer_id The offer ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllegroPricesConsentForOffer'] to see the possible values for this operation
@@ -342,7 +342,7 @@ class AllegroPricesApi
     /**
      * Operation getAllegroPricesConsentForOfferAsyncWithHttpInfo
      *
-     * Get the current consent value for an offer
+     * Get the current consents&#39; state for an offer
      *
      * @param  string $offer_id The offer ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllegroPricesConsentForOffer'] to see the possible values for this operation
@@ -352,7 +352,7 @@ class AllegroPricesApi
      */
     public function getAllegroPricesConsentForOfferAsyncWithHttpInfo($offer_id, string $contentType = self::contentTypes['getAllegroPricesConsentForOffer'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse';
+        $returnType = '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse';
         $request = $this->getAllegroPricesConsentForOfferRequest($offer_id, $contentType);
 
         return $this->client
@@ -780,36 +780,36 @@ class AllegroPricesApi
     /**
      * Operation updateAllegroPricesConsentForAccount
      *
-     * Update consent value for the account
+     * Update consents for the account
      *
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesAccountChangeRequest $allegro_prices_account_change_request allegro_prices_account_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForAccount'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function updateAllegroPricesConsentForAccount($allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
+    public function updateAllegroPricesConsentForAccount($allegro_prices_account_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
     {
-        list($response) = $this->updateAllegroPricesConsentForAccountWithHttpInfo($allegro_prices_change_request, $contentType);
+        list($response) = $this->updateAllegroPricesConsentForAccountWithHttpInfo($allegro_prices_account_change_request, $contentType);
         return $response;
     }
 
     /**
      * Operation updateAllegroPricesConsentForAccountWithHttpInfo
      *
-     * Update consent value for the account
+     * Update consents for the account
      *
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesAccountChangeRequest $allegro_prices_account_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForAccount'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAllegroPricesConsentForAccountWithHttpInfo($allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
+    public function updateAllegroPricesConsentForAccountWithHttpInfo($allegro_prices_account_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
     {
-        $request = $this->updateAllegroPricesConsentForAccountRequest($allegro_prices_change_request, $contentType);
+        $request = $this->updateAllegroPricesConsentForAccountRequest($allegro_prices_account_change_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -848,17 +848,17 @@ class AllegroPricesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -909,7 +909,7 @@ class AllegroPricesApi
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse';
+            $returnType = '\Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -930,7 +930,7 @@ class AllegroPricesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse',
+                        '\Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -967,17 +967,17 @@ class AllegroPricesApi
     /**
      * Operation updateAllegroPricesConsentForAccountAsync
      *
-     * Update consent value for the account
+     * Update consents for the account
      *
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesAccountChangeRequest $allegro_prices_account_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAllegroPricesConsentForAccountAsync($allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
+    public function updateAllegroPricesConsentForAccountAsync($allegro_prices_account_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
     {
-        return $this->updateAllegroPricesConsentForAccountAsyncWithHttpInfo($allegro_prices_change_request, $contentType)
+        return $this->updateAllegroPricesConsentForAccountAsyncWithHttpInfo($allegro_prices_account_change_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -988,18 +988,18 @@ class AllegroPricesApi
     /**
      * Operation updateAllegroPricesConsentForAccountAsyncWithHttpInfo
      *
-     * Update consent value for the account
+     * Update consents for the account
      *
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesAccountChangeRequest $allegro_prices_account_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAllegroPricesConsentForAccountAsyncWithHttpInfo($allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
+    public function updateAllegroPricesConsentForAccountAsyncWithHttpInfo($allegro_prices_account_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse';
-        $request = $this->updateAllegroPricesConsentForAccountRequest($allegro_prices_change_request, $contentType);
+        $returnType = '\Phobetor\Allegro\Model\AllegroPricesAccountConsentChangeResponse';
+        $request = $this->updateAllegroPricesConsentForAccountRequest($allegro_prices_account_change_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1040,19 +1040,19 @@ class AllegroPricesApi
     /**
      * Create request for operation 'updateAllegroPricesConsentForAccount'
      *
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesAccountChangeRequest $allegro_prices_account_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAllegroPricesConsentForAccountRequest($allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
+    public function updateAllegroPricesConsentForAccountRequest($allegro_prices_account_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForAccount'][0])
     {
 
-        // verify the required parameter 'allegro_prices_change_request' is set
-        if ($allegro_prices_change_request === null || (is_array($allegro_prices_change_request) && count($allegro_prices_change_request) === 0)) {
+        // verify the required parameter 'allegro_prices_account_change_request' is set
+        if ($allegro_prices_account_change_request === null || (is_array($allegro_prices_account_change_request) && count($allegro_prices_account_change_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $allegro_prices_change_request when calling updateAllegroPricesConsentForAccount'
+                'Missing the required parameter $allegro_prices_account_change_request when calling updateAllegroPricesConsentForAccount'
             );
         }
 
@@ -1075,12 +1075,12 @@ class AllegroPricesApi
         );
 
         // for model (json/xml)
-        if (isset($allegro_prices_change_request)) {
+        if (isset($allegro_prices_account_change_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($allegro_prices_change_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($allegro_prices_account_change_request));
             } else {
-                $httpBody = $allegro_prices_change_request;
+                $httpBody = $allegro_prices_account_change_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1135,38 +1135,38 @@ class AllegroPricesApi
     /**
      * Operation updateAllegroPricesConsentForOffer
      *
-     * Update consent value for an offer
+     * Update consents for an offer
      *
      * @param  string $offer_id The offer ID. (required)
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesOfferChangeRequest $allegro_prices_offer_change_request allegro_prices_offer_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function updateAllegroPricesConsentForOffer($offer_id, $allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
+    public function updateAllegroPricesConsentForOffer($offer_id, $allegro_prices_offer_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
     {
-        list($response) = $this->updateAllegroPricesConsentForOfferWithHttpInfo($offer_id, $allegro_prices_change_request, $contentType);
+        list($response) = $this->updateAllegroPricesConsentForOfferWithHttpInfo($offer_id, $allegro_prices_offer_change_request, $contentType);
         return $response;
     }
 
     /**
      * Operation updateAllegroPricesConsentForOfferWithHttpInfo
      *
-     * Update consent value for an offer
+     * Update consents for an offer
      *
      * @param  string $offer_id The offer ID. (required)
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesOfferChangeRequest $allegro_prices_offer_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAllegroPricesConsentForOfferWithHttpInfo($offer_id, $allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
+    public function updateAllegroPricesConsentForOfferWithHttpInfo($offer_id, $allegro_prices_offer_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
     {
-        $request = $this->updateAllegroPricesConsentForOfferRequest($offer_id, $allegro_prices_change_request, $contentType);
+        $request = $this->updateAllegroPricesConsentForOfferRequest($offer_id, $allegro_prices_offer_change_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1205,17 +1205,17 @@ class AllegroPricesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1296,7 +1296,7 @@ class AllegroPricesApi
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse';
+            $returnType = '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1317,7 +1317,7 @@ class AllegroPricesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse',
+                        '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1370,18 +1370,18 @@ class AllegroPricesApi
     /**
      * Operation updateAllegroPricesConsentForOfferAsync
      *
-     * Update consent value for an offer
+     * Update consents for an offer
      *
      * @param  string $offer_id The offer ID. (required)
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesOfferChangeRequest $allegro_prices_offer_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAllegroPricesConsentForOfferAsync($offer_id, $allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
+    public function updateAllegroPricesConsentForOfferAsync($offer_id, $allegro_prices_offer_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
     {
-        return $this->updateAllegroPricesConsentForOfferAsyncWithHttpInfo($offer_id, $allegro_prices_change_request, $contentType)
+        return $this->updateAllegroPricesConsentForOfferAsyncWithHttpInfo($offer_id, $allegro_prices_offer_change_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1392,19 +1392,19 @@ class AllegroPricesApi
     /**
      * Operation updateAllegroPricesConsentForOfferAsyncWithHttpInfo
      *
-     * Update consent value for an offer
+     * Update consents for an offer
      *
      * @param  string $offer_id The offer ID. (required)
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesOfferChangeRequest $allegro_prices_offer_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAllegroPricesConsentForOfferAsyncWithHttpInfo($offer_id, $allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
+    public function updateAllegroPricesConsentForOfferAsyncWithHttpInfo($offer_id, $allegro_prices_offer_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\AllegroPricesConsentChangeResponse';
-        $request = $this->updateAllegroPricesConsentForOfferRequest($offer_id, $allegro_prices_change_request, $contentType);
+        $returnType = '\Phobetor\Allegro\Model\AllegroPricesOfferConsentChangeResponse';
+        $request = $this->updateAllegroPricesConsentForOfferRequest($offer_id, $allegro_prices_offer_change_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1446,13 +1446,13 @@ class AllegroPricesApi
      * Create request for operation 'updateAllegroPricesConsentForOffer'
      *
      * @param  string $offer_id The offer ID. (required)
-     * @param  \Phobetor\Allegro\Model\AllegroPricesChangeRequest $allegro_prices_change_request (required)
+     * @param  \Phobetor\Allegro\Model\AllegroPricesOfferChangeRequest $allegro_prices_offer_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAllegroPricesConsentForOffer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAllegroPricesConsentForOfferRequest($offer_id, $allegro_prices_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
+    public function updateAllegroPricesConsentForOfferRequest($offer_id, $allegro_prices_offer_change_request, string $contentType = self::contentTypes['updateAllegroPricesConsentForOffer'][0])
     {
 
         // verify the required parameter 'offer_id' is set
@@ -1462,10 +1462,10 @@ class AllegroPricesApi
             );
         }
 
-        // verify the required parameter 'allegro_prices_change_request' is set
-        if ($allegro_prices_change_request === null || (is_array($allegro_prices_change_request) && count($allegro_prices_change_request) === 0)) {
+        // verify the required parameter 'allegro_prices_offer_change_request' is set
+        if ($allegro_prices_offer_change_request === null || (is_array($allegro_prices_offer_change_request) && count($allegro_prices_offer_change_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $allegro_prices_change_request when calling updateAllegroPricesConsentForOffer'
+                'Missing the required parameter $allegro_prices_offer_change_request when calling updateAllegroPricesConsentForOffer'
             );
         }
 
@@ -1496,12 +1496,12 @@ class AllegroPricesApi
         );
 
         // for model (json/xml)
-        if (isset($allegro_prices_change_request)) {
+        if (isset($allegro_prices_offer_change_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($allegro_prices_change_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($allegro_prices_offer_change_request));
             } else {
-                $httpBody = $allegro_prices_change_request;
+                $httpBody = $allegro_prices_offer_change_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

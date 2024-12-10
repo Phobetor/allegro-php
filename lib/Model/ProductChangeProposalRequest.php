@@ -62,7 +62,8 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         'category' => '\Phobetor\Allegro\Model\ProductCategory',
         'images' => '\Phobetor\Allegro\Model\ImageUrl[]',
         'parameters' => '\Phobetor\Allegro\Model\ProductParameter[]',
-        'notify_via_email_after_verification' => 'bool'
+        'notify_via_email_after_verification' => 'bool',
+        'language' => 'string'
     ];
 
     /**
@@ -78,7 +79,8 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         'category' => null,
         'images' => null,
         'parameters' => null,
-        'notify_via_email_after_verification' => null
+        'notify_via_email_after_verification' => null,
+        'language' => 'BCP-47 language code'
     ];
 
     /**
@@ -92,7 +94,8 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
 		'category' => false,
 		'images' => false,
 		'parameters' => false,
-		'notify_via_email_after_verification' => false
+		'notify_via_email_after_verification' => false,
+		'language' => false
     ];
 
     /**
@@ -186,7 +189,8 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         'category' => 'category',
         'images' => 'images',
         'parameters' => 'parameters',
-        'notify_via_email_after_verification' => 'notifyViaEmailAfterVerification'
+        'notify_via_email_after_verification' => 'notifyViaEmailAfterVerification',
+        'language' => 'language'
     ];
 
     /**
@@ -200,7 +204,8 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         'category' => 'setCategory',
         'images' => 'setImages',
         'parameters' => 'setParameters',
-        'notify_via_email_after_verification' => 'setNotifyViaEmailAfterVerification'
+        'notify_via_email_after_verification' => 'setNotifyViaEmailAfterVerification',
+        'language' => 'setLanguage'
     ];
 
     /**
@@ -214,7 +219,8 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         'category' => 'getCategory',
         'images' => 'getImages',
         'parameters' => 'getParameters',
-        'notify_via_email_after_verification' => 'getNotifyViaEmailAfterVerification'
+        'notify_via_email_after_verification' => 'getNotifyViaEmailAfterVerification',
+        'language' => 'getLanguage'
     ];
 
     /**
@@ -280,6 +286,7 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('parameters', $data ?? [], null);
         $this->setIfExists('notify_via_email_after_verification', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], 'pl-PL');
     }
 
     /**
@@ -328,6 +335,9 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['parameters'] === null) {
             $invalidProperties[] = "'parameters' can't be null";
+        }
+        if ($this->container['language'] === null) {
+            $invalidProperties[] = "'language' can't be null";
         }
         return $invalidProperties;
     }
@@ -510,6 +520,33 @@ class ProductChangeProposalRequest implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable notify_via_email_after_verification cannot be null');
         }
         $this->container['notify_via_email_after_verification'] = $notify_via_email_after_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string $language Language of provided proposal data.
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        }
+        $this->container['language'] = $language;
 
         return $this;
     }

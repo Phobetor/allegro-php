@@ -66,10 +66,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => '\Phobetor\Allegro\Model\StandardizedDescription',
         'external' => '\Phobetor\Allegro\Model\ExternalId',
         'size_table' => '\Phobetor\Allegro\Model\SizeTable',
-        'tax' => '\Phobetor\Allegro\Model\ExtendedTax',
         'tax_settings' => '\Phobetor\Allegro\Model\OfferTaxSettings',
-        'message_to_seller_settings' => '\Phobetor\Allegro\Model\MessageToSellerSettings',
-        'additional_marketplaces' => 'array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>'
+        'message_to_seller_settings' => '\Phobetor\Allegro\Model\MessageToSellerSettings'
     ];
 
     /**
@@ -88,10 +86,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'external' => null,
         'size_table' => null,
-        'tax' => null,
         'tax_settings' => null,
-        'message_to_seller_settings' => null,
-        'additional_marketplaces' => null
+        'message_to_seller_settings' => null
     ];
 
     /**
@@ -108,10 +104,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
 		'description' => false,
 		'external' => false,
 		'size_table' => false,
-		'tax' => false,
 		'tax_settings' => false,
-		'message_to_seller_settings' => false,
-		'additional_marketplaces' => false
+		'message_to_seller_settings' => false
     ];
 
     /**
@@ -208,10 +202,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'external' => 'external',
         'size_table' => 'sizeTable',
-        'tax' => 'tax',
         'tax_settings' => 'taxSettings',
-        'message_to_seller_settings' => 'messageToSellerSettings',
-        'additional_marketplaces' => 'additionalMarketplaces'
+        'message_to_seller_settings' => 'messageToSellerSettings'
     ];
 
     /**
@@ -228,10 +220,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'external' => 'setExternal',
         'size_table' => 'setSizeTable',
-        'tax' => 'setTax',
         'tax_settings' => 'setTaxSettings',
-        'message_to_seller_settings' => 'setMessageToSellerSettings',
-        'additional_marketplaces' => 'setAdditionalMarketplaces'
+        'message_to_seller_settings' => 'setMessageToSellerSettings'
     ];
 
     /**
@@ -248,10 +238,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'external' => 'getExternal',
         'size_table' => 'getSizeTable',
-        'tax' => 'getTax',
         'tax_settings' => 'getTaxSettings',
-        'message_to_seller_settings' => 'getMessageToSellerSettings',
-        'additional_marketplaces' => 'getAdditionalMarketplaces'
+        'message_to_seller_settings' => 'getMessageToSellerSettings'
     ];
 
     /**
@@ -319,10 +307,8 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('external', $data ?? [], null);
         $this->setIfExists('size_table', $data ?? [], null);
-        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('tax_settings', $data ?? [], null);
         $this->setIfExists('message_to_seller_settings', $data ?? [], null);
-        $this->setIfExists('additional_marketplaces', $data ?? [], null);
     }
 
     /**
@@ -592,35 +578,6 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets tax
-     *
-     * @return \Phobetor\Allegro\Model\ExtendedTax|null
-     * @deprecated
-     */
-    public function getTax()
-    {
-        return $this->container['tax'];
-    }
-
-    /**
-     * Sets tax
-     *
-     * @param \Phobetor\Allegro\Model\ExtendedTax|null $tax tax
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setTax($tax)
-    {
-        if (is_null($tax)) {
-            throw new \InvalidArgumentException('non-nullable tax cannot be null');
-        }
-        $this->container['tax'] = $tax;
-
-        return $this;
-    }
-
-    /**
      * Gets tax_settings
      *
      * @return \Phobetor\Allegro\Model\OfferTaxSettings|null
@@ -670,33 +627,6 @@ class SaleProductOffer implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable message_to_seller_settings cannot be null');
         }
         $this->container['message_to_seller_settings'] = $message_to_seller_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets additional_marketplaces
-     *
-     * @return array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>|null
-     */
-    public function getAdditionalMarketplaces()
-    {
-        return $this->container['additional_marketplaces'];
-    }
-
-    /**
-     * Sets additional_marketplaces
-     *
-     * @param array<string,\Phobetor\Allegro\Model\OfferAdditionalMarketplace>|null $additional_marketplaces Settings for each additional marketplace.
-     *
-     * @return self
-     */
-    public function setAdditionalMarketplaces($additional_marketplaces)
-    {
-        if (is_null($additional_marketplaces)) {
-            throw new \InvalidArgumentException('non-nullable additional_marketplaces cannot be null');
-        }
-        $this->container['additional_marketplaces'] = $additional_marketplaces;
 
         return $this;
     }

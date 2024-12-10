@@ -61,11 +61,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'reference_number' => 'string',
         'order_id' => 'string',
+        'buyer' => '\Phobetor\Allegro\Model\CustomerReturnBuyer',
         'items' => '\Phobetor\Allegro\Model\CustomerReturnItem[]',
         'refund' => '\Phobetor\Allegro\Model\CustomerReturnRefund',
         'parcels' => '\Phobetor\Allegro\Model\CustomerReturnReturnParcel[]',
         'rejection' => '\Phobetor\Allegro\Model\CustomerReturnRejection',
-        'marketplace_id' => 'string'
+        'marketplace_id' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -80,11 +82,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'date-time',
         'reference_number' => null,
         'order_id' => null,
+        'buyer' => null,
         'items' => null,
         'refund' => null,
         'parcels' => null,
         'rejection' => null,
-        'marketplace_id' => null
+        'marketplace_id' => null,
+        'status' => null
     ];
 
     /**
@@ -97,11 +101,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
 		'created_at' => false,
 		'reference_number' => false,
 		'order_id' => false,
+		'buyer' => false,
 		'items' => false,
 		'refund' => false,
 		'parcels' => false,
 		'rejection' => false,
-		'marketplace_id' => false
+		'marketplace_id' => false,
+		'status' => false
     ];
 
     /**
@@ -194,11 +200,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'createdAt',
         'reference_number' => 'referenceNumber',
         'order_id' => 'orderId',
+        'buyer' => 'buyer',
         'items' => 'items',
         'refund' => 'refund',
         'parcels' => 'parcels',
         'rejection' => 'rejection',
-        'marketplace_id' => 'marketplaceId'
+        'marketplace_id' => 'marketplaceId',
+        'status' => 'status'
     ];
 
     /**
@@ -211,11 +219,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'setCreatedAt',
         'reference_number' => 'setReferenceNumber',
         'order_id' => 'setOrderId',
+        'buyer' => 'setBuyer',
         'items' => 'setItems',
         'refund' => 'setRefund',
         'parcels' => 'setParcels',
         'rejection' => 'setRejection',
-        'marketplace_id' => 'setMarketplaceId'
+        'marketplace_id' => 'setMarketplaceId',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -228,11 +238,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'getCreatedAt',
         'reference_number' => 'getReferenceNumber',
         'order_id' => 'getOrderId',
+        'buyer' => 'getBuyer',
         'items' => 'getItems',
         'refund' => 'getRefund',
         'parcels' => 'getParcels',
         'rejection' => 'getRejection',
-        'marketplace_id' => 'getMarketplaceId'
+        'marketplace_id' => 'getMarketplaceId',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -296,11 +308,13 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('reference_number', $data ?? [], null);
         $this->setIfExists('order_id', $data ?? [], null);
+        $this->setIfExists('buyer', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('refund', $data ?? [], null);
         $this->setIfExists('parcels', $data ?? [], null);
         $this->setIfExists('rejection', $data ?? [], null);
         $this->setIfExists('marketplace_id', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -454,6 +468,33 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets buyer
+     *
+     * @return \Phobetor\Allegro\Model\CustomerReturnBuyer|null
+     */
+    public function getBuyer()
+    {
+        return $this->container['buyer'];
+    }
+
+    /**
+     * Sets buyer
+     *
+     * @param \Phobetor\Allegro\Model\CustomerReturnBuyer|null $buyer buyer
+     *
+     * @return self
+     */
+    public function setBuyer($buyer)
+    {
+        if (is_null($buyer)) {
+            throw new \InvalidArgumentException('non-nullable buyer cannot be null');
+        }
+        $this->container['buyer'] = $buyer;
+
+        return $this;
+    }
+
+    /**
      * Gets items
      *
      * @return \Phobetor\Allegro\Model\CustomerReturnItem[]|null
@@ -584,6 +625,33 @@ class CustomerReturn implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
         $this->container['marketplace_id'] = $marketplace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Current return timeline statuses. The allowed values are:   * CREATED - The return has been declared,   * DISPATCHED - The returned items have been dispatched,   * IN_TRANSIT - The returned items are in transit,   * DELIVERED - The returned items have been delivered,   * FINISHED - The payment has been refunded, return process is finished,   * REJECTED - The return has been rejected,   * COMMISSION_REFUND_CLAIMED - The sales commission refund (transaction rebate) application has been claimed,   * COMMISSION_REFUNDED - The sales commission was refunded,   * WAREHOUSE_DELIVERED - The returned items have been delivered to Allegro Warehouse,   * WAREHOUSE_VERIFICATION - The returned items are under verification.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

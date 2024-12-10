@@ -62,8 +62,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
         'variants_equal' => 'bool',
         'ambiguous_value_id' => 'string',
         'depends_on_parameter_id' => 'string',
-        'required_depends_on_value_ids' => 'string[]',
-        'display_depends_on_value_ids' => 'string[]',
         'describes_product' => 'bool',
         'custom_values_enabled' => 'bool'
     ];
@@ -80,8 +78,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
         'variants_equal' => null,
         'ambiguous_value_id' => null,
         'depends_on_parameter_id' => null,
-        'required_depends_on_value_ids' => null,
-        'display_depends_on_value_ids' => null,
         'describes_product' => null,
         'custom_values_enabled' => null
     ];
@@ -94,10 +90,8 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'variants_allowed' => false,
 		'variants_equal' => false,
-		'ambiguous_value_id' => false,
+		'ambiguous_value_id' => true,
 		'depends_on_parameter_id' => true,
-		'required_depends_on_value_ids' => true,
-		'display_depends_on_value_ids' => true,
 		'describes_product' => false,
 		'custom_values_enabled' => false
     ];
@@ -192,8 +186,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
         'variants_equal' => 'variantsEqual',
         'ambiguous_value_id' => 'ambiguousValueId',
         'depends_on_parameter_id' => 'dependsOnParameterId',
-        'required_depends_on_value_ids' => 'requiredDependsOnValueIds',
-        'display_depends_on_value_ids' => 'displayDependsOnValueIds',
         'describes_product' => 'describesProduct',
         'custom_values_enabled' => 'customValuesEnabled'
     ];
@@ -208,8 +200,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
         'variants_equal' => 'setVariantsEqual',
         'ambiguous_value_id' => 'setAmbiguousValueId',
         'depends_on_parameter_id' => 'setDependsOnParameterId',
-        'required_depends_on_value_ids' => 'setRequiredDependsOnValueIds',
-        'display_depends_on_value_ids' => 'setDisplayDependsOnValueIds',
         'describes_product' => 'setDescribesProduct',
         'custom_values_enabled' => 'setCustomValuesEnabled'
     ];
@@ -224,8 +214,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
         'variants_equal' => 'getVariantsEqual',
         'ambiguous_value_id' => 'getAmbiguousValueId',
         'depends_on_parameter_id' => 'getDependsOnParameterId',
-        'required_depends_on_value_ids' => 'getRequiredDependsOnValueIds',
-        'display_depends_on_value_ids' => 'getDisplayDependsOnValueIds',
         'describes_product' => 'getDescribesProduct',
         'custom_values_enabled' => 'getCustomValuesEnabled'
     ];
@@ -291,8 +279,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('variants_equal', $data ?? [], null);
         $this->setIfExists('ambiguous_value_id', $data ?? [], null);
         $this->setIfExists('depends_on_parameter_id', $data ?? [], null);
-        $this->setIfExists('required_depends_on_value_ids', $data ?? [], null);
-        $this->setIfExists('display_depends_on_value_ids', $data ?? [], null);
         $this->setIfExists('describes_product', $data ?? [], null);
         $this->setIfExists('custom_values_enabled', $data ?? [], null);
     }
@@ -413,7 +399,14 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAmbiguousValueId($ambiguous_value_id)
     {
         if (is_null($ambiguous_value_id)) {
-            throw new \InvalidArgumentException('non-nullable ambiguous_value_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ambiguous_value_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ambiguous_value_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ambiguous_value_id'] = $ambiguous_value_id;
 
@@ -433,7 +426,7 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets depends_on_parameter_id
      *
-     * @param string|null $depends_on_parameter_id Indicates whether this parameter's behaviour depends on another parameter's values: - allowed values (only for dictionary parameters; see: `dictionary[].dependsOnValueIds`), - optionality (see `requiredDependsOnValueIds`, this usage is deprecated and will be replaced by   `requiredIf` in the future), - visibility (see `displayDependsOnValueIds`, this usage is deprecated and will be replaced by `displayedIf`   in the future).
+     * @param string|null $depends_on_parameter_id Indicates whether this parameter's allowed values depend on another parameter's values. This field is set only for dictionary parameters which have at least one dictionary value with dependent values (see also `dictionary[].dependsOnValueIds`). Otherwise this field is null.
      *
      * @return self
      */
@@ -450,78 +443,6 @@ class CategoryParameterOptions implements ModelInterface, ArrayAccess, \JsonSeri
             }
         }
         $this->container['depends_on_parameter_id'] = $depends_on_parameter_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets required_depends_on_value_ids
-     *
-     * @return string[]|null
-     * @deprecated
-     */
-    public function getRequiredDependsOnValueIds()
-    {
-        return $this->container['required_depends_on_value_ids'];
-    }
-
-    /**
-     * Sets required_depends_on_value_ids
-     *
-     * @param string[]|null $required_depends_on_value_ids Indicates whether this parameter's optionality depends on another parameter's values.  This parameter is required if `require` is `true` and either: - this field is `null` **or** - the parameter that this parameter depends on (see: `dependsOnParameterId`) has set any value ID from this array.  Otherwise this parameter is optional.  This field is deprecated and will be removed in the future. Please use `requiredIf` instead.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setRequiredDependsOnValueIds($required_depends_on_value_ids)
-    {
-        if (is_null($required_depends_on_value_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'required_depends_on_value_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('required_depends_on_value_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['required_depends_on_value_ids'] = $required_depends_on_value_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_depends_on_value_ids
-     *
-     * @return string[]|null
-     * @deprecated
-     */
-    public function getDisplayDependsOnValueIds()
-    {
-        return $this->container['display_depends_on_value_ids'];
-    }
-
-    /**
-     * Sets display_depends_on_value_ids
-     *
-     * @param string[]|null $display_depends_on_value_ids Indicates whether this parameter's visibility depends on another parameter's values.  This parameter is visible if and only if: - this field is `null` **or** - the parameter that this parameter depends on (see: `dependsOnParameterId`) has set any value ID from this array.  Otherwise this parameter will not be displayed anywhere. Setting a value of a hidden parameter is permitted, nonetheless.  This field is deprecated and will be removed in the future. Please use `displayedIf` instead.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setDisplayDependsOnValueIds($display_depends_on_value_ids)
-    {
-        if (is_null($display_depends_on_value_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'display_depends_on_value_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('display_depends_on_value_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['display_depends_on_value_ids'] = $display_depends_on_value_ids;
 
         return $this;
     }

@@ -435,8 +435,8 @@ class ClassifiedsApi
      * Get the advertisements daily statistics
      *
      * @param  string[] $offer_id List of offer Ids, maximum 50 values. (required)
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedOffersStatsGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
@@ -455,8 +455,8 @@ class ClassifiedsApi
      * Get the advertisements daily statistics
      *
      * @param  string[] $offer_id List of offer Ids, maximum 50 values. (required)
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedOffersStatsGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
@@ -557,8 +557,8 @@ class ClassifiedsApi
      * Get the advertisements daily statistics
      *
      * @param  string[] $offer_id List of offer Ids, maximum 50 values. (required)
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedOffersStatsGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -580,8 +580,8 @@ class ClassifiedsApi
      * Get the advertisements daily statistics
      *
      * @param  string[] $offer_id List of offer Ids, maximum 50 values. (required)
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedOffersStatsGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -632,8 +632,8 @@ class ClassifiedsApi
      * Create request for operation 'classifiedOffersStatsGET'
      *
      * @param  string[] $offer_id List of offer Ids, maximum 50 values. (required)
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedOffersStatsGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -752,8 +752,8 @@ class ClassifiedsApi
      *
      * Get the seller&#39;s advertisements daily statistics
      *
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedSellerOfferStatsGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
@@ -771,8 +771,8 @@ class ClassifiedsApi
      *
      * Get the seller&#39;s advertisements daily statistics
      *
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedSellerOfferStatsGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
@@ -872,8 +872,8 @@ class ClassifiedsApi
      *
      * Get the seller&#39;s advertisements daily statistics
      *
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedSellerOfferStatsGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -894,8 +894,8 @@ class ClassifiedsApi
      *
      * Get the seller&#39;s advertisements daily statistics
      *
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedSellerOfferStatsGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -945,8 +945,8 @@ class ClassifiedsApi
     /**
      * Create request for operation 'classifiedSellerOfferStatsGET'
      *
-     * @param  \DateTime $date_gte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
-     * @param  \DateTime $date_lte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_gte The maximum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time. The difference between date.gte and date.lte should be less than 3 months. (optional)
+     * @param  \DateTime $date_lte The minimum date and time from which the events will be fetched in ISO 8601 format. The value should be less than the current date time and greater than date.lte. The difference between date.gte and date.lte should be less than 3 months. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['classifiedSellerOfferStatsGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

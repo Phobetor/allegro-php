@@ -127,26 +127,27 @@ class FulfillmentStockApi
      *
      * Get available stock
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. Ignored for text/csv content type. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. Ignored for text/csv content type. (optional, default to 50)
      * @param  string $phrase Filtering search results by product name. (optional)
-     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
+     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then PREDICTION, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then PREDICTION, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
      * @param  string $product_id Filtering search results by fulfillment product identifier. Ignored for text/csv content type. (optional)
-     * @param  string[] $product_availability Filtering search results by availability (optional)
-     * @param  string $product_status Filtering search results by status (optional)
-     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated (optional)
+     * @param  string[] $product_availability Filtering search results by availability. (optional)
+     * @param  string $product_status Filtering search results by status. (optional)
+     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated TO_BE_PAID_SOON - products for which storage will soon be payable. (optional)
      * @param  string $asn_status Filtering search results by ASN status. Following values are allowed: SUBMITTED - Advanced Ship Notice document has been submitted and it contains a particular product. Only the products that have ASN with products on it are returned. NOT_FOUND - Advanced Ship Notice that contains a particular product was not found. It has not been submitted, may be expired, or products have already been delivered to the warehouse. Only the products that don&#39;t have related ASN with products on it are returned. (optional)
-     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal (optional)
-     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal (optional)
+     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal. (optional)
+     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFulfillmentStock'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\StockProductList|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function getFulfillmentStock($offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
+    public function getFulfillmentStock($accept_language = 'en-US', $offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
     {
-        list($response) = $this->getFulfillmentStockWithHttpInfo($offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType);
+        list($response) = $this->getFulfillmentStockWithHttpInfo($accept_language, $offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType);
         return $response;
     }
 
@@ -155,26 +156,27 @@ class FulfillmentStockApi
      *
      * Get available stock
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. Ignored for text/csv content type. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. Ignored for text/csv content type. (optional, default to 50)
      * @param  string $phrase Filtering search results by product name. (optional)
-     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
+     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then PREDICTION, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then PREDICTION, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
      * @param  string $product_id Filtering search results by fulfillment product identifier. Ignored for text/csv content type. (optional)
-     * @param  string[] $product_availability Filtering search results by availability (optional)
-     * @param  string $product_status Filtering search results by status (optional)
-     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated (optional)
+     * @param  string[] $product_availability Filtering search results by availability. (optional)
+     * @param  string $product_status Filtering search results by status. (optional)
+     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated TO_BE_PAID_SOON - products for which storage will soon be payable. (optional)
      * @param  string $asn_status Filtering search results by ASN status. Following values are allowed: SUBMITTED - Advanced Ship Notice document has been submitted and it contains a particular product. Only the products that have ASN with products on it are returned. NOT_FOUND - Advanced Ship Notice that contains a particular product was not found. It has not been submitted, may be expired, or products have already been delivered to the warehouse. Only the products that don&#39;t have related ASN with products on it are returned. (optional)
-     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal (optional)
-     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal (optional)
+     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal. (optional)
+     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFulfillmentStock'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\StockProductList|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFulfillmentStockWithHttpInfo($offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
+    public function getFulfillmentStockWithHttpInfo($accept_language = 'en-US', $offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
     {
-        $request = $this->getFulfillmentStockRequest($offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType);
+        $request = $this->getFulfillmentStockRequest($accept_language, $offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -288,25 +290,26 @@ class FulfillmentStockApi
      *
      * Get available stock
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. Ignored for text/csv content type. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. Ignored for text/csv content type. (optional, default to 50)
      * @param  string $phrase Filtering search results by product name. (optional)
-     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
+     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then PREDICTION, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then PREDICTION, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
      * @param  string $product_id Filtering search results by fulfillment product identifier. Ignored for text/csv content type. (optional)
-     * @param  string[] $product_availability Filtering search results by availability (optional)
-     * @param  string $product_status Filtering search results by status (optional)
-     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated (optional)
+     * @param  string[] $product_availability Filtering search results by availability. (optional)
+     * @param  string $product_status Filtering search results by status. (optional)
+     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated TO_BE_PAID_SOON - products for which storage will soon be payable. (optional)
      * @param  string $asn_status Filtering search results by ASN status. Following values are allowed: SUBMITTED - Advanced Ship Notice document has been submitted and it contains a particular product. Only the products that have ASN with products on it are returned. NOT_FOUND - Advanced Ship Notice that contains a particular product was not found. It has not been submitted, may be expired, or products have already been delivered to the warehouse. Only the products that don&#39;t have related ASN with products on it are returned. (optional)
-     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal (optional)
-     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal (optional)
+     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal. (optional)
+     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFulfillmentStock'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFulfillmentStockAsync($offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
+    public function getFulfillmentStockAsync($accept_language = 'en-US', $offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
     {
-        return $this->getFulfillmentStockAsyncWithHttpInfo($offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType)
+        return $this->getFulfillmentStockAsyncWithHttpInfo($accept_language, $offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -319,26 +322,27 @@ class FulfillmentStockApi
      *
      * Get available stock
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. Ignored for text/csv content type. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. Ignored for text/csv content type. (optional, default to 50)
      * @param  string $phrase Filtering search results by product name. (optional)
-     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
+     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then PREDICTION, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then PREDICTION, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
      * @param  string $product_id Filtering search results by fulfillment product identifier. Ignored for text/csv content type. (optional)
-     * @param  string[] $product_availability Filtering search results by availability (optional)
-     * @param  string $product_status Filtering search results by status (optional)
-     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated (optional)
+     * @param  string[] $product_availability Filtering search results by availability. (optional)
+     * @param  string $product_status Filtering search results by status. (optional)
+     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated TO_BE_PAID_SOON - products for which storage will soon be payable. (optional)
      * @param  string $asn_status Filtering search results by ASN status. Following values are allowed: SUBMITTED - Advanced Ship Notice document has been submitted and it contains a particular product. Only the products that have ASN with products on it are returned. NOT_FOUND - Advanced Ship Notice that contains a particular product was not found. It has not been submitted, may be expired, or products have already been delivered to the warehouse. Only the products that don&#39;t have related ASN with products on it are returned. (optional)
-     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal (optional)
-     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal (optional)
+     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal. (optional)
+     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFulfillmentStock'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFulfillmentStockAsyncWithHttpInfo($offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
+    public function getFulfillmentStockAsyncWithHttpInfo($accept_language = 'en-US', $offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\StockProductList';
-        $request = $this->getFulfillmentStockRequest($offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType);
+        $request = $this->getFulfillmentStockRequest($accept_language, $offset, $limit, $phrase, $sort, $product_id, $product_availability, $product_status, $storage_fee, $asn_status, $out_of_stock_in_from, $out_of_stock_in_to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -379,24 +383,26 @@ class FulfillmentStockApi
     /**
      * Create request for operation 'getFulfillmentStock'
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. Ignored for text/csv content type. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. Ignored for text/csv content type. (optional, default to 50)
      * @param  string $phrase Filtering search results by product name. (optional)
-     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
+     * @param  string $sort Defines how elements are sorted in response. Minus sign can be added to imply descending sort order. Ignored for text/csv content type. Possible values for the \&quot;sort\&quot; parameter:   * -available - sorting by quantity of available products (descending)   * available - sorting by quantity of available products (ascending)   * -unfulfillable - sorting by quantity of unfulfillable products (descending)   * unfulfillable - sorting by quantity of unfulfillable products (ascending)   * -name - sorting by product’s name (descending)   * name - sorting by product’s name (ascending)   * lastWeekSalesAverage - sorting by product last week average sales (ascending)   * -lastWeekSalesAverage - sorting by product last week average sales (descending)   * reserve - sorting by reserve.outOfStockIn field (ascending)   * -reserve - sorting by reserve.outOfStockIn field (descending)   * lastThirtyDaysSalesSum - sorting by product last month sum sales (ascending)   * -lastThirtyDaysSalesSum - sorting by product last month sum sales (descending)   * storageFee - sorting by storage fee (ascending). The order by fee status is: NOT_APPLICABLE, then INCLUDED_IN_STORAGE_FEE, then PREDICTION, then CHARGED ordered by amountGross ascending.   * -storageFee - sorting by storage fee (descending). The order by fee status is: CHARGED ordered by amountGross descending, then PREDICTION, then INCLUDED_IN_STORAGE_FEE, then NOT_APPLICABLE. (optional, default to 'name')
      * @param  string $product_id Filtering search results by fulfillment product identifier. Ignored for text/csv content type. (optional)
-     * @param  string[] $product_availability Filtering search results by availability (optional)
-     * @param  string $product_status Filtering search results by status (optional)
-     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated (optional)
+     * @param  string[] $product_availability Filtering search results by availability. (optional)
+     * @param  string $product_status Filtering search results by status. (optional)
+     * @param  string $storage_fee Filtering search results storage fee. Two values are possible: FREE - products storage fee is included in basic fee or merchant is in grace period PAID - products for which an extra storage fee is calculated TO_BE_PAID_SOON - products for which storage will soon be payable. (optional)
      * @param  string $asn_status Filtering search results by ASN status. Following values are allowed: SUBMITTED - Advanced Ship Notice document has been submitted and it contains a particular product. Only the products that have ASN with products on it are returned. NOT_FOUND - Advanced Ship Notice that contains a particular product was not found. It has not been submitted, may be expired, or products have already been delivered to the warehouse. Only the products that don&#39;t have related ASN with products on it are returned. (optional)
-     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal (optional)
-     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal (optional)
+     * @param  int $out_of_stock_in_from Filter by products with outOfStockIn greater than or equal. (optional)
+     * @param  int $out_of_stock_in_to Filter by products with outOfStockIn less than or equal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFulfillmentStock'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFulfillmentStockRequest($offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
+    public function getFulfillmentStockRequest($accept_language = 'en-US', $offset = 0, $limit = 50, $phrase = null, $sort = 'name', $product_id = null, $product_availability = null, $product_status = null, $storage_fee = null, $asn_status = null, $out_of_stock_in_from = null, $out_of_stock_in_to = null, string $contentType = self::contentTypes['getFulfillmentStock'][0])
     {
+
 
         if ($offset !== null && $offset < 0) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling FulfillmentStockApi.getFulfillmentStock, must be bigger than or equal to 0.');
@@ -529,6 +535,10 @@ class FulfillmentStockApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($accept_language !== null) {
+            $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
+        }
 
 
 

@@ -57,7 +57,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'guaranteed' => '\Phobetor\Allegro\Model\CheckoutFormDeliveryTimeGuaranteed'
+        'from' => '\DateTime',
+        'to' => '\DateTime',
+        'guaranteed' => '\Phobetor\Allegro\Model\CheckoutFormDeliveryTimeGuaranteed',
+        'dispatch' => '\Phobetor\Allegro\Model\CheckoutFormDeliveryTimeDispatch'
     ];
 
     /**
@@ -68,7 +71,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'guaranteed' => null
+        'from' => 'date-time',
+        'to' => 'date-time',
+        'guaranteed' => null,
+        'dispatch' => null
     ];
 
     /**
@@ -77,7 +83,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'guaranteed' => false
+        'from' => false,
+		'to' => false,
+		'guaranteed' => false,
+		'dispatch' => false
     ];
 
     /**
@@ -166,7 +175,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'guaranteed' => 'guaranteed'
+        'from' => 'from',
+        'to' => 'to',
+        'guaranteed' => 'guaranteed',
+        'dispatch' => 'dispatch'
     ];
 
     /**
@@ -175,7 +187,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'guaranteed' => 'setGuaranteed'
+        'from' => 'setFrom',
+        'to' => 'setTo',
+        'guaranteed' => 'setGuaranteed',
+        'dispatch' => 'setDispatch'
     ];
 
     /**
@@ -184,7 +199,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'guaranteed' => 'getGuaranteed'
+        'from' => 'getFrom',
+        'to' => 'getTo',
+        'guaranteed' => 'getGuaranteed',
+        'dispatch' => 'getDispatch'
     ];
 
     /**
@@ -244,7 +262,10 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('from', $data ?? [], null);
+        $this->setIfExists('to', $data ?? [], null);
         $this->setIfExists('guaranteed', $data ?? [], null);
+        $this->setIfExists('dispatch', $data ?? [], null);
     }
 
     /**
@@ -290,9 +311,64 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
+     * Gets from
+     *
+     * @return \DateTime|null
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param \DateTime|null $from ISO date when the earliest delivery attempt can take place.
+     *
+     * @return self
+     */
+    public function setFrom($from)
+    {
+        if (is_null($from)) {
+            throw new \InvalidArgumentException('non-nullable from cannot be null');
+        }
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return \DateTime|null
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param \DateTime|null $to ISO date when the latest delivery attempt can take place.
+     *
+     * @return self
+     */
+    public function setTo($to)
+    {
+        if (is_null($to)) {
+            throw new \InvalidArgumentException('non-nullable to cannot be null');
+        }
+        $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
      * Gets guaranteed
      *
      * @return \Phobetor\Allegro\Model\CheckoutFormDeliveryTimeGuaranteed|null
+     * @deprecated
      */
     public function getGuaranteed()
     {
@@ -305,6 +381,7 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
      * @param \Phobetor\Allegro\Model\CheckoutFormDeliveryTimeGuaranteed|null $guaranteed guaranteed
      *
      * @return self
+     * @deprecated
      */
     public function setGuaranteed($guaranteed)
     {
@@ -312,6 +389,33 @@ class CheckoutFormDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable guaranteed cannot be null');
         }
         $this->container['guaranteed'] = $guaranteed;
+
+        return $this;
+    }
+
+    /**
+     * Gets dispatch
+     *
+     * @return \Phobetor\Allegro\Model\CheckoutFormDeliveryTimeDispatch|null
+     */
+    public function getDispatch()
+    {
+        return $this->container['dispatch'];
+    }
+
+    /**
+     * Sets dispatch
+     *
+     * @param \Phobetor\Allegro\Model\CheckoutFormDeliveryTimeDispatch|null $dispatch dispatch
+     *
+     * @return self
+     */
+    public function setDispatch($dispatch)
+    {
+        if (is_null($dispatch)) {
+            throw new \InvalidArgumentException('non-nullable dispatch cannot be null');
+        }
+        $this->container['dispatch'] = $dispatch;
 
         return $this;
     }

@@ -127,6 +127,7 @@ class FulfillmentProductsApi
      *
      * Get list of available products
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAvailableProducts'] to see the possible values for this operation
@@ -135,9 +136,9 @@ class FulfillmentProductsApi
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\AvailableProductsList|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function getAvailableProducts($offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
+    public function getAvailableProducts($accept_language = 'en-US', $offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
     {
-        list($response) = $this->getAvailableProductsWithHttpInfo($offset, $limit, $contentType);
+        list($response) = $this->getAvailableProductsWithHttpInfo($accept_language, $offset, $limit, $contentType);
         return $response;
     }
 
@@ -146,6 +147,7 @@ class FulfillmentProductsApi
      *
      * Get list of available products
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAvailableProducts'] to see the possible values for this operation
@@ -154,9 +156,9 @@ class FulfillmentProductsApi
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\AvailableProductsList|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAvailableProductsWithHttpInfo($offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
+    public function getAvailableProductsWithHttpInfo($accept_language = 'en-US', $offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
     {
-        $request = $this->getAvailableProductsRequest($offset, $limit, $contentType);
+        $request = $this->getAvailableProductsRequest($accept_language, $offset, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,6 +272,7 @@ class FulfillmentProductsApi
      *
      * Get list of available products
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAvailableProducts'] to see the possible values for this operation
@@ -277,9 +280,9 @@ class FulfillmentProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAvailableProductsAsync($offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
+    public function getAvailableProductsAsync($accept_language = 'en-US', $offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
     {
-        return $this->getAvailableProductsAsyncWithHttpInfo($offset, $limit, $contentType)
+        return $this->getAvailableProductsAsyncWithHttpInfo($accept_language, $offset, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -292,6 +295,7 @@ class FulfillmentProductsApi
      *
      * Get list of available products
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAvailableProducts'] to see the possible values for this operation
@@ -299,10 +303,10 @@ class FulfillmentProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAvailableProductsAsyncWithHttpInfo($offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
+    public function getAvailableProductsAsyncWithHttpInfo($accept_language = 'en-US', $offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\AvailableProductsList';
-        $request = $this->getAvailableProductsRequest($offset, $limit, $contentType);
+        $request = $this->getAvailableProductsRequest($accept_language, $offset, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -343,6 +347,7 @@ class FulfillmentProductsApi
     /**
      * Create request for operation 'getAvailableProducts'
      *
+     * @param  string $accept_language Expected language of product name translation. (optional, default to 'en-US')
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  int $limit Maximum number of elements in response. (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAvailableProducts'] to see the possible values for this operation
@@ -350,8 +355,9 @@ class FulfillmentProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAvailableProductsRequest($offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
+    public function getAvailableProductsRequest($accept_language = 'en-US', $offset = 0, $limit = 50, string $contentType = self::contentTypes['getAvailableProducts'][0])
     {
+
 
         if ($offset !== null && $offset < 0) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling FulfillmentProductsApi.getAvailableProducts, must be bigger than or equal to 0.');
@@ -391,6 +397,10 @@ class FulfillmentProductsApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($accept_language !== null) {
+            $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
+        }
 
 
 

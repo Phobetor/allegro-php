@@ -58,7 +58,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'method' => 'string',
-        'tracking_number' => 'string',
+        'courier' => '\Phobetor\Allegro\Model\Courier',
         'estimated_time_of_arrival' => '\DateTime',
         'country_code' => 'string'
     ];
@@ -72,7 +72,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'method' => null,
-        'tracking_number' => null,
+        'courier' => null,
         'estimated_time_of_arrival' => 'date-time',
         'country_code' => null
     ];
@@ -84,7 +84,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'method' => false,
-		'tracking_number' => false,
+		'courier' => false,
 		'estimated_time_of_arrival' => false,
 		'country_code' => false
     ];
@@ -176,7 +176,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'method' => 'method',
-        'tracking_number' => 'trackingNumber',
+        'courier' => 'courier',
         'estimated_time_of_arrival' => 'estimatedTimeOfArrival',
         'country_code' => 'countryCode'
     ];
@@ -188,7 +188,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'method' => 'setMethod',
-        'tracking_number' => 'setTrackingNumber',
+        'courier' => 'setCourier',
         'estimated_time_of_arrival' => 'setEstimatedTimeOfArrival',
         'country_code' => 'setCountryCode'
     ];
@@ -200,7 +200,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'method' => 'getMethod',
-        'tracking_number' => 'getTrackingNumber',
+        'courier' => 'getCourier',
         'estimated_time_of_arrival' => 'getEstimatedTimeOfArrival',
         'country_code' => 'getCountryCode'
     ];
@@ -263,7 +263,7 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->setIfExists('method', $data ?? [], 'COURIER_BY_SELLER');
-        $this->setIfExists('tracking_number', $data ?? [], null);
+        $this->setIfExists('courier', $data ?? [], null);
         $this->setIfExists('estimated_time_of_arrival', $data ?? [], null);
         $this->setIfExists('country_code', $data ?? [], null);
     }
@@ -338,28 +338,28 @@ class CourierBySellerShippingAllOf implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets tracking_number
+     * Gets courier
      *
-     * @return string|null
+     * @return \Phobetor\Allegro\Model\Courier|null
      */
-    public function getTrackingNumber()
+    public function getCourier()
     {
-        return $this->container['tracking_number'];
+        return $this->container['courier'];
     }
 
     /**
-     * Sets tracking_number
+     * Sets courier
      *
-     * @param string|null $tracking_number A tracking number.
+     * @param \Phobetor\Allegro\Model\Courier|null $courier courier
      *
      * @return self
      */
-    public function setTrackingNumber($tracking_number)
+    public function setCourier($courier)
     {
-        if (is_null($tracking_number)) {
-            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
+        if (is_null($courier)) {
+            throw new \InvalidArgumentException('non-nullable courier cannot be null');
         }
-        $this->container['tracking_number'] = $tracking_number;
+        $this->container['courier'] = $courier;
 
         return $this;
     }

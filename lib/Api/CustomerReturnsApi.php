@@ -138,7 +138,7 @@ class CustomerReturnsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function getCustomerReturnById($customer_return_id, string $contentType = self::contentTypes['getCustomerReturnById'][0])
     {
@@ -156,7 +156,7 @@ class CustomerReturnsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCustomerReturnByIdWithHttpInfo($customer_return_id, string $contentType = self::contentTypes['getCustomerReturnById'][0])
     {
@@ -210,6 +210,21 @@ class CustomerReturnsApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CustomerReturn', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -297,6 +312,14 @@ class CustomerReturnsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Phobetor\Allegro\Model\CustomerReturn',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -514,6 +537,8 @@ class CustomerReturnsApi
      *
      * @param  string $customer_return_id One or more customer return id&#39;s. (optional)
      * @param  string $order_id One or more order id&#39;s. (optional)
+     * @param  string $buyer_email One or more buyer emails. (optional)
+     * @param  string $buyer_login One or more buyer logins. (optional)
      * @param  string $items_offer_id One or more returned item offer id&#39;s. (optional)
      * @param  string $items_name One or more item names. (optional)
      * @param  string $parcels_waybill One or more waybill id&#39;s. (optional)
@@ -524,17 +549,18 @@ class CustomerReturnsApi
      * @param  string $created_at_gte Date of the return in ISO 8601 format to search by greater or equal. (optional)
      * @param  string $created_at_lte Date of the return in ISO 8601 format to search by lower or equal. (optional)
      * @param  string $marketplace_id The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces. (optional)
+     * @param  string $status Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION. (optional)
      * @param  int $limit Limit of customer returns per page. (optional, default to 100)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerReturns'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\CustomerReturnResponse|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\CustomerReturnResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function getCustomerReturns($customer_return_id = null, $order_id = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
+    public function getCustomerReturns($customer_return_id = null, $order_id = null, $buyer_email = null, $buyer_login = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $status = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
     {
-        list($response) = $this->getCustomerReturnsWithHttpInfo($customer_return_id, $order_id, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $limit, $offset, $contentType);
+        list($response) = $this->getCustomerReturnsWithHttpInfo($customer_return_id, $order_id, $buyer_email, $buyer_login, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $status, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -545,6 +571,8 @@ class CustomerReturnsApi
      *
      * @param  string $customer_return_id One or more customer return id&#39;s. (optional)
      * @param  string $order_id One or more order id&#39;s. (optional)
+     * @param  string $buyer_email One or more buyer emails. (optional)
+     * @param  string $buyer_login One or more buyer logins. (optional)
      * @param  string $items_offer_id One or more returned item offer id&#39;s. (optional)
      * @param  string $items_name One or more item names. (optional)
      * @param  string $parcels_waybill One or more waybill id&#39;s. (optional)
@@ -555,17 +583,18 @@ class CustomerReturnsApi
      * @param  string $created_at_gte Date of the return in ISO 8601 format to search by greater or equal. (optional)
      * @param  string $created_at_lte Date of the return in ISO 8601 format to search by lower or equal. (optional)
      * @param  string $marketplace_id The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces. (optional)
+     * @param  string $status Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION. (optional)
      * @param  int $limit Limit of customer returns per page. (optional, default to 100)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerReturns'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\CustomerReturnResponse|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\CustomerReturnResponse|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomerReturnsWithHttpInfo($customer_return_id = null, $order_id = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
+    public function getCustomerReturnsWithHttpInfo($customer_return_id = null, $order_id = null, $buyer_email = null, $buyer_login = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $status = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
     {
-        $request = $this->getCustomerReturnsRequest($customer_return_id, $order_id, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $limit, $offset, $contentType);
+        $request = $this->getCustomerReturnsRequest($customer_return_id, $order_id, $buyer_email, $buyer_login, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $status, $limit, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -615,6 +644,21 @@ class CustomerReturnsApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CustomerReturnResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -691,6 +735,14 @@ class CustomerReturnsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -727,6 +779,8 @@ class CustomerReturnsApi
      *
      * @param  string $customer_return_id One or more customer return id&#39;s. (optional)
      * @param  string $order_id One or more order id&#39;s. (optional)
+     * @param  string $buyer_email One or more buyer emails. (optional)
+     * @param  string $buyer_login One or more buyer logins. (optional)
      * @param  string $items_offer_id One or more returned item offer id&#39;s. (optional)
      * @param  string $items_name One or more item names. (optional)
      * @param  string $parcels_waybill One or more waybill id&#39;s. (optional)
@@ -737,6 +791,7 @@ class CustomerReturnsApi
      * @param  string $created_at_gte Date of the return in ISO 8601 format to search by greater or equal. (optional)
      * @param  string $created_at_lte Date of the return in ISO 8601 format to search by lower or equal. (optional)
      * @param  string $marketplace_id The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces. (optional)
+     * @param  string $status Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION. (optional)
      * @param  int $limit Limit of customer returns per page. (optional, default to 100)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerReturns'] to see the possible values for this operation
@@ -744,9 +799,9 @@ class CustomerReturnsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerReturnsAsync($customer_return_id = null, $order_id = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
+    public function getCustomerReturnsAsync($customer_return_id = null, $order_id = null, $buyer_email = null, $buyer_login = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $status = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
     {
-        return $this->getCustomerReturnsAsyncWithHttpInfo($customer_return_id, $order_id, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $limit, $offset, $contentType)
+        return $this->getCustomerReturnsAsyncWithHttpInfo($customer_return_id, $order_id, $buyer_email, $buyer_login, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $status, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -761,6 +816,8 @@ class CustomerReturnsApi
      *
      * @param  string $customer_return_id One or more customer return id&#39;s. (optional)
      * @param  string $order_id One or more order id&#39;s. (optional)
+     * @param  string $buyer_email One or more buyer emails. (optional)
+     * @param  string $buyer_login One or more buyer logins. (optional)
      * @param  string $items_offer_id One or more returned item offer id&#39;s. (optional)
      * @param  string $items_name One or more item names. (optional)
      * @param  string $parcels_waybill One or more waybill id&#39;s. (optional)
@@ -771,6 +828,7 @@ class CustomerReturnsApi
      * @param  string $created_at_gte Date of the return in ISO 8601 format to search by greater or equal. (optional)
      * @param  string $created_at_lte Date of the return in ISO 8601 format to search by lower or equal. (optional)
      * @param  string $marketplace_id The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces. (optional)
+     * @param  string $status Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION. (optional)
      * @param  int $limit Limit of customer returns per page. (optional, default to 100)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerReturns'] to see the possible values for this operation
@@ -778,10 +836,10 @@ class CustomerReturnsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerReturnsAsyncWithHttpInfo($customer_return_id = null, $order_id = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
+    public function getCustomerReturnsAsyncWithHttpInfo($customer_return_id = null, $order_id = null, $buyer_email = null, $buyer_login = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $status = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\CustomerReturnResponse';
-        $request = $this->getCustomerReturnsRequest($customer_return_id, $order_id, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $limit, $offset, $contentType);
+        $request = $this->getCustomerReturnsRequest($customer_return_id, $order_id, $buyer_email, $buyer_login, $items_offer_id, $items_name, $parcels_waybill, $parcels_carrier_id, $parcels_sender_phone_number, $reference_number, $from, $created_at_gte, $created_at_lte, $marketplace_id, $status, $limit, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -824,6 +882,8 @@ class CustomerReturnsApi
      *
      * @param  string $customer_return_id One or more customer return id&#39;s. (optional)
      * @param  string $order_id One or more order id&#39;s. (optional)
+     * @param  string $buyer_email One or more buyer emails. (optional)
+     * @param  string $buyer_login One or more buyer logins. (optional)
      * @param  string $items_offer_id One or more returned item offer id&#39;s. (optional)
      * @param  string $items_name One or more item names. (optional)
      * @param  string $parcels_waybill One or more waybill id&#39;s. (optional)
@@ -834,6 +894,7 @@ class CustomerReturnsApi
      * @param  string $created_at_gte Date of the return in ISO 8601 format to search by greater or equal. (optional)
      * @param  string $created_at_lte Date of the return in ISO 8601 format to search by lower or equal. (optional)
      * @param  string $marketplace_id The marketplace ID where operation was made. When the parameter is omitted, searches for operations with all marketplaces. (optional)
+     * @param  string $status Current return timeline statuses. The allowed values are:   * CREATED   * DISPATCHED   * IN_TRANSIT   * DELIVERED   * FINISHED   * REJECTED   * COMMISSION_REFUND_CLAIMED   * COMMISSION_REFUNDED   * WAREHOUSE_DELIVERED   * WAREHOUSE_VERIFICATION. (optional)
      * @param  int $limit Limit of customer returns per page. (optional, default to 100)
      * @param  int $offset The offset of elements in the response. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerReturns'] to see the possible values for this operation
@@ -841,8 +902,11 @@ class CustomerReturnsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomerReturnsRequest($customer_return_id = null, $order_id = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
+    public function getCustomerReturnsRequest($customer_return_id = null, $order_id = null, $buyer_email = null, $buyer_login = null, $items_offer_id = null, $items_name = null, $parcels_waybill = null, $parcels_carrier_id = null, $parcels_sender_phone_number = null, $reference_number = null, $from = null, $created_at_gte = null, $created_at_lte = null, $marketplace_id = null, $status = null, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getCustomerReturns'][0])
     {
+
+
+
 
 
 
@@ -888,6 +952,24 @@ class CustomerReturnsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order_id,
             'orderId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $buyer_email,
+            'buyer.email', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $buyer_login,
+            'buyer.login', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -985,6 +1067,15 @@ class CustomerReturnsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
             'integer', // openApiType
@@ -1073,7 +1164,7 @@ class CustomerReturnsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function rejectCustomerReturnRefund($customer_return_id, $customer_return_refund_rejection_request, string $contentType = self::contentTypes['rejectCustomerReturnRefund'][0])
     {
@@ -1092,7 +1183,7 @@ class CustomerReturnsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\CustomerReturn|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function rejectCustomerReturnRefundWithHttpInfo($customer_return_id, $customer_return_refund_rejection_request, string $contentType = self::contentTypes['rejectCustomerReturnRefund'][0])
     {
@@ -1146,6 +1237,21 @@ class CustomerReturnsApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CustomerReturn', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1233,6 +1339,14 @@ class CustomerReturnsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Phobetor\Allegro\Model\CustomerReturn',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

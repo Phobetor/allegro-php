@@ -84,7 +84,7 @@ class PromotionCampaignResponseDto implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'campaign' => false,
-		'link' => false,
+		'link' => true,
 		'promotion' => false,
 		'status' => false
     ];
@@ -403,7 +403,14 @@ class PromotionCampaignResponseDto implements ModelInterface, ArrayAccess, \Json
     public function setLink($link)
     {
         if (is_null($link)) {
-            throw new \InvalidArgumentException('non-nullable link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('link', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['link'] = $link;
 

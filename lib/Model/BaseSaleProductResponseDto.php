@@ -60,10 +60,13 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
         'id' => 'string',
         'name' => 'string',
         'description' => '\Phobetor\Allegro\Model\StandardizedDescription',
-        'category' => '\Phobetor\Allegro\Model\BaseSaleProductResponseDtoCategory',
+        'category' => '\Phobetor\Allegro\Model\ProductCategoryWithPath',
         'images' => '\Phobetor\Allegro\Model\ImageUrl[]',
         'parameters' => '\Phobetor\Allegro\Model\ProductParameterDto[]',
-        'is_draft' => 'bool'
+        'is_draft' => 'bool',
+        'ai_co_created_content' => '\Phobetor\Allegro\Model\AiCoCreatedContent',
+        'has_protected_brand' => 'bool',
+        'publication' => '\Phobetor\Allegro\Model\SaleProductDtoPublication'
     ];
 
     /**
@@ -80,7 +83,10 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
         'category' => null,
         'images' => null,
         'parameters' => null,
-        'is_draft' => null
+        'is_draft' => null,
+        'ai_co_created_content' => null,
+        'has_protected_brand' => null,
+        'publication' => null
     ];
 
     /**
@@ -95,7 +101,10 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
 		'category' => false,
 		'images' => false,
 		'parameters' => false,
-		'is_draft' => false
+		'is_draft' => false,
+		'ai_co_created_content' => false,
+		'has_protected_brand' => false,
+		'publication' => false
     ];
 
     /**
@@ -190,7 +199,10 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'category',
         'images' => 'images',
         'parameters' => 'parameters',
-        'is_draft' => 'isDraft'
+        'is_draft' => 'isDraft',
+        'ai_co_created_content' => 'aiCoCreatedContent',
+        'has_protected_brand' => 'hasProtectedBrand',
+        'publication' => 'publication'
     ];
 
     /**
@@ -205,7 +217,10 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'setCategory',
         'images' => 'setImages',
         'parameters' => 'setParameters',
-        'is_draft' => 'setIsDraft'
+        'is_draft' => 'setIsDraft',
+        'ai_co_created_content' => 'setAiCoCreatedContent',
+        'has_protected_brand' => 'setHasProtectedBrand',
+        'publication' => 'setPublication'
     ];
 
     /**
@@ -220,7 +235,10 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'getCategory',
         'images' => 'getImages',
         'parameters' => 'getParameters',
-        'is_draft' => 'getIsDraft'
+        'is_draft' => 'getIsDraft',
+        'ai_co_created_content' => 'getAiCoCreatedContent',
+        'has_protected_brand' => 'getHasProtectedBrand',
+        'publication' => 'getPublication'
     ];
 
     /**
@@ -287,6 +305,9 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('parameters', $data ?? [], null);
         $this->setIfExists('is_draft', $data ?? [], null);
+        $this->setIfExists('ai_co_created_content', $data ?? [], null);
+        $this->setIfExists('has_protected_brand', $data ?? [], null);
+        $this->setIfExists('publication', $data ?? [], null);
     }
 
     /**
@@ -424,7 +445,7 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets category
      *
-     * @return \Phobetor\Allegro\Model\BaseSaleProductResponseDtoCategory
+     * @return \Phobetor\Allegro\Model\ProductCategoryWithPath
      */
     public function getCategory()
     {
@@ -434,7 +455,7 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets category
      *
-     * @param \Phobetor\Allegro\Model\BaseSaleProductResponseDtoCategory $category category
+     * @param \Phobetor\Allegro\Model\ProductCategoryWithPath $category category
      *
      * @return self
      */
@@ -525,6 +546,87 @@ class BaseSaleProductResponseDto implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable is_draft cannot be null');
         }
         $this->container['is_draft'] = $is_draft;
+
+        return $this;
+    }
+
+    /**
+     * Gets ai_co_created_content
+     *
+     * @return \Phobetor\Allegro\Model\AiCoCreatedContent|null
+     */
+    public function getAiCoCreatedContent()
+    {
+        return $this->container['ai_co_created_content'];
+    }
+
+    /**
+     * Sets ai_co_created_content
+     *
+     * @param \Phobetor\Allegro\Model\AiCoCreatedContent|null $ai_co_created_content ai_co_created_content
+     *
+     * @return self
+     */
+    public function setAiCoCreatedContent($ai_co_created_content)
+    {
+        if (is_null($ai_co_created_content)) {
+            throw new \InvalidArgumentException('non-nullable ai_co_created_content cannot be null');
+        }
+        $this->container['ai_co_created_content'] = $ai_co_created_content;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_protected_brand
+     *
+     * @return bool|null
+     */
+    public function getHasProtectedBrand()
+    {
+        return $this->container['has_protected_brand'];
+    }
+
+    /**
+     * Sets has_protected_brand
+     *
+     * @param bool|null $has_protected_brand Flag that informs if product is a part of a protected brand's assortment and its use may be restricted.
+     *
+     * @return self
+     */
+    public function setHasProtectedBrand($has_protected_brand)
+    {
+        if (is_null($has_protected_brand)) {
+            throw new \InvalidArgumentException('non-nullable has_protected_brand cannot be null');
+        }
+        $this->container['has_protected_brand'] = $has_protected_brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets publication
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductDtoPublication|null
+     */
+    public function getPublication()
+    {
+        return $this->container['publication'];
+    }
+
+    /**
+     * Sets publication
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductDtoPublication|null $publication publication
+     *
+     * @return self
+     */
+    public function setPublication($publication)
+    {
+        if (is_null($publication)) {
+            throw new \InvalidArgumentException('non-nullable publication cannot be null');
+        }
+        $this->container['publication'] = $publication;
 
         return $this;
     }

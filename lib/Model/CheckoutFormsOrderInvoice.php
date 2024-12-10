@@ -60,8 +60,7 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         'id' => 'string',
         'invoice_number' => 'string',
         'created_at' => '\DateTime',
-        'file' => '\Phobetor\Allegro\Model\CheckoutFormsOrderInvoiceFile',
-        'ept_verification' => '\Phobetor\Allegro\Model\CheckoutFormsOrderInvoiceEptVerification'
+        'file' => '\Phobetor\Allegro\Model\CheckoutFormsOrderInvoiceFile'
     ];
 
     /**
@@ -75,8 +74,7 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         'id' => null,
         'invoice_number' => null,
         'created_at' => 'date-time',
-        'file' => null,
-        'ept_verification' => null
+        'file' => null
     ];
 
     /**
@@ -88,8 +86,7 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         'id' => false,
 		'invoice_number' => false,
 		'created_at' => false,
-		'file' => false,
-		'ept_verification' => false
+		'file' => false
     ];
 
     /**
@@ -181,8 +178,7 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         'id' => 'id',
         'invoice_number' => 'invoiceNumber',
         'created_at' => 'createdAt',
-        'file' => 'file',
-        'ept_verification' => 'eptVerification'
+        'file' => 'file'
     ];
 
     /**
@@ -194,8 +190,7 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         'id' => 'setId',
         'invoice_number' => 'setInvoiceNumber',
         'created_at' => 'setCreatedAt',
-        'file' => 'setFile',
-        'ept_verification' => 'setEptVerification'
+        'file' => 'setFile'
     ];
 
     /**
@@ -207,8 +202,7 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         'id' => 'getId',
         'invoice_number' => 'getInvoiceNumber',
         'created_at' => 'getCreatedAt',
-        'file' => 'getFile',
-        'ept_verification' => 'getEptVerification'
+        'file' => 'getFile'
     ];
 
     /**
@@ -272,7 +266,6 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('invoice_number', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('file', $data ?? [], null);
-        $this->setIfExists('ept_verification', $data ?? [], null);
     }
 
     /**
@@ -421,33 +414,6 @@ class CheckoutFormsOrderInvoice implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable file cannot be null');
         }
         $this->container['file'] = $file;
-
-        return $this;
-    }
-
-    /**
-     * Gets ept_verification
-     *
-     * @return \Phobetor\Allegro\Model\CheckoutFormsOrderInvoiceEptVerification|null
-     */
-    public function getEptVerification()
-    {
-        return $this->container['ept_verification'];
-    }
-
-    /**
-     * Sets ept_verification
-     *
-     * @param \Phobetor\Allegro\Model\CheckoutFormsOrderInvoiceEptVerification|null $ept_verification ept_verification
-     *
-     * @return self
-     */
-    public function setEptVerification($ept_verification)
-    {
-        if (is_null($ept_verification)) {
-            throw new \InvalidArgumentException('non-nullable ept_verification cannot be null');
-        }
-        $this->container['ept_verification'] = $ept_verification;
 
         return $this;
     }

@@ -56,7 +56,7 @@ class OfferPriceChangedEvent extends SellerOfferBaseEvent
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'offer' => '\Phobetor\Allegro\Model\OfferEventExternalOffer'
+        'offer' => '\Phobetor\Allegro\Model\OfferEventExternalOfferForPriceChanges'
     ];
 
     /**
@@ -323,7 +323,7 @@ class OfferPriceChangedEvent extends SellerOfferBaseEvent
     /**
      * Gets offer
      *
-     * @return \Phobetor\Allegro\Model\OfferEventExternalOffer
+     * @return \Phobetor\Allegro\Model\OfferEventExternalOfferForPriceChanges
      */
     public function getOffer()
     {
@@ -333,7 +333,7 @@ class OfferPriceChangedEvent extends SellerOfferBaseEvent
     /**
      * Sets offer
      *
-     * @param \Phobetor\Allegro\Model\OfferEventExternalOffer $offer offer
+     * @param \Phobetor\Allegro\Model\OfferEventExternalOfferForPriceChanges $offer offer
      *
      * @return self
      */

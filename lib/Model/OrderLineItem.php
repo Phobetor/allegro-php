@@ -59,7 +59,7 @@ class OrderLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'offer' => '\Phobetor\Allegro\Model\OfferReference',
+        'offer' => '\Phobetor\Allegro\Model\OrderLineItemOfferReference',
         'quantity' => 'float',
         'original_price' => '\Phobetor\Allegro\Model\Price',
         'price' => '\Phobetor\Allegro\Model\Price',
@@ -371,7 +371,7 @@ class OrderLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offer
      *
-     * @return \Phobetor\Allegro\Model\OfferReference
+     * @return \Phobetor\Allegro\Model\OrderLineItemOfferReference
      */
     public function getOffer()
     {
@@ -381,7 +381,7 @@ class OrderLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets offer
      *
-     * @param \Phobetor\Allegro\Model\OfferReference $offer offer
+     * @param \Phobetor\Allegro\Model\OrderLineItemOfferReference $offer offer
      *
      * @return self
      */

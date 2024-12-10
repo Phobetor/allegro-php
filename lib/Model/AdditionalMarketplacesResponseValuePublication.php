@@ -58,7 +58,8 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'state' => 'string'
+        'state' => 'string',
+        'refusal_reasons' => '\Phobetor\Allegro\Model\AdditionalMarketplacesRefusalReasonResponse[]'
     ];
 
     /**
@@ -69,7 +70,8 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'state' => null
+        'state' => null,
+        'refusal_reasons' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'state' => false
+        'state' => false,
+		'refusal_reasons' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'state' => 'state'
+        'state' => 'state',
+        'refusal_reasons' => 'refusalReasons'
     ];
 
     /**
@@ -176,7 +180,8 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
-        'state' => 'setState'
+        'state' => 'setState',
+        'refusal_reasons' => 'setRefusalReasons'
     ];
 
     /**
@@ -185,7 +190,8 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
-        'state' => 'getState'
+        'state' => 'getState',
+        'refusal_reasons' => 'getRefusalReasons'
     ];
 
     /**
@@ -267,6 +273,7 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
     public function __construct(array $data = null)
     {
         $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('refusal_reasons', $data ?? [], null);
     }
 
     /**
@@ -353,6 +360,33 @@ class AdditionalMarketplacesResponseValuePublication implements ModelInterface, 
             );
         }
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets refusal_reasons
+     *
+     * @return \Phobetor\Allegro\Model\AdditionalMarketplacesRefusalReasonResponse[]|null
+     */
+    public function getRefusalReasons()
+    {
+        return $this->container['refusal_reasons'];
+    }
+
+    /**
+     * Sets refusal_reasons
+     *
+     * @param \Phobetor\Allegro\Model\AdditionalMarketplacesRefusalReasonResponse[]|null $refusal_reasons Reasons for marketplace publication refusal. Empty list for not refused marketplaces.
+     *
+     * @return self
+     */
+    public function setRefusalReasons($refusal_reasons)
+    {
+        if (is_null($refusal_reasons)) {
+            throw new \InvalidArgumentException('non-nullable refusal_reasons cannot be null');
+        }
+        $this->container['refusal_reasons'] = $refusal_reasons;
 
         return $this;
     }

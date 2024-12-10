@@ -68,6 +68,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
         'line_items' => '\Phobetor\Allegro\Model\CheckoutFormLineItem[]',
         'surcharges' => '\Phobetor\Allegro\Model\CheckoutFormPaymentReference[]',
         'discounts' => '\Phobetor\Allegro\Model\CheckoutFormDiscount[]',
+        'note' => '\Phobetor\Allegro\Model\CheckoutFormNoteReference',
         'marketplace' => '\Phobetor\Allegro\Model\CheckoutFormMarketplace',
         'summary' => '\Phobetor\Allegro\Model\CheckoutFormSummary',
         'updated_at' => 'string',
@@ -93,6 +94,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
         'line_items' => null,
         'surcharges' => null,
         'discounts' => null,
+        'note' => null,
         'marketplace' => null,
         'summary' => null,
         'updated_at' => null,
@@ -116,6 +118,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
 		'line_items' => false,
 		'surcharges' => false,
 		'discounts' => false,
+		'note' => false,
 		'marketplace' => false,
 		'summary' => false,
 		'updated_at' => false,
@@ -219,6 +222,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
         'line_items' => 'lineItems',
         'surcharges' => 'surcharges',
         'discounts' => 'discounts',
+        'note' => 'note',
         'marketplace' => 'marketplace',
         'summary' => 'summary',
         'updated_at' => 'updatedAt',
@@ -242,6 +246,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
         'line_items' => 'setLineItems',
         'surcharges' => 'setSurcharges',
         'discounts' => 'setDiscounts',
+        'note' => 'setNote',
         'marketplace' => 'setMarketplace',
         'summary' => 'setSummary',
         'updated_at' => 'setUpdatedAt',
@@ -265,6 +270,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
         'line_items' => 'getLineItems',
         'surcharges' => 'getSurcharges',
         'discounts' => 'getDiscounts',
+        'note' => 'getNote',
         'marketplace' => 'getMarketplace',
         'summary' => 'getSummary',
         'updated_at' => 'getUpdatedAt',
@@ -339,6 +345,7 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('line_items', $data ?? [], null);
         $this->setIfExists('surcharges', $data ?? [], null);
         $this->setIfExists('discounts', $data ?? [], null);
+        $this->setIfExists('note', $data ?? [], null);
         $this->setIfExists('marketplace', $data ?? [], null);
         $this->setIfExists('summary', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -701,6 +708,33 @@ class CheckoutForm implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable discounts cannot be null');
         }
         $this->container['discounts'] = $discounts;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return \Phobetor\Allegro\Model\CheckoutFormNoteReference|null
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param \Phobetor\Allegro\Model\CheckoutFormNoteReference|null $note note
+     *
+     * @return self
+     */
+    public function setNote($note)
+    {
+        if (is_null($note)) {
+            throw new \InvalidArgumentException('non-nullable note cannot be null');
+        }
+        $this->container['note'] = $note;
 
         return $this;
     }

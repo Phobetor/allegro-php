@@ -58,7 +58,8 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'marketplaces' => '\Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200ResponseShippingRatesInnerMarketplacesInner[]'
     ];
 
     /**
@@ -70,7 +71,8 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'name' => null
+        'name' => null,
+        'marketplaces' => null
     ];
 
     /**
@@ -80,7 +82,8 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
       */
     protected static array $openAPINullables = [
         'id' => false,
-		'name' => false
+		'name' => false,
+		'marketplaces' => false
     ];
 
     /**
@@ -170,7 +173,8 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name'
+        'name' => 'name',
+        'marketplaces' => 'marketplaces'
     ];
 
     /**
@@ -180,7 +184,8 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'marketplaces' => 'setMarketplaces'
     ];
 
     /**
@@ -190,7 +195,8 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'marketplaces' => 'getMarketplaces'
     ];
 
     /**
@@ -252,6 +258,7 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('marketplaces', $data ?? [], null);
     }
 
     /**
@@ -346,6 +353,33 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets marketplaces
+     *
+     * @return \Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200ResponseShippingRatesInnerMarketplacesInner[]|null
+     */
+    public function getMarketplaces()
+    {
+        return $this->container['marketplaces'];
+    }
+
+    /**
+     * Sets marketplaces
+     *
+     * @param \Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200ResponseShippingRatesInnerMarketplacesInner[]|null $marketplaces List of marketplace ids where these shipping rates are qualified for. The list is calculated based on the delivery methods added to the shipping rates.
+     *
+     * @return self
+     */
+    public function setMarketplaces($marketplaces)
+    {
+        if (is_null($marketplaces)) {
+            throw new \InvalidArgumentException('non-nullable marketplaces cannot be null');
+        }
+        $this->container['marketplaces'] = $marketplaces;
 
         return $this;
     }

@@ -133,7 +133,7 @@ class TaxSettingsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\TaxSettings|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\CategoryTaxSettings|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function getTaxSettingsForCategory($category_id, $country_code = null, string $contentType = self::contentTypes['getTaxSettingsForCategory'][0])
     {
@@ -152,7 +152,7 @@ class TaxSettingsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\TaxSettings|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\CategoryTaxSettings|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTaxSettingsForCategoryWithHttpInfo($category_id, $country_code = null, string $contentType = self::contentTypes['getTaxSettingsForCategory'][0])
     {
@@ -195,17 +195,17 @@ class TaxSettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Phobetor\Allegro\Model\TaxSettings' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\CategoryTaxSettings' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\TaxSettings' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\CategoryTaxSettings' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\TaxSettings', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CategoryTaxSettings', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -286,7 +286,7 @@ class TaxSettingsApi
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\TaxSettings';
+            $returnType = '\Phobetor\Allegro\Model\CategoryTaxSettings';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -307,7 +307,7 @@ class TaxSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\TaxSettings',
+                        '\Phobetor\Allegro\Model\CategoryTaxSettings',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class TaxSettingsApi
      */
     public function getTaxSettingsForCategoryAsyncWithHttpInfo($category_id, $country_code = null, string $contentType = self::contentTypes['getTaxSettingsForCategory'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\TaxSettings';
+        $returnType = '\Phobetor\Allegro\Model\CategoryTaxSettings';
         $request = $this->getTaxSettingsForCategoryRequest($category_id, $country_code, $contentType);
 
         return $this->client
@@ -484,7 +484,7 @@ class TaxSettingsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.allegro.public.v1+json', ],
+            ['application/vnd.allegro.public.v1+json', 'application/vnd.allegro.beta.v1+json', ],
             $contentType,
             $multipart
         );

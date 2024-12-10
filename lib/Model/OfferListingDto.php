@@ -62,7 +62,7 @@ class OfferListingDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'category' => '\Phobetor\Allegro\Model\OfferCategory',
         'primary_image' => '\Phobetor\Allegro\Model\OfferListingDtoImage',
-        'selling_mode' => '\Phobetor\Allegro\Model\SellingMode',
+        'selling_mode' => '\Phobetor\Allegro\Model\OfferListingDtoV1SellingMode',
         'sale_info' => '\Phobetor\Allegro\Model\OfferListingDtoV1SaleInfo',
         'stock' => '\Phobetor\Allegro\Model\OfferListingDtoV1Stock',
         'stats' => '\Phobetor\Allegro\Model\OfferListingDtoV1Stats',
@@ -115,7 +115,7 @@ class OfferListingDto implements ModelInterface, ArrayAccess, \JsonSerializable
 		'selling_mode' => false,
 		'sale_info' => false,
 		'stock' => false,
-		'stats' => false,
+		'stats' => true,
 		'publication' => false,
 		'after_sales_services' => false,
 		'additional_services' => false,
@@ -506,7 +506,7 @@ class OfferListingDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_mode
      *
-     * @return \Phobetor\Allegro\Model\SellingMode|null
+     * @return \Phobetor\Allegro\Model\OfferListingDtoV1SellingMode|null
      */
     public function getSellingMode()
     {
@@ -516,7 +516,7 @@ class OfferListingDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_mode
      *
-     * @param \Phobetor\Allegro\Model\SellingMode|null $selling_mode selling_mode
+     * @param \Phobetor\Allegro\Model\OfferListingDtoV1SellingMode|null $selling_mode selling_mode
      *
      * @return self
      */
@@ -604,7 +604,14 @@ class OfferListingDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStats($stats)
     {
         if (is_null($stats)) {
-            throw new \InvalidArgumentException('non-nullable stats cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'stats');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stats', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['stats'] = $stats;
 

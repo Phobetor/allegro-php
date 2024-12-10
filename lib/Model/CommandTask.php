@@ -59,10 +59,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'field' => 'string',
-        'finished_at' => '\DateTime',
         'message' => 'string',
         'offer' => '\Phobetor\Allegro\Model\OfferId',
-        'scheduled_at' => '\DateTime',
         'status' => 'string',
         'errors' => '\Phobetor\Allegro\Model\Error[]'
     ];
@@ -76,10 +74,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'field' => null,
-        'finished_at' => 'date-time',
         'message' => null,
         'offer' => null,
-        'scheduled_at' => 'date-time',
         'status' => null,
         'errors' => null
     ];
@@ -91,10 +87,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'field' => false,
-		'finished_at' => false,
 		'message' => false,
 		'offer' => false,
-		'scheduled_at' => false,
 		'status' => false,
 		'errors' => false
     ];
@@ -186,10 +180,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'field' => 'field',
-        'finished_at' => 'finishedAt',
         'message' => 'message',
         'offer' => 'offer',
-        'scheduled_at' => 'scheduledAt',
         'status' => 'status',
         'errors' => 'errors'
     ];
@@ -201,10 +193,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'field' => 'setField',
-        'finished_at' => 'setFinishedAt',
         'message' => 'setMessage',
         'offer' => 'setOffer',
-        'scheduled_at' => 'setScheduledAt',
         'status' => 'setStatus',
         'errors' => 'setErrors'
     ];
@@ -216,10 +206,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'field' => 'getField',
-        'finished_at' => 'getFinishedAt',
         'message' => 'getMessage',
         'offer' => 'getOffer',
-        'scheduled_at' => 'getScheduledAt',
         'status' => 'getStatus',
         'errors' => 'getErrors'
     ];
@@ -282,10 +270,8 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('field', $data ?? [], null);
-        $this->setIfExists('finished_at', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('offer', $data ?? [], null);
-        $this->setIfExists('scheduled_at', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
     }
@@ -360,33 +346,6 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets finished_at
-     *
-     * @return \DateTime|null
-     */
-    public function getFinishedAt()
-    {
-        return $this->container['finished_at'];
-    }
-
-    /**
-     * Sets finished_at
-     *
-     * @param \DateTime|null $finished_at Date of completion of the modification. Format (ISO 8601) - yyyy-MM-dd'T'HH:mm:ss.SSSZ
-     *
-     * @return self
-     */
-    public function setFinishedAt($finished_at)
-    {
-        if (is_null($finished_at)) {
-            throw new \InvalidArgumentException('non-nullable finished_at cannot be null');
-        }
-        $this->container['finished_at'] = $finished_at;
-
-        return $this;
-    }
-
-    /**
      * Gets message
      *
      * @return string|null
@@ -436,33 +395,6 @@ class CommandTask implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable offer cannot be null');
         }
         $this->container['offer'] = $offer;
-
-        return $this;
-    }
-
-    /**
-     * Gets scheduled_at
-     *
-     * @return \DateTime|null
-     */
-    public function getScheduledAt()
-    {
-        return $this->container['scheduled_at'];
-    }
-
-    /**
-     * Sets scheduled_at
-     *
-     * @param \DateTime|null $scheduled_at Date of the modification schedule. Format (ISO 8601) - yyyy-MM-dd'T'HH:mm:ss.SSSZ
-     *
-     * @return self
-     */
-    public function setScheduledAt($scheduled_at)
-    {
-        if (is_null($scheduled_at)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_at cannot be null');
-        }
-        $this->container['scheduled_at'] = $scheduled_at;
 
         return $this;
     }

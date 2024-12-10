@@ -78,7 +78,7 @@ class BadgePatchPrices implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'prices' => false
+        'prices' => true
     ];
 
     /**
@@ -310,7 +310,14 @@ class BadgePatchPrices implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrices($prices)
     {
         if (is_null($prices)) {
-            throw new \InvalidArgumentException('non-nullable prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prices', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prices'] = $prices;
 

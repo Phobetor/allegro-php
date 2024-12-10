@@ -70,6 +70,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
         'compatibility_list' => '\Phobetor\Allegro\Model\CompatibilityListProductOfferResponse',
         'language' => 'string',
         'validation' => '\Phobetor\Allegro\Model\Validation',
+        'warnings' => 'array',
         'after_sales_services' => '\Phobetor\Allegro\Model\AfterSalesServices',
         'discounts' => '\Phobetor\Allegro\Model\DiscountsProductOfferResponse',
         'stock' => '\Phobetor\Allegro\Model\Stock',
@@ -100,6 +101,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
         'compatibility_list' => null,
         'language' => 'BCP-47 language code',
         'validation' => null,
+        'warnings' => null,
         'after_sales_services' => null,
         'discounts' => null,
         'stock' => null,
@@ -128,6 +130,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
 		'compatibility_list' => false,
 		'language' => false,
 		'validation' => false,
+		'warnings' => false,
 		'after_sales_services' => false,
 		'discounts' => false,
 		'stock' => false,
@@ -236,6 +239,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
         'compatibility_list' => 'compatibilityList',
         'language' => 'language',
         'validation' => 'validation',
+        'warnings' => 'warnings',
         'after_sales_services' => 'afterSalesServices',
         'discounts' => 'discounts',
         'stock' => 'stock',
@@ -264,6 +268,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
         'compatibility_list' => 'setCompatibilityList',
         'language' => 'setLanguage',
         'validation' => 'setValidation',
+        'warnings' => 'setWarnings',
         'after_sales_services' => 'setAfterSalesServices',
         'discounts' => 'setDiscounts',
         'stock' => 'setStock',
@@ -292,6 +297,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
         'compatibility_list' => 'getCompatibilityList',
         'language' => 'getLanguage',
         'validation' => 'getValidation',
+        'warnings' => 'getWarnings',
         'after_sales_services' => 'getAfterSalesServices',
         'discounts' => 'getDiscounts',
         'stock' => 'getStock',
@@ -371,6 +377,7 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('compatibility_list', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('validation', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('after_sales_services', $data ?? [], null);
         $this->setIfExists('discounts', $data ?? [], null);
         $this->setIfExists('stock', $data ?? [], null);
@@ -769,6 +776,33 @@ class SaleProductOfferResponseV1AllOf implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable validation cannot be null');
         }
         $this->container['validation'] = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return array|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param array|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

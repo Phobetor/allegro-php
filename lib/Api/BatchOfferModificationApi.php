@@ -89,7 +89,16 @@ class BatchOfferModificationApi
         'getTasksUsingGET' => [
             'application/json',
         ],
+        'getofferAutomaticPricingModificationCommandStatusUsingGET' => [
+            'application/json',
+        ],
+        'getofferAutomaticPricingModificationCommandTasksStatusesUsingGET' => [
+            'application/json',
+        ],
         'modificationCommandUsingPUT' => [
+            'application/vnd.allegro.public.v1+json',
+        ],
+        'offerAutomaticPricingModificationCommandUsingPOST' => [
             'application/vnd.allegro.public.v1+json',
         ],
         'priceModificationCommandUsingPUT' => [
@@ -1995,6 +2004,622 @@ class BatchOfferModificationApi
     }
 
     /**
+     * Operation getofferAutomaticPricingModificationCommandStatusUsingGET
+     *
+     * Automatic pricing command summary
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Phobetor\Allegro\Model\GeneralReport
+     */
+    public function getofferAutomaticPricingModificationCommandStatusUsingGET($command_id, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'][0])
+    {
+        list($response) = $this->getofferAutomaticPricingModificationCommandStatusUsingGETWithHttpInfo($command_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandStatusUsingGETWithHttpInfo
+     *
+     * Automatic pricing command summary
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Phobetor\Allegro\Model\GeneralReport, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getofferAutomaticPricingModificationCommandStatusUsingGETWithHttpInfo($command_id, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'][0])
+    {
+        $request = $this->getofferAutomaticPricingModificationCommandStatusUsingGETRequest($command_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Phobetor\Allegro\Model\GeneralReport' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\GeneralReport' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GeneralReport', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\GeneralReport',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandStatusUsingGETAsync
+     *
+     * Automatic pricing command summary
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getofferAutomaticPricingModificationCommandStatusUsingGETAsync($command_id, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'][0])
+    {
+        return $this->getofferAutomaticPricingModificationCommandStatusUsingGETAsyncWithHttpInfo($command_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandStatusUsingGETAsyncWithHttpInfo
+     *
+     * Automatic pricing command summary
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getofferAutomaticPricingModificationCommandStatusUsingGETAsyncWithHttpInfo($command_id, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'][0])
+    {
+        $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+        $request = $this->getofferAutomaticPricingModificationCommandStatusUsingGETRequest($command_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getofferAutomaticPricingModificationCommandStatusUsingGET'
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getofferAutomaticPricingModificationCommandStatusUsingGETRequest($command_id, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandStatusUsingGET'][0])
+    {
+
+        // verify the required parameter 'command_id' is set
+        if ($command_id === null || (is_array($command_id) && count($command_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $command_id when calling getofferAutomaticPricingModificationCommandStatusUsingGET'
+            );
+        }
+
+
+        $resourcePath = '/sale/offer-price-automation-commands/{commandId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($command_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commandId' . '}',
+                ObjectSerializer::toPathValue($command_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.allegro.public.v1+json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandTasksStatusesUsingGET
+     *
+     * Automatic pricing command detailed report
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  int $limit The limit of elements in the response. (optional, default to 100)
+     * @param  int $offset The offset of elements in the response. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Phobetor\Allegro\Model\TaskReport
+     */
+    public function getofferAutomaticPricingModificationCommandTasksStatusesUsingGET($command_id, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'][0])
+    {
+        list($response) = $this->getofferAutomaticPricingModificationCommandTasksStatusesUsingGETWithHttpInfo($command_id, $limit, $offset, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandTasksStatusesUsingGETWithHttpInfo
+     *
+     * Automatic pricing command detailed report
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  int $limit The limit of elements in the response. (optional, default to 100)
+     * @param  int $offset The offset of elements in the response. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Phobetor\Allegro\Model\TaskReport, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getofferAutomaticPricingModificationCommandTasksStatusesUsingGETWithHttpInfo($command_id, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'][0])
+    {
+        $request = $this->getofferAutomaticPricingModificationCommandTasksStatusesUsingGETRequest($command_id, $limit, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Phobetor\Allegro\Model\TaskReport' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\TaskReport' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\TaskReport', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Phobetor\Allegro\Model\TaskReport';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\TaskReport',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandTasksStatusesUsingGETAsync
+     *
+     * Automatic pricing command detailed report
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  int $limit The limit of elements in the response. (optional, default to 100)
+     * @param  int $offset The offset of elements in the response. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getofferAutomaticPricingModificationCommandTasksStatusesUsingGETAsync($command_id, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'][0])
+    {
+        return $this->getofferAutomaticPricingModificationCommandTasksStatusesUsingGETAsyncWithHttpInfo($command_id, $limit, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getofferAutomaticPricingModificationCommandTasksStatusesUsingGETAsyncWithHttpInfo
+     *
+     * Automatic pricing command detailed report
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  int $limit The limit of elements in the response. (optional, default to 100)
+     * @param  int $offset The offset of elements in the response. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getofferAutomaticPricingModificationCommandTasksStatusesUsingGETAsyncWithHttpInfo($command_id, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'][0])
+    {
+        $returnType = '\Phobetor\Allegro\Model\TaskReport';
+        $request = $this->getofferAutomaticPricingModificationCommandTasksStatusesUsingGETRequest($command_id, $limit, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'
+     *
+     * @param  string $command_id Command identifier. (required)
+     * @param  int $limit The limit of elements in the response. (optional, default to 100)
+     * @param  int $offset The offset of elements in the response. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getofferAutomaticPricingModificationCommandTasksStatusesUsingGETRequest($command_id, $limit = 100, $offset = 0, string $contentType = self::contentTypes['getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'][0])
+    {
+
+        // verify the required parameter 'command_id' is set
+        if ($command_id === null || (is_array($command_id) && count($command_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $command_id when calling getofferAutomaticPricingModificationCommandTasksStatusesUsingGET'
+            );
+        }
+
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BatchOfferModificationApi.getofferAutomaticPricingModificationCommandTasksStatusesUsingGET, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BatchOfferModificationApi.getofferAutomaticPricingModificationCommandTasksStatusesUsingGET, must be bigger than or equal to 1.');
+        }
+        
+        if ($offset !== null && $offset > 999) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling BatchOfferModificationApi.getofferAutomaticPricingModificationCommandTasksStatusesUsingGET, must be smaller than or equal to 999.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling BatchOfferModificationApi.getofferAutomaticPricingModificationCommandTasksStatusesUsingGET, must be bigger than or equal to 0.');
+        }
+        
+
+        $resourcePath = '/sale/offer-price-automation-commands/{commandId}/tasks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($command_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commandId' . '}',
+                ObjectSerializer::toPathValue($command_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.allegro.public.v1+json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation modificationCommandUsingPUT
      *
      * Batch offer modification
@@ -2294,6 +2919,292 @@ class BatchOfferModificationApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation offerAutomaticPricingModificationCommandUsingPOST
+     *
+     * Batch offer automatic pricing rules modification
+     *
+     * @param  \Phobetor\Allegro\Model\OfferAutomaticPricingCommand $offer_automatic_pricing_command OfferAutomaticPricingCommand (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Phobetor\Allegro\Model\GeneralReport
+     */
+    public function offerAutomaticPricingModificationCommandUsingPOST($offer_automatic_pricing_command, string $contentType = self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'][0])
+    {
+        list($response) = $this->offerAutomaticPricingModificationCommandUsingPOSTWithHttpInfo($offer_automatic_pricing_command, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation offerAutomaticPricingModificationCommandUsingPOSTWithHttpInfo
+     *
+     * Batch offer automatic pricing rules modification
+     *
+     * @param  \Phobetor\Allegro\Model\OfferAutomaticPricingCommand $offer_automatic_pricing_command OfferAutomaticPricingCommand (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Phobetor\Allegro\Model\GeneralReport, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function offerAutomaticPricingModificationCommandUsingPOSTWithHttpInfo($offer_automatic_pricing_command, string $contentType = self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'][0])
+    {
+        $request = $this->offerAutomaticPricingModificationCommandUsingPOSTRequest($offer_automatic_pricing_command, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Phobetor\Allegro\Model\GeneralReport' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\GeneralReport' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GeneralReport', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\GeneralReport',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation offerAutomaticPricingModificationCommandUsingPOSTAsync
+     *
+     * Batch offer automatic pricing rules modification
+     *
+     * @param  \Phobetor\Allegro\Model\OfferAutomaticPricingCommand $offer_automatic_pricing_command OfferAutomaticPricingCommand (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function offerAutomaticPricingModificationCommandUsingPOSTAsync($offer_automatic_pricing_command, string $contentType = self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'][0])
+    {
+        return $this->offerAutomaticPricingModificationCommandUsingPOSTAsyncWithHttpInfo($offer_automatic_pricing_command, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation offerAutomaticPricingModificationCommandUsingPOSTAsyncWithHttpInfo
+     *
+     * Batch offer automatic pricing rules modification
+     *
+     * @param  \Phobetor\Allegro\Model\OfferAutomaticPricingCommand $offer_automatic_pricing_command OfferAutomaticPricingCommand (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function offerAutomaticPricingModificationCommandUsingPOSTAsyncWithHttpInfo($offer_automatic_pricing_command, string $contentType = self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'][0])
+    {
+        $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+        $request = $this->offerAutomaticPricingModificationCommandUsingPOSTRequest($offer_automatic_pricing_command, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'offerAutomaticPricingModificationCommandUsingPOST'
+     *
+     * @param  \Phobetor\Allegro\Model\OfferAutomaticPricingCommand $offer_automatic_pricing_command OfferAutomaticPricingCommand (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function offerAutomaticPricingModificationCommandUsingPOSTRequest($offer_automatic_pricing_command, string $contentType = self::contentTypes['offerAutomaticPricingModificationCommandUsingPOST'][0])
+    {
+
+        // verify the required parameter 'offer_automatic_pricing_command' is set
+        if ($offer_automatic_pricing_command === null || (is_array($offer_automatic_pricing_command) && count($offer_automatic_pricing_command) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $offer_automatic_pricing_command when calling offerAutomaticPricingModificationCommandUsingPOST'
+            );
+        }
+
+
+        $resourcePath = '/sale/offer-price-automation-commands';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.allegro.public.v1+json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($offer_automatic_pricing_command)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($offer_automatic_pricing_command));
+            } else {
+                $httpBody = $offer_automatic_pricing_command;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

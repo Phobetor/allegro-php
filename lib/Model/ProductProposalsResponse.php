@@ -59,15 +59,14 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'category' => '\Phobetor\Allegro\Model\SaleProductDtoCategory',
+        'category' => '\Phobetor\Allegro\Model\ProductProposalsResponseCategory',
         'images' => '\Phobetor\Allegro\Model\ImageUrl[]',
-        'parameters' => '\Phobetor\Allegro\Model\ProductParameterDto[]',
-        'offer_requirements' => '\Phobetor\Allegro\Model\OfferRequirements',
-        'compatibility_list' => '\Phobetor\Allegro\Model\SaleProductCompatibilityList',
-        'tecdoc_specification' => '\Phobetor\Allegro\Model\TecdocSpecification',
+        'parameters' => '\Phobetor\Allegro\Model\NewProductParameterDto[]',
         'description' => '\Phobetor\Allegro\Model\StandardizedDescription',
-        'is_draft' => 'bool',
-        'language' => 'string'
+        'supplier' => '\Phobetor\Allegro\Model\SupplierDto',
+        'offer_id' => 'string',
+        'language' => 'string',
+        'publication' => '\Phobetor\Allegro\Model\ProductProposalsResponsePublication'
     ];
 
     /**
@@ -83,12 +82,11 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'category' => null,
         'images' => null,
         'parameters' => null,
-        'offer_requirements' => null,
-        'compatibility_list' => null,
-        'tecdoc_specification' => null,
         'description' => null,
-        'is_draft' => null,
-        'language' => 'BCP-47 language code'
+        'supplier' => null,
+        'offer_id' => null,
+        'language' => 'BCP-47 language code',
+        'publication' => null
     ];
 
     /**
@@ -102,12 +100,11 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
 		'category' => false,
 		'images' => false,
 		'parameters' => false,
-		'offer_requirements' => false,
-		'compatibility_list' => false,
-		'tecdoc_specification' => false,
 		'description' => false,
-		'is_draft' => false,
-		'language' => false
+		'supplier' => false,
+		'offer_id' => false,
+		'language' => false,
+		'publication' => false
     ];
 
     /**
@@ -201,12 +198,11 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'category' => 'category',
         'images' => 'images',
         'parameters' => 'parameters',
-        'offer_requirements' => 'offerRequirements',
-        'compatibility_list' => 'compatibilityList',
-        'tecdoc_specification' => 'tecdocSpecification',
         'description' => 'description',
-        'is_draft' => 'isDraft',
-        'language' => 'language'
+        'supplier' => 'supplier',
+        'offer_id' => 'offerId',
+        'language' => 'language',
+        'publication' => 'publication'
     ];
 
     /**
@@ -220,12 +216,11 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'category' => 'setCategory',
         'images' => 'setImages',
         'parameters' => 'setParameters',
-        'offer_requirements' => 'setOfferRequirements',
-        'compatibility_list' => 'setCompatibilityList',
-        'tecdoc_specification' => 'setTecdocSpecification',
         'description' => 'setDescription',
-        'is_draft' => 'setIsDraft',
-        'language' => 'setLanguage'
+        'supplier' => 'setSupplier',
+        'offer_id' => 'setOfferId',
+        'language' => 'setLanguage',
+        'publication' => 'setPublication'
     ];
 
     /**
@@ -239,12 +234,11 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'category' => 'getCategory',
         'images' => 'getImages',
         'parameters' => 'getParameters',
-        'offer_requirements' => 'getOfferRequirements',
-        'compatibility_list' => 'getCompatibilityList',
-        'tecdoc_specification' => 'getTecdocSpecification',
         'description' => 'getDescription',
-        'is_draft' => 'getIsDraft',
-        'language' => 'getLanguage'
+        'supplier' => 'getSupplier',
+        'offer_id' => 'getOfferId',
+        'language' => 'getLanguage',
+        'publication' => 'getPublication'
     ];
 
     /**
@@ -309,12 +303,11 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('parameters', $data ?? [], null);
-        $this->setIfExists('offer_requirements', $data ?? [], null);
-        $this->setIfExists('compatibility_list', $data ?? [], null);
-        $this->setIfExists('tecdoc_specification', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('is_draft', $data ?? [], null);
+        $this->setIfExists('supplier', $data ?? [], null);
+        $this->setIfExists('offer_id', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('publication', $data ?? [], null);
     }
 
     /**
@@ -344,15 +337,6 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -371,7 +355,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -381,7 +365,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param string $id Product id.
+     * @param string|null $id Product id.
      *
      * @return self
      */
@@ -398,7 +382,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -408,7 +392,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets name
      *
-     * @param string $name Product name.
+     * @param string|null $name Product name.
      *
      * @return self
      */
@@ -425,7 +409,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets category
      *
-     * @return \Phobetor\Allegro\Model\SaleProductDtoCategory
+     * @return \Phobetor\Allegro\Model\ProductProposalsResponseCategory|null
      */
     public function getCategory()
     {
@@ -435,7 +419,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets category
      *
-     * @param \Phobetor\Allegro\Model\SaleProductDtoCategory $category category
+     * @param \Phobetor\Allegro\Model\ProductProposalsResponseCategory|null $category category
      *
      * @return self
      */
@@ -479,7 +463,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets parameters
      *
-     * @return \Phobetor\Allegro\Model\ProductParameterDto[]|null
+     * @return \Phobetor\Allegro\Model\NewProductParameterDto[]|null
      */
     public function getParameters()
     {
@@ -489,7 +473,7 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets parameters
      *
-     * @param \Phobetor\Allegro\Model\ProductParameterDto[]|null $parameters List of product parameters.
+     * @param \Phobetor\Allegro\Model\NewProductParameterDto[]|null $parameters List of product parameters.
      *
      * @return self
      */
@@ -499,87 +483,6 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable parameters cannot be null');
         }
         $this->container['parameters'] = $parameters;
-
-        return $this;
-    }
-
-    /**
-     * Gets offer_requirements
-     *
-     * @return \Phobetor\Allegro\Model\OfferRequirements|null
-     */
-    public function getOfferRequirements()
-    {
-        return $this->container['offer_requirements'];
-    }
-
-    /**
-     * Sets offer_requirements
-     *
-     * @param \Phobetor\Allegro\Model\OfferRequirements|null $offer_requirements offer_requirements
-     *
-     * @return self
-     */
-    public function setOfferRequirements($offer_requirements)
-    {
-        if (is_null($offer_requirements)) {
-            throw new \InvalidArgumentException('non-nullable offer_requirements cannot be null');
-        }
-        $this->container['offer_requirements'] = $offer_requirements;
-
-        return $this;
-    }
-
-    /**
-     * Gets compatibility_list
-     *
-     * @return \Phobetor\Allegro\Model\SaleProductCompatibilityList|null
-     */
-    public function getCompatibilityList()
-    {
-        return $this->container['compatibility_list'];
-    }
-
-    /**
-     * Sets compatibility_list
-     *
-     * @param \Phobetor\Allegro\Model\SaleProductCompatibilityList|null $compatibility_list compatibility_list
-     *
-     * @return self
-     */
-    public function setCompatibilityList($compatibility_list)
-    {
-        if (is_null($compatibility_list)) {
-            throw new \InvalidArgumentException('non-nullable compatibility_list cannot be null');
-        }
-        $this->container['compatibility_list'] = $compatibility_list;
-
-        return $this;
-    }
-
-    /**
-     * Gets tecdoc_specification
-     *
-     * @return \Phobetor\Allegro\Model\TecdocSpecification|null
-     */
-    public function getTecdocSpecification()
-    {
-        return $this->container['tecdoc_specification'];
-    }
-
-    /**
-     * Sets tecdoc_specification
-     *
-     * @param \Phobetor\Allegro\Model\TecdocSpecification|null $tecdoc_specification tecdoc_specification
-     *
-     * @return self
-     */
-    public function setTecdocSpecification($tecdoc_specification)
-    {
-        if (is_null($tecdoc_specification)) {
-            throw new \InvalidArgumentException('non-nullable tecdoc_specification cannot be null');
-        }
-        $this->container['tecdoc_specification'] = $tecdoc_specification;
 
         return $this;
     }
@@ -612,28 +515,55 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets is_draft
+     * Gets supplier
      *
-     * @return bool|null
+     * @return \Phobetor\Allegro\Model\SupplierDto|null
      */
-    public function getIsDraft()
+    public function getSupplier()
     {
-        return $this->container['is_draft'];
+        return $this->container['supplier'];
     }
 
     /**
-     * Sets is_draft
+     * Sets supplier
      *
-     * @param bool|null $is_draft Flag that informs if product is waiting for resolution of basic parameters change proposal.
+     * @param \Phobetor\Allegro\Model\SupplierDto|null $supplier supplier
      *
      * @return self
      */
-    public function setIsDraft($is_draft)
+    public function setSupplier($supplier)
     {
-        if (is_null($is_draft)) {
-            throw new \InvalidArgumentException('non-nullable is_draft cannot be null');
+        if (is_null($supplier)) {
+            throw new \InvalidArgumentException('non-nullable supplier cannot be null');
         }
-        $this->container['is_draft'] = $is_draft;
+        $this->container['supplier'] = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_id
+     *
+     * @return string|null
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     *
+     * @param string|null $offer_id Offer id.
+     *
+     * @return self
+     */
+    public function setOfferId($offer_id)
+    {
+        if (is_null($offer_id)) {
+            throw new \InvalidArgumentException('non-nullable offer_id cannot be null');
+        }
+        $this->container['offer_id'] = $offer_id;
 
         return $this;
     }
@@ -661,6 +591,33 @@ class ProductProposalsResponse implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable language cannot be null');
         }
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets publication
+     *
+     * @return \Phobetor\Allegro\Model\ProductProposalsResponsePublication|null
+     */
+    public function getPublication()
+    {
+        return $this->container['publication'];
+    }
+
+    /**
+     * Sets publication
+     *
+     * @param \Phobetor\Allegro\Model\ProductProposalsResponsePublication|null $publication publication
+     *
+     * @return self
+     */
+    public function setPublication($publication)
+    {
+        if (is_null($publication)) {
+            throw new \InvalidArgumentException('non-nullable publication cannot be null');
+        }
+        $this->container['publication'] = $publication;
 
         return $this;
     }

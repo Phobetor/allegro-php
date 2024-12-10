@@ -63,6 +63,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
         'delivery' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfDelivery',
         'after_sales_services' => '\Phobetor\Allegro\Model\AfterSalesServicesProductOfferRequest',
         'size_table' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfSizeTable',
+        'contact' => '\Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfContact',
         'discounts' => '\Phobetor\Allegro\Model\DiscountsProductOfferRequest'
     ];
 
@@ -80,6 +81,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
         'delivery' => null,
         'after_sales_services' => null,
         'size_table' => null,
+        'contact' => null,
         'discounts' => null
     ];
 
@@ -95,6 +97,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
 		'delivery' => false,
 		'after_sales_services' => false,
 		'size_table' => false,
+		'contact' => false,
 		'discounts' => false
     ];
 
@@ -190,6 +193,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
         'delivery' => 'delivery',
         'after_sales_services' => 'afterSalesServices',
         'size_table' => 'sizeTable',
+        'contact' => 'contact',
         'discounts' => 'discounts'
     ];
 
@@ -205,6 +209,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
         'delivery' => 'setDelivery',
         'after_sales_services' => 'setAfterSalesServices',
         'size_table' => 'setSizeTable',
+        'contact' => 'setContact',
         'discounts' => 'setDiscounts'
     ];
 
@@ -220,6 +225,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
         'delivery' => 'getDelivery',
         'after_sales_services' => 'getAfterSalesServices',
         'size_table' => 'getSizeTable',
+        'contact' => 'getContact',
         'discounts' => 'getDiscounts'
     ];
 
@@ -286,6 +292,7 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
         $this->setIfExists('delivery', $data ?? [], null);
         $this->setIfExists('after_sales_services', $data ?? [], null);
         $this->setIfExists('size_table', $data ?? [], null);
+        $this->setIfExists('contact', $data ?? [], null);
         $this->setIfExists('discounts', $data ?? [], null);
     }
 
@@ -489,6 +496,33 @@ class SaleProductOfferRequestBaseAllOf implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable size_table cannot be null');
         }
         $this->container['size_table'] = $size_table;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfContact|null
+     */
+    public function getContact()
+    {
+        return $this->container['contact'];
+    }
+
+    /**
+     * Sets contact
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductOfferRequestBaseAllOfContact|null $contact contact
+     *
+     * @return self
+     */
+    public function setContact($contact)
+    {
+        if (is_null($contact)) {
+            throw new \InvalidArgumentException('non-nullable contact cannot be null');
+        }
+        $this->container['contact'] = $contact;
 
         return $this;
     }

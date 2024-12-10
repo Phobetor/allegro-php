@@ -62,7 +62,8 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
         'provider' => '\Phobetor\Allegro\Model\CheckoutFormPaymentProvider',
         'finished_at' => '\DateTime',
         'paid_amount' => '\Phobetor\Allegro\Model\Price',
-        'reconciliation' => '\Phobetor\Allegro\Model\Price'
+        'reconciliation' => '\Phobetor\Allegro\Model\Price',
+        'features' => 'string[]'
     ];
 
     /**
@@ -78,7 +79,8 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
         'provider' => null,
         'finished_at' => 'date-time',
         'paid_amount' => null,
-        'reconciliation' => null
+        'reconciliation' => null,
+        'features' => null
     ];
 
     /**
@@ -92,7 +94,8 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
 		'provider' => false,
 		'finished_at' => false,
 		'paid_amount' => false,
-		'reconciliation' => false
+		'reconciliation' => false,
+		'features' => false
     ];
 
     /**
@@ -186,7 +189,8 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
         'provider' => 'provider',
         'finished_at' => 'finishedAt',
         'paid_amount' => 'paidAmount',
-        'reconciliation' => 'reconciliation'
+        'reconciliation' => 'reconciliation',
+        'features' => 'features'
     ];
 
     /**
@@ -200,7 +204,8 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
         'provider' => 'setProvider',
         'finished_at' => 'setFinishedAt',
         'paid_amount' => 'setPaidAmount',
-        'reconciliation' => 'setReconciliation'
+        'reconciliation' => 'setReconciliation',
+        'features' => 'setFeatures'
     ];
 
     /**
@@ -214,7 +219,8 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
         'provider' => 'getProvider',
         'finished_at' => 'getFinishedAt',
         'paid_amount' => 'getPaidAmount',
-        'reconciliation' => 'getReconciliation'
+        'reconciliation' => 'getReconciliation',
+        'features' => 'getFeatures'
     ];
 
     /**
@@ -280,6 +286,7 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('finished_at', $data ?? [], null);
         $this->setIfExists('paid_amount', $data ?? [], null);
         $this->setIfExists('reconciliation', $data ?? [], null);
+        $this->setIfExists('features', $data ?? [], null);
     }
 
     /**
@@ -488,6 +495,33 @@ class CheckoutFormPaymentReference implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable reconciliation cannot be null');
         }
         $this->container['reconciliation'] = $reconciliation;
+
+        return $this;
+    }
+
+    /**
+     * Gets features
+     *
+     * @return string[]|null
+     */
+    public function getFeatures()
+    {
+        return $this->container['features'];
+    }
+
+    /**
+     * Sets features
+     *
+     * @param string[]|null $features Payment additional features:  - `ALLEGRO_PAY` - The payment was made using Allegro Pay.
+     *
+     * @return self
+     */
+    public function setFeatures($features)
+    {
+        if (is_null($features)) {
+            throw new \InvalidArgumentException('non-nullable features cannot be null');
+        }
+        $this->container['features'] = $features;
 
         return $this;
     }

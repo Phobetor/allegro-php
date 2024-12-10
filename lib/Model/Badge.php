@@ -60,7 +60,7 @@ class Badge implements ModelInterface, ArrayAccess, \JsonSerializable
         'offer' => '\Phobetor\Allegro\Model\BadgeApplicationOffer',
         'campaign' => '\Phobetor\Allegro\Model\OfferBadgeCampaign',
         'publication' => '\Phobetor\Allegro\Model\BadgePublicationTimePolicy',
-        'prices' => '\Phobetor\Allegro\Model\BadgeApplicationPrices',
+        'prices' => '\Phobetor\Allegro\Model\BadgePrices',
         'process' => '\Phobetor\Allegro\Model\BadgeProcess'
     ];
 
@@ -87,8 +87,8 @@ class Badge implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'offer' => false,
 		'campaign' => false,
-		'publication' => false,
-		'prices' => false,
+		'publication' => true,
+		'prices' => true,
 		'process' => false
     ];
 
@@ -400,7 +400,14 @@ class Badge implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPublication($publication)
     {
         if (is_null($publication)) {
-            throw new \InvalidArgumentException('non-nullable publication cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'publication');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('publication', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['publication'] = $publication;
 
@@ -410,7 +417,7 @@ class Badge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets prices
      *
-     * @return \Phobetor\Allegro\Model\BadgeApplicationPrices|null
+     * @return \Phobetor\Allegro\Model\BadgePrices|null
      */
     public function getPrices()
     {
@@ -420,14 +427,21 @@ class Badge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prices
      *
-     * @param \Phobetor\Allegro\Model\BadgeApplicationPrices|null $prices prices
+     * @param \Phobetor\Allegro\Model\BadgePrices|null $prices prices
      *
      * @return self
      */
     public function setPrices($prices)
     {
         if (is_null($prices)) {
-            throw new \InvalidArgumentException('non-nullable prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prices', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prices'] = $prices;
 

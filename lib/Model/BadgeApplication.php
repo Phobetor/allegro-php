@@ -96,7 +96,7 @@ class BadgeApplication implements ModelInterface, ArrayAccess, \JsonSerializable
 		'updated_at' => false,
 		'campaign' => false,
 		'offer' => false,
-		'prices' => false,
+		'prices' => true,
 		'process' => false,
 		'purchase_constraints' => false
     ];
@@ -511,7 +511,14 @@ class BadgeApplication implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrices($prices)
     {
         if (is_null($prices)) {
-            throw new \InvalidArgumentException('non-nullable prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prices', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prices'] = $prices;
 

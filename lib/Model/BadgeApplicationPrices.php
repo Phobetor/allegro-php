@@ -58,9 +58,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'market' => '\Phobetor\Allegro\Model\BadgeApplicationMarketPrice',
-        'bargain' => '\Phobetor\Allegro\Model\BadgeApplicationBargainPrice',
-        'subsidy' => '\Phobetor\Allegro\Model\BadgeApplicationSubsidyPrices'
+        'bargain' => '\Phobetor\Allegro\Model\BadgeApplicationBargainPrice'
     ];
 
     /**
@@ -71,9 +69,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'market' => null,
-        'bargain' => null,
-        'subsidy' => null
+        'bargain' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'market' => false,
-		'bargain' => false,
-		'subsidy' => false
+        'bargain' => true
     ];
 
     /**
@@ -173,9 +167,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'market' => 'market',
-        'bargain' => 'bargain',
-        'subsidy' => 'subsidy'
+        'bargain' => 'bargain'
     ];
 
     /**
@@ -184,9 +176,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'market' => 'setMarket',
-        'bargain' => 'setBargain',
-        'subsidy' => 'setSubsidy'
+        'bargain' => 'setBargain'
     ];
 
     /**
@@ -195,9 +185,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'market' => 'getMarket',
-        'bargain' => 'getBargain',
-        'subsidy' => 'getSubsidy'
+        'bargain' => 'getBargain'
     ];
 
     /**
@@ -257,9 +245,7 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('market', $data ?? [], null);
         $this->setIfExists('bargain', $data ?? [], null);
-        $this->setIfExists('subsidy', $data ?? [], null);
     }
 
     /**
@@ -305,33 +291,6 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets market
-     *
-     * @return \Phobetor\Allegro\Model\BadgeApplicationMarketPrice|null
-     */
-    public function getMarket()
-    {
-        return $this->container['market'];
-    }
-
-    /**
-     * Sets market
-     *
-     * @param \Phobetor\Allegro\Model\BadgeApplicationMarketPrice|null $market market
-     *
-     * @return self
-     */
-    public function setMarket($market)
-    {
-        if (is_null($market)) {
-            throw new \InvalidArgumentException('non-nullable market cannot be null');
-        }
-        $this->container['market'] = $market;
-
-        return $this;
-    }
-
-    /**
      * Gets bargain
      *
      * @return \Phobetor\Allegro\Model\BadgeApplicationBargainPrice|null
@@ -351,36 +310,16 @@ class BadgeApplicationPrices implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBargain($bargain)
     {
         if (is_null($bargain)) {
-            throw new \InvalidArgumentException('non-nullable bargain cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bargain');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bargain', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bargain'] = $bargain;
-
-        return $this;
-    }
-
-    /**
-     * Gets subsidy
-     *
-     * @return \Phobetor\Allegro\Model\BadgeApplicationSubsidyPrices|null
-     */
-    public function getSubsidy()
-    {
-        return $this->container['subsidy'];
-    }
-
-    /**
-     * Sets subsidy
-     *
-     * @param \Phobetor\Allegro\Model\BadgeApplicationSubsidyPrices|null $subsidy subsidy
-     *
-     * @return self
-     */
-    public function setSubsidy($subsidy)
-    {
-        if (is_null($subsidy)) {
-            throw new \InvalidArgumentException('non-nullable subsidy cannot be null');
-        }
-        $this->container['subsidy'] = $subsidy;
 
         return $this;
     }

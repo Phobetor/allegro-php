@@ -65,7 +65,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_form' => '\Phobetor\Allegro\Model\DisputeCheckoutForm',
         'message' => '\Phobetor\Allegro\Model\DisputeFirstMessage',
         'messages_count' => 'int',
-        'last_message_creation_date' => '\DateTime'
+        'opened_date' => '\DateTime',
+        'last_message_creation_date' => '\DateTime',
+        'claim' => '\Phobetor\Allegro\Model\DisputeClaim'
     ];
 
     /**
@@ -84,7 +86,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_form' => null,
         'message' => null,
         'messages_count' => 'int32',
-        'last_message_creation_date' => 'date-time'
+        'opened_date' => 'date-time',
+        'last_message_creation_date' => 'date-time',
+        'claim' => null
     ];
 
     /**
@@ -101,7 +105,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
 		'checkout_form' => false,
 		'message' => false,
 		'messages_count' => false,
-		'last_message_creation_date' => false
+		'opened_date' => false,
+		'last_message_creation_date' => false,
+		'claim' => false
     ];
 
     /**
@@ -198,7 +204,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_form' => 'checkoutForm',
         'message' => 'message',
         'messages_count' => 'messagesCount',
-        'last_message_creation_date' => 'lastMessageCreationDate'
+        'opened_date' => 'openedDate',
+        'last_message_creation_date' => 'lastMessageCreationDate',
+        'claim' => 'claim'
     ];
 
     /**
@@ -215,7 +223,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_form' => 'setCheckoutForm',
         'message' => 'setMessage',
         'messages_count' => 'setMessagesCount',
-        'last_message_creation_date' => 'setLastMessageCreationDate'
+        'opened_date' => 'setOpenedDate',
+        'last_message_creation_date' => 'setLastMessageCreationDate',
+        'claim' => 'setClaim'
     ];
 
     /**
@@ -232,7 +242,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_form' => 'getCheckoutForm',
         'message' => 'getMessage',
         'messages_count' => 'getMessagesCount',
-        'last_message_creation_date' => 'getLastMessageCreationDate'
+        'opened_date' => 'getOpenedDate',
+        'last_message_creation_date' => 'getLastMessageCreationDate',
+        'claim' => 'getClaim'
     ];
 
     /**
@@ -336,7 +348,9 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('checkout_form', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('messages_count', $data ?? [], null);
+        $this->setIfExists('opened_date', $data ?? [], null);
         $this->setIfExists('last_message_creation_date', $data ?? [], null);
+        $this->setIfExists('claim', $data ?? [], null);
     }
 
     /**
@@ -672,6 +686,33 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets opened_date
+     *
+     * @return \DateTime|null
+     */
+    public function getOpenedDate()
+    {
+        return $this->container['opened_date'];
+    }
+
+    /**
+     * Sets opened_date
+     *
+     * @param \DateTime|null $opened_date Recent date when the dispute has been opened or reopened
+     *
+     * @return self
+     */
+    public function setOpenedDate($opened_date)
+    {
+        if (is_null($opened_date)) {
+            throw new \InvalidArgumentException('non-nullable opened_date cannot be null');
+        }
+        $this->container['opened_date'] = $opened_date;
+
+        return $this;
+    }
+
+    /**
      * Gets last_message_creation_date
      *
      * @return \DateTime
@@ -694,6 +735,33 @@ class Dispute implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable last_message_creation_date cannot be null');
         }
         $this->container['last_message_creation_date'] = $last_message_creation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim
+     *
+     * @return \Phobetor\Allegro\Model\DisputeClaim|null
+     */
+    public function getClaim()
+    {
+        return $this->container['claim'];
+    }
+
+    /**
+     * Sets claim
+     *
+     * @param \Phobetor\Allegro\Model\DisputeClaim|null $claim claim
+     *
+     * @return self
+     */
+    public function setClaim($claim)
+    {
+        if (is_null($claim)) {
+            throw new \InvalidArgumentException('non-nullable claim cannot be null');
+        }
+        $this->container['claim'] = $claim;
 
         return $this;
     }

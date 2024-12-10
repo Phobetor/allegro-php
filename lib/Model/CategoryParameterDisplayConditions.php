@@ -58,8 +58,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'parameters_with_value' => '\Phobetor\Allegro\Model\CategoryParameterWithValue[]',
-        'parameters_without_value' => '\Phobetor\Allegro\Model\CategoryParameterWithoutValue[]'
+        'parameters_with_value' => '\Phobetor\Allegro\Model\CategoryParameterWithValue[]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'parameters_with_value' => null,
-        'parameters_without_value' => null
+        'parameters_with_value' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'parameters_with_value' => false,
-		'parameters_without_value' => false
+        'parameters_with_value' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'parameters_with_value' => 'parametersWithValue',
-        'parameters_without_value' => 'parametersWithoutValue'
+        'parameters_with_value' => 'parametersWithValue'
     ];
 
     /**
@@ -180,8 +176,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'parameters_with_value' => 'setParametersWithValue',
-        'parameters_without_value' => 'setParametersWithoutValue'
+        'parameters_with_value' => 'setParametersWithValue'
     ];
 
     /**
@@ -190,8 +185,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'parameters_with_value' => 'getParametersWithValue',
-        'parameters_without_value' => 'getParametersWithoutValue'
+        'parameters_with_value' => 'getParametersWithValue'
     ];
 
     /**
@@ -252,7 +246,6 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
     public function __construct(array $data = null)
     {
         $this->setIfExists('parameters_with_value', $data ?? [], null);
-        $this->setIfExists('parameters_without_value', $data ?? [], null);
     }
 
     /**
@@ -285,9 +278,6 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
         if ($this->container['parameters_with_value'] === null) {
             $invalidProperties[] = "'parameters_with_value' can't be null";
         }
-        if ($this->container['parameters_without_value'] === null) {
-            $invalidProperties[] = "'parameters_without_value' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -316,7 +306,7 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
     /**
      * Sets parameters_with_value
      *
-     * @param \Phobetor\Allegro\Model\CategoryParameterWithValue[] $parameters_with_value Condition type which displays this parameter only if the given other parameter has filled in one of the given value ids in an offer or product. Empty if no condition of this type is present.
+     * @param \Phobetor\Allegro\Model\CategoryParameterWithValue[] $parameters_with_value Condition type which displays this parameter only if each of the given other parameters has filled in one of the respective given value ids in an offer or product. Empty if no condition of this type is present.
      *
      * @return self
      */
@@ -326,33 +316,6 @@ class CategoryParameterDisplayConditions implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable parameters_with_value cannot be null');
         }
         $this->container['parameters_with_value'] = $parameters_with_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets parameters_without_value
-     *
-     * @return \Phobetor\Allegro\Model\CategoryParameterWithoutValue[]
-     */
-    public function getParametersWithoutValue()
-    {
-        return $this->container['parameters_without_value'];
-    }
-
-    /**
-     * Sets parameters_without_value
-     *
-     * @param \Phobetor\Allegro\Model\CategoryParameterWithoutValue[] $parameters_without_value Condition type which displays this parameter only if the given other parameter has filled in neither a value nor a value id in an offer or product. Empty if no condition of this type is present.
-     *
-     * @return self
-     */
-    public function setParametersWithoutValue($parameters_without_value)
-    {
-        if (is_null($parameters_without_value)) {
-            throw new \InvalidArgumentException('non-nullable parameters_without_value cannot be null');
-        }
-        $this->container['parameters_without_value'] = $parameters_without_value;
 
         return $this;
     }

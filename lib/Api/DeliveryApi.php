@@ -809,15 +809,16 @@ class DeliveryApi
      *
      * Get the user&#39;s shipping rates
      *
+     * @param  string $marketplace Allows to filter shipping rates by marketplace that they are qualified for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getListOfShippingRatestUsingGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function getListOfShippingRatestUsingGET(string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
+    public function getListOfShippingRatestUsingGET($marketplace = null, string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
     {
-        list($response) = $this->getListOfShippingRatestUsingGETWithHttpInfo($contentType);
+        list($response) = $this->getListOfShippingRatestUsingGETWithHttpInfo($marketplace, $contentType);
         return $response;
     }
 
@@ -826,15 +827,16 @@ class DeliveryApi
      *
      * Get the user&#39;s shipping rates
      *
+     * @param  string $marketplace Allows to filter shipping rates by marketplace that they are qualified for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getListOfShippingRatestUsingGET'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getListOfShippingRatestUsingGETWithHttpInfo(string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
+    public function getListOfShippingRatestUsingGETWithHttpInfo($marketplace = null, string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
     {
-        $request = $this->getListOfShippingRatestUsingGETRequest($contentType);
+        $request = $this->getListOfShippingRatestUsingGETRequest($marketplace, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -971,14 +973,15 @@ class DeliveryApi
      *
      * Get the user&#39;s shipping rates
      *
+     * @param  string $marketplace Allows to filter shipping rates by marketplace that they are qualified for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getListOfShippingRatestUsingGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getListOfShippingRatestUsingGETAsync(string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
+    public function getListOfShippingRatestUsingGETAsync($marketplace = null, string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
     {
-        return $this->getListOfShippingRatestUsingGETAsyncWithHttpInfo($contentType)
+        return $this->getListOfShippingRatestUsingGETAsyncWithHttpInfo($marketplace, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -991,15 +994,16 @@ class DeliveryApi
      *
      * Get the user&#39;s shipping rates
      *
+     * @param  string $marketplace Allows to filter shipping rates by marketplace that they are qualified for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getListOfShippingRatestUsingGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getListOfShippingRatestUsingGETAsyncWithHttpInfo(string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
+    public function getListOfShippingRatestUsingGETAsyncWithHttpInfo($marketplace = null, string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\GetListOfShippingRatestUsingGET200Response';
-        $request = $this->getListOfShippingRatestUsingGETRequest($contentType);
+        $request = $this->getListOfShippingRatestUsingGETRequest($marketplace, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1040,13 +1044,15 @@ class DeliveryApi
     /**
      * Create request for operation 'getListOfShippingRatestUsingGET'
      *
+     * @param  string $marketplace Allows to filter shipping rates by marketplace that they are qualified for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getListOfShippingRatestUsingGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getListOfShippingRatestUsingGETRequest(string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
+    public function getListOfShippingRatestUsingGETRequest($marketplace = null, string $contentType = self::contentTypes['getListOfShippingRatestUsingGET'][0])
     {
+
 
 
         $resourcePath = '/sale/shipping-rates';
@@ -1056,6 +1062,15 @@ class DeliveryApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace,
+            'marketplace', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 

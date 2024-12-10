@@ -164,6 +164,7 @@ class ParcelManagementApi
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\CancelParcel201Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response
+     * @deprecated
      */
     public function cancelParcel($command_id, $cancel_parcel_parameters, string $contentType = self::contentTypes['cancelParcel'][0])
     {
@@ -183,6 +184,7 @@ class ParcelManagementApi
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\CancelParcel201Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function cancelParcelWithHttpInfo($command_id, $cancel_parcel_parameters, string $contentType = self::contentTypes['cancelParcel'][0])
     {
@@ -352,6 +354,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function cancelParcelAsync($command_id, $cancel_parcel_parameters, string $contentType = self::contentTypes['cancelParcel'][0])
     {
@@ -374,6 +377,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function cancelParcelAsyncWithHttpInfo($command_id, $cancel_parcel_parameters, string $contentType = self::contentTypes['cancelParcel'][0])
     {
@@ -425,6 +429,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function cancelParcelRequest($command_id, $cancel_parcel_parameters, string $contentType = self::contentTypes['cancelParcel'][0])
     {
@@ -539,6 +544,7 @@ class ParcelManagementApi
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\CreateNewParcel201Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response
+     * @deprecated
      */
     public function createNewParcel($command_id, $parcel_creation_parameters, string $contentType = self::contentTypes['createNewParcel'][0])
     {
@@ -558,6 +564,7 @@ class ParcelManagementApi
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\CreateNewParcel201Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createNewParcelWithHttpInfo($command_id, $parcel_creation_parameters, string $contentType = self::contentTypes['createNewParcel'][0])
     {
@@ -727,6 +734,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createNewParcelAsync($command_id, $parcel_creation_parameters, string $contentType = self::contentTypes['createNewParcel'][0])
     {
@@ -749,6 +757,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createNewParcelAsyncWithHttpInfo($command_id, $parcel_creation_parameters, string $contentType = self::contentTypes['createNewParcel'][0])
     {
@@ -800,6 +809,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createNewParcelRequest($command_id, $parcel_creation_parameters, string $contentType = self::contentTypes['createNewParcel'][0])
     {
@@ -911,7 +921,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\DeliveryServices|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \Phobetor\Allegro\Model\DeliveryServices|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getAvailableDeliveryServices(string $contentType = self::contentTypes['getAvailableDeliveryServices'][0])
     {
@@ -928,7 +939,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\DeliveryServices|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\DeliveryServices|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getAvailableDeliveryServicesWithHttpInfo(string $contentType = self::contentTypes['getAvailableDeliveryServices'][0])
     {
@@ -1016,17 +1028,17 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1077,7 +1089,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1096,6 +1108,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAvailableDeliveryServicesAsync(string $contentType = self::contentTypes['getAvailableDeliveryServices'][0])
     {
@@ -1116,6 +1129,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAvailableDeliveryServicesAsyncWithHttpInfo(string $contentType = self::contentTypes['getAvailableDeliveryServices'][0])
     {
@@ -1165,6 +1179,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getAvailableDeliveryServicesRequest(string $contentType = self::contentTypes['getAvailableDeliveryServices'][0])
     {
@@ -1248,7 +1263,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\GetParcelCancellationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \Phobetor\Allegro\Model\GetParcelCancellationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelCancellationStatus($command_id, string $contentType = self::contentTypes['getParcelCancellationStatus'][0])
     {
@@ -1266,7 +1282,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\GetParcelCancellationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\GetParcelCancellationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelCancellationStatusWithHttpInfo($command_id, string $contentType = self::contentTypes['getParcelCancellationStatus'][0])
     {
@@ -1369,17 +1386,17 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1438,7 +1455,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1458,6 +1475,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelCancellationStatusAsync($command_id, string $contentType = self::contentTypes['getParcelCancellationStatus'][0])
     {
@@ -1479,6 +1497,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelCancellationStatusAsyncWithHttpInfo($command_id, string $contentType = self::contentTypes['getParcelCancellationStatus'][0])
     {
@@ -1529,6 +1548,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelCancellationStatusRequest($command_id, string $contentType = self::contentTypes['getParcelCancellationStatus'][0])
     {
@@ -1627,7 +1647,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\GetParcelCreationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \Phobetor\Allegro\Model\GetParcelCreationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelCreationStatus($command_id, string $contentType = self::contentTypes['getParcelCreationStatus'][0])
     {
@@ -1645,7 +1666,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\GetParcelCreationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\GetParcelCreationStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelCreationStatusWithHttpInfo($command_id, string $contentType = self::contentTypes['getParcelCreationStatus'][0])
     {
@@ -1748,17 +1770,17 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1817,7 +1839,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1837,6 +1859,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelCreationStatusAsync($command_id, string $contentType = self::contentTypes['getParcelCreationStatus'][0])
     {
@@ -1858,6 +1881,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelCreationStatusAsyncWithHttpInfo($command_id, string $contentType = self::contentTypes['getParcelCreationStatus'][0])
     {
@@ -1908,6 +1932,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelCreationStatusRequest($command_id, string $contentType = self::contentTypes['getParcelCreationStatus'][0])
     {
@@ -2006,7 +2031,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\ParcelDetails|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \Phobetor\Allegro\Model\ParcelDetails|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelDetails($parcel_id, string $contentType = self::contentTypes['getParcelDetails'][0])
     {
@@ -2024,7 +2050,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\ParcelDetails|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\ParcelDetails|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelDetailsWithHttpInfo($parcel_id, string $contentType = self::contentTypes['getParcelDetails'][0])
     {
@@ -2127,32 +2154,32 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetParcelDetails404Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetShipmentDetails404Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2211,7 +2238,7 @@ class ParcelManagementApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetParcelDetails404Response',
+                        '\Phobetor\Allegro\Model\GetShipmentDetails404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2219,7 +2246,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2239,6 +2266,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelDetailsAsync($parcel_id, string $contentType = self::contentTypes['getParcelDetails'][0])
     {
@@ -2260,6 +2288,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelDetailsAsyncWithHttpInfo($parcel_id, string $contentType = self::contentTypes['getParcelDetails'][0])
     {
@@ -2310,6 +2339,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelDetailsRequest($parcel_id, string $contentType = self::contentTypes['getParcelDetails'][0])
     {
@@ -2409,7 +2439,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \SplFileObject|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelLabel($parcel_id, $page_format = null, string $contentType = self::contentTypes['getParcelLabel'][0])
     {
@@ -2428,7 +2459,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelLabelWithHttpInfo($parcel_id, $page_format = null, string $contentType = self::contentTypes['getParcelLabel'][0])
     {
@@ -2531,32 +2563,32 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetParcelDetails404Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetShipmentDetails404Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2615,7 +2647,7 @@ class ParcelManagementApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetParcelDetails404Response',
+                        '\Phobetor\Allegro\Model\GetShipmentDetails404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2623,7 +2655,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2644,6 +2676,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelLabelAsync($parcel_id, $page_format = null, string $contentType = self::contentTypes['getParcelLabel'][0])
     {
@@ -2666,6 +2699,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelLabelAsyncWithHttpInfo($parcel_id, $page_format = null, string $contentType = self::contentTypes['getParcelLabel'][0])
     {
@@ -2717,6 +2751,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelLabelRequest($parcel_id, $page_format = null, string $contentType = self::contentTypes['getParcelLabel'][0])
     {
@@ -2826,7 +2861,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\GetParcelPickupStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \Phobetor\Allegro\Model\GetParcelPickupStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelPickupStatus($command_id, string $contentType = self::contentTypes['getParcelPickupStatus'][0])
     {
@@ -2844,7 +2880,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\GetParcelPickupStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\GetParcelPickupStatus200Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelPickupStatusWithHttpInfo($command_id, string $contentType = self::contentTypes['getParcelPickupStatus'][0])
     {
@@ -2947,17 +2984,17 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3016,7 +3053,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3036,6 +3073,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelPickupStatusAsync($command_id, string $contentType = self::contentTypes['getParcelPickupStatus'][0])
     {
@@ -3057,6 +3095,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelPickupStatusAsyncWithHttpInfo($command_id, string $contentType = self::contentTypes['getParcelPickupStatus'][0])
     {
@@ -3107,6 +3146,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelPickupStatusRequest($command_id, string $contentType = self::contentTypes['getParcelPickupStatus'][0])
     {
@@ -3206,7 +3246,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\PickupDateParcelsProposals|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \Phobetor\Allegro\Model\PickupDateParcelsProposals|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelsPickupDateProposals($parcel_id, $ready_date = null, string $contentType = self::contentTypes['getParcelsPickupDateProposals'][0])
     {
@@ -3225,7 +3266,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\PickupDateParcelsProposals|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\PickupDateParcelsProposals|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelsPickupDateProposalsWithHttpInfo($parcel_id, $ready_date = null, string $contentType = self::contentTypes['getParcelsPickupDateProposals'][0])
     {
@@ -3328,32 +3370,32 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetParcelDetails404Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetShipmentDetails404Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3412,7 +3454,7 @@ class ParcelManagementApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetParcelDetails404Response',
+                        '\Phobetor\Allegro\Model\GetShipmentDetails404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3420,7 +3462,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3441,6 +3483,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelsPickupDateProposalsAsync($parcel_id, $ready_date = null, string $contentType = self::contentTypes['getParcelsPickupDateProposals'][0])
     {
@@ -3463,6 +3506,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelsPickupDateProposalsAsyncWithHttpInfo($parcel_id, $ready_date = null, string $contentType = self::contentTypes['getParcelsPickupDateProposals'][0])
     {
@@ -3514,6 +3558,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelsPickupDateProposalsRequest($parcel_id, $ready_date = null, string $contentType = self::contentTypes['getParcelsPickupDateProposals'][0])
     {
@@ -3626,7 +3671,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response
+     * @return \SplFileObject|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response
+     * @deprecated
      */
     public function getParcelsProtocol($parcel_id, string $contentType = self::contentTypes['getParcelsProtocol'][0])
     {
@@ -3644,7 +3690,8 @@ class ParcelManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetParcelDetails404Response|\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response|\Phobetor\Allegro\Model\GetShipmentDetails404Response|\Phobetor\Allegro\Model\GetDeliveryServices504Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getParcelsProtocolWithHttpInfo($parcel_id, string $contentType = self::contentTypes['getParcelsProtocol'][0])
     {
@@ -3747,32 +3794,32 @@ class ParcelManagementApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetParcelDetails404Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetShipmentDetails404Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetParcelDetails404Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetShipmentDetails404Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 504:
-                    if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\GetDeliveryServices504Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GetDeliveryServices504Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3831,7 +3878,7 @@ class ParcelManagementApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetParcelDetails404Response',
+                        '\Phobetor\Allegro\Model\GetShipmentDetails404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3839,7 +3886,7 @@ class ParcelManagementApi
                 case 504:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GetAvailableDeliveryServices504Response',
+                        '\Phobetor\Allegro\Model\GetDeliveryServices504Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3859,6 +3906,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelsProtocolAsync($parcel_id, string $contentType = self::contentTypes['getParcelsProtocol'][0])
     {
@@ -3880,6 +3928,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getParcelsProtocolAsyncWithHttpInfo($parcel_id, string $contentType = self::contentTypes['getParcelsProtocol'][0])
     {
@@ -3930,6 +3979,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getParcelsProtocolRequest($parcel_id, string $contentType = self::contentTypes['getParcelsProtocol'][0])
     {
@@ -4034,6 +4084,7 @@ class ParcelManagementApi
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\RequestParcelPickup201Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response
+     * @deprecated
      */
     public function requestParcelPickup($command_id, $pickup_parcel_parameters, string $contentType = self::contentTypes['requestParcelPickup'][0])
     {
@@ -4053,6 +4104,7 @@ class ParcelManagementApi
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\RequestParcelPickup201Response|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET400Response|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\GetOfferSmartClassificationGET403Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function requestParcelPickupWithHttpInfo($command_id, $pickup_parcel_parameters, string $contentType = self::contentTypes['requestParcelPickup'][0])
     {
@@ -4222,6 +4274,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function requestParcelPickupAsync($command_id, $pickup_parcel_parameters, string $contentType = self::contentTypes['requestParcelPickup'][0])
     {
@@ -4244,6 +4297,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function requestParcelPickupAsyncWithHttpInfo($command_id, $pickup_parcel_parameters, string $contentType = self::contentTypes['requestParcelPickup'][0])
     {
@@ -4295,6 +4349,7 @@ class ParcelManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function requestParcelPickupRequest($command_id, $pickup_parcel_parameters, string $contentType = self::contentTypes['requestParcelPickup'][0])
     {

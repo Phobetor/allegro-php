@@ -80,7 +80,7 @@ class BadgePatchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'process' => false,
-		'prices' => false
+		'prices' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class BadgePatchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPrices($prices)
     {
         if (is_null($prices)) {
-            throw new \InvalidArgumentException('non-nullable prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prices', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prices'] = $prices;
 

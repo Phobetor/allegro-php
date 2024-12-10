@@ -59,7 +59,7 @@ class BadgeApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'campaign' => '\Phobetor\Allegro\Model\BadgeApplicationCampaign',
         'offer' => '\Phobetor\Allegro\Model\BadgeApplicationOffer',
-        'prices' => '\Phobetor\Allegro\Model\BadgeApplicationSubmittedPrices',
+        'prices' => '\Phobetor\Allegro\Model\BadgeApplicationPrices',
         'purchase_constraints' => '\Phobetor\Allegro\Model\BadgeApplicationPurchaseConstraints'
     ];
 
@@ -85,7 +85,7 @@ class BadgeApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'campaign' => false,
 		'offer' => false,
-		'prices' => false,
+		'prices' => true,
 		'purchase_constraints' => false
     ];
 
@@ -373,7 +373,7 @@ class BadgeApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets prices
      *
-     * @return \Phobetor\Allegro\Model\BadgeApplicationSubmittedPrices|null
+     * @return \Phobetor\Allegro\Model\BadgeApplicationPrices|null
      */
     public function getPrices()
     {
@@ -383,14 +383,21 @@ class BadgeApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets prices
      *
-     * @param \Phobetor\Allegro\Model\BadgeApplicationSubmittedPrices|null $prices prices
+     * @param \Phobetor\Allegro\Model\BadgeApplicationPrices|null $prices prices
      *
      * @return self
      */
     public function setPrices($prices)
     {
         if (is_null($prices)) {
-            throw new \InvalidArgumentException('non-nullable prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prices', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prices'] = $prices;
 

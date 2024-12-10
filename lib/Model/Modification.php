@@ -63,9 +63,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
         'discounts' => '\Phobetor\Allegro\Model\ModificationDiscounts',
         'location' => '\Phobetor\Allegro\Model\Location',
         'payments' => '\Phobetor\Allegro\Model\ModificationPayments',
-        'promotion' => '\Phobetor\Allegro\Model\ModificationPromotion',
         'size_table' => '\Phobetor\Allegro\Model\SizeTable',
-        'publication' => '\Phobetor\Allegro\Model\ModificationPublication'
+        'publication' => '\Phobetor\Allegro\Model\ModificationPublication',
+        'responsible_person' => '\Phobetor\Allegro\Model\ModificationResponsiblePerson',
+        'responsible_producer' => '\Phobetor\Allegro\Model\ModificationResponsibleProducer',
+        'safety_information' => '\Phobetor\Allegro\Model\ModificationSafetyInformation'
     ];
 
     /**
@@ -81,9 +83,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
         'discounts' => null,
         'location' => null,
         'payments' => null,
-        'promotion' => null,
         'size_table' => null,
-        'publication' => null
+        'publication' => null,
+        'responsible_person' => null,
+        'responsible_producer' => null,
+        'safety_information' => null
     ];
 
     /**
@@ -97,9 +101,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
 		'discounts' => false,
 		'location' => false,
 		'payments' => false,
-		'promotion' => false,
 		'size_table' => false,
-		'publication' => false
+		'publication' => false,
+		'responsible_person' => false,
+		'responsible_producer' => false,
+		'safety_information' => false
     ];
 
     /**
@@ -193,9 +199,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
         'discounts' => 'discounts',
         'location' => 'location',
         'payments' => 'payments',
-        'promotion' => 'promotion',
         'size_table' => 'sizeTable',
-        'publication' => 'publication'
+        'publication' => 'publication',
+        'responsible_person' => 'responsiblePerson',
+        'responsible_producer' => 'responsibleProducer',
+        'safety_information' => 'safetyInformation'
     ];
 
     /**
@@ -209,9 +217,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
         'discounts' => 'setDiscounts',
         'location' => 'setLocation',
         'payments' => 'setPayments',
-        'promotion' => 'setPromotion',
         'size_table' => 'setSizeTable',
-        'publication' => 'setPublication'
+        'publication' => 'setPublication',
+        'responsible_person' => 'setResponsiblePerson',
+        'responsible_producer' => 'setResponsibleProducer',
+        'safety_information' => 'setSafetyInformation'
     ];
 
     /**
@@ -225,9 +235,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
         'discounts' => 'getDiscounts',
         'location' => 'getLocation',
         'payments' => 'getPayments',
-        'promotion' => 'getPromotion',
         'size_table' => 'getSizeTable',
-        'publication' => 'getPublication'
+        'publication' => 'getPublication',
+        'responsible_person' => 'getResponsiblePerson',
+        'responsible_producer' => 'getResponsibleProducer',
+        'safety_information' => 'getSafetyInformation'
     ];
 
     /**
@@ -292,9 +304,11 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('discounts', $data ?? [], null);
         $this->setIfExists('location', $data ?? [], null);
         $this->setIfExists('payments', $data ?? [], null);
-        $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('size_table', $data ?? [], null);
         $this->setIfExists('publication', $data ?? [], null);
+        $this->setIfExists('responsible_person', $data ?? [], null);
+        $this->setIfExists('responsible_producer', $data ?? [], null);
+        $this->setIfExists('safety_information', $data ?? [], null);
     }
 
     /**
@@ -475,35 +489,6 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets promotion
-     *
-     * @return \Phobetor\Allegro\Model\ModificationPromotion|null
-     * @deprecated
-     */
-    public function getPromotion()
-    {
-        return $this->container['promotion'];
-    }
-
-    /**
-     * Sets promotion
-     *
-     * @param \Phobetor\Allegro\Model\ModificationPromotion|null $promotion promotion
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setPromotion($promotion)
-    {
-        if (is_null($promotion)) {
-            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
-        }
-        $this->container['promotion'] = $promotion;
-
-        return $this;
-    }
-
-    /**
      * Gets size_table
      *
      * @return \Phobetor\Allegro\Model\SizeTable|null
@@ -553,6 +538,87 @@ class Modification implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable publication cannot be null');
         }
         $this->container['publication'] = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_person
+     *
+     * @return \Phobetor\Allegro\Model\ModificationResponsiblePerson|null
+     */
+    public function getResponsiblePerson()
+    {
+        return $this->container['responsible_person'];
+    }
+
+    /**
+     * Sets responsible_person
+     *
+     * @param \Phobetor\Allegro\Model\ModificationResponsiblePerson|null $responsible_person responsible_person
+     *
+     * @return self
+     */
+    public function setResponsiblePerson($responsible_person)
+    {
+        if (is_null($responsible_person)) {
+            throw new \InvalidArgumentException('non-nullable responsible_person cannot be null');
+        }
+        $this->container['responsible_person'] = $responsible_person;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsible_producer
+     *
+     * @return \Phobetor\Allegro\Model\ModificationResponsibleProducer|null
+     */
+    public function getResponsibleProducer()
+    {
+        return $this->container['responsible_producer'];
+    }
+
+    /**
+     * Sets responsible_producer
+     *
+     * @param \Phobetor\Allegro\Model\ModificationResponsibleProducer|null $responsible_producer responsible_producer
+     *
+     * @return self
+     */
+    public function setResponsibleProducer($responsible_producer)
+    {
+        if (is_null($responsible_producer)) {
+            throw new \InvalidArgumentException('non-nullable responsible_producer cannot be null');
+        }
+        $this->container['responsible_producer'] = $responsible_producer;
+
+        return $this;
+    }
+
+    /**
+     * Gets safety_information
+     *
+     * @return \Phobetor\Allegro\Model\ModificationSafetyInformation|null
+     */
+    public function getSafetyInformation()
+    {
+        return $this->container['safety_information'];
+    }
+
+    /**
+     * Sets safety_information
+     *
+     * @param \Phobetor\Allegro\Model\ModificationSafetyInformation|null $safety_information safety_information
+     *
+     * @return self
+     */
+    public function setSafetyInformation($safety_information)
+    {
+        if (is_null($safety_information)) {
+            throw new \InvalidArgumentException('non-nullable safety_information cannot be null');
+        }
+        $this->container['safety_information'] = $safety_information;
 
         return $this;
     }

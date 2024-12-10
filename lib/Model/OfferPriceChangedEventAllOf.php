@@ -58,7 +58,7 @@ class OfferPriceChangedEventAllOf implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'offer' => '\Phobetor\Allegro\Model\OfferEventExternalOffer'
+        'offer' => '\Phobetor\Allegro\Model\OfferEventExternalOfferForPriceChanges'
     ];
 
     /**
@@ -329,7 +329,7 @@ class OfferPriceChangedEventAllOf implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets offer
      *
-     * @return \Phobetor\Allegro\Model\OfferEventExternalOffer
+     * @return \Phobetor\Allegro\Model\OfferEventExternalOfferForPriceChanges
      */
     public function getOffer()
     {
@@ -339,7 +339,7 @@ class OfferPriceChangedEventAllOf implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets offer
      *
-     * @param \Phobetor\Allegro\Model\OfferEventExternalOffer $offer offer
+     * @param \Phobetor\Allegro\Model\OfferEventExternalOfferForPriceChanges $offer offer
      *
      * @return self
      */

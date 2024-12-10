@@ -60,7 +60,8 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'external' => '\Phobetor\Allegro\Model\ExternalId'
+        'external' => '\Phobetor\Allegro\Model\ExternalId',
+        'product_set' => '\Phobetor\Allegro\Model\OfferProductSetReference'
     ];
 
     /**
@@ -73,7 +74,8 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'external' => null
+        'external' => null,
+        'product_set' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
 		'name' => false,
-		'external' => false
+		'external' => false,
+		'product_set' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'external' => 'external'
+        'external' => 'external',
+        'product_set' => 'productSet'
     ];
 
     /**
@@ -186,7 +190,8 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'external' => 'setExternal'
+        'external' => 'setExternal',
+        'product_set' => 'setProductSet'
     ];
 
     /**
@@ -197,7 +202,8 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'external' => 'getExternal'
+        'external' => 'getExternal',
+        'product_set' => 'getProductSet'
     ];
 
     /**
@@ -260,6 +266,7 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('external', $data ?? [], null);
+        $this->setIfExists('product_set', $data ?? [], null);
     }
 
     /**
@@ -387,6 +394,33 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external cannot be null');
         }
         $this->container['external'] = $external;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_set
+     *
+     * @return \Phobetor\Allegro\Model\OfferProductSetReference|null
+     */
+    public function getProductSet()
+    {
+        return $this->container['product_set'];
+    }
+
+    /**
+     * Sets product_set
+     *
+     * @param \Phobetor\Allegro\Model\OfferProductSetReference|null $product_set product_set
+     *
+     * @return self
+     */
+    public function setProductSet($product_set)
+    {
+        if (is_null($product_set)) {
+            throw new \InvalidArgumentException('non-nullable product_set cannot be null');
+        }
+        $this->container['product_set'] = $product_set;
 
         return $this;
     }

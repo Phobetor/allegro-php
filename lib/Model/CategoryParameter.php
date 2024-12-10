@@ -107,7 +107,7 @@ class CategoryParameter implements ModelInterface, ArrayAccess, \JsonSerializabl
 		'required_for_product' => false,
 		'required_if' => false,
 		'displayed_if' => false,
-		'unit' => false,
+		'unit' => true,
 		'options' => false
     ];
 
@@ -567,7 +567,14 @@ class CategoryParameter implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUnit($unit)
     {
         if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit'] = $unit;
 

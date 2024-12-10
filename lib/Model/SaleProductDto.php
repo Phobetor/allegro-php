@@ -59,14 +59,18 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'category' => '\Phobetor\Allegro\Model\SaleProductDtoCategory',
+        'category' => '\Phobetor\Allegro\Model\ProductCategoryWithPath',
         'images' => '\Phobetor\Allegro\Model\ImageUrl[]',
         'parameters' => '\Phobetor\Allegro\Model\ProductParameterDto[]',
         'offer_requirements' => '\Phobetor\Allegro\Model\OfferRequirements',
         'compatibility_list' => '\Phobetor\Allegro\Model\SaleProductCompatibilityList',
         'tecdoc_specification' => '\Phobetor\Allegro\Model\TecdocSpecification',
         'description' => '\Phobetor\Allegro\Model\StandardizedDescription',
-        'is_draft' => 'bool'
+        'is_draft' => 'bool',
+        'ai_co_created_content' => '\Phobetor\Allegro\Model\AiCoCreatedContent',
+        'has_protected_brand' => 'bool',
+        'publication' => '\Phobetor\Allegro\Model\SaleProductDtoPublication',
+        'product_safety' => '\Phobetor\Allegro\Model\ProductSafetyDto'
     ];
 
     /**
@@ -86,7 +90,11 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'compatibility_list' => null,
         'tecdoc_specification' => null,
         'description' => null,
-        'is_draft' => null
+        'is_draft' => null,
+        'ai_co_created_content' => null,
+        'has_protected_brand' => null,
+        'publication' => null,
+        'product_safety' => null
     ];
 
     /**
@@ -104,7 +112,11 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
 		'compatibility_list' => false,
 		'tecdoc_specification' => false,
 		'description' => false,
-		'is_draft' => false
+		'is_draft' => false,
+		'ai_co_created_content' => false,
+		'has_protected_brand' => false,
+		'publication' => false,
+		'product_safety' => true
     ];
 
     /**
@@ -202,7 +214,11 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'compatibility_list' => 'compatibilityList',
         'tecdoc_specification' => 'tecdocSpecification',
         'description' => 'description',
-        'is_draft' => 'isDraft'
+        'is_draft' => 'isDraft',
+        'ai_co_created_content' => 'aiCoCreatedContent',
+        'has_protected_brand' => 'hasProtectedBrand',
+        'publication' => 'publication',
+        'product_safety' => 'productSafety'
     ];
 
     /**
@@ -220,7 +236,11 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'compatibility_list' => 'setCompatibilityList',
         'tecdoc_specification' => 'setTecdocSpecification',
         'description' => 'setDescription',
-        'is_draft' => 'setIsDraft'
+        'is_draft' => 'setIsDraft',
+        'ai_co_created_content' => 'setAiCoCreatedContent',
+        'has_protected_brand' => 'setHasProtectedBrand',
+        'publication' => 'setPublication',
+        'product_safety' => 'setProductSafety'
     ];
 
     /**
@@ -238,7 +258,11 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'compatibility_list' => 'getCompatibilityList',
         'tecdoc_specification' => 'getTecdocSpecification',
         'description' => 'getDescription',
-        'is_draft' => 'getIsDraft'
+        'is_draft' => 'getIsDraft',
+        'ai_co_created_content' => 'getAiCoCreatedContent',
+        'has_protected_brand' => 'getHasProtectedBrand',
+        'publication' => 'getPublication',
+        'product_safety' => 'getProductSafety'
     ];
 
     /**
@@ -308,6 +332,10 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('tecdoc_specification', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('is_draft', $data ?? [], null);
+        $this->setIfExists('ai_co_created_content', $data ?? [], null);
+        $this->setIfExists('has_protected_brand', $data ?? [], null);
+        $this->setIfExists('publication', $data ?? [], null);
+        $this->setIfExists('product_safety', $data ?? [], null);
     }
 
     /**
@@ -418,7 +446,7 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category
      *
-     * @return \Phobetor\Allegro\Model\SaleProductDtoCategory
+     * @return \Phobetor\Allegro\Model\ProductCategoryWithPath
      */
     public function getCategory()
     {
@@ -428,7 +456,7 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category
      *
-     * @param \Phobetor\Allegro\Model\SaleProductDtoCategory $category category
+     * @param \Phobetor\Allegro\Model\ProductCategoryWithPath $category category
      *
      * @return self
      */
@@ -627,6 +655,121 @@ class SaleProductDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_draft cannot be null');
         }
         $this->container['is_draft'] = $is_draft;
+
+        return $this;
+    }
+
+    /**
+     * Gets ai_co_created_content
+     *
+     * @return \Phobetor\Allegro\Model\AiCoCreatedContent|null
+     */
+    public function getAiCoCreatedContent()
+    {
+        return $this->container['ai_co_created_content'];
+    }
+
+    /**
+     * Sets ai_co_created_content
+     *
+     * @param \Phobetor\Allegro\Model\AiCoCreatedContent|null $ai_co_created_content ai_co_created_content
+     *
+     * @return self
+     */
+    public function setAiCoCreatedContent($ai_co_created_content)
+    {
+        if (is_null($ai_co_created_content)) {
+            throw new \InvalidArgumentException('non-nullable ai_co_created_content cannot be null');
+        }
+        $this->container['ai_co_created_content'] = $ai_co_created_content;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_protected_brand
+     *
+     * @return bool|null
+     */
+    public function getHasProtectedBrand()
+    {
+        return $this->container['has_protected_brand'];
+    }
+
+    /**
+     * Sets has_protected_brand
+     *
+     * @param bool|null $has_protected_brand Flag that informs if product is a part of a protected brand's assortment and its use may be restricted.
+     *
+     * @return self
+     */
+    public function setHasProtectedBrand($has_protected_brand)
+    {
+        if (is_null($has_protected_brand)) {
+            throw new \InvalidArgumentException('non-nullable has_protected_brand cannot be null');
+        }
+        $this->container['has_protected_brand'] = $has_protected_brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets publication
+     *
+     * @return \Phobetor\Allegro\Model\SaleProductDtoPublication|null
+     */
+    public function getPublication()
+    {
+        return $this->container['publication'];
+    }
+
+    /**
+     * Sets publication
+     *
+     * @param \Phobetor\Allegro\Model\SaleProductDtoPublication|null $publication publication
+     *
+     * @return self
+     */
+    public function setPublication($publication)
+    {
+        if (is_null($publication)) {
+            throw new \InvalidArgumentException('non-nullable publication cannot be null');
+        }
+        $this->container['publication'] = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_safety
+     *
+     * @return \Phobetor\Allegro\Model\ProductSafetyDto|null
+     */
+    public function getProductSafety()
+    {
+        return $this->container['product_safety'];
+    }
+
+    /**
+     * Sets product_safety
+     *
+     * @param \Phobetor\Allegro\Model\ProductSafetyDto|null $product_safety product_safety
+     *
+     * @return self
+     */
+    public function setProductSafety($product_safety)
+    {
+        if (is_null($product_safety)) {
+            array_push($this->openAPINullablesSetToNull, 'product_safety');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_safety', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_safety'] = $product_safety;
 
         return $this;
     }

@@ -61,7 +61,8 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         'details' => 'string',
         'message' => 'string',
         'path' => 'string',
-        'user_message' => 'string'
+        'user_message' => 'string',
+        'metadata' => 'array<string,string>'
     ];
 
     /**
@@ -76,7 +77,8 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         'details' => null,
         'message' => null,
         'path' => null,
-        'user_message' => null
+        'user_message' => null,
+        'metadata' => null
     ];
 
     /**
@@ -88,8 +90,9 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         'code' => false,
 		'details' => false,
 		'message' => false,
-		'path' => false,
-		'user_message' => false
+		'path' => true,
+		'user_message' => false,
+		'metadata' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         'details' => 'details',
         'message' => 'message',
         'path' => 'path',
-        'user_message' => 'userMessage'
+        'user_message' => 'userMessage',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -195,7 +199,8 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         'details' => 'setDetails',
         'message' => 'setMessage',
         'path' => 'setPath',
-        'user_message' => 'setUserMessage'
+        'user_message' => 'setUserMessage',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -208,7 +213,8 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         'details' => 'getDetails',
         'message' => 'getMessage',
         'path' => 'getPath',
-        'user_message' => 'getUserMessage'
+        'user_message' => 'getUserMessage',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -273,6 +279,7 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('path', $data ?? [], null);
         $this->setIfExists('user_message', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -418,7 +425,14 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPath($path)
     {
         if (is_null($path)) {
-            throw new \InvalidArgumentException('non-nullable path cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'path');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('path', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['path'] = $path;
 
@@ -448,6 +462,33 @@ class ValidationWarning implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable user_message cannot be null');
         }
         $this->container['user_message'] = $user_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Additional technical properties of this error. Set of possible keys depends on the specific error.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

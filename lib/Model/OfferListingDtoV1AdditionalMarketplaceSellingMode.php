@@ -58,7 +58,8 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => '\Phobetor\Allegro\Model\OfferListingDtoV1AdditionalMarketplaceSellingModePrice'
+        'price' => '\Phobetor\Allegro\Model\OfferListingDtoV1AdditionalMarketplaceSellingModePrice',
+        'price_automation' => '\Phobetor\Allegro\Model\OfferListingDtoV1AdditionalMarketplaceSellingModePriceAutomation'
     ];
 
     /**
@@ -69,7 +70,8 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'price' => null
+        'price' => null,
+        'price_automation' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'price' => true
+        'price' => false,
+		'price_automation' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price'
+        'price' => 'price',
+        'price_automation' => 'priceAutomation'
     ];
 
     /**
@@ -176,7 +180,8 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice'
+        'price' => 'setPrice',
+        'price_automation' => 'setPriceAutomation'
     ];
 
     /**
@@ -185,7 +190,8 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice'
+        'price' => 'getPrice',
+        'price_automation' => 'getPriceAutomation'
     ];
 
     /**
@@ -246,6 +252,7 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
     public function __construct(array $data = null)
     {
         $this->setIfExists('price', $data ?? [], null);
+        $this->setIfExists('price_automation', $data ?? [], null);
     }
 
     /**
@@ -310,16 +317,36 @@ class OfferListingDtoV1AdditionalMarketplaceSellingMode implements ModelInterfac
     public function setPrice($price)
     {
         if (is_null($price)) {
-            array_push($this->openAPINullablesSetToNull, 'price');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('price', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable price cannot be null');
         }
         $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_automation
+     *
+     * @return \Phobetor\Allegro\Model\OfferListingDtoV1AdditionalMarketplaceSellingModePriceAutomation|null
+     */
+    public function getPriceAutomation()
+    {
+        return $this->container['price_automation'];
+    }
+
+    /**
+     * Sets price_automation
+     *
+     * @param \Phobetor\Allegro\Model\OfferListingDtoV1AdditionalMarketplaceSellingModePriceAutomation|null $price_automation price_automation
+     *
+     * @return self
+     */
+    public function setPriceAutomation($price_automation)
+    {
+        if (is_null($price_automation)) {
+            throw new \InvalidArgumentException('non-nullable price_automation cannot be null');
+        }
+        $this->container['price_automation'] = $price_automation;
 
         return $this;
     }

@@ -84,9 +84,9 @@ class OfferListingDtoV1AdditionalMarketplace implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'publication' => false,
+        'publication' => true,
 		'selling_mode' => true,
-		'stats' => true,
+		'stats' => false,
 		'stock' => true
     ];
 
@@ -331,7 +331,14 @@ class OfferListingDtoV1AdditionalMarketplace implements ModelInterface, ArrayAcc
     public function setPublication($publication)
     {
         if (is_null($publication)) {
-            throw new \InvalidArgumentException('non-nullable publication cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'publication');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('publication', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['publication'] = $publication;
 
@@ -392,14 +399,7 @@ class OfferListingDtoV1AdditionalMarketplace implements ModelInterface, ArrayAcc
     public function setStats($stats)
     {
         if (is_null($stats)) {
-            array_push($this->openAPINullablesSetToNull, 'stats');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('stats', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable stats cannot be null');
         }
         $this->container['stats'] = $stats;
 

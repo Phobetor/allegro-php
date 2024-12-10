@@ -1145,19 +1145,19 @@ class RebatesAndPromotionsApi
      *
      * Get the user&#39;s list of promotions
      *
+     * @param  string $promotion_type Filter by promotion type. (required)
      * @param  int $limit Limit of promotions per page. (optional, default to 50)
      * @param  int $offset Distance between the beginning of the document and the point from which promotions are returned. (optional, default to 0)
      * @param  string $offer_id Filter by offer id. No promotions with &#x60;OFFERS_ASSIGNED_EXTERNALLY&#x60; or &#x60;ALL_OFFERS&#x60; criteria will be returned if this parameter is present. (optional)
-     * @param  string $promotion_type Filter by promotion type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSellerPromotionsUsingGET1'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\SellerRebatesDto|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function listSellerPromotionsUsingGET1($limit = 50, $offset = 0, $offer_id = null, $promotion_type = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
+    public function listSellerPromotionsUsingGET1($promotion_type, $limit = 50, $offset = 0, $offer_id = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
     {
-        list($response) = $this->listSellerPromotionsUsingGET1WithHttpInfo($limit, $offset, $offer_id, $promotion_type, $contentType);
+        list($response) = $this->listSellerPromotionsUsingGET1WithHttpInfo($promotion_type, $limit, $offset, $offer_id, $contentType);
         return $response;
     }
 
@@ -1166,19 +1166,19 @@ class RebatesAndPromotionsApi
      *
      * Get the user&#39;s list of promotions
      *
+     * @param  string $promotion_type Filter by promotion type. (required)
      * @param  int $limit Limit of promotions per page. (optional, default to 50)
      * @param  int $offset Distance between the beginning of the document and the point from which promotions are returned. (optional, default to 0)
      * @param  string $offer_id Filter by offer id. No promotions with &#x60;OFFERS_ASSIGNED_EXTERNALLY&#x60; or &#x60;ALL_OFFERS&#x60; criteria will be returned if this parameter is present. (optional)
-     * @param  string $promotion_type Filter by promotion type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSellerPromotionsUsingGET1'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\SellerRebatesDto|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listSellerPromotionsUsingGET1WithHttpInfo($limit = 50, $offset = 0, $offer_id = null, $promotion_type = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
+    public function listSellerPromotionsUsingGET1WithHttpInfo($promotion_type, $limit = 50, $offset = 0, $offer_id = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
     {
-        $request = $this->listSellerPromotionsUsingGET1Request($limit, $offset, $offer_id, $promotion_type, $contentType);
+        $request = $this->listSellerPromotionsUsingGET1Request($promotion_type, $limit, $offset, $offer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1315,18 +1315,18 @@ class RebatesAndPromotionsApi
      *
      * Get the user&#39;s list of promotions
      *
+     * @param  string $promotion_type Filter by promotion type. (required)
      * @param  int $limit Limit of promotions per page. (optional, default to 50)
      * @param  int $offset Distance between the beginning of the document and the point from which promotions are returned. (optional, default to 0)
      * @param  string $offer_id Filter by offer id. No promotions with &#x60;OFFERS_ASSIGNED_EXTERNALLY&#x60; or &#x60;ALL_OFFERS&#x60; criteria will be returned if this parameter is present. (optional)
-     * @param  string $promotion_type Filter by promotion type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSellerPromotionsUsingGET1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSellerPromotionsUsingGET1Async($limit = 50, $offset = 0, $offer_id = null, $promotion_type = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
+    public function listSellerPromotionsUsingGET1Async($promotion_type, $limit = 50, $offset = 0, $offer_id = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
     {
-        return $this->listSellerPromotionsUsingGET1AsyncWithHttpInfo($limit, $offset, $offer_id, $promotion_type, $contentType)
+        return $this->listSellerPromotionsUsingGET1AsyncWithHttpInfo($promotion_type, $limit, $offset, $offer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1339,19 +1339,19 @@ class RebatesAndPromotionsApi
      *
      * Get the user&#39;s list of promotions
      *
+     * @param  string $promotion_type Filter by promotion type. (required)
      * @param  int $limit Limit of promotions per page. (optional, default to 50)
      * @param  int $offset Distance between the beginning of the document and the point from which promotions are returned. (optional, default to 0)
      * @param  string $offer_id Filter by offer id. No promotions with &#x60;OFFERS_ASSIGNED_EXTERNALLY&#x60; or &#x60;ALL_OFFERS&#x60; criteria will be returned if this parameter is present. (optional)
-     * @param  string $promotion_type Filter by promotion type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSellerPromotionsUsingGET1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSellerPromotionsUsingGET1AsyncWithHttpInfo($limit = 50, $offset = 0, $offer_id = null, $promotion_type = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
+    public function listSellerPromotionsUsingGET1AsyncWithHttpInfo($promotion_type, $limit = 50, $offset = 0, $offer_id = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\SellerRebatesDto';
-        $request = $this->listSellerPromotionsUsingGET1Request($limit, $offset, $offer_id, $promotion_type, $contentType);
+        $request = $this->listSellerPromotionsUsingGET1Request($promotion_type, $limit, $offset, $offer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1392,17 +1392,24 @@ class RebatesAndPromotionsApi
     /**
      * Create request for operation 'listSellerPromotionsUsingGET1'
      *
+     * @param  string $promotion_type Filter by promotion type. (required)
      * @param  int $limit Limit of promotions per page. (optional, default to 50)
      * @param  int $offset Distance between the beginning of the document and the point from which promotions are returned. (optional, default to 0)
      * @param  string $offer_id Filter by offer id. No promotions with &#x60;OFFERS_ASSIGNED_EXTERNALLY&#x60; or &#x60;ALL_OFFERS&#x60; criteria will be returned if this parameter is present. (optional)
-     * @param  string $promotion_type Filter by promotion type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSellerPromotionsUsingGET1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listSellerPromotionsUsingGET1Request($limit = 50, $offset = 0, $offer_id = null, $promotion_type = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
+    public function listSellerPromotionsUsingGET1Request($promotion_type, $limit = 50, $offset = 0, $offer_id = null, string $contentType = self::contentTypes['listSellerPromotionsUsingGET1'][0])
     {
+
+        // verify the required parameter 'promotion_type' is set
+        if ($promotion_type === null || (is_array($promotion_type) && count($promotion_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $promotion_type when calling listSellerPromotionsUsingGET1'
+            );
+        }
 
         if ($limit !== null && $limit > 5000) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling RebatesAndPromotionsApi.listSellerPromotionsUsingGET1, must be smaller than or equal to 5000.');
@@ -1418,7 +1425,6 @@ class RebatesAndPromotionsApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling RebatesAndPromotionsApi.listSellerPromotionsUsingGET1, must be bigger than or equal to 0.');
         }
         
-
 
 
         $resourcePath = '/sale/loyalty/promotions';
@@ -1462,7 +1468,7 @@ class RebatesAndPromotionsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 

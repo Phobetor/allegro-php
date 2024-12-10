@@ -95,7 +95,7 @@ class CategoryProductParameter implements ModelInterface, ArrayAccess, \JsonSeri
 		'required' => false,
 		'required_if' => false,
 		'displayed_if' => false,
-		'unit' => false
+		'unit' => true
     ];
 
     /**
@@ -519,7 +519,14 @@ class CategoryProductParameter implements ModelInterface, ArrayAccess, \JsonSeri
     public function setUnit($unit)
     {
         if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit'] = $unit;
 

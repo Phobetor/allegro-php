@@ -59,7 +59,8 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'required' => 'bool',
         'address' => '\Phobetor\Allegro\Model\CheckoutFormInvoiceAddress',
-        'due_date' => 'string'
+        'due_date' => 'string',
+        'features' => 'string[]'
     ];
 
     /**
@@ -72,7 +73,8 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'required' => null,
         'address' => null,
-        'due_date' => null
+        'due_date' => null,
+        'features' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'required' => false,
 		'address' => false,
-		'due_date' => false
+		'due_date' => false,
+		'features' => false
     ];
 
     /**
@@ -174,7 +177,8 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'required' => 'required',
         'address' => 'address',
-        'due_date' => 'dueDate'
+        'due_date' => 'dueDate',
+        'features' => 'features'
     ];
 
     /**
@@ -185,7 +189,8 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'required' => 'setRequired',
         'address' => 'setAddress',
-        'due_date' => 'setDueDate'
+        'due_date' => 'setDueDate',
+        'features' => 'setFeatures'
     ];
 
     /**
@@ -196,7 +201,8 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'required' => 'getRequired',
         'address' => 'getAddress',
-        'due_date' => 'getDueDate'
+        'due_date' => 'getDueDate',
+        'features' => 'getFeatures'
     ];
 
     /**
@@ -259,6 +265,7 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('required', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('due_date', $data ?? [], null);
+        $this->setIfExists('features', $data ?? [], null);
     }
 
     /**
@@ -383,6 +390,33 @@ class CheckoutFormInvoiceInfo implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable due_date cannot be null');
         }
         $this->container['due_date'] = $due_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets features
+     *
+     * @return string[]|null
+     */
+    public function getFeatures()
+    {
+        return $this->container['features'];
+    }
+
+    /**
+     * Sets features
+     *
+     * @param string[]|null $features Invoice features list:  - VAT_EU_VERIFIED - order's data is verified for VAT EU transactions. The presence of this feature means that VAT_EU number will appear in `address.company.ids` field. This feature flag is mutually exclusive with `VAT_EU_UNVERIFIED` feature. Read more: <a href=\"../../news/serwisy-zagraniczne-allegro-od-18-listopada-2024-pozwolimy-wszystkim-sprzedajacym-udostepnic-oferty-na-business-allegro-cz-oraz-wdrozymy-wsparcie-dla-transakcji-wewnatrzwspolnotowych-1nayOPKLaSr\" target=\"_blank\">PL</a> / <a href=\"../../news/allegro-foreign-marketplaces-starting-november-18-2024-we-will-allow-all-sellers-to-list-offers-on-business-allegro-cz-and-implement-support-for-intra-community-transactions-1nayOPKLaSr\" target=\"_blank\">EN</a>.  - VAT_EU_UNVERIFIED - order meets the conditions of VAT EU transaction, but the Buyer's VAT_EU number is not verified. This feature flag is mutually exclusive with `VAT_EU_VERIFIED` feature. Read more: <a href=\"../../news/serwisy-zagraniczne-allegro-od-18-listopada-2024-pozwolimy-wszystkim-sprzedajacym-udostepnic-oferty-na-business-allegro-cz-oraz-wdrozymy-wsparcie-dla-transakcji-wewnatrzwspolnotowych-1nayOPKLaSr\" target=\"_blank\">PL</a> / <a href=\"../../news/allegro-foreign-marketplaces-starting-november-18-2024-we-will-allow-all-sellers-to-list-offers-on-business-allegro-cz-and-implement-support-for-intra-community-transactions-1nayOPKLaSr\" target=\"_blank\">EN</a>.
+     *
+     * @return self
+     */
+    public function setFeatures($features)
+    {
+        if (is_null($features)) {
+            throw new \InvalidArgumentException('non-nullable features cannot be null');
+        }
+        $this->container['features'] = $features;
 
         return $this;
     }

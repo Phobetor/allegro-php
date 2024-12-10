@@ -134,7 +134,7 @@ class PaymentsApi
      * Payment operations history
      *
      * @param  string $wallet_type Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout. (optional, default to 'AVAILABLE')
-     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. (optional)
+     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator. (optional)
      * @param  string $payment_id The payment ID. (optional)
      * @param  string $participant_login Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer. (optional)
      * @param  \DateTime $occurred_at_gte The minimum date and time of operation occurrence in ISO 8601 format. (optional)
@@ -162,7 +162,7 @@ class PaymentsApi
      * Payment operations history
      *
      * @param  string $wallet_type Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout. (optional, default to 'AVAILABLE')
-     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. (optional)
+     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator. (optional)
      * @param  string $payment_id The payment ID. (optional)
      * @param  string $participant_login Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer. (optional)
      * @param  \DateTime $occurred_at_gte The minimum date and time of operation occurrence in ISO 8601 format. (optional)
@@ -295,7 +295,7 @@ class PaymentsApi
      * Payment operations history
      *
      * @param  string $wallet_type Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout. (optional, default to 'AVAILABLE')
-     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. (optional)
+     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator. (optional)
      * @param  string $payment_id The payment ID. (optional)
      * @param  string $participant_login Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer. (optional)
      * @param  \DateTime $occurred_at_gte The minimum date and time of operation occurrence in ISO 8601 format. (optional)
@@ -326,7 +326,7 @@ class PaymentsApi
      * Payment operations history
      *
      * @param  string $wallet_type Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout. (optional, default to 'AVAILABLE')
-     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. (optional)
+     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator. (optional)
      * @param  string $payment_id The payment ID. (optional)
      * @param  string $participant_login Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer. (optional)
      * @param  \DateTime $occurred_at_gte The minimum date and time of operation occurrence in ISO 8601 format. (optional)
@@ -386,7 +386,7 @@ class PaymentsApi
      * Create request for operation 'getPaymentsOperationHistory'
      *
      * @param  string $wallet_type Type of the wallet: * AVAILABLE - operations available for payout. * WAITING - operations temporarily suspended for payout. (optional, default to 'AVAILABLE')
-     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. (optional)
+     * @param  string $wallet_payment_operator Payment operator: * PAYU - operations processed by PAYU operator. * P24 - operations processed by PRZELEWY24 operator. * AF - operations processed by Allegro Finance operator. (optional)
      * @param  string $payment_id The payment ID. (optional)
      * @param  string $participant_login Login of the participant. In case of REFUND_INCREASE operation this is the login of the seller, in other cases, of the buyer. (optional)
      * @param  \DateTime $occurred_at_gte The minimum date and time of operation occurrence in ISO 8601 format. (optional)

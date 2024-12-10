@@ -316,7 +316,7 @@ class CategoryParameterRequirementConditions implements ModelInterface, ArrayAcc
     /**
      * Sets parameters_with_value
      *
-     * @param \Phobetor\Allegro\Model\CategoryParameterWithValue[] $parameters_with_value Condition type which requires this parameter only if the given other parameter has filled in one of the given value ids in an offer or product. Empty if no condition of this type is present.
+     * @param \Phobetor\Allegro\Model\CategoryParameterWithValue[] $parameters_with_value Condition type which requires this parameter only if each of the given other parameters has filled in one of the respective given value ids in an offer or product. Empty if no condition of this type is present.
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class CategoryParameterRequirementConditions implements ModelInterface, ArrayAcc
     /**
      * Sets parameters_without_value
      *
-     * @param \Phobetor\Allegro\Model\CategoryParameterWithoutValue[] $parameters_without_value Condition type which requires this parameter only if the given other parameter has filled neither a value nor a value id in an offer or product. Empty if no condition of this type is present.
+     * @param \Phobetor\Allegro\Model\CategoryParameterWithoutValue[] $parameters_without_value Condition type which requires this parameter only if each of the given other parameters has filled neither a value nor a value id in an offer or product. Empty if no condition of this type is present.
      *
      * @return self
      */

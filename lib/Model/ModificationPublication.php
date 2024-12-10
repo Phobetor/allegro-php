@@ -35,7 +35,7 @@ use \Phobetor\Allegro\ObjectSerializer;
  * ModificationPublication Class Doc Comment
  *
  * @category Class
- * @description Allows you to change duration or additional marketplaces of the offers. You can include only property in a request \&quot;duration\&quot; or \&quot;durationUnlimited\&quot; or \&quot;marketplaces\&quot;.
+ * @description Allows you to change duration of the offers. You can include only property in a request \&quot;duration\&quot; or \&quot;durationUnlimited\&quot;.
  * @package  Phobetor\Allegro
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,7 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'duration' => 'string',
-        'duration_unlimited' => 'bool',
-        'marketplaces' => '\Phobetor\Allegro\Model\ModificationPublicationMarketplaces'
+        'duration_unlimited' => 'bool'
     ];
 
     /**
@@ -72,8 +71,7 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'duration' => null,
-        'duration_unlimited' => null,
-        'marketplaces' => null
+        'duration_unlimited' => null
     ];
 
     /**
@@ -83,8 +81,7 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'duration' => false,
-		'duration_unlimited' => false,
-		'marketplaces' => false
+		'duration_unlimited' => false
     ];
 
     /**
@@ -174,8 +171,7 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'duration' => 'duration',
-        'duration_unlimited' => 'durationUnlimited',
-        'marketplaces' => 'marketplaces'
+        'duration_unlimited' => 'durationUnlimited'
     ];
 
     /**
@@ -185,8 +181,7 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'duration' => 'setDuration',
-        'duration_unlimited' => 'setDurationUnlimited',
-        'marketplaces' => 'setMarketplaces'
+        'duration_unlimited' => 'setDurationUnlimited'
     ];
 
     /**
@@ -196,8 +191,7 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'duration' => 'getDuration',
-        'duration_unlimited' => 'getDurationUnlimited',
-        'marketplaces' => 'getMarketplaces'
+        'duration_unlimited' => 'getDurationUnlimited'
     ];
 
     /**
@@ -294,7 +288,6 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('duration', $data ?? [], null);
         $this->setIfExists('duration_unlimited', $data ?? [], null);
-        $this->setIfExists('marketplaces', $data ?? [], null);
     }
 
     /**
@@ -408,33 +401,6 @@ class ModificationPublication implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable duration_unlimited cannot be null');
         }
         $this->container['duration_unlimited'] = $duration_unlimited;
-
-        return $this;
-    }
-
-    /**
-     * Gets marketplaces
-     *
-     * @return \Phobetor\Allegro\Model\ModificationPublicationMarketplaces|null
-     */
-    public function getMarketplaces()
-    {
-        return $this->container['marketplaces'];
-    }
-
-    /**
-     * Sets marketplaces
-     *
-     * @param \Phobetor\Allegro\Model\ModificationPublicationMarketplaces|null $marketplaces marketplaces
-     *
-     * @return self
-     */
-    public function setMarketplaces($marketplaces)
-    {
-        if (is_null($marketplaces)) {
-            throw new \InvalidArgumentException('non-nullable marketplaces cannot be null');
-        }
-        $this->container['marketplaces'] = $marketplaces;
 
         return $this;
     }

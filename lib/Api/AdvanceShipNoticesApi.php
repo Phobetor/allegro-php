@@ -71,10 +71,10 @@ class AdvanceShipNoticesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createAdvanceShipNotice' => [
-            'application/vnd.allegro.public.v1+json',
+        'cancelAdvanceShipNotice' => [
+            'application/json',
         ],
-        'createLabelsCommand' => [
+        'createAdvanceShipNotice' => [
             'application/vnd.allegro.public.v1+json',
         ],
         'deleteAdvanceShipNotice' => [
@@ -92,9 +92,6 @@ class AdvanceShipNoticesApi
         'getAdvanceShipNotices' => [
             'application/json',
         ],
-        'getLabelCommand' => [
-            'application/json',
-        ],
         'getSubmitCommand' => [
             'application/json',
         ],
@@ -102,6 +99,9 @@ class AdvanceShipNoticesApi
             'application/vnd.allegro.public.v1+json',
         ],
         'updateAdvanceShipNotice' => [
+            'application/vnd.allegro.public.v1+json',
+        ],
+        'updateSubmittedAdvanceShipNotice' => [
             'application/vnd.allegro.public.v1+json',
         ],
     ];
@@ -150,6 +150,239 @@ class AdvanceShipNoticesApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation cancelAdvanceShipNotice
+     *
+     * Cancel Advance Ship Notice
+     *
+     * @param  string $id An identifier of the Advance Ship Notice to cancel. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function cancelAdvanceShipNotice($id, string $contentType = self::contentTypes['cancelAdvanceShipNotice'][0])
+    {
+        $this->cancelAdvanceShipNoticeWithHttpInfo($id, $contentType);
+    }
+
+    /**
+     * Operation cancelAdvanceShipNoticeWithHttpInfo
+     *
+     * Cancel Advance Ship Notice
+     *
+     * @param  string $id An identifier of the Advance Ship Notice to cancel. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelAdvanceShipNoticeWithHttpInfo($id, string $contentType = self::contentTypes['cancelAdvanceShipNotice'][0])
+    {
+        $request = $this->cancelAdvanceShipNoticeRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cancelAdvanceShipNoticeAsync
+     *
+     * Cancel Advance Ship Notice
+     *
+     * @param  string $id An identifier of the Advance Ship Notice to cancel. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelAdvanceShipNoticeAsync($id, string $contentType = self::contentTypes['cancelAdvanceShipNotice'][0])
+    {
+        return $this->cancelAdvanceShipNoticeAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelAdvanceShipNoticeAsyncWithHttpInfo
+     *
+     * Cancel Advance Ship Notice
+     *
+     * @param  string $id An identifier of the Advance Ship Notice to cancel. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelAdvanceShipNoticeAsyncWithHttpInfo($id, string $contentType = self::contentTypes['cancelAdvanceShipNotice'][0])
+    {
+        $returnType = '';
+        $request = $this->cancelAdvanceShipNoticeRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelAdvanceShipNotice'
+     *
+     * @param  string $id An identifier of the Advance Ship Notice to cancel. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cancelAdvanceShipNoticeRequest($id, string $contentType = self::contentTypes['cancelAdvanceShipNotice'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling cancelAdvanceShipNotice'
+            );
+        }
+
+
+        $resourcePath = '/fulfillment/advance-ship-notices/{id}/cancel';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -485,350 +718,20 @@ class AdvanceShipNoticesApi
     }
 
     /**
-     * Operation createLabelsCommand
-     *
-     * Create labels
-     *
-     * @param  string $command_id The identifier of the command. (required)
-     * @param  \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput $create_labels_command_only_input create_labels_command_only_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLabelsCommand'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\CreateLabelsCommand|\Phobetor\Allegro\Model\ErrorsHolder
-     */
-    public function createLabelsCommand($command_id, $create_labels_command_only_input, string $contentType = self::contentTypes['createLabelsCommand'][0])
-    {
-        list($response) = $this->createLabelsCommandWithHttpInfo($command_id, $create_labels_command_only_input, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createLabelsCommandWithHttpInfo
-     *
-     * Create labels
-     *
-     * @param  string $command_id The identifier of the command. (required)
-     * @param  \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput $create_labels_command_only_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLabelsCommand'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\CreateLabelsCommand|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createLabelsCommandWithHttpInfo($command_id, $create_labels_command_only_input, string $contentType = self::contentTypes['createLabelsCommand'][0])
-    {
-        $request = $this->createLabelsCommandRequest($command_id, $create_labels_command_only_input, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\Phobetor\Allegro\Model\CreateLabelsCommand' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\CreateLabelsCommand' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CreateLabelsCommand', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Phobetor\Allegro\Model\CreateLabelsCommand';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\CreateLabelsCommand',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\ErrorsHolder',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createLabelsCommandAsync
-     *
-     * Create labels
-     *
-     * @param  string $command_id The identifier of the command. (required)
-     * @param  \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput $create_labels_command_only_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLabelsCommand'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createLabelsCommandAsync($command_id, $create_labels_command_only_input, string $contentType = self::contentTypes['createLabelsCommand'][0])
-    {
-        return $this->createLabelsCommandAsyncWithHttpInfo($command_id, $create_labels_command_only_input, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createLabelsCommandAsyncWithHttpInfo
-     *
-     * Create labels
-     *
-     * @param  string $command_id The identifier of the command. (required)
-     * @param  \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput $create_labels_command_only_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLabelsCommand'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createLabelsCommandAsyncWithHttpInfo($command_id, $create_labels_command_only_input, string $contentType = self::contentTypes['createLabelsCommand'][0])
-    {
-        $returnType = '\Phobetor\Allegro\Model\CreateLabelsCommand';
-        $request = $this->createLabelsCommandRequest($command_id, $create_labels_command_only_input, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createLabelsCommand'
-     *
-     * @param  string $command_id The identifier of the command. (required)
-     * @param  \Phobetor\Allegro\Model\CreateLabelsCommandOnlyInput $create_labels_command_only_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLabelsCommand'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createLabelsCommandRequest($command_id, $create_labels_command_only_input, string $contentType = self::contentTypes['createLabelsCommand'][0])
-    {
-
-        // verify the required parameter 'command_id' is set
-        if ($command_id === null || (is_array($command_id) && count($command_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $command_id when calling createLabelsCommand'
-            );
-        }
-
-        // verify the required parameter 'create_labels_command_only_input' is set
-        if ($create_labels_command_only_input === null || (is_array($create_labels_command_only_input) && count($create_labels_command_only_input) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $create_labels_command_only_input when calling createLabelsCommand'
-            );
-        }
-
-
-        $resourcePath = '/fulfillment/create-labels-commands/{command-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($command_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'command-id' . '}',
-                ObjectSerializer::toPathValue($command_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.allegro.public.v1+json', 'application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($create_labels_command_only_input)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_labels_command_only_input));
-            } else {
-                $httpBody = $create_labels_command_only_input;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation deleteAdvanceShipNotice
      *
      * Delete Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice to delete. (required)
-     * @param  string $accept accept (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdvanceShipNotice'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteAdvanceShipNotice($id, $accept, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
+    public function deleteAdvanceShipNotice($id, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
     {
-        $this->deleteAdvanceShipNoticeWithHttpInfo($id, $accept, $contentType);
+        $this->deleteAdvanceShipNoticeWithHttpInfo($id, $contentType);
     }
 
     /**
@@ -837,16 +740,15 @@ class AdvanceShipNoticesApi
      * Delete Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice to delete. (required)
-     * @param  string $accept (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdvanceShipNotice'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAdvanceShipNoticeWithHttpInfo($id, $accept, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
+    public function deleteAdvanceShipNoticeWithHttpInfo($id, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
     {
-        $request = $this->deleteAdvanceShipNoticeRequest($id, $accept, $contentType);
+        $request = $this->deleteAdvanceShipNoticeRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -898,15 +800,14 @@ class AdvanceShipNoticesApi
      * Delete Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice to delete. (required)
-     * @param  string $accept (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdvanceShipNotice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAdvanceShipNoticeAsync($id, $accept, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
+    public function deleteAdvanceShipNoticeAsync($id, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
     {
-        return $this->deleteAdvanceShipNoticeAsyncWithHttpInfo($id, $accept, $contentType)
+        return $this->deleteAdvanceShipNoticeAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -920,16 +821,15 @@ class AdvanceShipNoticesApi
      * Delete Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice to delete. (required)
-     * @param  string $accept (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdvanceShipNotice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAdvanceShipNoticeAsyncWithHttpInfo($id, $accept, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
+    public function deleteAdvanceShipNoticeAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
     {
         $returnType = '';
-        $request = $this->deleteAdvanceShipNoticeRequest($id, $accept, $contentType);
+        $request = $this->deleteAdvanceShipNoticeRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -958,26 +858,18 @@ class AdvanceShipNoticesApi
      * Create request for operation 'deleteAdvanceShipNotice'
      *
      * @param  string $id An identifier of the Advance Ship Notice to delete. (required)
-     * @param  string $accept (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdvanceShipNotice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAdvanceShipNoticeRequest($id, $accept, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
+    public function deleteAdvanceShipNoticeRequest($id, string $contentType = self::contentTypes['deleteAdvanceShipNotice'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling deleteAdvanceShipNotice'
-            );
-        }
-
-        // verify the required parameter 'accept' is set
-        if ($accept === null || (is_array($accept) && count($accept) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $accept when calling deleteAdvanceShipNotice'
             );
         }
 
@@ -990,10 +882,6 @@ class AdvanceShipNoticesApi
         $multipart = false;
 
 
-        // header params
-        if ($accept !== null) {
-            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
-        }
 
         // path params
         if ($id !== null) {
@@ -1355,7 +1243,7 @@ class AdvanceShipNoticesApi
      * Get labels for Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice. (required)
-     * @param  string $accept Content-type of generated labels (required)
+     * @param  string $accept Content-type of generated labels. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdvanceShipNoticeLabels'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
@@ -1374,7 +1262,7 @@ class AdvanceShipNoticesApi
      * Get labels for Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice. (required)
-     * @param  string $accept Content-type of generated labels (required)
+     * @param  string $accept Content-type of generated labels. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdvanceShipNoticeLabels'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
@@ -1475,7 +1363,7 @@ class AdvanceShipNoticesApi
      * Get labels for Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice. (required)
-     * @param  string $accept Content-type of generated labels (required)
+     * @param  string $accept Content-type of generated labels. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdvanceShipNoticeLabels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1497,7 +1385,7 @@ class AdvanceShipNoticesApi
      * Get labels for Advance Ship Notice
      *
      * @param  string $id An identifier of the Advance Ship Notice. (required)
-     * @param  string $accept Content-type of generated labels (required)
+     * @param  string $accept Content-type of generated labels. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdvanceShipNoticeLabels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1548,7 +1436,7 @@ class AdvanceShipNoticesApi
      * Create request for operation 'getAdvanceShipNoticeLabels'
      *
      * @param  string $id An identifier of the Advance Ship Notice. (required)
-     * @param  string $accept Content-type of generated labels (required)
+     * @param  string $accept Content-type of generated labels. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdvanceShipNoticeLabels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2224,316 +2112,6 @@ class AdvanceShipNoticesApi
         ) ?? []);
 
 
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.allegro.public.v1+json', 'application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getLabelCommand
-     *
-     * Get labels
-     *
-     * @param  string $command_id An identifier of the command. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLabelCommand'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\CreateLabelsCommand|\Phobetor\Allegro\Model\ErrorsHolder
-     */
-    public function getLabelCommand($command_id, string $contentType = self::contentTypes['getLabelCommand'][0])
-    {
-        list($response) = $this->getLabelCommandWithHttpInfo($command_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getLabelCommandWithHttpInfo
-     *
-     * Get labels
-     *
-     * @param  string $command_id An identifier of the command. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLabelCommand'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\CreateLabelsCommand|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getLabelCommandWithHttpInfo($command_id, string $contentType = self::contentTypes['getLabelCommand'][0])
-    {
-        $request = $this->getLabelCommandRequest($command_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Phobetor\Allegro\Model\CreateLabelsCommand' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\CreateLabelsCommand' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CreateLabelsCommand', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Phobetor\Allegro\Model\CreateLabelsCommand';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\CreateLabelsCommand',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\ErrorsHolder',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getLabelCommandAsync
-     *
-     * Get labels
-     *
-     * @param  string $command_id An identifier of the command. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLabelCommand'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getLabelCommandAsync($command_id, string $contentType = self::contentTypes['getLabelCommand'][0])
-    {
-        return $this->getLabelCommandAsyncWithHttpInfo($command_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getLabelCommandAsyncWithHttpInfo
-     *
-     * Get labels
-     *
-     * @param  string $command_id An identifier of the command. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLabelCommand'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getLabelCommandAsyncWithHttpInfo($command_id, string $contentType = self::contentTypes['getLabelCommand'][0])
-    {
-        $returnType = '\Phobetor\Allegro\Model\CreateLabelsCommand';
-        $request = $this->getLabelCommandRequest($command_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getLabelCommand'
-     *
-     * @param  string $command_id An identifier of the command. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLabelCommand'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getLabelCommandRequest($command_id, string $contentType = self::contentTypes['getLabelCommand'][0])
-    {
-
-        // verify the required parameter 'command_id' is set
-        if ($command_id === null || (is_array($command_id) && count($command_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $command_id when calling getLabelCommand'
-            );
-        }
-
-
-        $resourcePath = '/fulfillment/create-labels-commands/{command-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($command_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'command-id' . '}',
-                ObjectSerializer::toPathValue($command_id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3526,6 +3104,351 @@ class AdvanceShipNoticesApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($advance_ship_notice));
             } else {
                 $httpBody = $advance_ship_notice;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSubmittedAdvanceShipNotice
+     *
+     * Update submitted Advance Ship Notice
+     *
+     * @param  string $id An identifier of Advance Ship Notice. (required)
+     * @param  string $if_match A current version of Advance Ship Notice (e.g. from etag header obtained via get). (required)
+     * @param  \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest $update_submitted_advance_ship_notice_request update_submitted_advance_ship_notice_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubmittedAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Phobetor\Allegro\Model\AdvanceShipNoticeResponse|\Phobetor\Allegro\Model\ErrorsHolder
+     */
+    public function updateSubmittedAdvanceShipNotice($id, $if_match, $update_submitted_advance_ship_notice_request, string $contentType = self::contentTypes['updateSubmittedAdvanceShipNotice'][0])
+    {
+        list($response) = $this->updateSubmittedAdvanceShipNoticeWithHttpInfo($id, $if_match, $update_submitted_advance_ship_notice_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateSubmittedAdvanceShipNoticeWithHttpInfo
+     *
+     * Update submitted Advance Ship Notice
+     *
+     * @param  string $id An identifier of Advance Ship Notice. (required)
+     * @param  string $if_match A current version of Advance Ship Notice (e.g. from etag header obtained via get). (required)
+     * @param  \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest $update_submitted_advance_ship_notice_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubmittedAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \Phobetor\Allegro\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Phobetor\Allegro\Model\AdvanceShipNoticeResponse|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSubmittedAdvanceShipNoticeWithHttpInfo($id, $if_match, $update_submitted_advance_ship_notice_request, string $contentType = self::contentTypes['updateSubmittedAdvanceShipNotice'][0])
+    {
+        $request = $this->updateSubmittedAdvanceShipNoticeRequest($id, $if_match, $update_submitted_advance_ship_notice_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Phobetor\Allegro\Model\AdvanceShipNoticeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\AdvanceShipNoticeResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\AdvanceShipNoticeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Phobetor\Allegro\Model\AdvanceShipNoticeResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\AdvanceShipNoticeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSubmittedAdvanceShipNoticeAsync
+     *
+     * Update submitted Advance Ship Notice
+     *
+     * @param  string $id An identifier of Advance Ship Notice. (required)
+     * @param  string $if_match A current version of Advance Ship Notice (e.g. from etag header obtained via get). (required)
+     * @param  \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest $update_submitted_advance_ship_notice_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubmittedAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSubmittedAdvanceShipNoticeAsync($id, $if_match, $update_submitted_advance_ship_notice_request, string $contentType = self::contentTypes['updateSubmittedAdvanceShipNotice'][0])
+    {
+        return $this->updateSubmittedAdvanceShipNoticeAsyncWithHttpInfo($id, $if_match, $update_submitted_advance_ship_notice_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSubmittedAdvanceShipNoticeAsyncWithHttpInfo
+     *
+     * Update submitted Advance Ship Notice
+     *
+     * @param  string $id An identifier of Advance Ship Notice. (required)
+     * @param  string $if_match A current version of Advance Ship Notice (e.g. from etag header obtained via get). (required)
+     * @param  \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest $update_submitted_advance_ship_notice_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubmittedAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSubmittedAdvanceShipNoticeAsyncWithHttpInfo($id, $if_match, $update_submitted_advance_ship_notice_request, string $contentType = self::contentTypes['updateSubmittedAdvanceShipNotice'][0])
+    {
+        $returnType = '\Phobetor\Allegro\Model\AdvanceShipNoticeResponse';
+        $request = $this->updateSubmittedAdvanceShipNoticeRequest($id, $if_match, $update_submitted_advance_ship_notice_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSubmittedAdvanceShipNotice'
+     *
+     * @param  string $id An identifier of Advance Ship Notice. (required)
+     * @param  string $if_match A current version of Advance Ship Notice (e.g. from etag header obtained via get). (required)
+     * @param  \Phobetor\Allegro\Model\UpdateSubmittedAdvanceShipNoticeRequest $update_submitted_advance_ship_notice_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubmittedAdvanceShipNotice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSubmittedAdvanceShipNoticeRequest($id, $if_match, $update_submitted_advance_ship_notice_request, string $contentType = self::contentTypes['updateSubmittedAdvanceShipNotice'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateSubmittedAdvanceShipNotice'
+            );
+        }
+
+        // verify the required parameter 'if_match' is set
+        if ($if_match === null || (is_array($if_match) && count($if_match) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $if_match when calling updateSubmittedAdvanceShipNotice'
+            );
+        }
+
+        // verify the required parameter 'update_submitted_advance_ship_notice_request' is set
+        if ($update_submitted_advance_ship_notice_request === null || (is_array($update_submitted_advance_ship_notice_request) && count($update_submitted_advance_ship_notice_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_submitted_advance_ship_notice_request when calling updateSubmittedAdvanceShipNotice'
+            );
+        }
+
+
+        $resourcePath = '/fulfillment/advance-ship-notices/{id}/submitted';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($if_match !== null) {
+            $headerParams['if-match'] = ObjectSerializer::toHeaderValue($if_match);
+        }
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.allegro.public.v1+json', 'application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_submitted_advance_ship_notice_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_submitted_advance_ship_notice_request));
+            } else {
+                $httpBody = $update_submitted_advance_ship_notice_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

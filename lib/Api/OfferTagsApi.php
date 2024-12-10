@@ -243,6 +243,14 @@ class OfferTagsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1066,7 +1074,7 @@ class OfferTagsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\TagListResponse|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\TagListResponse|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function listAssignedOfferTagsGET($offer_id, string $contentType = self::contentTypes['listAssignedOfferTagsGET'][0])
     {
@@ -1084,7 +1092,7 @@ class OfferTagsApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\TagListResponse|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\TagListResponse|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAssignedOfferTagsGETWithHttpInfo($offer_id, string $contentType = self::contentTypes['listAssignedOfferTagsGET'][0])
     {
@@ -1171,6 +1179,21 @@ class OfferTagsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\Phobetor\Allegro\Model\TagListResponse';
@@ -1208,6 +1231,14 @@ class OfferTagsApi
                     $e->setResponseObject($data);
                     break;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Phobetor\Allegro\Model\ErrorsHolder',
@@ -1832,6 +1863,14 @@ class OfferTagsApi
                     $e->setResponseObject($data);
                     break;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Phobetor\Allegro\Model\ErrorsHolder',

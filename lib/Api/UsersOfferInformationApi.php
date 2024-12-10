@@ -77,7 +77,7 @@ class UsersOfferInformationApi
         'getOfferSmartClassificationGET' => [
             'application/json',
         ],
-        'getOfferUsingGET' => [
+        'getProductOffer' => [
             'application/json',
         ],
         'searchOffersUsingGET' => [
@@ -916,40 +916,38 @@ class UsersOfferInformationApi
     }
 
     /**
-     * Operation getOfferUsingGET
+     * Operation getProductOffer
      *
-     * Get all fields of the particular offer
+     * Get all data of the particular product-offer
      *
      * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOfferUsingGET'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\OfferResponse
-     * @deprecated
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function getOfferUsingGET($offer_id, string $contentType = self::contentTypes['getOfferUsingGET'][0])
+    public function getProductOffer($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
     {
-        list($response) = $this->getOfferUsingGETWithHttpInfo($offer_id, $contentType);
+        list($response) = $this->getProductOfferWithHttpInfo($offer_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getOfferUsingGETWithHttpInfo
+     * Operation getProductOfferWithHttpInfo
      *
-     * Get all fields of the particular offer
+     * Get all data of the particular product-offer
      *
      * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOfferUsingGET'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\OfferResponse, HTTP status code, HTTP response headers (array of strings)
-     * @deprecated
+     * @return array of \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOfferUsingGETWithHttpInfo($offer_id, string $contentType = self::contentTypes['getOfferUsingGET'][0])
+    public function getProductOfferWithHttpInfo($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
     {
-        $request = $this->getOfferUsingGETRequest($offer_id, $contentType);
+        $request = $this->getProductOfferRequest($offer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -988,23 +986,83 @@ class UsersOfferInformationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Phobetor\Allegro\Model\OfferResponse' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\SaleProductOfferResponseV1' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\OfferResponse' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\SaleProductOfferResponseV1' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\OfferResponse', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\SaleProductOfferResponseV1', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\OfferResponse';
+            $returnType = '\Phobetor\Allegro\Model\SaleProductOfferResponseV1';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1025,7 +1083,39 @@ class UsersOfferInformationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\OfferResponse',
+                        '\Phobetor\Allegro\Model\SaleProductOfferResponseV1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1036,20 +1126,19 @@ class UsersOfferInformationApi
     }
 
     /**
-     * Operation getOfferUsingGETAsync
+     * Operation getProductOfferAsync
      *
-     * Get all fields of the particular offer
+     * Get all data of the particular product-offer
      *
      * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOfferUsingGET'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
      */
-    public function getOfferUsingGETAsync($offer_id, string $contentType = self::contentTypes['getOfferUsingGET'][0])
+    public function getProductOfferAsync($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
     {
-        return $this->getOfferUsingGETAsyncWithHttpInfo($offer_id, $contentType)
+        return $this->getProductOfferAsyncWithHttpInfo($offer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1058,21 +1147,20 @@ class UsersOfferInformationApi
     }
 
     /**
-     * Operation getOfferUsingGETAsyncWithHttpInfo
+     * Operation getProductOfferAsyncWithHttpInfo
      *
-     * Get all fields of the particular offer
+     * Get all data of the particular product-offer
      *
      * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOfferUsingGET'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
      */
-    public function getOfferUsingGETAsyncWithHttpInfo($offer_id, string $contentType = self::contentTypes['getOfferUsingGET'][0])
+    public function getProductOfferAsyncWithHttpInfo($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\OfferResponse';
-        $request = $this->getOfferUsingGETRequest($offer_id, $contentType);
+        $returnType = '\Phobetor\Allegro\Model\SaleProductOfferResponseV1';
+        $request = $this->getProductOfferRequest($offer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1111,27 +1199,26 @@ class UsersOfferInformationApi
     }
 
     /**
-     * Create request for operation 'getOfferUsingGET'
+     * Create request for operation 'getProductOffer'
      *
      * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOfferUsingGET'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
-     * @deprecated
      */
-    public function getOfferUsingGETRequest($offer_id, string $contentType = self::contentTypes['getOfferUsingGET'][0])
+    public function getProductOfferRequest($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
     {
 
         // verify the required parameter 'offer_id' is set
         if ($offer_id === null || (is_array($offer_id) && count($offer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $offer_id when calling getOfferUsingGET'
+                'Missing the required parameter $offer_id when calling getProductOffer'
             );
         }
 
 
-        $resourcePath = '/sale/offers/{offerId}';
+        $resourcePath = '/sale/product-offers/{offerId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1212,12 +1299,14 @@ class UsersOfferInformationApi
      *
      * Get seller&#39;s offers
      *
-     * @param  string $offer_id Offer ID. (optional)
+     * @param  string[] $offer_id Offer ID. (optional)
      * @param  string $name The text to search in the offer title. (optional)
      * @param  float $selling_mode_price_amount_gte The lower threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
      * @param  float $selling_mode_price_amount_lte The upper threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
+     * @param  string $selling_mode_price_automation_rule_id The ID of price automation rule. Returns offers with given price automation rule ID.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
+     * @param  bool $selling_mode_price_automation_rule_id_empty Allows to filter offers by existence of price automation rule ID. Passing &#39;false&#39; will return offers with any price automation rule, passing &#39;true&#39; will return offers without any price automation rules.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
      * @param  string[] $publication_status The publication status of the offer. Passing more than one value will search for offers with any of the given statuses. By default all statuses are included. Example: &#x60;publication.status&#x3D;INACTIVE&amp;publication.status&#x3D;ACTIVE&#x60; - returns offers with status &#x60;INACTIVE&#x60; or &#x60;ACTIVE&#x60;. (optional)
-     * @param  MarketplaceId $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
+     * @param  string $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
      * @param  string[] $selling_mode_format The offer&#39;s selling format. Passing more than one value will search for offers with any of the given formats. By default all formats are included. Example: &#x60;sellingMode.format&#x3D;BUY_NOW&amp;sellingMode.format&#x3D;ADVERTISEMENT&#x60; - returns offers with with format &#x60;BUY_NOW&#x60; or &#x60;ADVERTISEMENT&#x60;. (optional)
      * @param  string[] $external_id The ID from the client&#39;s external system. Passing more than one value will search for offers with any of the given IDs. By default no ID is included. Example: &#x60;external.id&#x3D;1233&amp;external.id&#x3D;1234&#x60; - returns offers with ID &#x60;1233&#x60; or &#x60;1234&#x60;. Single ID length shouldn&#39;t exceed 100 characters. (optional)
      * @param  string $delivery_shipping_rates_id The ID of shipping rates. Returns offers with given shipping rates ID. (optional)
@@ -1237,9 +1326,9 @@ class UsersOfferInformationApi
      * @throws \InvalidArgumentException
      * @return \Phobetor\Allegro\Model\OffersSearchResultDto|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
-    public function searchOffersUsingGET($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
+    public function searchOffersUsingGET($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $selling_mode_price_automation_rule_id = null, $selling_mode_price_automation_rule_id_empty = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
     {
-        list($response) = $this->searchOffersUsingGETWithHttpInfo($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType);
+        list($response) = $this->searchOffersUsingGETWithHttpInfo($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $selling_mode_price_automation_rule_id, $selling_mode_price_automation_rule_id_empty, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType);
         return $response;
     }
 
@@ -1248,12 +1337,14 @@ class UsersOfferInformationApi
      *
      * Get seller&#39;s offers
      *
-     * @param  string $offer_id Offer ID. (optional)
+     * @param  string[] $offer_id Offer ID. (optional)
      * @param  string $name The text to search in the offer title. (optional)
      * @param  float $selling_mode_price_amount_gte The lower threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
      * @param  float $selling_mode_price_amount_lte The upper threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
+     * @param  string $selling_mode_price_automation_rule_id The ID of price automation rule. Returns offers with given price automation rule ID.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
+     * @param  bool $selling_mode_price_automation_rule_id_empty Allows to filter offers by existence of price automation rule ID. Passing &#39;false&#39; will return offers with any price automation rule, passing &#39;true&#39; will return offers without any price automation rules.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
      * @param  string[] $publication_status The publication status of the offer. Passing more than one value will search for offers with any of the given statuses. By default all statuses are included. Example: &#x60;publication.status&#x3D;INACTIVE&amp;publication.status&#x3D;ACTIVE&#x60; - returns offers with status &#x60;INACTIVE&#x60; or &#x60;ACTIVE&#x60;. (optional)
-     * @param  MarketplaceId $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
+     * @param  string $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
      * @param  string[] $selling_mode_format The offer&#39;s selling format. Passing more than one value will search for offers with any of the given formats. By default all formats are included. Example: &#x60;sellingMode.format&#x3D;BUY_NOW&amp;sellingMode.format&#x3D;ADVERTISEMENT&#x60; - returns offers with with format &#x60;BUY_NOW&#x60; or &#x60;ADVERTISEMENT&#x60;. (optional)
      * @param  string[] $external_id The ID from the client&#39;s external system. Passing more than one value will search for offers with any of the given IDs. By default no ID is included. Example: &#x60;external.id&#x3D;1233&amp;external.id&#x3D;1234&#x60; - returns offers with ID &#x60;1233&#x60; or &#x60;1234&#x60;. Single ID length shouldn&#39;t exceed 100 characters. (optional)
      * @param  string $delivery_shipping_rates_id The ID of shipping rates. Returns offers with given shipping rates ID. (optional)
@@ -1273,9 +1364,9 @@ class UsersOfferInformationApi
      * @throws \InvalidArgumentException
      * @return array of \Phobetor\Allegro\Model\OffersSearchResultDto|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchOffersUsingGETWithHttpInfo($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
+    public function searchOffersUsingGETWithHttpInfo($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $selling_mode_price_automation_rule_id = null, $selling_mode_price_automation_rule_id_empty = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
     {
-        $request = $this->searchOffersUsingGETRequest($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType);
+        $request = $this->searchOffersUsingGETRequest($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $selling_mode_price_automation_rule_id, $selling_mode_price_automation_rule_id_empty, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1412,12 +1503,14 @@ class UsersOfferInformationApi
      *
      * Get seller&#39;s offers
      *
-     * @param  string $offer_id Offer ID. (optional)
+     * @param  string[] $offer_id Offer ID. (optional)
      * @param  string $name The text to search in the offer title. (optional)
      * @param  float $selling_mode_price_amount_gte The lower threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
      * @param  float $selling_mode_price_amount_lte The upper threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
+     * @param  string $selling_mode_price_automation_rule_id The ID of price automation rule. Returns offers with given price automation rule ID.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
+     * @param  bool $selling_mode_price_automation_rule_id_empty Allows to filter offers by existence of price automation rule ID. Passing &#39;false&#39; will return offers with any price automation rule, passing &#39;true&#39; will return offers without any price automation rules.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
      * @param  string[] $publication_status The publication status of the offer. Passing more than one value will search for offers with any of the given statuses. By default all statuses are included. Example: &#x60;publication.status&#x3D;INACTIVE&amp;publication.status&#x3D;ACTIVE&#x60; - returns offers with status &#x60;INACTIVE&#x60; or &#x60;ACTIVE&#x60;. (optional)
-     * @param  MarketplaceId $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
+     * @param  string $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
      * @param  string[] $selling_mode_format The offer&#39;s selling format. Passing more than one value will search for offers with any of the given formats. By default all formats are included. Example: &#x60;sellingMode.format&#x3D;BUY_NOW&amp;sellingMode.format&#x3D;ADVERTISEMENT&#x60; - returns offers with with format &#x60;BUY_NOW&#x60; or &#x60;ADVERTISEMENT&#x60;. (optional)
      * @param  string[] $external_id The ID from the client&#39;s external system. Passing more than one value will search for offers with any of the given IDs. By default no ID is included. Example: &#x60;external.id&#x3D;1233&amp;external.id&#x3D;1234&#x60; - returns offers with ID &#x60;1233&#x60; or &#x60;1234&#x60;. Single ID length shouldn&#39;t exceed 100 characters. (optional)
      * @param  string $delivery_shipping_rates_id The ID of shipping rates. Returns offers with given shipping rates ID. (optional)
@@ -1436,9 +1529,9 @@ class UsersOfferInformationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchOffersUsingGETAsync($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
+    public function searchOffersUsingGETAsync($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $selling_mode_price_automation_rule_id = null, $selling_mode_price_automation_rule_id_empty = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
     {
-        return $this->searchOffersUsingGETAsyncWithHttpInfo($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType)
+        return $this->searchOffersUsingGETAsyncWithHttpInfo($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $selling_mode_price_automation_rule_id, $selling_mode_price_automation_rule_id_empty, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1451,12 +1544,14 @@ class UsersOfferInformationApi
      *
      * Get seller&#39;s offers
      *
-     * @param  string $offer_id Offer ID. (optional)
+     * @param  string[] $offer_id Offer ID. (optional)
      * @param  string $name The text to search in the offer title. (optional)
      * @param  float $selling_mode_price_amount_gte The lower threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
      * @param  float $selling_mode_price_amount_lte The upper threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
+     * @param  string $selling_mode_price_automation_rule_id The ID of price automation rule. Returns offers with given price automation rule ID.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
+     * @param  bool $selling_mode_price_automation_rule_id_empty Allows to filter offers by existence of price automation rule ID. Passing &#39;false&#39; will return offers with any price automation rule, passing &#39;true&#39; will return offers without any price automation rules.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
      * @param  string[] $publication_status The publication status of the offer. Passing more than one value will search for offers with any of the given statuses. By default all statuses are included. Example: &#x60;publication.status&#x3D;INACTIVE&amp;publication.status&#x3D;ACTIVE&#x60; - returns offers with status &#x60;INACTIVE&#x60; or &#x60;ACTIVE&#x60;. (optional)
-     * @param  MarketplaceId $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
+     * @param  string $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
      * @param  string[] $selling_mode_format The offer&#39;s selling format. Passing more than one value will search for offers with any of the given formats. By default all formats are included. Example: &#x60;sellingMode.format&#x3D;BUY_NOW&amp;sellingMode.format&#x3D;ADVERTISEMENT&#x60; - returns offers with with format &#x60;BUY_NOW&#x60; or &#x60;ADVERTISEMENT&#x60;. (optional)
      * @param  string[] $external_id The ID from the client&#39;s external system. Passing more than one value will search for offers with any of the given IDs. By default no ID is included. Example: &#x60;external.id&#x3D;1233&amp;external.id&#x3D;1234&#x60; - returns offers with ID &#x60;1233&#x60; or &#x60;1234&#x60;. Single ID length shouldn&#39;t exceed 100 characters. (optional)
      * @param  string $delivery_shipping_rates_id The ID of shipping rates. Returns offers with given shipping rates ID. (optional)
@@ -1475,10 +1570,10 @@ class UsersOfferInformationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchOffersUsingGETAsyncWithHttpInfo($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
+    public function searchOffersUsingGETAsyncWithHttpInfo($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $selling_mode_price_automation_rule_id = null, $selling_mode_price_automation_rule_id_empty = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
     {
         $returnType = '\Phobetor\Allegro\Model\OffersSearchResultDto';
-        $request = $this->searchOffersUsingGETRequest($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType);
+        $request = $this->searchOffersUsingGETRequest($offer_id, $name, $selling_mode_price_amount_gte, $selling_mode_price_amount_lte, $selling_mode_price_automation_rule_id, $selling_mode_price_automation_rule_id_empty, $publication_status, $publication_marketplace, $selling_mode_format, $external_id, $delivery_shipping_rates_id, $delivery_shipping_rates_id_empty, $sort, $limit, $offset, $category_id, $product_id_empty, $productization_required, $b2b_buyable_only_by_business, $fundraising_campaign_id, $fundraising_campaign_id_empty, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1519,12 +1614,14 @@ class UsersOfferInformationApi
     /**
      * Create request for operation 'searchOffersUsingGET'
      *
-     * @param  string $offer_id Offer ID. (optional)
+     * @param  string[] $offer_id Offer ID. (optional)
      * @param  string $name The text to search in the offer title. (optional)
      * @param  float $selling_mode_price_amount_gte The lower threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
      * @param  float $selling_mode_price_amount_lte The upper threshold of price.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price on the given marketplace. (optional)
+     * @param  string $selling_mode_price_automation_rule_id The ID of price automation rule. Returns offers with given price automation rule ID.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
+     * @param  bool $selling_mode_price_automation_rule_id_empty Allows to filter offers by existence of price automation rule ID. Passing &#39;false&#39; will return offers with any price automation rule, passing &#39;true&#39; will return offers without any price automation rules.  If additionally a &#x60;publication.marketplace&#x60; is provided, searches using the price automation rule on the given marketplace. (optional)
      * @param  string[] $publication_status The publication status of the offer. Passing more than one value will search for offers with any of the given statuses. By default all statuses are included. Example: &#x60;publication.status&#x3D;INACTIVE&amp;publication.status&#x3D;ACTIVE&#x60; - returns offers with status &#x60;INACTIVE&#x60; or &#x60;ACTIVE&#x60;. (optional)
-     * @param  MarketplaceId $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
+     * @param  string $publication_marketplace Either the base marketplace or an additional marketplace of the offer.  When passing the parameter &#x60;publication.marketplace&#x60;, searches for offers with the given marketplace as either its base marketplace or one of its additional marketplaces. When the parameter is omitted, searches for offers with all marketplaces.  In addition to searching, passing the parameter also influences the functionality of other query parameter by searching and sorting by data (e.g. price) on the given marketplace. (optional)
      * @param  string[] $selling_mode_format The offer&#39;s selling format. Passing more than one value will search for offers with any of the given formats. By default all formats are included. Example: &#x60;sellingMode.format&#x3D;BUY_NOW&amp;sellingMode.format&#x3D;ADVERTISEMENT&#x60; - returns offers with with format &#x60;BUY_NOW&#x60; or &#x60;ADVERTISEMENT&#x60;. (optional)
      * @param  string[] $external_id The ID from the client&#39;s external system. Passing more than one value will search for offers with any of the given IDs. By default no ID is included. Example: &#x60;external.id&#x3D;1233&amp;external.id&#x3D;1234&#x60; - returns offers with ID &#x60;1233&#x60; or &#x60;1234&#x60;. Single ID length shouldn&#39;t exceed 100 characters. (optional)
      * @param  string $delivery_shipping_rates_id The ID of shipping rates. Returns offers with given shipping rates ID. (optional)
@@ -1543,7 +1640,7 @@ class UsersOfferInformationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchOffersUsingGETRequest($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
+    public function searchOffersUsingGETRequest($offer_id = null, $name = null, $selling_mode_price_amount_gte = null, $selling_mode_price_amount_lte = null, $selling_mode_price_automation_rule_id = null, $selling_mode_price_automation_rule_id_empty = null, $publication_status = null, $publication_marketplace = null, $selling_mode_format = null, $external_id = null, $delivery_shipping_rates_id = null, $delivery_shipping_rates_id_empty = null, $sort = null, $limit = 20, $offset = null, $category_id = null, $product_id_empty = null, $productization_required = null, $b2b_buyable_only_by_business = null, $fundraising_campaign_id = null, $fundraising_campaign_id_empty = null, string $contentType = self::contentTypes['searchOffersUsingGET'][0])
     {
 
 
@@ -1556,6 +1653,8 @@ class UsersOfferInformationApi
             throw new \InvalidArgumentException('invalid value for "$selling_mode_price_amount_lte" when calling UsersOfferInformationApi.searchOffersUsingGET, must be bigger than or equal to 1.');
         }
         
+
+
 
 
 
@@ -1598,7 +1697,7 @@ class UsersOfferInformationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $offer_id,
             'offer.id', // param base name
-            'string', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1632,6 +1731,24 @@ class UsersOfferInformationApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $selling_mode_price_automation_rule_id,
+            'sellingMode.priceAutomation.rule.id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $selling_mode_price_automation_rule_id_empty,
+            'sellingMode.priceAutomation.rule.id.empty', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $publication_status,
             'publication.status', // param base name
             'array', // openApiType
@@ -1643,7 +1760,7 @@ class UsersOfferInformationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $publication_marketplace,
             'publication.marketplace', // param base name
-            'MarketplaceId', // openApiType
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -59,7 +59,8 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'recipient' => '\Phobetor\Allegro\Model\Recipient',
         'text' => 'string',
-        'attachments' => '\Phobetor\Allegro\Model\MessageAttachmentId[]'
+        'attachments' => '\Phobetor\Allegro\Model\MessageAttachmentId[]',
+        'order' => '\Phobetor\Allegro\Model\MessageOrder'
     ];
 
     /**
@@ -72,7 +73,8 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'recipient' => null,
         'text' => null,
-        'attachments' => null
+        'attachments' => null,
+        'order' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'recipient' => false,
 		'text' => false,
-		'attachments' => true
+		'attachments' => true,
+		'order' => true
     ];
 
     /**
@@ -174,7 +177,8 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'recipient' => 'recipient',
         'text' => 'text',
-        'attachments' => 'attachments'
+        'attachments' => 'attachments',
+        'order' => 'order'
     ];
 
     /**
@@ -185,7 +189,8 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'recipient' => 'setRecipient',
         'text' => 'setText',
-        'attachments' => 'setAttachments'
+        'attachments' => 'setAttachments',
+        'order' => 'setOrder'
     ];
 
     /**
@@ -196,7 +201,8 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'recipient' => 'getRecipient',
         'text' => 'getText',
-        'attachments' => 'getAttachments'
+        'attachments' => 'getAttachments',
+        'order' => 'getOrder'
     ];
 
     /**
@@ -259,6 +265,7 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('recipient', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('attachments', $data ?? [], null);
+        $this->setIfExists('order', $data ?? [], null);
     }
 
     /**
@@ -401,6 +408,40 @@ class NewMessage implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['attachments'] = $attachments;
+
+        return $this;
+    }
+
+    /**
+     * Gets order
+     *
+     * @return \Phobetor\Allegro\Model\MessageOrder|null
+     */
+    public function getOrder()
+    {
+        return $this->container['order'];
+    }
+
+    /**
+     * Sets order
+     *
+     * @param \Phobetor\Allegro\Model\MessageOrder|null $order order
+     *
+     * @return self
+     */
+    public function setOrder($order)
+    {
+        if (is_null($order)) {
+            array_push($this->openAPINullablesSetToNull, 'order');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['order'] = $order;
 
         return $this;
     }

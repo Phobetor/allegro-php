@@ -77,9 +77,6 @@ class OfferManagementApi
         'createChangePriceCommandUsingPUT' => [
             'application/vnd.allegro.public.v1+json',
         ],
-        'createOfferUsingPOST' => [
-            'application/vnd.allegro.public.v1+json',
-        ],
         'createProductOffers' => [
             'application/vnd.allegro.public.v1+json',
         ],
@@ -96,9 +93,6 @@ class OfferManagementApi
             'application/json',
         ],
         'getOffersUnfilledParametersUsingGET1' => [
-            'application/json',
-        ],
-        'getProductOffer' => [
             'application/json',
         ],
         'getProductOfferProcessingStatus' => [
@@ -123,9 +117,6 @@ class OfferManagementApi
             'application/vnd.allegro.public.v1+json',
         ],
         'promoModificationCommandUsingPUT' => [
-            'application/vnd.allegro.public.v1+json',
-        ],
-        'updateOfferUsingPUT' => [
             'application/vnd.allegro.public.v1+json',
         ],
     ];
@@ -832,297 +823,6 @@ class OfferManagementApi
     }
 
     /**
-     * Operation createOfferUsingPOST
-     *
-     * Create a draft offer
-     *
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOfferUsingPOST'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\OfferResponse
-     * @deprecated
-     */
-    public function createOfferUsingPOST($create_offer_using_post_request, string $contentType = self::contentTypes['createOfferUsingPOST'][0])
-    {
-        list($response) = $this->createOfferUsingPOSTWithHttpInfo($create_offer_using_post_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createOfferUsingPOSTWithHttpInfo
-     *
-     * Create a draft offer
-     *
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOfferUsingPOST'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\OfferResponse, HTTP status code, HTTP response headers (array of strings)
-     * @deprecated
-     */
-    public function createOfferUsingPOSTWithHttpInfo($create_offer_using_post_request, string $contentType = self::contentTypes['createOfferUsingPOST'][0])
-    {
-        $request = $this->createOfferUsingPOSTRequest($create_offer_using_post_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Phobetor\Allegro\Model\OfferResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\OfferResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\OfferResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Phobetor\Allegro\Model\OfferResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\OfferResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createOfferUsingPOSTAsync
-     *
-     * Create a draft offer
-     *
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOfferUsingPOST'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
-     */
-    public function createOfferUsingPOSTAsync($create_offer_using_post_request, string $contentType = self::contentTypes['createOfferUsingPOST'][0])
-    {
-        return $this->createOfferUsingPOSTAsyncWithHttpInfo($create_offer_using_post_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createOfferUsingPOSTAsyncWithHttpInfo
-     *
-     * Create a draft offer
-     *
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOfferUsingPOST'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
-     */
-    public function createOfferUsingPOSTAsyncWithHttpInfo($create_offer_using_post_request, string $contentType = self::contentTypes['createOfferUsingPOST'][0])
-    {
-        $returnType = '\Phobetor\Allegro\Model\OfferResponse';
-        $request = $this->createOfferUsingPOSTRequest($create_offer_using_post_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createOfferUsingPOST'
-     *
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOfferUsingPOST'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     * @deprecated
-     */
-    public function createOfferUsingPOSTRequest($create_offer_using_post_request, string $contentType = self::contentTypes['createOfferUsingPOST'][0])
-    {
-
-        // verify the required parameter 'create_offer_using_post_request' is set
-        if ($create_offer_using_post_request === null || (is_array($create_offer_using_post_request) && count($create_offer_using_post_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $create_offer_using_post_request when calling createOfferUsingPOST'
-            );
-        }
-
-
-        $resourcePath = '/sale/offers';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.allegro.public.v1+json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($create_offer_using_post_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_offer_using_post_request));
-            } else {
-                $httpBody = $create_offer_using_post_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation createProductOffers
      *
      * Create offer based on product
@@ -1132,7 +832,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\CreateProductOffers422Response
      */
     public function createProductOffers($sale_product_offer_request_v1, string $contentType = self::contentTypes['createProductOffers'][0])
     {
@@ -1150,7 +850,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\CreateProductOffers422Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProductOffersWithHttpInfo($sale_product_offer_request_v1, string $contentType = self::contentTypes['createProductOffers'][0])
     {
@@ -1268,17 +968,17 @@ class OfferManagementApi
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\CreateProductOffers422Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\CreateProductOffers422Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\CreateProductOffers422Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1345,7 +1045,7 @@ class OfferManagementApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        '\Phobetor\Allegro\Model\CreateProductOffers422Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1767,7 +1467,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\EditProductOffers422Response
      */
     public function editProductOffers($offer_id, $sale_product_offer_patch_request_v1, string $contentType = self::contentTypes['editProductOffers'][0])
     {
@@ -1786,7 +1486,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\SaleProductOfferResponseV1|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\EditProductOffers422Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function editProductOffersWithHttpInfo($offer_id, $sale_product_offer_patch_request_v1, string $contentType = self::contentTypes['editProductOffers'][0])
     {
@@ -1903,7 +1603,7 @@ class OfferManagementApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 422:
+                case 404:
                     if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -1915,6 +1615,36 @@ class OfferManagementApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\Phobetor\Allegro\Model\ErrorsHolder' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\ErrorsHolder' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\ErrorsHolder', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Phobetor\Allegro\Model\EditProductOffers422Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Phobetor\Allegro\Model\EditProductOffers422Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\EditProductOffers422Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1978,10 +1708,26 @@ class OfferManagementApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 422:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\ErrorsHolder',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Phobetor\Allegro\Model\EditProductOffers422Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3141,293 +2887,6 @@ class OfferManagementApi
     }
 
     /**
-     * Operation getProductOffer
-     *
-     * Get all data of the particular product-offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\SaleProductOfferResponseV1
-     */
-    public function getProductOffer($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
-    {
-        list($response) = $this->getProductOfferWithHttpInfo($offer_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getProductOfferWithHttpInfo
-     *
-     * Get all data of the particular product-offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\SaleProductOfferResponseV1, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getProductOfferWithHttpInfo($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
-    {
-        $request = $this->getProductOfferRequest($offer_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Phobetor\Allegro\Model\SaleProductOfferResponseV1' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\SaleProductOfferResponseV1' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\SaleProductOfferResponseV1', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Phobetor\Allegro\Model\SaleProductOfferResponseV1';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\SaleProductOfferResponseV1',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getProductOfferAsync
-     *
-     * Get all data of the particular product-offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getProductOfferAsync($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
-    {
-        return $this->getProductOfferAsyncWithHttpInfo($offer_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getProductOfferAsyncWithHttpInfo
-     *
-     * Get all data of the particular product-offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getProductOfferAsyncWithHttpInfo($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
-    {
-        $returnType = '\Phobetor\Allegro\Model\SaleProductOfferResponseV1';
-        $request = $this->getProductOfferRequest($offer_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getProductOffer'
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductOffer'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getProductOfferRequest($offer_id, string $contentType = self::contentTypes['getProductOffer'][0])
-    {
-
-        // verify the required parameter 'offer_id' is set
-        if ($offer_id === null || (is_array($offer_id) && count($offer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $offer_id when calling getProductOffer'
-            );
-        }
-
-
-        $resourcePath = '/sale/product-offers/{offerId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($offer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'offerId' . '}',
-                ObjectSerializer::toPathValue($offer_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.allegro.public.v1+json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getProductOfferProcessingStatus
      *
      * Check the processing status of a POST or PATCH request
@@ -4139,7 +3598,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\GeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\PromoGeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function getPromoModificationCommandResultUsingGET($command_id, string $contentType = self::contentTypes['getPromoModificationCommandResultUsingGET'][0])
     {
@@ -4157,7 +3616,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\GeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\PromoGeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPromoModificationCommandResultUsingGETWithHttpInfo($command_id, string $contentType = self::contentTypes['getPromoModificationCommandResultUsingGET'][0])
     {
@@ -4200,17 +3659,17 @@ class OfferManagementApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Phobetor\Allegro\Model\GeneralReport' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\PromoGeneralReport' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GeneralReport' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\PromoGeneralReport' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GeneralReport', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\PromoGeneralReport', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4261,7 +3720,7 @@ class OfferManagementApi
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+            $returnType = '\Phobetor\Allegro\Model\PromoGeneralReport';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4282,7 +3741,7 @@ class OfferManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GeneralReport',
+                        '\Phobetor\Allegro\Model\PromoGeneralReport',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4350,7 +3809,7 @@ class OfferManagementApi
      */
     public function getPromoModificationCommandResultUsingGETAsyncWithHttpInfo($command_id, string $contentType = self::contentTypes['getPromoModificationCommandResultUsingGET'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+        $returnType = '\Phobetor\Allegro\Model\PromoGeneralReport';
         $request = $this->getPromoModificationCommandResultUsingGETRequest($command_id, $contentType);
 
         return $this->client
@@ -5839,7 +5298,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\GeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
+     * @return \Phobetor\Allegro\Model\PromoGeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder
      */
     public function promoModificationCommandUsingPUT($command_id, $promo_options_command, string $contentType = self::contentTypes['promoModificationCommandUsingPUT'][0])
     {
@@ -5858,7 +5317,7 @@ class OfferManagementApi
      *
      * @throws \Phobetor\Allegro\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\GeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Phobetor\Allegro\Model\PromoGeneralReport|\Phobetor\Allegro\Model\AuthError|\Phobetor\Allegro\Model\ErrorsHolder|\Phobetor\Allegro\Model\ErrorsHolder, HTTP status code, HTTP response headers (array of strings)
      */
     public function promoModificationCommandUsingPUTWithHttpInfo($command_id, $promo_options_command, string $contentType = self::contentTypes['promoModificationCommandUsingPUT'][0])
     {
@@ -5901,17 +5360,17 @@ class OfferManagementApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Phobetor\Allegro\Model\GeneralReport' === '\SplFileObject') {
+                    if ('\Phobetor\Allegro\Model\PromoGeneralReport' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\GeneralReport' !== 'string') {
+                        if ('\Phobetor\Allegro\Model\PromoGeneralReport' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\GeneralReport', []),
+                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\PromoGeneralReport', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5962,7 +5421,7 @@ class OfferManagementApi
                     ];
             }
 
-            $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+            $returnType = '\Phobetor\Allegro\Model\PromoGeneralReport';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5983,7 +5442,7 @@ class OfferManagementApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\GeneralReport',
+                        '\Phobetor\Allegro\Model\PromoGeneralReport',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6053,7 +5512,7 @@ class OfferManagementApi
      */
     public function promoModificationCommandUsingPUTAsyncWithHttpInfo($command_id, $promo_options_command, string $contentType = self::contentTypes['promoModificationCommandUsingPUT'][0])
     {
-        $returnType = '\Phobetor\Allegro\Model\GeneralReport';
+        $returnType = '\Phobetor\Allegro\Model\PromoGeneralReport';
         $request = $this->promoModificationCommandUsingPUTRequest($command_id, $promo_options_command, $contentType);
 
         return $this->client
@@ -6152,317 +5611,6 @@ class OfferManagementApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($promo_options_command));
             } else {
                 $httpBody = $promo_options_command;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updateOfferUsingPUT
-     *
-     * Complete a draft offer or edit an offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOfferUsingPUT'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Phobetor\Allegro\Model\OfferResponse
-     * @deprecated
-     */
-    public function updateOfferUsingPUT($offer_id, $create_offer_using_post_request, string $contentType = self::contentTypes['updateOfferUsingPUT'][0])
-    {
-        list($response) = $this->updateOfferUsingPUTWithHttpInfo($offer_id, $create_offer_using_post_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation updateOfferUsingPUTWithHttpInfo
-     *
-     * Complete a draft offer or edit an offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOfferUsingPUT'] to see the possible values for this operation
-     *
-     * @throws \Phobetor\Allegro\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Phobetor\Allegro\Model\OfferResponse, HTTP status code, HTTP response headers (array of strings)
-     * @deprecated
-     */
-    public function updateOfferUsingPUTWithHttpInfo($offer_id, $create_offer_using_post_request, string $contentType = self::contentTypes['updateOfferUsingPUT'][0])
-    {
-        $request = $this->updateOfferUsingPUTRequest($offer_id, $create_offer_using_post_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Phobetor\Allegro\Model\OfferResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Phobetor\Allegro\Model\OfferResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Phobetor\Allegro\Model\OfferResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Phobetor\Allegro\Model\OfferResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Phobetor\Allegro\Model\OfferResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateOfferUsingPUTAsync
-     *
-     * Complete a draft offer or edit an offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOfferUsingPUT'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
-     */
-    public function updateOfferUsingPUTAsync($offer_id, $create_offer_using_post_request, string $contentType = self::contentTypes['updateOfferUsingPUT'][0])
-    {
-        return $this->updateOfferUsingPUTAsyncWithHttpInfo($offer_id, $create_offer_using_post_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateOfferUsingPUTAsyncWithHttpInfo
-     *
-     * Complete a draft offer or edit an offer
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOfferUsingPUT'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
-     */
-    public function updateOfferUsingPUTAsyncWithHttpInfo($offer_id, $create_offer_using_post_request, string $contentType = self::contentTypes['updateOfferUsingPUT'][0])
-    {
-        $returnType = '\Phobetor\Allegro\Model\OfferResponse';
-        $request = $this->updateOfferUsingPUTRequest($offer_id, $create_offer_using_post_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updateOfferUsingPUT'
-     *
-     * @param  string $offer_id Offer identifier. (required)
-     * @param  \Phobetor\Allegro\Model\CreateOfferUsingPOSTRequest $create_offer_using_post_request offer (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOfferUsingPUT'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     * @deprecated
-     */
-    public function updateOfferUsingPUTRequest($offer_id, $create_offer_using_post_request, string $contentType = self::contentTypes['updateOfferUsingPUT'][0])
-    {
-
-        // verify the required parameter 'offer_id' is set
-        if ($offer_id === null || (is_array($offer_id) && count($offer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $offer_id when calling updateOfferUsingPUT'
-            );
-        }
-
-        // verify the required parameter 'create_offer_using_post_request' is set
-        if ($create_offer_using_post_request === null || (is_array($create_offer_using_post_request) && count($create_offer_using_post_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $create_offer_using_post_request when calling updateOfferUsingPUT'
-            );
-        }
-
-
-        $resourcePath = '/sale/offers/{offerId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($offer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'offerId' . '}',
-                ObjectSerializer::toPathValue($offer_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.allegro.public.v1+json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($create_offer_using_post_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_offer_using_post_request));
-            } else {
-                $httpBody = $create_offer_using_post_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

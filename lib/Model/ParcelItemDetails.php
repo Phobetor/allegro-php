@@ -61,7 +61,7 @@ class ParcelItemDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
         'dimensions' => '\Phobetor\Allegro\Model\ParcelItemDetailsWithWaybillDimensions',
         'weight' => '\Phobetor\Allegro\Model\ParcelItemDetailsWithWaybillWeight',
         'description' => 'string',
-        'value' => '\Phobetor\Allegro\Model\ParcelItemDetailsWithWaybillValue',
+        'value' => '\Phobetor\Allegro\Model\ParcelItemDetailsValue',
         'type' => 'string'
     ];
 
@@ -428,7 +428,7 @@ class ParcelItemDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets value
      *
-     * @return \Phobetor\Allegro\Model\ParcelItemDetailsWithWaybillValue|null
+     * @return \Phobetor\Allegro\Model\ParcelItemDetailsValue|null
      */
     public function getValue()
     {
@@ -438,7 +438,7 @@ class ParcelItemDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets value
      *
-     * @param \Phobetor\Allegro\Model\ParcelItemDetailsWithWaybillValue|null $value value
+     * @param \Phobetor\Allegro\Model\ParcelItemDetailsValue|null $value value
      *
      * @return self
      */

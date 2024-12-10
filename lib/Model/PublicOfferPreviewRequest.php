@@ -57,7 +57,7 @@ class PublicOfferPreviewRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'offer' => '\Phobetor\Allegro\Model\Offer',
+        'offer' => '\Phobetor\Allegro\Model\PricingOffer',
         'classifieds_packages' => '\Phobetor\Allegro\Model\ClassifiedsPackages',
         'marketplace_id' => 'string'
     ];
@@ -306,7 +306,7 @@ class PublicOfferPreviewRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets offer
      *
-     * @return \Phobetor\Allegro\Model\Offer|null
+     * @return \Phobetor\Allegro\Model\PricingOffer|null
      */
     public function getOffer()
     {
@@ -316,7 +316,7 @@ class PublicOfferPreviewRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets offer
      *
-     * @param \Phobetor\Allegro\Model\Offer|null $offer offer
+     * @param \Phobetor\Allegro\Model\PricingOffer|null $offer offer
      *
      * @return self
      */

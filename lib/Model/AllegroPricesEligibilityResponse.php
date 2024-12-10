@@ -58,7 +58,8 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'consent' => 'string',
-        'qualification' => '\Phobetor\Allegro\Model\AllegroPricesQualificationResponse'
+        'qualification' => '\Phobetor\Allegro\Model\AllegroPricesQualificationResponse',
+        'additional_marketplaces' => 'array<string,\Phobetor\Allegro\Model\AllegroPricesEligibilityResponseAdditionalMarketplacesValue>'
     ];
 
     /**
@@ -70,7 +71,8 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'consent' => null,
-        'qualification' => null
+        'qualification' => null,
+        'additional_marketplaces' => null
     ];
 
     /**
@@ -80,7 +82,8 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'consent' => false,
-		'qualification' => false
+		'qualification' => false,
+		'additional_marketplaces' => false
     ];
 
     /**
@@ -170,7 +173,8 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'consent' => 'consent',
-        'qualification' => 'qualification'
+        'qualification' => 'qualification',
+        'additional_marketplaces' => 'additionalMarketplaces'
     ];
 
     /**
@@ -180,7 +184,8 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'consent' => 'setConsent',
-        'qualification' => 'setQualification'
+        'qualification' => 'setQualification',
+        'additional_marketplaces' => 'setAdditionalMarketplaces'
     ];
 
     /**
@@ -190,7 +195,8 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'consent' => 'getConsent',
-        'qualification' => 'getQualification'
+        'qualification' => 'getQualification',
+        'additional_marketplaces' => 'getAdditionalMarketplaces'
     ];
 
     /**
@@ -267,6 +273,7 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
     {
         $this->setIfExists('consent', $data ?? [], null);
         $this->setIfExists('qualification', $data ?? [], null);
+        $this->setIfExists('additional_marketplaces', $data ?? [], null);
     }
 
     /**
@@ -380,6 +387,33 @@ class AllegroPricesEligibilityResponse implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable qualification cannot be null');
         }
         $this->container['qualification'] = $qualification;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional_marketplaces
+     *
+     * @return array<string,\Phobetor\Allegro\Model\AllegroPricesEligibilityResponseAdditionalMarketplacesValue>|null
+     */
+    public function getAdditionalMarketplaces()
+    {
+        return $this->container['additional_marketplaces'];
+    }
+
+    /**
+     * Sets additional_marketplaces
+     *
+     * @param array<string,\Phobetor\Allegro\Model\AllegroPricesEligibilityResponseAdditionalMarketplacesValue>|null $additional_marketplaces Eligibility state on marketplces other than the base marketplace of the account.
+     *
+     * @return self
+     */
+    public function setAdditionalMarketplaces($additional_marketplaces)
+    {
+        if (is_null($additional_marketplaces)) {
+            throw new \InvalidArgumentException('non-nullable additional_marketplaces cannot be null');
+        }
+        $this->container['additional_marketplaces'] = $additional_marketplaces;
 
         return $this;
     }
