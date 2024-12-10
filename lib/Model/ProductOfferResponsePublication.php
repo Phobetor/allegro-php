@@ -231,7 +231,6 @@ class ProductOfferResponsePublication implements ModelInterface, ArrayAccess, \J
     public const STATUS_PROPOSED = 'PROPOSED';
     public const STATUS_LISTED = 'LISTED';
     public const STATUS_NOT_LISTED = 'NOT_LISTED';
-    public const STATUS_REMOVED = 'REMOVED';
 
     /**
      * Gets allowable values of the enum
@@ -244,7 +243,6 @@ class ProductOfferResponsePublication implements ModelInterface, ArrayAccess, \J
             self::STATUS_PROPOSED,
             self::STATUS_LISTED,
             self::STATUS_NOT_LISTED,
-            self::STATUS_REMOVED,
         ];
     }
 
@@ -330,7 +328,7 @@ class ProductOfferResponsePublication implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param string|null $status The publication status of the submitted product:  - `PROPOSED` - we created new product proposal and assigned it to an offer  - `LISTED` - we identified the product in our database and assigned it to an offer  - `NOT_LISTED` - we didn’t create a new product proposal and didn’t assign any product from our database to an offer
+     * @param string|null $status The publication status of the product assigned to the offer:  - `PROPOSED` - a new product proposal was created or an existing product in the review process was selected and assigned to the offer  - `LISTED` - a reviewed product from our database was identified and assigned to the offer  - `NOT_LISTED` - no new product proposal was created nor an existing product from database was assigned to the offer  - `REMOVED` - the product review was negative or the product was merged with another product. This means that the product will soon be removed from the offer and you can assign a correct product.
      *
      * @return self
      */
