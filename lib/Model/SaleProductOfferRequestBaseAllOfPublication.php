@@ -316,7 +316,7 @@ class SaleProductOfferRequestBaseAllOfPublication implements ModelInterface, Arr
     /**
      * Sets duration
      *
-     * @param string|null $duration Publication duration, ISO 8601 duration format. This field must be set to one of the following: PT0S for immediately, PT24H, P2D, P3D, P4D, P5D, P7D, P10D, P14D, P21D, P30D, P60D.
+     * @param string|null $duration This field must be set to one of the following:<br/> - for auctions: 1 day, 3 days, 5 days, 7 days, 10 days<br/> - for buy-now offers: 3 days, 5 days, 7 days, 10 days, 20 days, 30 days<br/> - for advertisements: 10 days, 20 days, 30 days.<br/> The value is in ISO 8601 format (example: PT24H, PT72H).
      *
      * @return self
      */
