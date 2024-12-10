@@ -309,7 +309,7 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
     /**
      * Sets id
      *
-     * @param string|null $id Shipping rate ID
+     * @param string|null $id Shipping rate ID.
      *
      * @return self
      */
@@ -336,7 +336,7 @@ class GetListOfShippingRatestUsingGET200ResponseShippingRatesInner implements Mo
     /**
      * Sets name
      *
-     * @param string|null $name User defined name of the shipping rates set
+     * @param string|null $name User defined name of the shipping rates set.
      *
      * @return self
      */

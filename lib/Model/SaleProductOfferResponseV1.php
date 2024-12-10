@@ -484,8 +484,8 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 75)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 75.";
         }
 
         return $invalidProperties;
@@ -1056,7 +1056,7 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets name
      *
-     * @param string|null $name Name (title) of an offer. Length cannot be more than 50 characters. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#tytul-oferty\" target=\"_blank\">PL</a>  / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#offer-title\" target=\"_blank\">EN</a> .
+     * @param string|null $name Name (title) of an offer. Length cannot be more than 75 characters. Read more: <a href=\"../../tutorials/jak-jednym-requestem-wystawic-oferte-powiazana-z-produktem-D7Kj9gw4xFA#tytul-oferty\" target=\"_blank\">PL</a>  / <a href=\"../../tutorials/list-offer-assigned-product-one-request-D7Kj9M71Bu6#offer-title\" target=\"_blank\">EN</a> .
      *
      * @return self
      */
@@ -1065,8 +1065,8 @@ class SaleProductOfferResponseV1 implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling SaleProductOfferResponseV1., must be smaller than or equal to 50.');
+        if ((mb_strlen($name) > 75)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SaleProductOfferResponseV1., must be smaller than or equal to 75.');
         }
 
         $this->container['name'] = $name;

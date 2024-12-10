@@ -347,7 +347,7 @@ class SaleProductOfferRequestBaseAllOfDelivery implements ModelInterface, ArrayA
     /**
      * Sets shipping_rates
      *
-     * @param mixed|null $shipping_rates You should enter the shippingrates identifier or name.
+     * @param mixed|null $shipping_rates You can enter the shipping rates identifier or name.
      *
      * @return self
      */

@@ -303,7 +303,7 @@ class SaleProductOfferResponseV1AllOfContact implements ModelInterface, ArrayAcc
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Id of contact.
      *
      * @return self
      */

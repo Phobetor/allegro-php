@@ -35,7 +35,7 @@ use \Phobetor\Allegro\ObjectSerializer;
  * SaleProductOfferRequestBaseAllOfSizeTable Class Doc Comment
  *
  * @category Class
- * @description The size table information. You should enter the size tabe identifier or name.
+ * @description The size table information. You can enter the size tabe identifier or name.
  * @package  Phobetor\Allegro
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -369,7 +369,7 @@ class SaleProductOfferStatusResponseOperation implements ModelInterface, ArrayAc
     /**
      * Sets status
      *
-     * @param string|null $status Parcel creation status.
+     * @param string|null $status Status of the operation.
      *
      * @return self
      */

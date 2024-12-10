@@ -281,6 +281,10 @@ class ProductOfferAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 75)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 75.";
+        }
+
         return $invalidProperties;
     }
 
@@ -318,6 +322,10 @@ class ProductOfferAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 75)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ProductOfferAllOf., must be smaller than or equal to 75.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;

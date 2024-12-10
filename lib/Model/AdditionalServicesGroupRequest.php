@@ -299,11 +299,14 @@ class AdditionalServicesGroupRequest implements ModelInterface, ArrayAccess, \Js
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['language']) && (mb_strlen($this->container['language']) > 5)) {
+        if ($this->container['language'] === null) {
+            $invalidProperties[] = "'language' can't be null";
+        }
+        if ((mb_strlen($this->container['language']) > 5)) {
             $invalidProperties[] = "invalid value for 'language', the character length must be smaller than or equal to 5.";
         }
 
-        if (!is_null($this->container['language']) && (mb_strlen($this->container['language']) < 5)) {
+        if ((mb_strlen($this->container['language']) < 5)) {
             $invalidProperties[] = "invalid value for 'language', the character length must be bigger than or equal to 5.";
         }
 
@@ -362,7 +365,7 @@ class AdditionalServicesGroupRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets language
      *
-     * @return string|null
+     * @return string
      */
     public function getLanguage()
     {
@@ -372,7 +375,7 @@ class AdditionalServicesGroupRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets language
      *
-     * @param string|null $language IETF language tag.
+     * @param string $language IETF language tag. Must be equal to main language for given marketplace: 'pl-PL' on allegro.pl and 'cs-CZ' on allegro.cz while creating new group.<br/> Cannot change the language of already created group while modifying existing group.
      *
      * @return self
      */

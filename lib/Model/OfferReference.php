@@ -350,7 +350,7 @@ class OfferReference implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name Offer name
+     * @param string $name Offer name.
      *
      * @return self
      */

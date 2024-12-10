@@ -77,7 +77,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => null,
         'zip_code' => null,
         'state' => null,
-        'country_code' => null,
+        'country_code' => 'ISO format',
         'coordinates' => null
     ];
 
